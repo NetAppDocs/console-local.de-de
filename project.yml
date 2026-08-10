@@ -186,8 +186,8 @@ sidebar:
         entries:
         - title: Organisations- und Flotten-IDs
           url: "/task-iam-rename-organization.html"
-        - title: API-Referenz für Identitäts- und Zugriffsmanagement
-          url: https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html
+        - title: API-Referenz für die lokale Console-Bereitstellung
+          url: https://docs.netapp.com/us-en/console-local-automation/index.html
       - title: Unterstützte LLM Anbieter und Modelle
         url: "/reference-llm-supported-models.html"
       - title: ONTAP Warnungen Referenz
