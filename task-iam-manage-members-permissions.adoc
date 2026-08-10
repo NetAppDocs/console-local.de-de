@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-members-permissions.html 
+keywords: user, directory user, directory users, service account, member, role, permissions, organization, fleet, folder, iam, identity and access management, access roles, add members, grant permissions, AD, Active Directory, directory services 
+summary: Mitglieder können hinzugefügt und Rollen zugewiesen werden, um Berechtigungen auf verschiedenen Ebenen der Ressourcenhierarchie Ihrer Organisation bereitzustellen. 
+---
+= Mitglieder zur lokalen NetApp Console-Bereitstellungsorganisation hinzufügen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mitglieder können zur lokalen NetApp Console-Bereitstellungsorganisation hinzugefügt und Rollen zugewiesen werden, um Benutzern, Dienstkonten und Verzeichnisbenutzern Zugriff auf Organisations-, Ordner- oder Flottenebene zu ermöglichen.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- bzw. Flottenadministrator (für die von ihnen verwalteten Ordner und Flotten). link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Die Ordner- und Flottenhierarchie, die zu Ihrer Organisation passt, kann erstellt werden. link:task-iam-manage-folders-fleets.html["Informationen zur Organisation Ihrer Ressourcen mit Ordnern und Flotten"].
+* Ressourcen sollten den richtigen Flotten zugeordnet werden, bevor Mitgliedern Zugriffsrechte zugewiesen werden. link:task-iam-manage-resources.html["Informationen zur Verwaltung von Ressourcen in Ordnern und Flotten"].
+* Wenn ein Verzeichnisbenutzer hinzugefügt wird, sollte zuerst der Verzeichnisdienst integriert werden. link:task-iam-active-directory-integrate.html["Informationen zur Integration mit Ihrem Verzeichnisdienst."].
+
+
+
+
+[[understand-how-access-is-granted-in-netapp-console-local-deployment]]
+== Informationen darüber, wie der Zugriff in der lokalen NetApp Console-Bereitstellung gewährt wird
+
+NetApp Console verwendet rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung von Berechtigungen. Rollen werden Mitgliedern zugewiesen, um den erforderlichen Zugriff bereitzustellen. Jede Rolle definiert zulässige Aktionen für bestimmte Ressourcen.
+
+Folgendes ist bei der Zugriffsgewährung in der lokalen NetApp Console-Bereitstellung zu beachten:
+
+* Sie müssen jeden Benutzer explizit zu Ihrer Organisation hinzufügen und mindestens eine Rolle zuweisen, bevor dieser Benutzer auf Ressourcen zugreifen kann.
+* Eine Rolle, die auf Organisations- oder Ordnerebene zugewiesen wird, wird an untergeordnete Bereiche vererbt, daher sollte der Zuweisungsbereich sorgfältig gewählt werden, damit das Mitglied nur dort Zugriff erhält, wo dies erforderlich ist. link:concept-iam-rbac.html#role-inheritance["Informationen zur Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+
+[[add-members-to-your-organization]]
+[[add-members]]
+== Mitglieder zur Organisation hinzufügen
+
+NetApp Console unterstützt drei Arten von Mitgliedern: Benutzerkonten, Verzeichnisbenutzer und Dienstkonten.
+
+
+NOTE: Bevor Benutzer hinzugefügt werden können, muss zunächst ein E-Mail-Server für die lokale Bereitstellung mit Console konfiguriert werden.link:task-console-configure-notifications-delivery.html["Informationen zur Konfiguration eines E-Mail-Servers."]
+
+Verzeichnisbenutzer authentifizieren sich über Ihren integrierten Verzeichnisdienst, jedoch muss weiterhin jeder Verzeichnisbenutzer einzeln hinzugefügt und ihm in der lokalen NetApp Console Bereitstellung Rollen zugewiesen werden. Dienstkonten werden direkt in der NetApp Console erstellt.
+
+Allen Mitgliedern muss mindestens eine Rolle explizit zugewiesen sein, um auf die lokale NetApp Console-Bereitstellung zugreifen zu können.
+
+Beim Hinzufügen eines Mitglieds wird die Organisation, der Ordner oder die Flotte ausgewählt, auf die das Mitglied Zugriff benötigt, und die benötigte(n) Startrolle(n) zugewiesen.
+
+
+
+[[add-a-user-account]]
+=== Benutzerkonto hinzufügen
+
+Sie benötigen die Rolle „Organization admin“, „Folder admin“ oder „fleet admin“, um einen Benutzer zu einer Organisation, einem Ordner oder einer Flotte hinzuzufügen, damit dieser auf Ressourcen zugreifen kann.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. *Mitglied hinzufügen* auswählen.
+. Für *Mitgliedstyp* bleibt *Benutzer* ausgewählt.
+. Für *Benutzer-E-Mail* die E-Mail-Adresse des Benutzers angeben, die mit dem von ihm erstellten Login verknüpft ist.
+. Im Abschnitt *Organisation, Ordner oder Flotte auswählen* wird ausgewählt, wo das Mitglied Zugriff benötigt.
++
+Dabei ist Folgendes zu beachten:
+
++
+** Sie können nur die Ordner und Flotten auswählen, für die Sie Berechtigungen haben.
+** Wenn Sie eine Organisation oder einen Ordner auswählen, erteilen Sie dem Mitglied Berechtigungen für alle darin enthaltenen Inhalte.
+** Die Rolle *Organization admin* kann nur auf Organisationsebene zugewiesen werden.
+
+
+. *Wählen Sie eine Kategorie* und wählen Sie dann eine *Rolle* aus, die dem Mitglied die erforderlichen Startberechtigungen für die von Ihnen ausgewählte Organisation, den Ordner oder die Flotte zuweist.
++
+link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+. Um Zugriff auf weitere Ordner, Flotten oder Rollen zu gewähren, *Rolle hinzufügen* auswählen, die Ordner-, Flotten- oder Rollenkategorie wählen und eine Rolle auswählen.
+. Wählen Sie *Add*.
++
+Die Konsole sendet dem Benutzer eine E-Mail mit Anweisungen.
+
+
+
+
+
+[[add-a-service-account]]
+[[service-account]]
+=== Ein Dienstkonto hinzufügen
+
+Ein Dienstkonto wird hinzugefügt, wenn Aufgaben automatisiert oder eine sichere Verbindung zu den Console-APIs hergestellt werden soll. Nach der Erstellung des Kontos sind die Client-ID und das Client-Geheimnis für die Integration zu kopieren, die dieses Konto verwendet.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. *Mitglied hinzufügen* auswählen.
+. Für *Mitgliedstyp* die Option *Dienstkonto* auswählen.
+. Geben Sie einen Namen für das Servicekonto ein.
+. Im Abschnitt *Organisation, Ordner oder Flotte auswählen* wird ausgewählt, wo das Dienstkonto Zugriff benötigt.
++
+Dabei ist Folgendes zu beachten:
+
++
+** Sie können nur aus den Ordnern und Flotten auswählen, für die Sie Berechtigungen haben.
+** Durch die Auswahl einer Organisation oder eines Ordners erhält das Mitglied Berechtigungen für alle darin enthaltenen Inhalte.
+** Die Rolle *Organization admin* kann nur auf Organisationsebene zugewiesen werden.
+
+
+. Eine *Kategorie* auswählen und dann eine *Rolle* auswählen, die dem Dienstkonto die erforderlichen Startberechtigungen für die ausgewählte Organisation, den Ordner oder die Flotte zuweist.
++
+link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+. Um Zugriff auf weitere Ordner, Flotten oder Rollen zu gewähren, *Rolle hinzufügen* auswählen, die Ordner-, Flotten- oder Rollenkategorie wählen und eine Rolle auswählen.
+. Die Client-ID und das Client-Geheimnis können heruntergeladen oder kopiert werden.
++
+Die Konsole zeigt das Client-Geheimnis nur einmal an. Es sollte sicher kopiert werden; eine spätere Neuerstellung ist möglich, falls es verloren geht.
+
+. *Schließen* auswählen.
+
+
+
+
+[[add-a-directory-user-to-your-organization]]
+== Einen Verzeichnisbenutzer zur Organisation hinzufügen
+
+Fügen Sie einen Benutzer aus Ihrem integrierten Verzeichnisdienst hinzu und weisen Sie ihm die ersten Rollen zu. Beispielsweise kann ein neuer Speichertechniker aus Active Directory hinzugefügt und die Rolle Storage admin für die  `Production-US-East` fleet zugewiesen werden, sodass er in dieser fleet arbeiten kann.
+
+Sie müssen zuerst Ihren Verzeichnisdienst konfigurieren, bevor Sie Verzeichnisbenutzer hinzufügen können. link:task-iam-active-directory-integrate.html["Informationen zur Integration mit Ihrem Verzeichnisdienst."].
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. *Mitglied hinzufügen* auswählen.
+. Für *Mitgliedstyp* die Option *Verzeichnisbenutzer* auswählen.
+. Für *Benutzer-E-Mail* ist die E-Mail-Adresse des Verzeichnisbenutzers einzugeben, den Sie hinzufügen möchten. Diese E-Mail-Adresse muss mit der E-Mail-Adresse übereinstimmen, die mit dem Login des Benutzers in Ihrem Verzeichnis verknüpft ist.
+. Im Abschnitt *Organisation, Ordner oder Flotte auswählen* wird ausgewählt, wo der Verzeichnisbenutzer Zugriff benötigt.
++
+Dabei ist Folgendes zu beachten:
+
++
+** Sie können nur aus den Ordnern und Flotten auswählen, für die Sie Berechtigungen haben.
+** Durch die Auswahl einer Organisation oder eines Ordners erhält das Mitglied Berechtigungen für alle darin enthaltenen Inhalte.
+** Die Rolle *Organization admin* kann nur auf Organisationsebene zugewiesen werden.
+
+
+. Wählen Sie eine *Kategorie* aus und anschließend eine *Rolle*, die dem Verzeichnisbenutzer die erforderlichen Startberechtigungen für die von Ihnen ausgewählte Organisation, den Ordner oder die Flotte erteilt.
++
+link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+. Um dem Benutzer zusätzlichen Zugriff auf andere Ordner, Flotten oder Rollen zu geben, *Rolle hinzufügen* auswählen, den Ordner oder die Flotte, die Rollenkategorie und eine Rolle auswählen.
+

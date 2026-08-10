@@ -1,0 +1,20 @@
+= 
+:allow-uri-read: 
+
+
+. *Administration > Anmeldeinformationen* auswählen.
+. *Anmeldeinformationen hinzufügen* auswählen und den Schritten im Assistenten folgen.
++
+.. *Speicherort der Anmeldeinformationen*: *Microsoft Azure > Agent* auswählen.
+.. *Anmeldeinformationen definieren*: Geben Sie Informationen zum Microsoft Entra Service Principal ein, der die erforderlichen Berechtigungen gewährt:
++
+*** Anwendungs-ID (Client)
+*** Verzeichnis-ID (Mandanten-ID)
+*** Client-Secret
+
+
+.. *Marketplace Subscription*: Ein Marketplace-Abonnement kann mit diesen Zugangsdaten verknüpft werden, indem jetzt ein Abonnement abgeschlossen oder ein bestehendes Abonnement ausgewählt wird.
+.. *Überprüfung*: Die Angaben zu den neuen Zugangsdaten bestätigen und *Hinzufügen* auswählen.
+
+
+

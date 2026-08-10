@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: task-llm-troubleshoot-integration.html 
+keywords: LLM, AI, troubleshooting, openai, openai-compatible, proxy, endpoint, api key, netapp console 
+summary: Fehlerbehebung bei der LLM-Integration in der lokalen NetApp Console-Bereitstellung mit einem schnellen Triage-Workflow für Einrichtung, Verfügbarkeit des Assistenten, Laufzeitfehler und Anmeldeinformationsprobleme. 
+---
+= Fehlerbehebung bei der LLM-Integration in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit diesem Schnelltest lassen sich häufige LLM-Integrationsprobleme in der lokalen NetApp Console-Bereitstellung diagnostizieren und beheben.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+Falls die Einrichtung noch nicht abgeschlossen ist, siehe link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+
+
+
+[[triage-llm-integration-issues-quickly]]
+== LLM-Integrationsprobleme schnell eingrenzen
+
+. Die Konfiguration der KI-Tools in *Administration > KI-Tools* kann validiert werden.
++
+Anbietertyp, Endpunkt-URL, API-Schlüssel, ausgewähltes Modell und ausgehender Netzwerkzugriff werden bestätigt.
+
+. Die Verfügbarkeit des Assistenten im Dashboard wird angezeigt.
++
+Bestätigt wird, dass die Schaltfläche *Konsolenassistent* für die erwarteten Benutzer und Organisationen erscheint.
+
+. Laufzeitverhalten überprüfen.
++
+Eine einfache Leseanfrage ausführen und die Erreichbarkeit des Provider-Endpunkts, die Verfügbarkeit des Modells sowie den Zustand des Provider-Dienstes bestätigen.
+
+
+
+
+
+[[troubleshoot-by-symptom]]
+== Fehlerbehebung anhand der Symptome
+
+[cols="1,1,2,2"]
+|===
+| Symptom | Wahrscheinliche Ursache | Was überprüft werden sollte | Nächster Schritt 
+
+
+| Speichern oder Testen schlägt in AI Tools fehl | Konfigurations- oder Verbindungsinkonsistenz | Anbietertyp, Endpunkt-URL, API-Schlüsselformat, ausgewähltes Modell und ausgehender Zugriff | Der Wert, der die Validierung nicht besteht, muss korrigiert und erneut gespeichert werden. 
+
+
+| Die Schaltfläche „Console assistant“ fehlt. | Unzureichender Integrationsstatus, Organisationskonflikt oder RBAC-Konflikt | Erfolgreiche Speicherung von KI-Tools, Integrationsstatus, aktuelle Organisation und erwartete Zugriffsrolle | Die Sitzung wird aktualisiert und mit einem bekannten, funktionierenden Administratorkonto überprüft. 
+
+
+| Assistent öffnet sich, aber die Anfrage schlägt fehl | Problem mit dem Anbieter oder dem Laufzeitpfad | Erreichbarkeit des Endpunkts, Modellverfügbarkeit auf diesem Endpunkt, Anbieterlimits und temporärer Anbieterstatus | Nach Behebung von Endpunkt-/Modellkonflikten oder Anbieterseitigen Limitproblemen erneut versuchen 
+
+
+| Die Antwort des Assistenten ist langsam oder inkonsistent. | Eingabeaufforderungsgröße, Endpunktleistung oder Netzwerk-/Proxy-Instabilität | Kurzer Schnelltest, Verfügbarkeit des Anbieterdienstes und Netzwerk-/Proxy-Stabilität | Eine kürzere Eingabeaufforderung verwenden, ein anderes unterstütztes Modell ausprobieren und das Netzwerk- oder Proxy-Routing stabilisieren 
+|===
+
+
+[[respond-to-llm-credential-exposure-or-misuse]]
+== Auf Offenlegung oder Missbrauch von LLM-Anmeldedaten reagieren
+
+Wenn Sie den Verdacht haben, dass der API-Schlüssel offengelegt oder unbefugt verwendet wurde:
+
+. Der bestehende API-Schlüssel wird im Anbietersystem widerrufen.
+. Einen neuen API-Schlüssel erstellen.
+. Der Schlüssel wird unter *Administration > AI Tools* aktualisiert.
+. Die erfolgreiche Wiederverbindung mit einem schreibgeschützten Assistententest wird überprüft.
+

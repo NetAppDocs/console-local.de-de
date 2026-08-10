@@ -1,0 +1,42 @@
+= 
+:allow-uri-read: 
+
+
+.Schritte
+. Wechseln Sie zur https://aws.amazon.com/marketplace/pp/prodview-jbay5iyfmu6ui["NetApp Console Agenten-Eintrag im AWS Marketplace"^]
+. Auf der Marketplace-Seite *Weiter abonnieren* auswählen.
+. Zum Abonnieren der Software *Bedingungen akzeptieren* auswählen.
++
+Der Abonnementvorgang kann einige Minuten dauern.
+
+. Nach Abschluss des Abonnementvorgangs *Weiter zur Konfiguration* auswählen.
+. Auf der Seite *Diese Software konfigurieren* muss die richtige Region ausgewählt sein, danach *Mit dem Starten fortfahren* auswählen.
+. Auf der Seite *Diese Software starten* unter *Aktion auswählen* die Option *Über EC2 starten* auswählen und dann *Starten* wählen.
++
+Verwenden Sie die EC2 Console, um die Instanz zu starten und eine IAM-Rolle zuzuweisen. Dies ist mit der Aktion *Launch from Website* nicht möglich.
+
+. Führen Sie die Schritte aus, um die Instanz zu konfigurieren und bereitzustellen:
++
+** *Name und Tags*: Einen Namen und Tags für die Instanz eingeben.
+** *Anwendungs- und Betriebssystemabbilder*: Dieser Abschnitt kann übersprungen werden. Das Console Agent-AMI ist bereits ausgewählt.
+** *Instanztyp*: Je nach regionaler Verfügbarkeit kann ein Instanztyp ausgewählt werden, der die RAM- und CPU-Anforderungen erfüllt (t3.2xlarge ist vorausgewählt und wird empfohlen).
+** *Schlüsselpaar (Anmeldung)*: Das Schlüsselpaar auswählen, das für die sichere Verbindung zur Instanz verwendet werden soll.
+** *Netzwerkeinstellungen*: Die Netzwerkeinstellungen können nach Bedarf angepasst werden:
++
+*** Die gewünschte VPC und das gewünschte Subnetz auswählen.
+*** Angeben, ob die Instanz eine öffentliche IP-Adresse haben soll.
+*** Sicherheitsgruppeneinstellungen angeben, die die erforderlichen Verbindungsmethoden für die Console Agent Instanz ermöglichen: SSH, HTTP und HTTPS.
++
+link:reference-ports-aws.html["Sicherheitsgruppenregeln für AWS anzeigen"].
+
+
+
+** *Speicher konfigurieren*: Die Standardgröße und den Standarddatenträgertyp für das Root-Volume beibehalten.
++
+Wenn die Amazon EBS-Verschlüsselung auf dem Root-Volume aktiviert werden soll, *Erweitert* auswählen, *Volume 1* erweitern, *Verschlüsselt* auswählen und anschließend einen KMS-Schlüssel wählen.
+
+** *Erweiterte Details*: Unter *IAM-Instanzprofil* die IAM-Rolle auswählen, die die erforderlichen Berechtigungen für den Console Agent enthält.
+** *Zusammenfassung*: Die Zusammenfassung prüfen und *Instanz starten* auswählen.
+
+
+

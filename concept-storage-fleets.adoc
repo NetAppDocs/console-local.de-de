@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-fleets.html 
+keywords: storage fleets, fleet management, storage organization, folders, ONTAP, clusters, storage systems, resource grouping, delegated administration, fleet design, netapp console local 
+summary: Eine Speicherflotte gruppiert Speichersysteme, die gemeinsam in der lokalen NetApp Console-Bereitstellung verwaltet werden. Ordner dienen dazu, zusammengehörige Flotten zu gruppieren. Richtlinien können angewendet, Zugriffsrechte vergeben und der Zustand im erforderlichen Umfang überwacht werden. 
+---
+= Informationen zu Speicherflotten in der lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Eine Speicherflotte gruppiert Speichersysteme, die gemeinsam in der lokalen NetApp Console-Bereitstellung verwaltet werden. Ordner dienen dazu, zusammengehörige Flotten zu gruppieren. Richtlinien können angewendet, Zugriffsrechte vergeben und der Zustand im erforderlichen Umfang überwacht werden.
+
+
+
+[[why-fleets-matter]]
+== Warum Flotten wichtig sind
+
+Mit zunehmender Größe von Speicherumgebungen wird die isolierte Verwaltung einzelner Cluster unpraktisch. Flotten bieten eine strukturierte Möglichkeit, zusammengehörige Speichersysteme zu gruppieren, sodass sie als Einheit behandelt werden können. Anstatt Richtlinien oder Zugriffskontrollen für jeden Cluster einzeln zu konfigurieren, werden diese einmalig auf Flottenebene angewendet. Dies reduziert wiederholte administrative Aufgaben und stellt sicher, dass jeder Cluster in einer Flotte nach denselben Standards arbeitet.
+
+
+
+[[how-folders-and-fleets-organize-your-resources]]
+== Wie Ordner und Flotten Ihre Ressourcen organisieren
+
+Die Ressourcenhierarchie Ihrer Organisation besteht aus Ordnern und Flotten. Ordner gruppieren zusammengehörige Flotten, und Flotten gruppieren Speichersysteme.
+
+* *Organisation* ist die oberste Ebene der Hierarchie und repräsentiert Ihr Unternehmen.
+* *Ordner* helfen dabei, zusammengehörige Flotten zu organisieren. Beispielsweise kann für jede Region oder Geschäftseinheit ein Ordner erstellt und darin Flotten angelegt werden. Ordner können weitere Ordner oder Flotten enthalten, aber ihnen können keine Speichersysteme direkt zugeordnet werden. Wird einem Mitglied auf Ordnerebene eine Rolle zugewiesen, übernimmt das Mitglied diese Rolle für alle Flotten innerhalb des Ordners.
+* *Flotten* gruppieren die Speichersysteme, die Sie gemeinsam verwalten. Speichersysteme werden Flotten zugeordnet und Mitglieder Flotten zugewiesen, um ihnen Zugriff zu ermöglichen.
+
+
+
+NOTE: Ordner sind ein Organisationswerkzeug und für Mitglieder, die keine IAM-Berechtigungen wie die Rolle Organisation Admin oder Ordner- bzw. Flotten-Admin haben, nicht sichtbar. Mitglieder greifen auf Flotten, nicht auf Ordner, zu.
+
+
+
+[[fleet-examples]]
+== Flottenbeispiele
+
+Die Organisation Ihrer Flotten hängt von Ihrem Betriebsmodell ab. Gängige Ansätze sind:
+
+* *Nach Umgebung* Separate Speicherflotten für Produktions-, Entwicklungs- und Testumgebungen erstellen. So bleibt der Produktionsspeicher strengeren Leistungs- und Kapazitätsrichtlinien unterworfen, während in weniger anspruchsvollen Umgebungen mehr Flexibilität möglich ist.
+* *Nach Geschäftsbereich* Cluster, die einer bestimmten Abteilung wie Finanzen, Technik oder Personalwesen dienen, werden zu einer dedizierten Flotte gruppiert. Speicherverwaltungsaufgaben lassen sich dann Teammitgliedern innerhalb dieses Geschäftsbereichs zuweisen, ohne dass andere Flotten für sie sichtbar sind.
+* *Nach Standort oder Rechenzentrum* Wenn Cluster über verschiedene Standorte verteilt sind, ermöglicht die Organisation nach Standort die Überwachung des Zustands auf Standortebene, die Anwendung regionsspezifischer Tiering-Richtlinien und die Verfolgung des Kapazitätsverbrauchs pro Standort.
+* *Nach Applikations-Tier* Cluster, die eine bestimmte Klasse von Arbeitslasten hosten (Datenbanken, Dateifreigaben oder virtuelle Maschinen), können gruppiert werden, sodass eine auf das Leistungsprofil dieser Arbeitslast abgestimmte Speicherklasse auf die gesamte Flotte angewendet werden kann.
+
+
+
+TIP: Ordner können verwendet werden, um eine weitere Organisationsebene hinzuzufügen. Beispielsweise kann für jede Region ein Ordner erstellt und innerhalb jedes regionalen Ordners umgebungsbasierte Flotten angelegt werden.
+
+
+
+[[how-fleets-connect-to-storage-classes]]
+== Wie Flotten mit Speicherklassen verbunden sind
+
+Wenn eine Speicherklasse einer Flotte zugeordnet wird, wendet die lokale Bereitstellung in der NetApp Console die Richtlinien dieser Klasse auf alle Speicherbereitstellungen innerhalb der Flotte an. Workloads, die innerhalb der Flotte bereitgestellt werden, übernehmen automatisch die in der Speicherklasse definierten Leistungs-, Kapazitäts- und Tiering-Regeln, ohne dass Administratoren bei der Bereitstellung Richtlinieneinstellungen auswählen oder überprüfen müssen. Flotten stellen damit die primäre Methode dar, um ein konsistentes Speicherverhalten in Clustern mit einem gemeinsamen Zweck durchzusetzen.
+
+
+
+[[how-folders-and-fleets-support-access-control-and-visibility]]
+== Wie Ordner und Flotten die Zugriffskontrolle und Sichtbarkeit unterstützen
+
+Ordner und Flotten dienen als Grenzen für den Benutzerzugriff:
+
+* Wenn Sie eine Rolle auf *Ordner*-Ebene zuweisen, erbt das Mitglied diese Rolle für alle Flotten und Ressourcen innerhalb des Ordners. Dies ermöglicht es Organisation-Admins, administrative Aufgaben zu delegieren, indem Ordner erstellt und eine Ordner- oder Flotten-Admin-Rolle zugewiesen wird. Diese Admins können dann alle Flotten innerhalb ihres Ordners verwalten, ohne Zugriff auf die gesamte Organisation zu erhalten.
+* Wenn eine Rolle auf Flottenebene zugewiesen wird, hat das Mitglied nur Zugriff auf die Speichersysteme innerhalb dieser Flotte.
+
+
+So kann die Speicherverwaltung an Teammitglieder oder Anwendungsbesitzer delegiert werden, ohne dass diesen Einblick in nicht zugehörige Teile Ihrer Infrastruktur gewährt wird. Die lokale Bereitstellung der NetApp Console bietet eine Überwachung von Zustand und Leistung auf Flottenebene, sodass der Status aller Cluster einer Flotte in einer einzigen Ansicht sichtbar ist, Probleme frühzeitig erkannt werden können und Maßnahmen ergriffen werden, bevor diese die Workloads beeinträchtigen.

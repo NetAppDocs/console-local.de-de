@@ -1,0 +1,64 @@
+---
+sidebar: sidebar 
+permalink: task-customize-dashboard-cards.html 
+keywords: add card, dashboard card, card template, widget, preview, netapp console local 
+summary: Dashboard-Karten in der lokalen NetApp Console-Bereitstellung lassen sich durch Festlegen von Bereich, Vorlagen, Ressourcen und Zeitfenstern anpassen. 
+---
+= Karten in der lokalen NetApp Console-Bereitstellung anpassen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung lassen sich Dashboard-Karten anpassen, wenn der Fokus der Bediener auf die wichtigsten Signale gelegt werden soll, wie etwa SLA-Risiko, Kapazitätsdruck oder wiederkehrender Alarmrauschen. Dieses Thema dient dazu, Dashboard-Ansichten auf die operativen Entscheidungen auszurichten, die Ihr Team treffen muss.
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Ein Dashboard erstellen oder öffnen, auf dem Karten platziert werden sollen.
+* Verfügbare Vorlagen und Kennzahlen in link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"] einsehen.
+
+
+
+
+[[add-cards-while-refining-an-existing-dashboard]]
+== Karten können hinzugefügt werden, während ein bestehendes Dashboard verfeinert wird.
+
+Diese Option eignet sich, wenn ein bestehendes Dashboard verfeinert wird und schnell Karten hinzugefügt werden sollen, die eine bestimmte operative Frage beantworten.
+
+.Schritte
+. Öffnen Sie das Dashboard, dem Sie eine Karte hinzufügen möchten.
+. *Karte hinzufügen* auswählen.
+. Den *Ressourcentyp* für die Karte auswählen, zum Beispiel Flotte, System oder Volumen, und anschließend Ressourcen aus der Liste der verfügbaren Ressourcen auswählen.
+. *Weiter* auswählen, um mit der Auswahl einer Kennzahl und eines Kartentyps fortzufahren.
+. Wählen Sie eine anzuzeigende Metrik aus. Die verfügbaren Metriken können nach Typ gefiltert werden: der *Metriktyp*: *Leistung*, *Kapazität*, *Status* oder *Warnungen*, oder es kann nach einer bestimmten Metrik anhand ihres Namens gesucht werden. Die verfügbaren Metriken hängen vom ausgewählten Ressourcentyp ab.
++
+link:reference-dashboard-card-templates.html#metrics-list["Informationen zu den verfügbaren Kennzahlen."]
+
+. Eine Karte für die Aufnahme in das Dashboard auswählen und *Weiter* wählen.
++
+Sie können jeweils nur eine Karte auswählen. Die Kartenvorschau zeigt Live-Daten für die ausgewählte Metrik und den Ressourcentyp an.
+
+. Benennen Sie Ihre Karte. Der Name muss innerhalb des Dashboards eindeutig sein.
+. Die Kartenvorschau kann überprüft, ein Kartenname und eine Beschreibung eingegeben und anschließend *Hinzufügen* ausgewählt werden.
+. Diese Schritte für zusätzliche Karten wiederholen.
+. Das Dashboard speichern.
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:task-dashboard-create.html["Ein benutzerdefiniertes Dashboard erstellen"]
+* link:task-dashboard-manage.html["Benutzerdefinierte Dashboards verwalten"]
+* link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"]
+

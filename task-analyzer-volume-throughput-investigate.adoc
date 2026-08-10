@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: task-analyzer-volume-throughput-investigate.html 
+keywords: throughput, IOPS, MB per second, read write, workload demand, QoS, resource utilization, workload analyzer, performance troubleshooting, netapp console local 
+summary: Hoher Durchsatzbedarf auf einem Volume lässt sich mit dem Workload Analyzer untersuchen, um IOPS- und MB-pro-Sekunde-Muster zu verstehen und Lese-/Schreibungleichgewichte zu erkennen. 
+---
+= Untersuchung eines hohen Durchsatzes auf einem Volume in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit dem Workload Analyzer in der lokalen NetApp Console-Bereitstellung lassen sich die IOPS- und Durchsatzanforderungen eines Volumes im Zeitverlauf analysieren.
+
+Wenn die Auslastung eines Volumes mehr IOPS oder Durchsatz als erwartet benötigt, lässt sich ermitteln, was die Ursache für diesen Bedarf ist. Der Abschnitt zur Durchsatzanalyse zeigt IOPS und MB/s mit optionaler Aufschlüsselung nach Lese-, Schreib- und anderen Vorgängen, sodass erkennbar ist, welcher Typ von I/O den hohen Bedarf verursacht und ob dieser Bedarf auf ein QoS-Limit zusteuert.
+
+Wenn der Analysator über eine Warnung oder aus der Volumeninventur geöffnet wird, ist das Volumen bereits ausgewählt und der Fokus kann auf den Zeitbereich und die Durchsatzdiagramme gelegt werden.
+
+.Schritte
+. Der Workload Analyzer kann mit einer der folgenden Methoden geöffnet werden:
++
+** Im Menü *Health* die Option *Workload Analyzer* auswählen, dann im Feld *Volume* nach dem Volume suchen und das gewünschte Volume zur Untersuchung auswählen.
+** Auf der Seite *Speicher > Flotten > Inventar* zu einem Volume navigieren, das analysiert werden soll, und im Aktionsmenü *Analysieren* auswählen.
+** Auf der Seite *Warnungen > Übersicht* eine Warnung für das Volumen auswählen, das untersucht werden soll, und dann in den Warnungsdetails *Analysieren* auswählen.
+
+
+. Den *Zeitraum* so einstellen, dass er den Zeitraum mit hoher Nachfrage abdeckt, dann *Analysieren* auswählen.
+. Zum Abschnitt *Durchsatzanalyse* scrollen.
+. Das Dropdown-Menü *Ansicht* öffnen und *Aufschlüsselung (RWO)* auswählen.
++
+Die Diagramme unterteilen sich in Lese-, Schreib- und sonstige Komponenten, sowohl für IOPS als auch für MB/s. So kann ermittelt werden, ob leseintensive Zugriffsmuster, schreibintensive Muster oder eine Kombination daraus die Nachfrage bestimmen.
+
+. Verwenden Sie die Komponentenauswahl, um die Metriken, die Sie untersuchen möchten, zu aktivieren oder zu deaktivieren:
++
+** *Lese-IOPS* und *Schreib-IOPS* – Operationen pro Sekunde nach E/A-Richtung
+** *Lesen MB/s* und *Schreiben MB/s* – Durchsatz in Megabyte pro Sekunde nach I/O-Richtung
+** *Andere IOPS* und *Andere MB/s* (Metadaten und andere Nicht-Daten-Operationen)
+** *QoS IOPS Limit* und *QoS MB/s Limit* (Richtlinienobergrenzen, die nur angezeigt werden, wenn das Volume eine QoS-Richtlinie verwendet)
+** *Cloud-Durchsatz* – MB/s, die in die Cloud geschrieben und von dort gelesen werden, wird nur für Workloads angezeigt, die Kapazität über FabricPool in die Cloud auslagern
+
+
+. Fahren Sie mit dem Mauszeiger über einen Spitzenwert im Diagramm, um den genauen Wert und die prozentuale Aufschlüsselung für jede Komponente zu diesem Zeitpunkt zu sehen.
++
+Der Tooltip zeigt außerdem die durchschnittliche I/O-Größe (Durchsatz geteilt durch IOPS) für jede Kategorie an, was darauf hinweisen kann, ob die Arbeitslast große sequenzielle I/O-Operationen oder kleine zufällige I/O-Operationen ausführt.
+
+. *Prognose anzeigen* aktivieren, um abzuschätzen, ob die aktuellen Durchsatztrends die QoS-IOPS- oder MB/s-Grenze erreichen.
++
+Wenn sich die Prognoselinie einer QoS-Grenzlinie nähert, könnte ONTAP die Arbeitslast bald drosseln.
+
+. Wenn die Gesamtnachfrage ohne Aufschlüsselung angezeigt werden soll, das Dropdown-Menü *Ansicht* öffnen und *Summen* auswählen.
++
+Die Gesamtansicht zeigt eine einzelne IOPS-Zeile und eine einzelne MB/s-Zeile, was für eine schnelle Übersicht über den Gesamtbedarf nützlich ist.
+
+
+
+.Nachdem Sie fertig sind
+Anhand der beobachteten Durchsatzmuster lässt sich bestimmen, welche nächsten Schritte sinnvoll sind:
+
+* Wenn die Lese-IOPS im Verhältnis zu den Schreib-IOPS sehr hoch sind, kann geprüft werden, ob Vorab-Leseeinstellungen oder Caching die Last auf dem Volume reduzieren.
+* Wenn sich die Arbeitslast dem QoS-IOPS- oder MB/s-Limit nähert oder dieses bereits erreicht hat, können die QoS-Limitlinien und die zugehörigen Metrikdefinitionen zur Bestätigung der Drosselung und zur Entscheidung herangezogen werden, ob eine Anpassung des Limits erforderlich ist.
+* Wenn der Durchsatz hoch und die Latenz ebenfalls erhöht ist, kann im Abschnitt *Ressourcenauslastung* geprüft werden, ob der zugrunde liegende Node oder das Aggregat unter Auslastung steht. Durchsatzspitzen, Latenzspitzen und Ressourcenauslastung sollten im gleichen Zeitraum verglichen werden.
+* Wenn der Analysator ein schnelles Wachstum der Kapazität oder der Snapshot-Anzahl anzeigt, während die Nachfrage steigt, sollten die Kapazitäts- und Snapshot-Metriken überprüft werden, um zu verstehen, wie sich dieses Wachstum auf das Volumen auswirken könnte.
+
+
+link:task-analyzer-volume-latency-investigate.html["Hohe Latenz auf einem Volumen untersuchen"]. link:reference-workload-analyzer-metrics.html["Informationen zu den Metriken des Workload Analyzers in der lokalen NetApp Console-Bereitstellung"].

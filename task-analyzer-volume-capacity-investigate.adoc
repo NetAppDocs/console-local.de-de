@@ -1,0 +1,61 @@
+---
+sidebar: sidebar 
+permalink: task-analyzer-volume-capacity-investigate.html 
+keywords: capacity, snapshot, storage efficiency, forecast, almost full, workload analyzer, netapp console local deployment 
+summary: Das Kapazitäts- und Snapshot-Wachstum eines Volumes kann mithilfe des Workload Analyzers untersucht werden, um physischen Speicherplatz, Speichereffizienz und Trends bei der Snapshot-Reserve nachzuvollziehen. 
+---
+= Kapazitätswachstum eines Volumes in einer lokalen NetApp Console-Bereitstellung untersuchen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Workload Analyzer in der lokalen NetApp Console-Bereitstellung kann zur Untersuchung verwendet werden, warum ein Volume keinen Speicherplatz mehr hat.
+
+Wenn ein Volume sich füllt oder Snapshot-Kopien mehr Speicherplatz belegen als erwartet, lassen sich die Kapazitäts- und Snapshot-Trends im Zeitverlauf untersuchen. Der Abschnitt zur Kapazitätsanalyse zeigt, wie sich der physische und der verfügbare Speicherplatz verändern, schlüsselt die Einsparungen bei der Speichereffizienz auf und prognostiziert, wann das Volume eine Kapazitätsschwelle erreicht.
+
+Wenn der Analysator über eine Warnung oder aus der Volumeninventur geöffnet wird, ist das Volumen bereits ausgewählt und der Fokus kann auf Kapazitätstrends und das Prognosefenster gelegt werden.
+
+.Schritte
+. Der Workload Analyzer kann mit einer der folgenden Methoden geöffnet werden:
++
+** Im Menü *Health* die Option *Workload Analyzer* auswählen, dann im Feld *Volume* nach dem Volume suchen und das gewünschte Volume zur Untersuchung auswählen.
+** Auf der Seite *Speicher > Flotten > Inventar* zu einem Volume navigieren, das analysiert werden soll, und im Aktionsmenü *Analysieren* auswählen.
+** Auf der Seite *Warnungen > Übersicht* eine Warnung für das Volumen auswählen, das untersucht werden soll, und dann in den Warnungsdetails *Analysieren* auswählen.
+
+
+. Den *Zeitraum* so einstellen, dass er den Zeitraum des Kapazitätswachstums abdeckt, dann *Analysieren* auswählen.
+. Zum Abschnitt *Kapazitätsanalyse* scrollen.
+. Im Dropdown-Menü *Ansicht* die Option *Kapazitätsansicht* auswählen.
++
+Das Diagramm zeigt die physische Kapazität als untere gestapelte Fläche und die verfügbare Kapazität als obere gestapelte Fläche. Zusammen ergeben sie die Gesamtvolumegröße, sodass ersichtlich ist, wie schnell der verfügbare Platz abnimmt.
+
+. Fahren Sie mit dem Mauszeiger über einen Punkt im Diagramm, um die Aufschlüsselung der Speichereffizienz einschließlich Einsparungen durch Deduplizierung, Komprimierung und Verdichtung sowie das Gesamtverhältnis der Speichereffizienz zu sehen.
++
+Ein sinkendes Effizienzverhältnis bei gleichzeitig steigender physischer Kapazität kann darauf hindeuten, dass neu geschriebene Daten nicht so gut dedupliziert oder komprimiert werden wie die vorhandenen Daten.
+
+. Zur Untersuchung des Snapshot-Verbrauchs im Dropdown-Menü *Ansicht* die Option *Snapshot View* auswählen.
++
+Das Diagramm zeigt die Snapshot-Reserve als horizontale Referenzlinie und die genutzte Snapshot-Kapazität als Fläche darunter. Beim Überfahren mit der Maus werden der genutzte Snapshot-Speicherplatz und dessen prozentualer Anteil an der Reserve, die Gesamtzahl der Snapshots sowie das Alter des ältesten Snapshots angezeigt.
+
++
+Wenn der Snapshot-Verbrauch die Reserve übersteigt, beginnen Snapshots, Speicherplatz aus dem Datenbereich des Volumes zu belegen, wodurch der für neue Schreibvorgänge verfügbare Speicherplatz reduziert wird.
+
+. Wenn das Volume Daten in die Cloud auslagert, kann im Dropdown-Menü *Ansicht* die Option *Cloud Tier View* ausgewählt werden, um zu vergleichen, wie viel Kapazität sich auf dem lokalen Performance Tier im Vergleich zum Cloud Capacity Tier befindet.
+. *Prognose anzeigen* aktivieren, um zu prognostizieren, wann das Volumen einen Warn- oder kritischen Kapazitätsschwellenwert erreicht.
++
+Die Kapazitätsprognose benötigt mindestens 10 Tage an historischen Daten. Wenn weniger als 30 Tage Kapazität verbleiben, bevor das Volume voll ist, identifiziert das Analysetool den Speicher als nahezu voll. Die Prognose zeigt eine Insight-Meldung mit einer geschätzten Zeit bis zum Erreichen der Kapazitätsgrenze an.
+
+
+
+.Nachdem Sie fertig sind
+Die beobachteten Kapazitätstrends können zur Entscheidungsfindung für die nächsten Schritte herangezogen werden:
+
+* Wenn die verfügbare Kapazität fast voll ist, kann eine Erhöhung der Volume-Größe, das Aktivieren der automatischen Vergrößerung oder das Verschieben von Daten vom Volume in Betracht gezogen werden.
+* Wenn die von Snapshots genutzte Kapazität die Reserve überschreitet, sollten die Snapshot-Richtlinie und die Aufbewahrungsfrist überprüft werden, um Speicherplatz zurückzugewinnen.
+* Wenn das Speichereffizienzverhältnis sinkt, sollte geprüft werden, ob der Datentyp der Workload oder die Inline-Effizienzeinstellungen die Einsparungen verringern. Für detaillierte Beschreibungen von Kapazitäts-, Snapshot- und Effizienzmetriken link:reference-workload-analyzer-metrics.html["Informationen zu den Metriken des Workload Analyzers in der lokalen NetApp Console-Bereitstellung"] verwenden.
+

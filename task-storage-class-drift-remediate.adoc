@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: task-storage-class-drift-remediate.html 
+keywords: storage class drift, drift remediation, compliance, fix-it, guided remediation, automated remediation, drift detection, storage governance, storage standards, netapp console local 
+summary: Abweichungen von der Speicherklasse in der lokalen NetApp Console-Bereitstellung finden, analysieren und beheben. 
+---
+= Behebung von Speicherklassenabweichungen in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen Bereitstellung der NetApp Console lassen sich driftbezogene Warnmeldungen finden, Drift-Ergebnisse analysieren und Workloads beheben, die nicht mehr ihrer Speicherklassenabsicht entsprechen.
+
+.Erforderliche Rollen
+Speicheradministrator
+
+
+NOTE: Arbeitslasten in Flotten können nur angezeigt und behoben werden, wenn die entsprechende Berechtigung vorliegt.
+
+
+
+[[remediate-drift]]
+== Abweichungen beheben
+
+Wenn eine Arbeitslast nicht mehr der vorgesehenen Speicherklasse entspricht, löst die lokale NetApp Console Bereitstellung eine Warnung aus. Mit der Warnung lässt sich die Abweichung analysieren und die empfohlene Behebung anwenden.
+
+Einige Korrekturmaßnahmen lassen sich direkt aus der Warnmeldung anwenden. Für andere Probleme empfiehlt sich eine Aktualisierung der Workload-Konfiguration oder die Zuweisung einer anderen Speicherklasse, um die Compliance wiederherzustellen. Der Korrektur-Workflow zeigt die erwarteten Auswirkungen an, bevor Änderungen vorgenommen werden.
+
+.Schritte
+. *Speicher > Speicherklassen* auswählen.
++
+Eine Zusammenfassung der Speicherklassenabweichungen erscheint im Bereich *Abweichungen nach Speicherklasse*. Die vollständige Liste erscheint in der Tabelle.
+
+. In der Spalte *Drifts* die Option *View* für die relevante Speicherklasse auswählen.
++
+Die Seite *Benachrichtigungen > Übersicht* wird mit angewendeten Filtern geöffnet.
+
+. Eine Warnung kann ausgewählt werden, um die Seite mit den Warnungsdetails zu öffnen.
+. *Analysieren* auswählen.
+. Die Ergebnisse im *Workload analyzer* werden angezeigt.
++
+Bei Feststellungen zur Konfigurationsabweichung werden die Soll- und Ist-Einstellungen verglichen, um zu bestimmen, was sich geändert hat.
+
+. Wählen Sie die empfohlene Abhilfemaßnahme, wie zum Beispiel *Beheben*.
+. Die vorgeschlagenen Änderungen und die Abhilfemaßnahmen können überprüft und angewendet werden.
+. Zurück zu *Speicher > Speicherklassen* und prüfen, ob die Arbeitslast nicht mehr als verschoben angezeigt wird.
++
+Die Überprüfung der Konformität kann einige Minuten dauern, bis die kürzlich vorgenommenen Konfigurationsänderungen berücksichtigt sind. Wenn die Arbeitslast weiterhin als abweichend aufgeführt ist, zur Seite mit den Warnungsdetails zurückkehren und *Analysieren* auswählen, um verbleibende Ergebnisse zu überprüfen.
+
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-storage-classes.html#storage-class-drift-and-compliance["Informationen zu Speicherklassenabweichungen und Compliance in der lokalen Bereitstellung der NetApp Console"]
+* link:concept-console-alerts.html["Informationen zu Speicherwarnungen"]
+* link:task-alerts-monitor.html["Benachrichtigungen anzeigen"]
+

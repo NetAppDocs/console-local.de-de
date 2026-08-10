@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+Wechseln Sie zum Azure-Portal und weisen Sie der virtuellen Maschine des Console-Agenten für ein oder mehrere Abonnements die benutzerdefinierte Azure-Rolle zu.
+
+.Schritte
+. Im Azure-Portal den Dienst *Abonnements* öffnen und das gewünschte Abonnement auswählen.
++
+Es ist wichtig, die Rolle über den *Abonnements*-Dienst zuzuweisen, da hierdurch der Geltungsbereich der Rollenzuweisung auf Abonnementebene festgelegt wird. Der Geltungsbereich definiert die Ressourcen, auf die der Zugriff gilt. Wenn Sie einen Geltungsbereich auf einer anderen Ebene festlegen (zum Beispiel auf Ebene der virtuellen Maschine), wird Ihre Fähigkeit, Aktionen innerhalb der NetApp Console auszuführen, beeinträchtigt.
+
++
+https://learn.microsoft.com/en-us/azure/role-based-access-control/scope-overview["Microsoft Azure Dokumentation: Geltungsbereich für Azure RBAC"^]
+
+. *Zugriffskontrolle (IAM)* > *Hinzufügen* > *Rollenzuweisung hinzufügen* auswählen.
+. Im Tab *Rolle* die Rolle *Console Operator* auswählen und *Weiter* auswählen.
++
+
+NOTE: Console Operator ist der in der Richtlinie voreingestellte Standardname. Wenn ein anderer Name für die Rolle gewählt wurde, sollte stattdessen dieser Name ausgewählt werden.
+
+. Im Tab *Mitglieder* sind die folgenden Schritte auszuführen:
++
+.. Zugriff auf eine *Managed identity* zuweisen.
+.. *Mitglieder auswählen* auswählen, das Abonnement auswählen, in dem die Console agent virtuelle Maschine erstellt wurde, unter *Verwaltete Identität* *Virtuelle Maschine* wählen und dann die Console agent virtuelle Maschine auswählen.
+.. *Auswählen* auswählen.
+.. *Weiter* auswählen.
+.. *Überprüfen + zuweisen* auswählen.
+.. Wenn Sie Ressourcen in zusätzlichen Azure-Abonnements verwalten möchten, zu diesem Abonnement wechseln und anschließend diese Schritte wiederholen.
+
+
+

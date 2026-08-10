@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: concept-iam-rbac.html 
+keywords: roles, permissions, role-based access control, rbac, iam, identity and access management, least privilege, access control, NetApp Console local access, organization access, folder access, fleet access, resource access, directory users, AD, Active Directory, directory services 
+summary: 'Der Benutzerzugriff auf die lokale NetApp Console-Bereitstellung wird mit rollenbasierter Zugriffssteuerung (RBAC) verwaltet, wobei vordefinierte Rollen auf Organisations-, Ordner- oder Flottenebene zugewiesen werden. Jede Rolle gewährt spezifische Berechtigungen, die festlegen, welche Aktionen Benutzer innerhalb ihres zugewiesenen Bereichs ausführen können.' 
+---
+= Informationen zur rollenbasierten Zugriffssteuerung in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Benutzerzugriff auf die lokale NetApp Console-Bereitstellung wird mit rollenbasierter Zugriffssteuerung (RBAC) verwaltet, wobei vordefinierte Rollen auf Organisations-, Ordner- oder Flottenebene zugewiesen werden. Jede Rolle gewährt spezifische Berechtigungen, die festlegen, welche Aktionen Benutzer innerhalb ihres zugewiesenen Bereichs ausführen können.
+
+NetApp gestaltet Console lokale Bereitstellungsrollen nach dem Prinzip der minimalen Berechtigungen, sodass jede Rolle nur die für ihre Aufgaben erforderlichen Berechtigungen enthält. Dieser Ansatz erhöht die Sicherheit, indem der Zugriff auf das beschränkt wird, was jedes Mitglied benötigt.
+
+Nachdem die Ressourcen in Ordnern und Flotten organisiert wurden, erhalten Organisationsmitglieder eine oder mehrere Rollen für bestimmte Ordner oder Flotten, die ihnen erlauben, ausschließlich ihre jeweiligen Verantwortlichkeiten wahrzunehmen.
+
+Beispielsweise kann einem Mitglied die Rolle Backup and Recovery admin für eine bestimmte Flottenebene zugewiesen werden, sodass es Backup and Recovery Vorgänge für Ressourcen innerhalb dieser Flotte durchführen kann, ohne dass ihm ein umfassenderer Zugriff auf die gesamte Organisation gewährt wird. Diesem Benutzer kann dieselbe Rolle für mehrere Flotten innerhalb Ihrer Organisation zugewiesen werden.
+
+Sie können Mitgliedern je nach ihren Verantwortlichkeiten mehrere Rollen für denselben oder unterschiedliche Verantwortungsbereiche zuweisen. Beispielsweise könnte eine kleinere Organisation demselben Mitglied sowohl die Rollen Storage admin als auch Backup and Recovery admin auf Organisationsebene zuweisen, während in einer größeren Organisation auf Flottenebene unterschiedliche Mitglieder für jede Rolle zuständig sind.
+
+
+
+[[types-of-console-organization-members]]
+== Arten von Console Organisationsmitgliedern
+
+NetApp Console lokale Bereitstellung unterstützt die folgenden Mitgliedertypen:
+
+* _Benutzer_: Einzelne Benutzer können entweder lokale Benutzer sein, die zur NetApp Console lokalen Bereitstellung hinzugefügt werden und lokale Anmeldeinformationen verwenden, oder Verzeichnisbenutzer, die sich über den integrierten Active Directory- oder LDAP-Dienst authentifizieren. Beiden Benutzertypen können in der NetApp Console lokalen Bereitstellung Rollen zugewiesen werden, um auf Ressourcen zuzugreifen.
+* _Dienstkonten_: Nicht-menschliche Konten, die Anwendungen oder Dienste zur Interaktion mit der lokalen NetApp Console-Bereitstellung über APIs verwenden. Dienstkonten können direkt zur lokalen Console-Bereitstellungsorganisation hinzugefügt werden.
+
+
+link:task-iam-manage-members-permissions.html#add-members["Informationen zum Hinzufügen von Mitgliedern zu Ihrer Organisation."]
+
+
+
+[[predefined-roles-in-netapp-console-local-deployment]]
+== Vordefinierte Rollen in der lokalen NetApp Console-Bereitstellung
+
+NetApp Console lokale Bereitstellung umfasst vordefinierte Rollen, die Sie Organisationsmitgliedern zuweisen können. Jede Rolle beinhaltet Berechtigungen, die festlegen, welche Aktionen ein Mitglied innerhalb seines zugewiesenen Bereichs (Organisation, Ordner oder Flotte) ausführen kann.
+
+NetApp Console lokale Bereitstellungsrollen verwenden das Prinzip der minimalen Berechtigungen, wodurch sichergestellt wird, dass Mitglieder nur über die für ihre Aufgaben erforderlichen Berechtigungen verfügen, und kategorisieren die Rollen nach der Art des Zugriffs, den sie gewähren:
+
+* Plattformrollen: Lokale Bereitstellungsverwaltungsberechtigungen für die NetApp Console
+* Datendienstrollen: Berechtigungen für die Verwaltung spezifischer Datendienste wie Ransomware Resilience sowie Backup und Recovery
+* Anwendungsrollen: Berechtigungen für die Verwaltung von Speicher sowie für die Überwachung von lokalen Bereitstellungsereignissen und Warnmeldungen der Konsole
+
+
+Sie können einem Mitglied mehrere Rollen entsprechend seinen Verantwortlichkeiten zuweisen. Beispielsweise kann einem Mitglied sowohl die Rolle des Storage admin als auch die Rolle des Backup and Recovery admin für eine bestimmte Flotte zugewiesen werden.
+
+Um den Zugriff für ein Mitglied auszuwählen, wird die Rollenkategorie den Verantwortlichkeiten des Mitglieds zugeordnet und die Rolle anschließend auf der Ebene (Organisation, Ordner oder Flotte) vergeben, die dem gewünschten Umfang des Zugriffs für das Mitglied entspricht link:concept-folders-fleets-overview.html#organization-design-examples["Informationen darüber, wie verschiedene Organisationen Rollen und Zuständigkeiten in der lokalen Bereitstellung der NetApp Console strukturieren"].
+
+link:reference-iam-predefined-roles.html["Informationen zu den vordefinierten Rollen, die Mitgliedern in der lokalen NetApp Console-Bereitstellung zugewiesen werden können"].
+
+
+
+[[how-role-inheritance-works]]
+[[role-inheritance]]
+== Wie die Rollenvererbung funktioniert
+
+Wenn Sie eine Rolle auf Organisations- oder Ordnerebene zuweisen, wird diese Rolle an die untergeordneten Bereiche innerhalb dieses Hierarchieteils vererbt. Das bedeutet, dass Rollen auf Organisationsebene organisationsweit gelten, Rollen auf Ordnerebene für alle untergeordneten Ordner und Flotten in diesem Ordner gelten und Rollen auf Flottenebene nur für die Ressourcen in dieser Flotte gelten.
+
+Der Bereich sollte dem Zugriff entsprechen, den das Mitglied behalten soll. Beispielsweise empfiehlt sich die Zuweisung einer Rolle auf Ordnerebene, wenn das Mitglied in einer Region für mehrere Flotten denselben Zugriff benötigt. Die Zuweisung der Rolle auf Flottenebene ist angebracht, wenn das Mitglied nur auf eine Flotte zugreifen soll.
+
+Vererbte Zugriffsrechte können auf einer niedrigeren Ebene nicht überschrieben werden. Wenn ein Mitglied eine Rolle von der Organisation oder von einem Ordner erbt, sollte diese Zuweisung auf der höheren Ebene geändert werden, auf der sie ursprünglich erteilt wurde.
+
+link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"]. link:task-iam-manage-roles.html["Mitgliederzugriff verwalten"]. link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"].

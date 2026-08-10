@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: concept-secure-access.html 
+keywords: security, access control, MFA, multi-factor authentication, AD, Active Directory, LDAP, LDAPS, directory services, authentication, zero trust, secure access governance, reduce attack surface, netapp console local 
+summary: Informationen zu den verfügbaren Sicherheitsoptionen bei der lokalen Bereitstellung von NetApp Console, einschließlich Active Directory Integration und Multi-Faktor-Authentifizierung. 
+---
+= Informationen zum sicheren Zugriff auf die lokale NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung bietet mehrere Sicherheitsebenen, um Ihre Speicherverwaltungsumgebung zu schützen und zu kontrollieren, wer darauf zugreifen kann.
+
+
+
+[[active-directory-integration]]
+== Active Directory Integration
+
+Die lokale NetApp Console-Bereitstellung kann mit Ihrem Active Directory verbunden werden, sodass sich Benutzer mit ihren bestehenden Unternehmensanmeldeinformationen anmelden können. Dadurch entfällt die Notwendigkeit separater Passwörter in der Console lokalen Bereitstellung und es wird die verzeichnisgestützte Anmeldung für die Benutzer unterstützt, die Ihrer Organisation hinzugefügt werden.
+
+link:task-iam-active-directory-integrate.html["Active Directory in die lokale NetApp Console-Bereitstellung integrieren"].
+
+
+
+[[multi-factor-authentication]]
+== Multi-Faktor-Authentifizierung
+
+Benutzer können die Multi-Faktor-Authentifizierung (MFA) für eine zusätzliche Verifizierungsebene aktivieren, um unberechtigten Zugriff zu verhindern, selbst wenn Anmeldeinformationen kompromittiert wurden.
+
+link:task-user-settings.html["MFA für die lokale NetApp Console-Bereitstellung aktivieren"].
+
+
+
+[[identity-and-access-management]]
+== Identitäts- und Zugriffsmanagement
+
+Nach der Authentifizierung der Benutzer lässt sich steuern und überwachen, was sie innerhalb der lokalen NetApp Console-Bereitstellung tun können.
+
+Mit rollenbasierter Zugriffssteuerung lässt sich festlegen, was jedes Mitglied sehen und verwalten kann. Mitglieder werden bestimmten Flotten zugewiesen, sodass sie nur auf die für ihre Aufgaben relevanten Speicherressourcen zugreifen.
+
+* link:concept-identity-and-access-management.html["Informationen zur Identitäts- und Zugriffsverwaltung bei der lokalen Bereitstellung der NetApp Console"]
+* link:concept-iam-rbac.html["Informationen zur lokalen Bereitstellung der NetApp Console und zur rollenbasierten Zugriffssteuerung"]
+* link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen in der lokalen NetApp Console-Bereitstellung zuweisen"]
+* link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen in der lokalen NetApp Console-Bereitstellung verwalten"]
+
+
+
+
+[[audit-logging]]
+== Revisionsprotokollierung
+
+Sämtliche Benutzeraktivitäten (einschließlich API- und Servicekonto-Benutzer) in der lokalen NetApp Console-Bereitstellung werden für Compliance- und Sicherheitsuntersuchungen nachverfolgt.
+
+link:task-audit-console-activity.html["Audit-Protokolle für die lokale NetApp Console-Bereitstellung anzeigen"].

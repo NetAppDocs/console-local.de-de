@@ -1,0 +1,62 @@
+---
+sidebar: sidebar 
+permalink: concept-monitor-storage.html 
+keywords: monitor, health, performance, alerts, workload analyzer, remediation, netapp console local, console local 
+summary: NetApp Console lokale Bereitstellung bietet fleetweite Systemzustands-Dashboards, detaillierte Volumenanalysen, konfigurierbare Warnmeldungen sowie geführte oder automatisierte Fehlerbehebung, sodass Speicherprobleme erkannt und behoben werden können, bevor sie sich auf Workloads auswirken. 
+---
+= Speicherüberwachung in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung unterstützt die Überwachung von Speicher über Flotten hinweg mit Dashboards, Warnmeldungen, detaillierten Analysen und Abhilfemaßnahmen, sodass Probleme erkannt und behoben werden können, bevor sie sich auf Workloads auswirken.
+
+
+
+[[monitor-fleet-wide-health-with-dashboards]]
+== Die Flottenintegrität lässt sich mit Dashboards überwachen.
+
+Beginnen Sie mit Dashboards für einen schnellen Überblick über Speicherzustand und Performance. Die Startseite bietet Kennzahlen auf einen Blick, die Dashboard-Tabelle enthält vordefinierte und benutzerdefinierte Dashboards, und bei Bedarf stehen Bereiche für Warnungen, Untersuchung und Behebung für detailliertere Informationen zur Verfügung.
+
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:task-dashboard-manage.html["Dashboards in der lokalen NetApp Console-Bereitstellung aktuell halten"]
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+
+
+
+
+[[investigate-performance-issues]]
+== Leistungsprobleme untersuchen
+
+Mit dem Workload Analyzer lassen sich Leistungsprobleme auf einzelnen Volumes untersuchen. Er korreliert Latenz, Durchsatz, IOPS und Konfigurationsänderungen, sodass die Ursachen genau identifiziert werden können.
+
+* link:concept-workload-analyzer.html["Informationen zum NetApp Console lokalen Deployment Workload Analyzer"]
+* link:task-analyzer-volume-latency-investigate.html["Hohe Latenz auf einem Volume in der lokalen NetApp Console-Bereitstellung untersuchen"]
+* link:task-analyzer-volume-throughput-investigate.html["Untersuchung eines hohen Durchsatzbedarfs auf einem Volume in der lokalen NetApp Console-Bereitstellung"]
+* link:reference-workload-analyzer-metrics.html["Informationen zu den Metriken des Workload Analyzers in der lokalen NetApp Console-Bereitstellung"]
+
+
+
+
+[[configure-alerts-and-notifications]]
+== Warnungen und Benachrichtigungen konfigurieren
+
+Warnrichtlinien und Benachrichtigungskanäle werden so konfiguriert, dass die richtigen Personen über Speicherzustände informiert werden, die Aufmerksamkeit erfordern. Beispielsweise kann eine Kapazitätswarnung an das Speicherteam und eine Schutzwarnung an den Backup-Administrator weitergeleitet werden, der darauf reagieren kann.
+
+link:task-alert-rules-manage.html["Benachrichtigungen und Alarmrichtlinien in der lokalen Bereitstellung der NetApp Console konfigurieren"]. link:task-alerts-monitor.html["Speicherwarnungen in der lokalen NetApp Console-Bereitstellung anzeigen"].
+
+
+
+[[remediate-issues]]
+== Probleme beheben
+
+Wenn ein Problem erkannt wird, kann es direkt aus der lokalen NetApp Console-Bereitstellung behoben werden:
+
+* *Automatisierte Fehlerbehebung* – Die lokale NetApp Console-Bereitstellung wendet Korrekturmaßnahmen automatisch auf Basis vordefinierter Regeln an.
+* *Geführte Problembehebung* – Schrittweise Empfehlungen stehen zur Verfügung, um Probleme mit voller Kontrolle über jede Aktion zu beheben.
+

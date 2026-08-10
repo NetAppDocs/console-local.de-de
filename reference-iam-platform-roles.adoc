@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: reference-iam-platform-roles.html 
+keywords: predefined roles, iam roles, Organization admin, Folder or fleet admin, Super admin, Federation admin, platform roles, role, iam, identity and access management, netapp console local 
+summary: Plattformrollen werden Benutzern zugewiesen, um Berechtigungen für die Verwaltung der lokalen NetApp Console-Bereitstellung, die Rollenzuweisung, das Hinzufügen von Benutzern und die Verwaltung von Föderationen zu erhalten. 
+---
+= NetApp Console Zugriffsrollen für die lokale Bereitstellungsplattform
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Plattformrollen werden Benutzern zugewiesen, um Berechtigungen für die Verwaltung der lokalen NetApp Console-Bereitstellung, die Rollenzuweisung, das Hinzufügen von Benutzern, das Erstellen von Flotten und die Verwaltung der Benutzerauthentifizierung zu erhalten.
+
+.Beispiel für Organisationsrollen für eine große multinationale Organisation
+Die XYZ Corporation organisiert den Datenspeicherzugriff nach Regionen (Nordamerika, Europa und Asien-Pazifik) und bietet regionale Kontrolle mit zentralisierter Aufsicht.
+
+Der *Organisationsadministrator* in der lokalen Bereitstellung der XYZ Corporation Console erstellt eine initiale Organisation und separate Ordner für jede Region. Der *Ordner- oder Flottenadministrator* jeder Region organisiert Flotten (mit zugehörigen Ressourcen) innerhalb des jeweiligen Regionsordners.
+
+Regionale Administratoren mit der Rolle *Ordner- oder Flottenadministrator* verwalten ihre Ordner aktiv, indem sie Ressourcen und Benutzer hinzufügen. Diese regionalen Administratoren können außerdem Ordner und Flotten, die sie verwalten, hinzufügen, entfernen oder umbenennen. Der *Organisationsadministrator* erbt die Berechtigungen für alle neuen Ressourcen und behält die Übersicht über die Speichernutzung in der gesamten Organisation.
+
+Innerhalb derselben Organisation wird einem Benutzer die Rolle *Verbundadministrator* zugewiesen, um den Verbund der Organisation mit dem zentralen Identitätsanbieter (IdP) zu verwalten. Dieser Benutzer kann Verbundorganisationen hinzufügen oder entfernen, jedoch keine Benutzer oder Ressourcen innerhalb der Organisation verwalten. Der *Organisationsadministrator* weist einem Benutzer die Rolle *Verbundbetrachter* zu, um den Verbundstatus zu überprüfen und Verbundorganisationen anzuzeigen.
+
+Die folgenden Tabellen zeigen die Aktionen, die jede Rolle der lokalen Console Bereitstellungsplattform ausführen kann.
+
+
+
+[[organization-administration-roles]]
+[[organization-admin-roles]]
+== Organisationsverwaltungsrollen
+
+[cols="2,1,1"]
+|===
+| Aufgabe | Organisationsadministrator | Ordner- oder Flottenadministrator 
+
+
+| Systeme aus der lokalen NetApp Console-Bereitstellung erstellen, ändern oder löschen (Systeme hinzufügen oder erkennen) | Ja | Ja 
+
+
+| Ordner und Flotten erstellen und löschen | Ja | Nein 
+
+
+| Vorhandene Ordner und Flotten umbenennen | Ja | Ja 
+
+
+| Rollen zuweisen und Benutzer hinzufügen | Ja | Ja 
+
+
+| Ressourcen mit Ordnern und Flotten verknüpfen | Ja | Ja 
+
+
+| Registrierung für Support und Einreichung von Fällen über die Konsole erfolgen über die Console. | Ja | Ja 
+
+
+| Datendienste nutzen, die keiner expliziten Zugriffsrolle zugeordnet sind | Ja | Ja 
+
+
+| Die Seite „Audit“ und die Benachrichtigungen werden angezeigt | Ja | Ja 
+|===
+
+
+[[federation-roles]]
+== Föderationsrollen
+
+[cols="2,1,1"]
+|===
+| Aufgabe | Federation Admin | Federation Viewer 
+
+
+| Verzeichnisdienstintegrationen erstellen und aktualisieren | Ja | Nein 
+
+
+| Verbände und deren Details | Ja | Ja 
+|===
+
+
+[[super-admin-and-viewer-roles]]
+[[super-admin-roles]]
+== Super Admin- und Betrachterrollen
+
+Die Rolle *Super admin* bietet vollen Zugriff auf die Verwaltung von Console-Funktionen, Storage und Data Services. Diese Rolle eignet sich für Personen, die für Administration und Governance verantwortlich sind. Im Gegensatz dazu bietet die Rolle *Super viewer* nur Lesezugriff und ist ideal für Prüfer oder Stakeholder, die Einblick benötigen, ohne Änderungen vorzunehmen.
+
+Organisationen sollten den *Super admin*-Zugriff sparsam einsetzen, um Sicherheitsrisiken zu minimieren und dem Prinzip der minimalen Berechtigungen zu entsprechen. Die meisten Organisationen sollten fein abgestufte Rollen mit nur den notwendigen Berechtigungen vergeben, um Risiken zu reduzieren und die Nachvollziehbarkeit zu verbessern.
+
+.Beispiel für Superrollen
+Die ABC Corporation verfügt über ein kleines Team von fünf Mitarbeitenden, das die NetApp Console für Datendienste und Speichermanagement nutzt. Anstatt mehrere Rollen zu vergeben, wird die Rolle *Super admin* zwei erfahrenen Teammitgliedern zugewiesen, die alle administrativen Aufgaben einschließlich Benutzermanagement und Ressourcenkonfiguration übernehmen. Die übrigen drei Teammitglieder erhalten die Rolle *Super viewer*, wodurch sie den Speicherzustand und den Status der Datendienste überwachen können, ohne Einstellungen ändern zu können.
+
+[cols="2,1"]
+|===
+| Rolle | Geerbte Rollen 
+
+
+ a| 
+Super-Admin
+ a| 
+* Organisationsadministrator
+* Ordner- oder Flottenadministrator
+* Backup und Recovery Superadministrator
+* Speicheradministrator
+
+
+
+
+ a| 
+Superbetrachter
+ a| 
+* Organisationsansicht
+* Backup Viewer
+* Speicherbetrachter
+
+
+|===

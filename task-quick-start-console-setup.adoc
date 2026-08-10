@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: task-quick-start-console-setup.html 
+keywords: quick start, setup, set up, console local, admin setup, getting started, folders, fleets, rbac, members, data services, netapp console 
+summary: Die lokale Bereitstellung der NetApp Console wird eingerichtet, indem die Software installiert, die Organisation geplant und erstellt, Integrationen konfiguriert und Datendienste eingerichtet werden. 
+---
+= Schnellstart für die Einrichtung der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach der Installation der lokalen NetApp Console-Bereitstellung wird die Organisation so eingerichtet, dass die richtigen Teams die entsprechenden Speicherressourcen sicher verwalten können. Diese Checkliste dient zur Planung der Struktur, Organisation der Ressourcen, Hinzufügung von Mitgliedern, Konfiguration von Integrationen und Aktivierung von Datendiensten.
+
+.Erforderliche Zugriffsrollen
+Super Admin oder Organisationsadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"]Lokale Bereitstellung der NetApp Console-Installation
+[role="quick-margin-list"]
+* Der Installationsablauf bietet einen Überblick über den Bereitstellungsprozess. link:concept-deploy-netapp-console-local.html["Informationen zum Installationsablauf für die lokale Bereitstellung der NetApp Console"].
+* Die lokale Bereitstellung der NetApp Console in Ihrem vCenter installieren. link:task-install-agent-on-prem-ova.html["Lokale Bereitstellung der NetApp Console Installation"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"]Organisation planen
+[role="quick-margin-list"]
+* Wie Ordner und Flotten Ihre Ressourcen organisieren. link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten"].
+* Es wird erläutert, wie rollenbasierte Zugriffssteuerung (RBAC) Mitgliedern die benötigten Zugriffsrechte gewährt. link:concept-iam-rbac.html["Informationen zur rollenbasierten Zugriffssteuerung in der lokalen NetApp Console-Bereitstellung"].
+* Der Workflow für Identitäts- und Zugriffsmanagement wird dargestellt. link:task-iam-fleet-mgmt-get-started.html["Erste Schritte mit IAM für Flotten- und Ressourcenmanagement"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drei"]Organisation einrichten
+[role="quick-margin-list"]
+* Fügen Sie Ihre Speichersysteme zur lokalen NetApp Console-Bereitstellung hinzu. link:task-add-systems.html["Speichersysteme hinzufügen"].
+* Die Ordner- und Flottenhierarchie wird entsprechend Ihrer Unternehmensstruktur erstellt. link:task-iam-manage-folders-fleets.html["Ordner und Flotten erstellen"].
+* Ressourcen den richtigen Ordnern und Flotten zuordnen. link:task-iam-manage-resources.html["Ressourcen Ordnern und Flotten zuordnen"].
+* Fügen Sie Mitglieder hinzu und weisen Sie ihnen ihre anfänglichen Rollen zu. link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen zuweisen"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"]Integrationen und Services konfigurieren
+[role="quick-margin-list"]
+* Mit Active Directory integrieren, damit Verzeichnisbenutzer auf die lokale NetApp Console-Bereitstellung zugreifen können. link:task-iam-active-directory-integrate.html["Integrieren in Active Directory"].
+* Verbinden Sie Ihr großes Sprachmodell (LLM), um den Konsolenassistenten und die KI-gestützte Verwaltung zu aktivieren. link:task-llm-connect.html["LLM verbinden"].
+* Konfiguriert wird, wie die lokale NetApp Console-Bereitstellung Benachrichtigungen zustellt. link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellung konfigurieren"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Fünf"] NetApp Backup and Recovery einrichten
+[role="quick-margin-list"]
+* link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html#use-a-netapp-backup-and-recovery-byol-license["Eine Lizenz für NetApp Backup und Recovery erhalten"^]. Sie können diesen Schritt überspringen, wenn Sie keinen Zugriff auf erweiterte Sicherungs- und Wiederherstellungsdienste benötigen.
+* Die NetApp Backup and Recovery-Lizenz zur lokalen NetApp Console-Bereitstellung hinzufügen. link:https://docs.netapp.com/us-en/console-licenses-subscriptions/task-manage-data-services-licenses.html["Die Lizenz zur lokalen Bereitstellung der NetApp Console hinzufügen"^].
+* link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-rbac-setup.html["Benutzern Zugriff auf NetApp Backup und Wiederherstellung gewähren"].
+

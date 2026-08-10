@@ -1,0 +1,116 @@
+---
+sidebar: sidebar 
+permalink: concept-manage-storage.html 
+keywords: fleet management, folders, fleets, storage management, storage classes, provisioning, netapp console local 
+summary: Informationen darüber, wie Flottenmanagement und Speichermanagement in der lokalen Bereitstellung der NetApp Console funktionieren, einschließlich Hierarchie, Zugriffskontrolle, Standards und Bereitstellungsmethoden. 
+---
+= Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Flottenverwaltung in der lokalen NetApp Console-Bereitstellung ist die Praxis, Speichersysteme in logische Gruppen zu organisieren, um einheitliche Richtlinien anzuwenden, den Zugriff zu steuern und den Zustand zusammengehöriger Cluster zu überwachen. Anstatt jeden Cluster unabhängig zu verwalten, ermöglicht die Flottenverwaltung die Behandlung Ihrer Flotte als gemeinsamen Ressourcenpool zur Unterstützung Ihrer Datenspeicherziele.
+
+Mit zunehmender Größe Ihrer Speicherumgebung wird die Verwaltung einzelner Cluster unpraktisch. Flottenmanagement löst dieses Problem, indem eine strukturierte Möglichkeit zur Gruppierung verwandter Systeme, zur Delegation von Verantwortlichkeiten und zur Sicherstellung des Betriebs aller Cluster nach denselben Standards geboten wird.
+
+
+
+[[why-fleet-management-matters]]
+== Warum Flottenmanagement wichtig ist
+
+Das Flottenmanagement befasst sich mit drei zentralen Herausforderungen:
+
+* *Vereinfachung durch Abstraktion* – Flottenmanagement abstrahiert die Komplexität der Verwaltung einzelner Speicherinfrastrukturen. Statt einer Konfiguration von Cluster zu Cluster erfolgt die Verwaltung der gesamten Speicherlandschaft als einheitliches Ganzes, wodurch der operative Aufwand und die Entscheidungsbelastung verringert werden.
+* *Konsistenz und Skalierbarkeit* – Ohne klare Organisation treffen verschiedene Teams unterschiedliche Entscheidungen für ähnliche Workloads, was zu fragmentierten Konfigurationen führt. Flottenmanagement ermöglicht die gleichzeitige Anwendung von Standards auf Dutzende von Systemen und stellt so sicher, dass neue Workloads team- und flottenübergreifend auf derselben Basis beginnen.
+* *Governance und Kontrolle* – Wenn Teams wachsen, sind klare Zuständigkeiten dafür erforderlich, wer was verwalten kann. Flottenmanagement schafft diese Grenzen durch Organisationsstruktur und Zugriffskontrolle, sodass Speicherentscheidungen weiterhin geregelt und nachvollziehbar bleiben.
+
+
+
+
+[[how-fleets-organize-your-resources]]
+== Wie Flotten Ihre Ressourcen organisieren
+
+Die Ressourcenhierarchie Ihrer Organisation besteht aus Ordnern und Flotten:
+
+Eine detaillierte Übersicht über die Hierarchie und das Zugriffsmodell befindet sich unter link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"].
+
+* *Organisation* – Die oberste Ebene, die Ihr Unternehmen repräsentiert.
+* *Ordner* – helfen bei der Organisation zusammengehöriger Flotten. Zum Beispiel kann für jede Region oder Geschäftseinheit ein Ordner erstellt und darin Flotten angelegt werden. Ordner können weitere Ordner oder Flotten enthalten. Wird eine Rolle auf Ordnerebene zugewiesen, übernehmen die Mitglieder diese Rolle für alle Flotten innerhalb des Ordners.
+* *Flotten* – Die von Ihnen verwalteten Speichersysteme werden gruppiert. Speichersysteme werden Flotten zugeordnet und Mitglieder Flotten zugewiesen, um ihnen Zugriff zu ermöglichen.
+
+
+
+NOTE: Ordner dienen als Organisationswerkzeug und sind für Mitglieder, die keine IAM-Berechtigungen wie Organization admin, Folder admin oder Fleet admin Rollen besitzen, nicht sichtbar. Mitglieder haben Zugriff auf Flotten, nicht auf Ordner.
+
+
+
+[[common-fleet-organization-patterns]]
+== Gängige Flottenorganisationsmuster
+
+Die Organisation Ihrer Flotten hängt von Ihrem Betriebsmodell ab:
+
+* *Nach Umgebung* – Separate Flotten für Produktions-, Entwicklungs- und Test-Workloads erstellen. So bleibt der Produktionsspeicher strengeren Richtlinien unterworfen, während in weniger anspruchsvollen Umgebungen mehr Flexibilität möglich ist.
+* *Nach Geschäftsbereich* – Cluster, die einer bestimmten Abteilung wie Finanzen, Entwicklung oder Personalwesen dienen, werden zu einer dedizierten Flotte gruppiert. Speicherverwaltungsaufgaben können dann Teammitgliedern innerhalb dieses Geschäftsbereichs zugewiesen werden, ohne dass andere Flotten für sie sichtbar sind.
+* *Nach Standort oder Rechenzentrum* - Wenn Cluster über mehrere Standorte verteilt sind, ermöglicht die Organisation nach Standort die Überwachung des Zustands auf Standortebene, die Anwendung regionsspezifischer Richtlinien und die Verfolgung des Kapazitätsverbrauchs pro Standort.
+* *Nach Applikations-Tier* – Cluster, die eine bestimmte Klasse von Arbeitslasten hosten, wie Datenbanken, Dateifreigaben oder virtuelle Maschinen, werden gruppiert, sodass einheitliche, auf diesen Arbeitslasttyp abgestimmte Standards für die gesamte Flotte angewendet werden können.
+
+
+
+TIP: Ordner können verwendet werden, um eine weitere Organisationsebene hinzuzufügen. Beispielsweise kann für jede Region ein Ordner erstellt und innerhalb jedes regionalen Ordners umgebungsbasierte Flotten angelegt werden.
+
+
+
+[[how-fleet-management-enables-access-control]]
+== Wie Flottenmanagement die Zugangskontrolle ermöglicht
+
+Flotten und Ordner dienen als Grenzen für den Benutzerzugriff und die administrative Verantwortung:
+
+* *Zugriff auf Ordnerebene* – Wenn eine Rolle auf Ordnerebene zugewiesen wird, erbt das Mitglied diese Rolle für alle Flotten und Ressourcen innerhalb des Ordners. So ist es möglich, administrative Aufgaben zu delegieren, ohne Zugriff auf die gesamte Organisation zu gewähren.
+* *Zugriff auf Flottenebene* - Bei der Zuweisung einer Rolle auf Flottenebene hat das Mitglied nur Zugriff auf die Speichersysteme innerhalb dieser Flotte. Dadurch ist es möglich, die Speicherverwaltung an Teammitglieder oder Anwendungsbesitzer zu delegieren, ohne nicht zugehörige Teile der Infrastruktur offenzulegen.
+
+
+Die lokale Bereitstellung über die NetApp Console ermöglicht die Überwachung von Zustand und Leistung auf Flottenebene, sodass der Status aller Cluster einer Flotte aus einer einzigen Ansicht ersichtlich ist, Probleme frühzeitig erkannt werden und Maßnahmen ergriffen werden können, bevor sie sich auf die Workloads auswirken.
+
+
+
+[[how-storage-management-works]]
+== Wie das Speichermanagement funktioniert
+
+Speichermanagement bezeichnet die Definition von Speicherstandards, deren konsistente Anwendung und den Betrieb von Workloads, sodass deren langfristige Ausrichtung erhalten bleibt. Bei der lokalen Bereitstellung über NetApp Console werden diese Standards in Form von Speicherklassenrichtlinien und Speicherklassen ausgedrückt, die Flotten zugeordnet und durch Bereitstellungs-Workflows durchgesetzt werden, die von RBAC und Audit-Protokollierung gesteuert werden.
+
+Die lokale Bereitstellung über die Konsole verbindet vier Konzepte zu einem einzigen Workflow:
+
+* *Flotten* definieren den Bereich, in dem Sie Speicher verwalten. Eine Flotte gruppiert Systeme, sodass Sie den Zugriff steuern, Standards einheitlich anwenden und Ressourcen als Einheit verwalten können.
+* *Speicherklassenrichtlinien* definieren Standards als wiederverwendbare Bausteine (Leistung, Kapazität, Sicherheit, Datenschutz).
+* *Speicherklassen* drücken die Absicht bezüglich der Arbeitslast aus. Eine Speicherklasse ist eine benannte Vorlage, die aus einer oder mehreren Richtlinien zusammengesetzt ist.
+* *Bereitstellungsworkflows* erstellen Speicher innerhalb festgelegter Grenzen. Unterschiedliche Workflows treffen Konfigurationsentscheidungen auf unterschiedliche Weise, aber alle können Speicherklassen erzwingen und bleiben durch RBAC und Audit-Protokollierung geregelt.
+
+
+
+
+[[provisioning-approaches]]
+== Bereitstellungsansätze
+
+Die lokale Bereitstellung über die Konsole unterstützt drei Bereitstellungsansätze, die alle durch RBAC, Audit-Protokollierung und Speicherklassenstandards geregelt werden:
+
+* *Manuelle Bereitstellung* – Das Zielsystem wird ausgewählt und die Konfigurationsdetails werden direkt angegeben. Diese Option eignet sich, wenn eine explizite Kontrolle über die Systemauswahl und Konfiguration erforderlich ist.
+* *Automatisierte Bereitstellung* – Sie geben die Workload-Eingaben an und wählen optional eine Storage-Klasse aus. Die lokale Bereitstellung über die NetApp Console empfiehlt die optimale Platzierung und wendet klassenbasierte Einstellungen an, um manuelle Entscheidungen zu reduzieren.
+* *KI-gestützte (agentenbasierte) Bereitstellung* – Sie beschreiben, was Sie benötigen, in natürlicher Sprache. Die lokale Bereitstellung über die Konsole schlägt einen durch RBAC und Speicherklassen eingeschränkten Plan vor und führt die Bereitstellung erst nach Ihrer Prüfung und Genehmigung durch.
+
+
+
+
+[[where-to-go-next]]
+== Wie es weitergeht
+
+* Informationen zu Speicherstandards sind unter link:concept-storage-classes.html["Informationen zu Speicherklassen und Richtlinien in der lokalen Bereitstellung der NetApp Console"] verfügbar.
+* Informationen zum Erstellen und Verwalten von Flotten sind unter link:task-iam-manage-folders-fleets.html["Ordner und Flotten verwalten"] verfügbar.
+* link:task-provisioning-manual.html["Speicher manuell bereitstellen"]
+* link:task-provisioning-automated.html["Speicher automatisch bereitstellen"]
+* link:task-provisioning-agentic.html["Speicher mit KI-Unterstützung bereitstellen"]
+

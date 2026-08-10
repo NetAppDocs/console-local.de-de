@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: task-add-systems.html 
+keywords: add storage systems, ONTAP, cluster, discover storage, fleet, storage discovery, centralized monitoring, storage management, netapp console local 
+summary: Speichersysteme zur lokalen Bereitstellung der NetApp Console hinzufügen. 
+---
+= Speichersysteme zur lokalen NetApp Console-Bereitstellung hinzufügen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Speichersysteme können zur lokalen NetApp Console-Bereitstellung hinzugefügt werden, um Überwachung, Bestandsverwaltung und Administration der Speicherinfrastruktur zu ermöglichen. Nach dem Hinzufügen eines Speichersystems erkennt die lokale Console-Bereitstellung das System und beginnt mit der Erfassung von Informationen, die für Überwachungs- und Verwaltungsaufgaben genutzt werden können.
+
+Bevor Sie beginnen, stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen zum Hinzufügen von Speichersystemen verfügen und dass das Speichersystem von der NetApp Console lokalen Bereitstellung aus erreichbar ist.
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. Wählen Sie in der Dropdown-Liste „Bereich“ die Flotte aus, zu der Sie ein Speichersystem hinzufügen möchten.
+. *System hinzufügen* auswählen.
+. Geben Sie die erforderlichen Details zum Speichersystem ein, einschließlich Verbindungsinformationen und Anmeldedaten.
+. Die eingegebenen Informationen können überprüft und *Hinzufügen* ausgewählt werden.
++
+Das Speichersystem wird der ausgewählten Flotte hinzugefügt. Die lokale Bereitstellung über die Konsole beginnt mit der Erkennung und Überwachung des Systems. Je nach Umgebung und Netzwerkverbindung kann es einige Minuten dauern, bis das System als vollständig verwaltet angezeigt wird.
+
+
+
+
+NOTE: Ein Speichersystem kann auch über die Seite *Administration > Identität und Zugriff* hinzugefügt werden, indem *System hinzufügen* ausgewählt und die erforderlichen Systeminformationen angegeben werden.

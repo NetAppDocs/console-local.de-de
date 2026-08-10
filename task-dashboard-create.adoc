@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-create.html 
+keywords: create dashboard, custom dashboard, add dashboard, metrics, cards, card templates, fleet monitoring, storage visibility, performance monitoring, capacity monitoring, netapp console local 
+summary: Ein benutzerdefiniertes Dashboard in der lokalen NetApp Console-Bereitstellung erstellen, Karten hinzufügen und eine nutzbare Überwachungsansicht speichern. 
+---
+= Dashboards zur Überwachung von Zielen in der lokalen NetApp Console-Bereitstellung erstellen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ein benutzerdefiniertes Dashboard in der lokalen NetApp Console-Bereitstellung erstellen, Karten hinzufügen und eine Überwachungsansicht für den täglichen Betrieb speichern.
+
+Wenn lediglich eine sofort einsatzbereite Überwachung auf Organisationsebene benötigt wird, bieten sich vordefinierte Home-Page-Dashboards als Ausgangspunkt an. Ein benutzerdefiniertes Dashboard eignet sich, wenn eine rollenspezifische Ansicht, eine gezielte Ausrichtung auf Ressourcen oder ein individuell angepasstes Kartenlayout erforderlich ist.
+
+.Richtlinien für das Dashboard zur lokalen Konsolenbereitstellung
+* Nur der Benutzer, der das Dashboard erstellt, kann es anzeigen. Dashboards können nicht mit anderen Benutzern geteilt werden, selbst wenn sie zur Console-Startseite hinzugefügt werden.
+* Sie können nur Ressourcen anzeigen, für die Sie die Berechtigung haben. Wenn eine Ressource nicht in der Liste der verfügbaren Ressourcen angezeigt wird, haben Sie keine Berechtigung, sie anzuzeigen.
+* Bevor Sie beginnen, die Metriktypen und Ressourcen identifizieren, die das Dashboard erfassen soll.link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"]
+
+
+
+
+[[build-a-dashboard-for-your-monitoring-goals]]
+== Ein Dashboard für Ihre Überwachungsziele erstellen
+
+Ein Dashboard bietet einen zentralen Ort, um die für Ihre Rolle relevanten Kennzahlen wie Flottenzustand, Leistungsschwerpunkte und Alarmtrends zu überwachen.
+
+.Schritte
+. *Speicher > Dashboards* auswählen.
+. *Dashboard hinzufügen* auswählen.
++
+Die lokale Bereitstellung über die Konsole erstellt ein neues Dashboard mit einem Standardnamen und ohne Beschreibung.
+
+. *Karte hinzufügen* auswählen.
+. Den *Ressourcentyp* für die Karte auswählen, zum Beispiel Flotte, System oder Volumen, und anschließend Ressourcen aus der Liste der verfügbaren Ressourcen auswählen.
+. *Weiter* auswählen, um mit der Auswahl einer Kennzahl und eines Kartentyps fortzufahren.
+. Wählen Sie eine anzuzeigende Metrik aus. Die verfügbaren Metriken können nach Typ gefiltert werden: der *Metriktyp*: *Leistung*, *Kapazität*, *Status* oder *Warnungen*, oder es kann nach einer bestimmten Metrik anhand ihres Namens gesucht werden. Die verfügbaren Metriken hängen vom ausgewählten Ressourcentyp ab.
++
+link:reference-dashboard-card-templates.html#metrics-list["Informationen zu den verfügbaren Kennzahlen."]
+
+. Eine Karte für die Aufnahme in das Dashboard auswählen und *Weiter* wählen.
++
+Sie können jeweils nur eine Karte auswählen. Die Kartenvorschau zeigt Live-Daten für die ausgewählte Metrik und den Ressourcentyp an.
+
+. Benennen Sie Ihre Karte. Der Name muss innerhalb des Dashboards eindeutig sein.
+. Die Kartenvorschau kann überprüft, ein Kartenname und eine Beschreibung eingegeben und anschließend *Hinzufügen* ausgewählt werden.
+. Diese Schritte für zusätzliche Karten wiederholen.
+. Das Stiftsymbol ermöglicht das Bearbeiten des Dashboard-Namens und der Beschreibung, um den Zweck zu erläutern.
+. Im Aktionsmenü rechts neben der Schaltfläche „Karte hinzufügen“ die Option *Dashboard speichern* auswählen.
++
+Das gespeicherte Dashboard ist unter *Speicher > Dashboards* verfügbar.
+
+. Optional kann dieses Dashboard zur Startseite hinzugefügt werden, indem im Aktionsmenü *Zur Startseite hinzufügen* ausgewählt wird. Das Dashboard wird zur Startseite hinzugefügt. Nur Sie können die von Ihnen erstellten benutzerdefinierten Dashboards anzeigen. Es wird nicht mit anderen geteilt.
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:task-customize-dashboard-cards.html["Anpassen von Dashboard-Karten in der lokalen NetApp Console-Bereitstellung"]
+* link:task-dashboard-manage.html["Dashboards in der lokalen NetApp Console-Bereitstellung verwalten"]
+

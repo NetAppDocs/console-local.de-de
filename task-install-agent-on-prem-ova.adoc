@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: task-install-agent-on-prem-ova.html 
+keywords: install agent, on-premises agent installation, vCenter, ESXi, VMware, OVA, deploy Console local deployment, agent deployment, netapp console local 
+summary: Wenn Sie VMware-Nutzer sind, kann eine OVA verwendet werden, um einen Console-Agenten in Ihrem vCenter zu installieren. Der OVA-Download oder die URL ist über die lokale NetApp Console-Bereitstellung verfügbar. 
+---
+= Lokale Bereitstellung der NetApp Console mithilfe einer OVA in vCenter installieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie verwenden eine OVA, um eine NetApp Console lokale Bereitstellung in Ihrem VCenter zu installieren. Der OVA-Download oder die URL ist über die NetApp Support-Website verfügbar.
+
+
+
+[[prepare-to-install-netapp-console-local-deployment]]
+== Vorbereitung der lokalen Bereitstellung der NetApp Console zur Installation
+
+Vor der Installation ist sicherzustellen, dass Ihr VM-Host die Anforderungen erfüllt und die NetApp Console lokale Bereitstellung auf das Internet und die Zielnetzwerke zugreifen kann. Für die Nutzung von NetApp Datenservices wie NetApp Backup und Recovery sind Cloud-Anbieter-Anmeldeinformationen für die NetApp Console lokale Bereitstellung zu erstellen, damit Aktionen in Ihrem Namen durchgeführt werden können.
+
+
+
+[[review-netapp-console-local-deployment-host-requirements]]
+=== Anforderungen an den lokalen Bereitstellungshost der NetApp Console prüfen
+
+Vor der Installation der lokalen Bereitstellung von NetApp Console sollte sichergestellt sein, dass Ihr Host-Rechner die Installationsvoraussetzungen erfüllt.
+
+* CPU: 16 Kerne oder 16 vCPUs
+* RAM: 64 GB
+* Speicherplatz: 596 GB (Thick Provisioning empfohlen)
+* vSphere 7.0u3 oder höher, mit virtueller Hardwareversion 19 oder höher
+
+
+
+NOTE: Die lokale Bereitstellung der NetApp Console sollte in einer vCenter Umgebung und nicht direkt auf einem ESXi-Host erfolgen.
+
+
+
+[[set-up-network-access-for-the-netapp-console-local-deployment]]
+[[network-access-agent]]
+=== Netzwerkzugriff für die lokale Bereitstellung der NetApp Console einrichten
+
+NetApp Console lokale Bereitstellung verwendet einen festen Adressraum für die Kommunikation zwischen den Diensten. Die IP-Bereiche 10.42.0.0/16 und 10.43.0.0/16 werden für das interne Netzwerk verwendet. Vor der Bereitstellung der Console lokalen Bereitstellung ist sicherzustellen, dass diese IP-Bereiche nicht anderen VM-Instanzen, DHCP-Bereichen, DNS-Einträgen oder Load Balancer VIP-Pools in den für die Console lokale Bereitstellung verfügbaren VLANs zugewiesen sind.
+
+Im Knowledge Base Artikel „Agent IP conflict with existing network“ finden sich Anweisungen zum Ändern der IP-Adresse der Schnittstellen des Agenten.
+
+
+
+[[install-netapp-console-local-deployment-in-your-vcenter-environment]]
+== Lokale Bereitstellung der NetApp Console in Ihrer vCenter-Umgebung installieren
+
+NetApp unterstützt die lokale NetApp Console-Bereitstellung in Ihrer vCenter-Umgebung. Die OVA-Datei enthält ein vorkonfiguriertes VM-Image, das in Ihrer VMware-Umgebung bereitgestellt werden kann.
+
+
+
+[[download-the-ova-or-copy-the-url]]
+=== Die OVA-Datei kann heruntergeladen oder die URL kopiert werden.
+
+Laden Sie die OVA herunter.
+
+. Die lokale Bereitstellungssoftware für die Konsole kann von der NetApp Support Site heruntergeladen werden.
+
+
+
+
+[[deploy-netapp-console-local-deployment-in-your-vcenter]]
+=== Lokale Bereitstellung der NetApp Console in Ihrem VCenter
+
+Melden Sie sich in Ihrer vCenter-Umgebung an, um die lokale Console-Bereitstellung durchzuführen.
+
+.Schritte
+. Das selbstsignierte Zertifikat kann in die vertrauenswürdigen Zertifikate hochgeladen werden, falls dies in Ihrer Umgebung erforderlich ist. Dieses Zertifikat kann nach der Installation ersetzt werden.
+. Die OVA kann aus der Bibliothek oder vom lokalen System bereitgestellt werden.
++
+|===
+
+
+| Vom lokalen System | Aus der Bibliothek 
+
+
+| a. Klicken Sie mit der rechten Maustaste und wählen Sie *OVF-Vorlage bereitstellen...*. b. Wählen Sie die OVA-Datei über die URL aus oder navigieren Sie zu ihrem Speicherort, dann wählen Sie *Weiter*. | a. Gehen Sie zu Ihrer Bibliothek und wählen Sie die Console OVA aus. b. Wählen Sie *Aktionen* > *Neue VM aus dieser Vorlage* 
+|===
+. Den Assistenten „OVF-Vorlage bereitstellen“ abschließen, um die Konsole bereitzustellen.
+. Einen Namen und einen Ordner für die VM auswählen, dann *Weiter* wählen.
+. Eine Rechenressource auswählen und anschließend *Weiter* wählen.
+. Die Details der Vorlage können überprüft werden, anschließend ist *Weiter* auszuwählen.
+. Die Lizenzvereinbarung wird akzeptiert, anschließend wird *Weiter* ausgewählt.
+. Wählen Sie den gewünschten Typ der Proxykonfiguration: expliziter Proxy, transparenter Proxy oder kein Proxy.
+. Wählen Sie den Datenspeicher aus, auf dem die VM bereitgestellt werden soll, und wählen Sie anschließend *Weiter*. Es sollte sichergestellt sein, dass die Host-Anforderungen erfüllt werden.
+. Wählen Sie das Netzwerk aus, mit dem die VM verbunden werden soll, und wählen Sie anschließend *Weiter*. Es ist sicherzustellen, dass das Netzwerk IPv4 ist und über ausgehenden Internetzugang zu den erforderlichen Endpunkten verfügt.
+. Im Fenster *Vorlage anpassen* sind die folgenden Felder auszufüllen:
++
+** *Proxyinformationen*
++
+*** Wenn expliziter Proxy ausgewählt wurde, sind der Hostname oder die IP-Adresse und die Portnummer des Proxyservers sowie der Benutzername und das Passwort einzugeben.
+*** Wenn der transparente Proxy ausgewählt wurde, ist das entsprechende Zertifikat hochzuladen.
+
+
+** *Konfiguration der virtuellen Maschine*
++
+*** *Konfigurationsprüfung überspringen*: Dieses Kästchen ist standardmäßig deaktiviert, was bedeutet, dass die lokale NetApp Console-Bereitstellung eine Konfigurationsprüfung durchführt, um den Netzwerkzugriff zu validieren.
++
+**** NetApp empfiehlt, dieses Kästchen nicht zu aktivieren, sodass die Installation eine Konfigurationsprüfung der NetApp Console lokalen Bereitstellung umfasst. Die Konfigurationsprüfung bestätigt, dass die NetApp Console lokale Bereitstellung Netzwerkzugriff auf die erforderlichen Endpunkte hat. Falls die Bereitstellung aufgrund von Verbindungsproblemen fehlschlägt, stehen der Validierungsbericht und die Protokolle vom Host der NetApp Console lokalen Bereitstellung zur Verfügung. In einigen Fällen kann, sofern sichergestellt ist, dass die NetApp Console lokale Bereitstellung über Netzwerkzugriff verfügt, die Prüfung übersprungen werden.
+
+
+*** *Wartungskennwort*: Das Kennwort für den  `maint` Benutzer festlegen, das den Zugriff auf die NetApp Console lokale Bereitstellung Wartungskonsole ermöglicht.
+*** *NTP-Server*: Es können ein oder mehrere NTP-Server für die Zeitsynchronisierung angegeben werden.
+*** *Hostname*: Der Hostname für diese VM wird festgelegt. Er darf die Suchdomäne nicht enthalten. Zum Beispiel sollte ein FQDN wie console10.searchdomain.company.com als console10 eingegeben werden.
+*** *Primärer DNS*: Der primäre DNS-Server, der für die Namensauflösung verwendet wird, ist anzugeben.
+*** *Sekundärer DNS*: Der sekundäre DNS-Server, der für die Namensauflösung verwendet wird, ist anzugeben.
+*** Suchdomänen: Der Suchdomänenname ist anzugeben, der bei der Auflösung des Hostnamens verwendet wird. Wenn der FQDN beispielsweise console10.searchdomain.company.com ist, ist searchdomain.company.com einzugeben.
+*** *IPv4-Adresse*: Die IP-Adresse, die dem Hostnamen zugeordnet ist.
+*** *IPv4 Subnetzmaske*: Die Subnetzmaske für die IPv4-Adresse.
+*** *IPv4-Gateway-Adresse*: Die Gateway-Adresse für die IPv4-Adresse.
+
+
+
+
+. *Weiter* auswählen.
+. Die Details im Fenster *Bereit zum Abschließen* können überprüft und mit *Fertigstellen* abgeschlossen werden.
++
+Die vSphere-Taskleiste zeigt den Fortschritt an, während die lokale NetApp Console-Bereitstellung durchgeführt wird.
+
+. Die VM wird eingeschaltet.
+

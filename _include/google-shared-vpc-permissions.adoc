@@ -1,0 +1,52 @@
+= 
+:allow-uri-read: 
+
+
+Wenn Sie eine gemeinsam genutzte VPC verwenden, um Ressourcen in einem Serviceprojekt bereitzustellen, müssen Sie Ihre Berechtigungen vorbereiten.
+
+Diese Tabelle dient als Referenz und Ihre Umgebung sollte die Berechtigungstabelle widerspiegeln, wenn die IAM-Konfiguration abgeschlossen ist.
+
+.Freigegebene VPC-Berechtigungen anzeigen
+[%collapsible]
+====
+[cols="10,10,10,18,18,34"]
+|===
+| Identität | Schöpfer | Gehostet in | Berechtigungen für Serviceprojekte | Berechtigungen für das Hostprojekt | Zweck 
+
+
+| Google-Konto zum Bereitstellen des Agenten | Benutzerdefiniert | Service-Projekt  a| 
+link:task-install-agent-google-console-gcloud.html#agent-permissions-google["Agentenbereitstellungsrichtlinie"]
+ a| 
+Compute.networkUser
+| Bereitstellung des Agenten im Serviceprojekt 
+
+
+| Agent-Servicekonto | Benutzerdefiniert | Serviceprojekt  a| 
+link:reference-permissions-gcp.html["Richtlinie für Agent-Servicekonten"]
+| Compute.networkUser DeploymentManager.Editor | Bereitstellung und Wartung von Cloud Volumes ONTAP und Services im Serviceprojekt 
+
+
+| Cloud Volumes ONTAP Dienstkonto | Benutzerdefiniert | Serviceprojekt | storage.admin-Mitglied: NetApp Console-Dienstkonto als serviceAccount.user | k. A. | (Optional) Für NetApp Cloud Tiering und NetApp Backup and Recovery 
+
+
+| Google APIs Serviceagent | Google Cloud | Serviceprojekt  a| 
+(Standard) Editor
+ a| 
+Compute.networkUser
+| Interagiert im Auftrag der Bereitstellung mit den Google Cloud APIs. Ermöglicht der Console die Nutzung des gemeinsam genutzten Netzwerks. 
+
+
+| Google Compute Engine Standarddienstkonto | Google Cloud | Serviceprojekt  a| 
+(Standard) Editor
+ a| 
+Compute.networkUser
+| Stellt im Auftrag der Bereitstellung Google Cloud Instanzen und Recheninfrastruktur bereit. Ermöglicht der NetApp Console die Nutzung des gemeinsam genutzten Netzwerks. 
+|===
+Anmerkungen:
+
+. deploymentmanager.editor ist im Hostprojekt nur erforderlich, wenn keine Firewall-Regeln an das Deployment übergeben werden und die Konsole diese für Sie erstellt. Die NetApp Console erstellt im Hostprojekt ein Deployment, das die VPC0-Firewall-Regel enthält, falls keine Regel angegeben ist.
+. Die Berechtigungen `firewall.create` und `firewall.delete` sind nur erforderlich, wenn keine Firewall-Regeln an die Bereitstellung übergeben werden und die Konsole diese für Sie erstellt. Diese Berechtigungen befinden sich in der .yaml-Datei des Console-Kontos. Wenn eine HA-Paar-Bereitstellung mit einer gemeinsam genutzten VPC erfolgt, werden diese Berechtigungen verwendet, um die Firewall-Regeln für VPC1, 2 und 3 zu erstellen. Bei allen anderen Bereitstellungen werden diese Berechtigungen ebenfalls verwendet, um Regeln für VPC0 zu erstellen.
+. Für Cloud Tiering muss das Tiering-Dienstkonto die Rolle serviceAccount.user besitzen, und zwar nicht nur auf Projektebene. Derzeit werden die Berechtigungen nicht angezeigt, wenn die Rolle serviceAccount.user auf Projektebene zugewiesen ist und das Dienstkonto mit getIAMPolicy abgefragt wird.
+
+
+====

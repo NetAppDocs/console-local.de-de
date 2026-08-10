@@ -1,0 +1,39 @@
+= 
+:allow-uri-read: 
+
+
+. Den Inhalt der link:reference-permissions-azure.html["Benutzerdefinierte Rollenberechtigungen für den Connector"] kopieren und in einer JSON-Datei speichern.
+. Die JSON-Datei wird geändert, indem Azure-Abonnement-IDs zum zuweisbaren Bereich hinzugefügt werden.
++
+Sie sollten die ID für jedes Azure-Abonnement hinzufügen, das Sie mit der NetApp Console verwenden möchten.
+
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+"/subscriptions/54b91999-b3e6-4599-908e-416e0zzzzzzz",
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"
+----
+. Die JSON-Datei dient dazu, eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+Die folgenden Schritte beschreiben, wie die Rolle mithilfe von Bash in der Azure Cloud Shell erstellt wird.
+
++
+.. Starten Sie  https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] und wählen Sie die Bash-Umgebung aus.
+.. Die JSON-Datei hochladen.
++
+image:screenshot_azure_shell_upload.png["Ein Screenshot der Azure Cloud Shell, in der die Option zum Hochladen einer Datei ausgewählt werden kann."]
+
+.. Mit der Azure CLI die benutzerdefinierte Rolle erstellen:
++
+[source, azurecli]
+----
+az role definition create --role-definition Connector_Policy.json
+----
+
+
+

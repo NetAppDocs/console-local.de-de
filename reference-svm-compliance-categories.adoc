@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: reference-svm-compliance-categories.html 
+keywords: svm compliance, storage vm compliance, security compliance, svm security, compliance categories, netapp console local 
+summary: Referenz für die Kategorien der Sicherheitskonformität von Storage-VMs und empfohlene Einstellungen in der lokalen Bereitstellung der NetApp Console. 
+---
+= Sicherheitskonformitätskategorien für Storage-VMs in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Diese Referenz dient zur Überprüfung der in der lokalen NetApp Console-Bereitstellung angezeigten Sicherheitskonformitätskategorien für Storage VMs (SVM), einschließlich des empfohlenen Werts und der Information, ob sich die einzelnen Kategorien auf den Gesamtkonformitätsstatus auswirken.
+
+Diese Kategorien basieren auf den Sicherheitsstatusprüfungen von ONTAP.
+
+[cols="20,50,15,15"]
+|===
+| Kategorie | Was die Kategorie prüft | Empfohlener Wert | Beeinträchtigt die allgemeine Compliance 
+
+
+| Audit-Log | Ob die SVM Audit-Protokollierung aktiviert ist. | Aktiviert | Ja 
+
+
+| Unsichere SSH-Einstellungen | Ob SSH mit unsicheren Verschlüsselungsverfahren konfiguriert ist, wie etwa Verschlüsselungsverfahren, die mit  `cbc` beginnen. | Nein | Ja 
+
+
+| Anmeldebanner | Ob ein Anmeldebanner für Benutzer konfiguriert ist, die auf SVMs zugreifen. | Aktiviert | Ja 
+
+
+| LDAP-Verschlüsselung | Ob die LDAP-Verschlüsselung aktiviert ist. | Aktiviert | Nein 
+
+
+| NTLM-Authentifizierung | Ob die NTLM-Authentifizierung aktiviert ist. | Aktiviert | Nein 
+
+
+| LDAP Nutzlast-Signierung | Ob die LDAP-Nutzlastsignierung aktiviert ist. | Aktiviert | Nein 
+
+
+| CHAP-Einstellungen | Ob CHAP aktiviert ist. | Aktiviert | Nein 
+
+
+| Kerberos V5 | Ob die Kerberos V5 Authentifizierung aktiviert ist. | Aktiviert | Nein 
+
+
+| NIS-Authentifizierung | Ob die NIS-Authentifizierung konfiguriert ist. | Deaktiviert | Nein 
+
+
+| FPolicy Status aktiv | Ob FPolicy erstellt und aktiv ist. | Ja | Nein 
+
+
+| SMB-Verschlüsselung aktiviert | Ob SMB-Signierung und -Versiegelung aktiviert sind. | Ja | Nein 
+
+
+| SMB-Signing aktiviert | Ob die SMB-Signierung aktiviert ist. | Ja | Nein 
+|===

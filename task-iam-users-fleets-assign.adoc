@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: task-iam-users-fleets-assign.html 
+keywords: assign members, fleet, folder, access control, roles, storage management, netapp console 
+summary: Mitgliedszugriffszuweisungen für Ordner und Speicherflotten in der lokalen NetApp Console-Bereitstellung prüfen oder ändern. 
+---
+= Flottenzugriffszuweisungen in der lokalen NetApp Console-Bereitstellung anzeigen oder ändern
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Auditieren oder ändern Sie die Zugriffszuweisungen von Mitgliedern für Ordner und Storage Fleets in der lokalen NetApp Console-Bereitstellung. Ordner- und Fleet-Administratoren arbeiten typischerweise mit dieser Ansicht, da sie nur die Bereiche anzeigt, die sie verwalten.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- oder Flottenadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Alternativ ist es möglich, alle Rollen eines bestimmten Mitglieds über mehrere Ordner oder Flotten hinweg zu verwalten. link:task-iam-manage-roles.html["Mitgliederzugriff verwalten"].
+
+
+
+[[how-folder-and-fleet-access-works]]
+== Funktionsweise des Ordner- und Flottenzugriffs
+
+Die lokale Bereitstellung über die Console verwendet rollenbasierte Zugriffssteuerung (RBAC). Eine Rolle, die auf Ordnerebene zugewiesen wird, gilt für alle Flotten und Unterordner innerhalb dieses Ordners; eine Rolle, die auf Flottenebene zugewiesen wird, gilt nur für die Ressourcen dieser Flotte. link:concept-iam-rbac.html#role-inheritance["Informationen zur Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+
+NOTE: Eine Rolle kann auf Flottenebene nicht geändert werden, wenn ein Mitglied sie von einem Ordner oder von der Organisation erbt. Um geerbten Zugriff zu ändern, muss die Rolle auf der höheren Ebene geändert werden.
+
+
+
+[[view-members-assigned-to-a-folder-or-fleet]]
+== Anzeigen der Mitglieder, die einem Ordner oder einer Flotte zugewiesen sind
+
+Es kann genau überprüft werden, wer einen bestimmten Ordner oder eine bestimmte Flotte verwalten kann. Beispielsweise lässt sich vor der Zuordnung eines neuen Produktions-ONTAP Clusters zur  `Production-US-East` Flotte auf der Registerkarte „Zugriff“ der Flotte nachvollziehen, wer Zugriff hat.
+
+.Schritte
+. *Administration* > *Identität und Zugriff* auswählen.
+. *Organisation* auswählen.
+. Auf der Seite „Organisation“ zu einem Ordner oder einer Flotte in der Tabelle navigieren, image:icon-action.png["Ein Symbol mit drei Punkten"] und dann *Ordner bearbeiten* oder *Flotte bearbeiten* auswählen.
+. *Zugriff* zeigt die Mitglieder an, die Zugriff auf den Ordner oder die Flotte haben.
+
+
+
+
+[[modify-member-access-from-a-folder-or-fleet]]
+== Mitgliederzugriff über einen Ordner oder eine Flotte ändern
+
+Passen Sie die Rollen von Mitgliedern, die bereits zu Ihrer Organisation gehören, an, beschränkt auf einen einzelnen Ordner oder eine einzelne Flotte. Wenn beispielsweise ein Teammitglied von einer Entwicklungsflotte in eine Produktionsflotte wechselt, kann es in der Produktionsflotte vom Storage viewer zum Storage admin befördert werden, ohne dass der Zugriff an anderen Stellen beeinflusst wird.
+
+Um ein neues Mitglied hinzuzufügen und ihm seine erste Rolle zuzuweisen, sollte stattdessen die Onboarding-Aufgabe verwendet werden. link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen zuweisen"].
+
+.Schritte
+. Auf der Seite „Organisation“ zu einem Ordner oder einer Flotte in der Tabelle navigieren, image:icon-action.png["Ein Symbol mit drei Punkten"] und dann *Ordner bearbeiten* oder *Flotte bearbeiten* auswählen.
+. *Zugriff* auswählen, um die Liste der Mitglieder anzuzeigen, die Zugriff haben.
+. Mitgliederzugriff ändern:
++
+** *Mitgliedsrolle ändern*: Für jedes Mitglied mit einer anderen Rolle als Organization admin die bestehende Rolle auswählen und eine neue Rolle festlegen. Die Änderung gilt nur für diesen Bereich; Rollen, die von einem höheren Bereich geerbt wurden, werden hier nicht angezeigt.
+** *Mitgliedszugriff in diesem Bereich entfernen*: Für ein Mitglied, dessen Rolle direkt in diesem Ordner oder dieser Flotte definiert ist, wird durch das Entfernen der Rolle der Zugriff in diesem Bereich widerrufen. Dadurch wird das Mitglied nicht aus Ihrer Organisation entfernt und Rollen in anderen Bereichen bleiben unberührt.
++
+link:task-iam-manage-roles.html#remove-a-member-from-your-organization["Ein Mitglied aus Ihrer Organisation entfernen"].
+
+
+
+. *Anwenden* auswählen.
+

@@ -1,0 +1,265 @@
+---
+sidebar: sidebar 
+permalink: reference-dashboard-card-templates.html 
+keywords: card templates, dashboard cards, metric types, chart types, performance, capacity, health, alerts, netapp console local 
+summary: Referenz für vordefinierte Dashboards sowie benutzerdefinierte Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung. 
+---
+= Referenz auf vordefinierte Dashboards und benutzerdefinierte Dashboard Karten in der lokalen NetApp Console Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung bieten vordefinierte Dashboards und benutzerdefinierte Dashboard-Kartenvorlagen eine Überwachung von ONTAP Leistung, Kapazität, Zustand und Alarmvorgängen.
+
+
+
+[[predefined-dashboards]]
+== Vordefinierte Dashboards
+
+Folgende vordefinierte Dashboards sind sofort verfügbar.
+
+[cols="35,65"]
+|===
+| Name | Beschreibung 
+
+
+| Volumes | Volumenleistung, Kapazität, QoS, FabricPool, Wachstumsrate und Prognosemetriken. 
+
+
+| Zeit bis zur vollständigen Auslastung | ONTAP Vorhersagen zur Laufzeit bis zur vollständigen Auslastung für Cluster, Volumes und Aggregate. 
+
+
+| Sicherheit | Überblick über Sicherheitskonformität, Verschlüsselung, autonomen Ransomware-Schutz und Authentifizierung. 
+
+
+| SVMs | ONTAP SVM Performance, Kapazität, Volume, LIF, Protokoll (CIFS, FCP, iSCSI, NFS, NVMe/FC), QoS und Latenz-Heatmap-Überwachung. 
+
+
+| Leistung | Überwachung von Stromverbrauch, Temperatur und Lüfterdrehzahl für Knoten, Shelfs und Aggregate im ONTAP Cluster. 
+
+
+| Nodes | ONTAP Knotenleistung, CPU, Netzwerk und Backend-Überwachung. 
+
+
+| Netzwerk | Netzwerkleistungskennzahlen einschließlich Ethernet, FibreChannel, NVMe/FC, Link Aggregation Groups und Routen. 
+
+
+| LUNs | Überwachung der ONTAP LUN-Leistung, Kapazität und Effizienz. 
+
+
+| Systemzustand | ONTAP Clusterzustandsüberwachung einschließlich Fehlern, Warnungen, EMS-Alarme, HA-Problemen, Zustand von Knoten/Festplatten/Gehäusen, Volumes, Lizenzen und Netzwerkports. 
+
+
+| Aggregate | ONTAP Gesamtkapazität, Effizienzkennzahlen und Wachstumsratenüberwachung. 
+|===
+
+
+[[dashboard-level-time-windows-and-aggregation]]
+== Zeitfenster und Aggregation auf Dashboard-Ebene
+
+Verfügbare Zeitfenster sind 30 Minuten, 1 Stunde, 24 Stunden, 48 Stunden, 7 Tage und 30 Tage. Die Aggregationsoptionen variieren je nach Vorlage und umfassen Ansichten wie Flottenweite-Rollup oder Top-N-Stil-Ergebnisse. Zeitfenster und Aggregation werden auf Dashboard-Ebene konfiguriert und gelten für alle Karten im Dashboard.
+
+
+
+[[dashboard-card-templates-and-metrics]]
+== Dashboard-Kartenvorlagen und Metriken
+
+Karten sind die Bausteine benutzerdefinierter Dashboards. Jede Karte verwendet eine vordefinierte Vorlage mit einer Metrik und einem Diagrammtyp und ordnet diese Ansicht dann bestimmten ONTAP Objekten und Überwachungszielen zu.
+
+
+NOTE: Kartenvorlagen sind vordefiniert und nicht benutzerdefiniert.
+
+
+
+[[storage-operations-metric-index-at-a-glance]]
+[[metrics-list]]
+=== Index der Kennzahlen für Speicheroperationen (auf einen Blick)
+
+Die Metriktypen orientieren sich an gängigen Ergebnissen der Speicherverwaltung, einschließlich Leistungsengpässen, Kapazitätsdruck, Gesundheitsrisiken und Alarmaufkommen.
+
+[cols="18,37,30,15"]
+|===
+| Metrischer Typ | Unterstützte Metriken | Anwendungsfall für Storage-Administratoren | Detaillierte Vorlagen 
+
+
+| Performance | Durchschnittliche Latenz, Spitzenlatenz, IOPS, Durchsatz (MB/s), Auslastung, Performance-Kapazität | Engpässe, kontinuierlichen Druck und Leistungsspielraum erkennen | <<performance-templates,Zu den Vorlagen>> 
+
+
+| Kapazität | Belegte Kapazität, freie Kapazität, genutzte Kapazität (%), genutzte Snapshot-Kapazität | Wachstum nachverfolgen, Bereiche mit geringer freier Kapazität identifizieren und Snapshot-Auswirkungen überwachen | <<capacity-templates,Zu den Vorlagen>> 
+
+
+| Systemzustand | Gesundheitszustand, beeinträchtigte/kritische Objekte, ausgefallene Festplatten, Netzwerkschnittstellenfehler, Hot Objects (nach Latenz) | Gesundheitsrückschritte erkennen und operative Triage priorisieren | <<health-templates,Zu den Vorlagen>> 
+
+
+| Warnmeldungen | Warnungen (kritisch), Warnungen nach Schweregrad, Warnungen nach Wirkungsbereich, aktuelle Warnungen, Warnungstrend | Aktive Vorfälle und die Entwicklung des Alarmaufkommens im Zeitverlauf überwachen | <<alerts-templates,Zu den Vorlagen>> 
+|===
+
+
+[[supported-ontap-object-hierarchy-resource-types]]
+=== Unterstützte ONTAP Objekthierarchie (Ressourcentypen)
+
+Kartendaten können auf mehreren ONTAP Objektebenen dargestellt werden, von der Flottenübersicht bis zur Fehlerbehebung auf Objektebene.
+
+*Ressourcentyp*-Einstellungen entsprechen einer oder mehreren der folgenden Ressourcenebenen:
+
+* Flotte
+* Cluster
+* System (Knoten)
+* SVM
+* Volumen
+* LUN
+* Lokale Ebene (Aggregate)
+
+
+Die verfügbaren Ressourcenebenen hängen von der gewählten Vorlage und Metrik ab.
+
+
+
+[[chart-types-for-operational-analysis]]
+=== Diagrammtypen für die operative Analyse
+
+Der Diagrammtyp beeinflusst, wie schnell Sie Trends, Vergleiche, Verteilungen und zeitpunktgenaue Werte interpretieren können.
+
+[cols="25,75"]
+|===
+| Diagrammtyp | Am besten geeignet für 
+
+
+| Liniendiagramm | Zeitreihen-Trends, wie Latenz, IOPS, Durchsatz, Auslastung und Alarmtrends im Zeitverlauf. 
+
+
+| Balkendiagramm | Kategorischer Vergleich und Verteilung, z. B. Warnungen nach Schweregrad oder Impact-Bereich. 
+
+
+| Kreisdiagramm oder Donut | Proportionale Verteilung, wie zum Beispiel der Prozentsatz der genutzten Kapazität. 
+
+
+| Tabelle | Detaillierte, mehrspaltige Daten, wie verwendete Kapazität, Gesundheitszustand und aktuelle Warnmeldungen. 
+
+
+| Einzelne Zahl (stat) | Ein einzelner Schlüsselwert auf einen Blick, wie die Anzahl kritischer Warnmeldungen oder ausgefallener Festplatten. 
+|===
+
+
+[[performance-templates-for-workload-triage]]
+[[performance-templates]]
+=== Leistungsvorlagen für die Arbeitslast-Triage
+
+Leistungsvorlagen konzentrieren sich auf Latenz-, Durchsatz- und Auslastungssignale, die auf Arbeitslastdruck hinweisen.
+
+[cols="25,20,55"]
+|===
+| Vorlage | Diagrammtyp | Beschreibung 
+
+
+| Durchschnittliche Latenz | Linie | Durchschnittliche Latenz der ausgewählten Ziele im gewählten Zeitfenster. 
+
+
+| Spitzenlatenz | Linie | Maximale Latenz, die bei den ausgewählten Zielen im gewählten Zeitfenster beobachtet wurde. 
+
+
+| IOPS | Linie | Summe der I/O-Operationen pro Sekunde über die ausgewählten Ziele hinweg. 
+
+
+| Durchsatz (MB/s) | Linie | Summe des Datendurchsatzes über die ausgewählten Ziele. 
+
+
+| Verwendung | Linie | Durchschnittliche CPU- oder Festplattenauslastung über die ausgewählten Ziele hinweg. 
+
+
+| Performance-Kapazität | Tabelle | Headroom Analyse im Vergleich der aktuellen Auslastung zum optimalen Punkt. 
+|===
+
+
+[[capacity-templates-for-growth-and-headroom]]
+[[capacity-templates]]
+=== Kapazitätsvorlagen für Wachstum und Spielraum
+
+Kapazitätsvorlagen konzentrieren sich auf verbrauchten und verfügbaren Platz, um die Wachstumsplanung und Risikoerkennung zu unterstützen.
+
+[cols="25,20,55"]
+|===
+| Vorlage | Diagrammtyp | Beschreibung 
+
+
+| Verwendete Kapazität | Tabelle | Summe der genutzten Kapazität über die ausgewählten Ziele hinweg. 
+
+
+| Freie Kapazität | Tabelle | Summe der freien oder verfügbaren Kapazität über die ausgewählten Ziele hinweg. 
+
+
+| Verwendete Kapazität (%) | Kreisdiagramm oder Donut | Durchschnittliches Verhältnis von Verbrauch zu Gesamtmenge über die ausgewählten Ziele hinweg. 
+
+
+| Verwendete Snapshot-Kapazität | Tabelle | Summe des von den ausgewählten Zielen belegten Snapshot-Speicherplatzes. 
+|===
+
+
+[[health-templates-for-risk-detection]]
+[[health-templates]]
+=== Gesundheitsvorlagen zur Risikoerkennung
+
+Gesundheitsvorlagen konzentrieren sich auf Objektstatus und Fehlerindikatoren, um die operative Triage zu unterstützen.
+
+[cols="25,20,55"]
+|===
+| Vorlage | Diagrammtyp | Beschreibung 
+
+
+| Gesundheitszustand | Tabelle | Aktueller Gesundheitszustand für jedes ausgewählte Zielobjekt. 
+
+
+| Beeinträchtigte/kritische Objekte | Einzelne Nummer | Anzahl der Objekte, deren Gesundheitszustand nicht OK ist. 
+
+
+| Ausgefallene Festplatten | Einzelne Nummer | Summe der ausgefallenen Festplatten in den ausgewählten Systemen. 
+
+
+| Netzwerkschnittstellenfehler | Kreisdiagramm oder Donut | Summe der Fehlerzähler der Netzwerkschnittstellen über die ausgewählten Ziele hinweg. 
+
+
+| Hot Objects (nach Latenz) | Tabelle | Ressourcen, sortiert nach Spitzenlatenz, in absteigender Reihenfolge. 
+|===
+
+
+[[alerts-templates-for-incident-prioritization]]
+[[alerts-templates]]
+=== Alarmvorlagen zur Priorisierung von Vorfällen
+
+Die Vorlagen für Warnmeldungen konzentrieren sich auf das Vorfallvolumen, den Schweregrad und den Auswirkungsbereich, um die Überwachung und Priorisierung zu unterstützen.
+
+[cols="25,20,55"]
+|===
+| Vorlage | Diagrammtyp | Beschreibung 
+
+
+| Warnungen (Kritisch) | Einzelne Nummer | Anzahl der Warnmeldungen mit kritischem Schweregrad innerhalb des Zeitfensters. 
+
+
+| Warnungen nach Schweregrad | Bar | Warnmeldungen nach Schweregrad gruppiert. 
+
+
+| Warnungen nach Wirkungsbereich | Bar | Warnmeldungen gruppiert nach Wirkungsbereich, wie Kapazität, Performance oder Sicherheit. 
+
+
+| Aktuelle Warnmeldungen | Tabelle | Die aktuellsten Warnmeldungen, sortiert nach Zeit in absteigender Reihenfolge. 
+
+
+| Alarmtrend | Linie | Anzahl der Alarme pro Zeitintervall im gewählten Zeitfenster. 
+|===
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:task-dashboard-create.html["Ein benutzerdefiniertes Dashboard erstellen"]
+* link:task-customize-dashboard-cards.html["Anpassen von Dashboard-Karten in der lokalen NetApp Console-Bereitstellung"]
+* link:task-dashboard-manage.html["Benutzerdefinierte Dashboards verwalten"]
+

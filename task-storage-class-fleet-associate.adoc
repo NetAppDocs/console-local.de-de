@@ -1,0 +1,38 @@
+---
+sidebar: sidebar 
+permalink: task-storage-class-fleet-associate.html 
+keywords: associate, storage class, fleet, assign, netapp console 
+summary: Einer Flotte in der lokalen NetApp Console-Bereitstellung kann eine Speicherklasse zugeordnet werden, um konsistente Speicherrichtlinien anzuwenden. 
+---
+= Speicherklassen mit Flotten in der lokalen NetApp Console-Bereitstellung verknüpfen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Speicherklassen können mit Flotten in der lokalen Bereitstellung der NetApp Console verknüpft werden, um umgebungsspezifische Standards durchzusetzen, zu steuern, welche Optionen Bediener nutzen können, und die Konformitätsprüfungen anhand der zugewiesenen Klassen zu vereinfachen.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator, Ordner- oder Flottenadministrator oder Speicheradministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+
+
+[[associate-a-storage-class-with-a-fleet]]
+== Einer Flotte eine Storage-Klasse zuordnen
+
+Einer Flotte wird eine Speicherklasse zugeordnet, sodass sie innerhalb dieser Flotte für die Bereitstellung und die kontinuierliche Compliance-Überwachung verfügbar ist.
+
+.Schritte
+. Öffnen Sie die Flotte, die Sie verwalten möchten.
+. Der Bereich zur Flottenkonfiguration für Speicherklassen befindet sich an folgender Stelle.
+. Wählen Sie eine oder mehrere Storage-Klassen aus, die der Flotte zugeordnet werden.
+. *Speichern* auswählen.
+
+
+.Verifizieren
+. Ein Bereitstellungsworkflow in der Flotte wird gestartet und es wird bestätigt, dass die Speicherklasse zur Auswahl verfügbar ist.
+

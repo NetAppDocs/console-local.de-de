@@ -1,0 +1,127 @@
+---
+sidebar: sidebar 
+permalink: task-user-settings.html 
+keywords: user profile, mfa, change password, role, login, multi-factor, authentication, dark mode, read-only mode, contact admin, AD, Active Directory, directory services 
+summary: 'Sie können Ihr NetApp Console-Profil bearbeiten, einschließlich der Änderung Ihres Passworts, der Aktivierung der Multi-Faktor-Authentifizierung (MFA) und der Anzeige, wer Ihr NetApp Console-Administrator ist.' 
+---
+= Verwaltung der Benutzereinstellungen Ihrer lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung kann das lokale Console-Bereitstellungsprofil geändert werden, einschließlich der Änderung des Passworts, der Aktivierung der Multi-Faktor-Authentifizierung (MFA) und der Anzeige, wer der Console-Administrator ist.
+
+
+
+[[change-your-display-name]]
+== Anzeigename ändern
+
+Sie können Ihren lokalen Anzeigenamen für die Console-Bereitstellung ändern, der Sie für andere Benutzer identifiziert. Ihr Benutzername und Ihre E-Mail-Adresse können nicht geändert werden.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der lokalen Konsolenbereitstellung öffnet das Benutzereinstellungsfeld.
+. Das Symbol *Bearbeiten* neben Ihrem Namen auswählen.
+. Geben Sie Ihren neuen Anzeigenamen im Feld *Name* ein.
+
+
+
+
+[[configure-multi-factor-authentication]]
+[[task-user-mfa]]
+== Multifaktor-Authentifizierung konfigurieren
+
+Die Multi-Faktor-Authentifizierung (MFA) kann konfiguriert werden, um die Sicherheit zu erhöhen, indem beim Anmelden an der lokalen NetAppConsole-Bereitstellung eine zweite Verifizierungsmethode erforderlich ist.
+
+Nutzer, die sich über die NetApp Support Site anmelden, können MFA nicht aktivieren. Wenn dies auf Sie zutrifft, wird die Option zur Aktivierung von MFA in Ihren Profileinstellungen nicht angezeigt.
+
+Die Multi-Faktor-Authentifizierung sollte nicht aktiviert werden, wenn Ihr Benutzerkonto für den API-Zugriff verwendet wird. Multi-Faktor-Authentifizierung verhindert den API-Zugriff, wenn sie für ein Benutzerkonto aktiviert ist. Für den gesamten API-Zugriff sind Dienstkonten zu verwenden.
+
+
+NOTE: Sie können MFA für Ihr Konto nicht über die lokale Bereitstellung der Konsole konfigurieren, wenn Ihr Konto Active Directory oder einen anderen integrierten Verzeichnisdienst für die Authentifizierung verwendet.
+
+.Bevor Sie beginnen
+* Sie müssen bereits eine Authentifizierungs-App, wie Google Authenticator oder Microsoft Authenticator, auf Ihr Gerät heruntergeladen haben.
+* Sie benötigen Ihr Passwort, um die Multi-Faktor-Authentifizierung einzurichten.
+
+
+
+NOTE: Wenn Sie keinen Zugriff auf Ihre Authentifizierungs-App haben oder Ihren Wiederherstellungscode verlieren, kann Ihr NetApp Console-Administrator Unterstützung bieten.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der Konsole zeigt das Benutzereinstellungsfeld an.
+. Neben der Überschrift *Multi-Factor Authentication* die Option *Configure* auswählen.
+. Folgen Sie den Anweisungen, um die Multi-Faktor-Authentifizierung für Ihr Konto einzurichten.
+. Nach Abschluss des Vorgangs werden Sie aufgefordert, Ihre Wiederherstellungscodes zu speichern. Es besteht die Möglichkeit, die Codes entweder zu kopieren oder eine Textdatei mit den Codes herunterzuladen. Diese Codes sollten an einem sicheren Ort aufbewahrt werden. Die Wiederherstellungscodes werden benötigt, falls der Zugriff auf die Authentifizierungs-App verloren geht.
++
+
+NOTE: Falls Sie sich mit einem Wiederherstellungscode anmelden müssen, verwenden Sie diese in der Reihenfolge, die in der Benutzeroberfläche während der Aufforderung zur Eingabe des Wiederherstellungscodes angezeigt wird.
+
++
+Nachdem Sie die Multi-Faktor-Authentifizierung (MFA) eingerichtet haben, fordert die lokale NetApp Console-Bereitstellung Sie bei jeder Anmeldung auf, einen Einmalcode aus Ihrer Authentifizierungs-App einzugeben.
+
+
+
+
+
+[[regenerate-your-mfa-recovery-code]]
+== Ihren MFA-Wiederherstellungscode neu generieren
+
+Ein Wiederherstellungscode kann nur einmal verwendet werden. Wenn Sie Ihren verlieren, erstellen Sie einen neuen.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der lokalen NetApp Console-Bereitstellung zeigt das Benutzereinstellungsfeld an.
+. Wählen Sie image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] neben der Überschrift *Multi-Faktor-Authentifizierung* aus.
+. *Wiederherstellungscode neu generieren* auswählen.
+. Kopieren Sie die generierten Wiederherstellungscodes und speichern Sie sie an einem sicheren Ort.
+
+
+
+
+[[delete-your-mfa-configuration]]
+== Ihre MFA Konfiguration löschen
+
+Durch das Löschen der Multi-Faktor-Authentifizierung (MFA) entfällt der zweite Verifizierungsschritt bei Ihrer nächsten Anmeldung. Um MFA erneut zu verwenden, muss sie in Ihren Benutzereinstellungen erneut konfiguriert werden.
+
+
+NOTE: Falls Sie nicht auf Ihre Authentifizierungs-App oder Ihren Wiederherstellungscode zugreifen können, ist eine Kontaktaufnahme mit Ihrem Organisationsadministrator erforderlich, um Ihre MFA Konfiguration zurückzusetzen.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der lokalen Konsolenbereitstellung öffnet das Benutzereinstellungsfeld.
+. Wählen Sie image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] neben der Überschrift *Multi-Faktor-Authentifizierung* aus.
+. Wählen Sie *Delete*.
+
+
+
+
+[[contact-your-organization-administrator]]
+[[contact-admin]]
+== Wenden Sie sich an Ihren Organisationsadministrator
+
+Wenn Sie den Administrator Ihrer Organisation kontaktieren müssen, können Sie ihm direkt aus der Console eine E-Mail senden. Der Administrator verwaltet die Benutzerkonten und Berechtigungen innerhalb Ihrer Organisation.
+
+
+NOTE: Für die Nutzung der Funktion *Administratoren kontaktieren* muss für Ihren Browser eine Standard-E-Mail-Anwendung konfiguriert sein.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der lokalen Konsolenbereitstellung öffnet das Benutzereinstellungsfeld.
+. *Administratoren kontaktieren* auswählen, um eine E-Mail an den Administrator Ihrer Organisation zu senden.
+. Die zu verwendende E-Mail-Anwendung auswählen.
+. Die E-Mail fertigstellen und *Senden* auswählen.
+
+
+
+
+[[configure-dark-mode-dark-theme]]
+== Dunkelmodus konfigurieren (dunkles Design)
+
+Die lokale NetApp Console-Bereitstellung kann im Dunkelmodus angezeigt werden.
+
+.Schritte
+. Das Profilsymbol in der oberen rechten Ecke der lokalen Konsolenbereitstellung öffnet das Benutzereinstellungsfeld.
+. Den Schieberegler für das *Dark theme* nach rechts bewegen, um es zu aktivieren.
+

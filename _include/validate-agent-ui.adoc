@@ -1,0 +1,18 @@
+= 
+:allow-uri-read: 
+
+
+Wenn auf der Seite *Überprüfung* das Kästchen *Agentenkonfiguration validieren* ausgewählt wurde, überprüft die Konsole die Konfiguration des Konsolenagenten, nachdem dieser erstellt wurde. Wenn die Konsole den Agenten nicht bereitstellen kann, wird ein herunterladbarer Bericht zur Fehlerbehebung bereitgestellt.
+
+
+NOTE: Wenn die Konsole den Agenten erfolgreich bereitstellt, wird kein Bericht generiert und ein Bestätigungsdialog angezeigt, der eine erfolgreiche Bereitstellung bestätigt.
+
+.Schritte
+. Im Dialogfeld *Agentenbereitstellung fehlgeschlagen* *Bericht herunterladen* auswählen, um eine PDF-Datei mit dem Validierungsbericht herunterzuladen.
+. Alternativ besteht die Möglichkeit, *Von vorne beginnen* auszuwählen, um zum *Deploy agent*-Assistenten zurückzukehren und es erneut zu versuchen.
++
+Der gesamte Vorgang muss von vorne begonnen werden, wenn versucht wird, den Agenten erneut bereitzustellen.
+
+
+
+Zugriff auf den Bericht und die Protokolle vom Console-Agent-Host

@@ -1,0 +1,176 @@
+---
+sidebar: sidebar 
+permalink: faq-netapp-console-local.html 
+keywords: faq, frequently asked questions, frequently asked questions about netapp console local, netapp console local, storage classes, storage class policies, storage fleets, folders, rbac, role inheritance, active directory, mfa, workload analyzer, alerts, custom dashboards, llm, ai-assisted management, backup and recovery, audit, ontap 
+summary: Häufig gestellte Fragen zur lokalen Bereitstellung der NetApp Console, einschließlich Bereitstellung, Speicherklassen, Flotten, RBAC, Überwachung, KI-gestütztem Management und Datenschutz. 
+---
+= Häufig gestellte Fragen zur lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Diese FAQ beantwortet häufig gestellte Fragen zur lokalen NetApp Console-Bereitstellung. Im Mittelpunkt stehen Konzepte, Voraussetzungen und das Systemverhalten, die bei der Bereitstellung, Einrichtung und Verwaltung der lokalen Console-Bereitstellung hilfreich sind.
+
+
+
+[[get-started-with-netapp-console-local-deployment]]
+== Erste Schritte mit der lokalen Bereitstellung der NetApp Console
+
+.Was ist die lokale NetApp Console-Bereitstellung und warum würde die selbstgehostete Option verwendet?
+NetApp Console lokale Bereitstellung ist eine selbstgehostete Bereitstellungsoption, die die Console-Steuerungsebene in Ihrer eigenen On-Premises-Umgebung ausführt. Sie bietet einheitliches Speichermanagement und Automatisierung, einschließlich Bereitstellung, Richtliniendurchsetzung, Abweichungserkennung und -behebung, wobei Ihre Daten, Metadaten und der gesamte Verwaltungsdatenverkehr vollständig innerhalb Ihrer eigenen Infrastruktur verbleiben, sodass operative Vorteile erzielt werden, ohne die Datenhoheit zu beeinträchtigen. link:concept-netapp-console-local.html["Informationen zur lokalen Bereitstellung der NetApp Console"].
+
+.Wie erfolgt die lokale Bereitstellung der NetApp Console?
+Die lokale NetApp Console-Bereitstellung wird als virtuelle Appliance in Ihrer VMware vCenter Umgebung mithilfe eines vorkonfigurierten OVA-Images bereitgestellt. Nach der Bereitstellung können der Speicher erkannt, Mitglieder hinzugefügt und Rollen zugewiesen werden, um den Einstieg zu ermöglichen. link:concept-deploy-netapp-console-local.html["Informationen zu den Bereitstellungsoptionen"].
+
+.Wird eine Lizenz oder ein Abonnement benötigt, um die lokale Bereitstellung von NetApp Console zu nutzen?
+Nein. Für die Nutzung der lokalen NetApp Console-Bereitstellung ist keine Lizenz oder kein Abonnement erforderlich. Einige NetApp Datendienste, die über die lokale Console-Bereitstellung zugänglich sind, wie zum Beispiel NetApp Backup and Recovery, sind jedoch lizenz- oder abonnementbasiert und können kostenpflichtig sein.
+
+.Wie lautet die empfohlene Reihenfolge für die Einrichtung der Speicherverwaltung bei lokaler Bereitstellung der NetApp Console?
+Der typische Arbeitsablauf besteht darin, Speichersysteme den richtigen Flotten zuzuordnen, Speicherklassenrichtlinien zu definieren, Speicherklassen aus diesen Richtlinien zu erstellen, Klassen den Flotten zuzuordnen, in denen sie anwendbar sind, Volumes oder LUNs mithilfe einer Klasse bereitzustellen und anschließend Abweichungen zu überwachen und zu beheben, um die Workloads aufeinander abzustimmen. link:concept-manage-storage.html["Informationen zur Verwaltung von Speicher"].
+
+
+
+[[storage-classes-and-policies]]
+== Speicherklassen und Richtlinien
+
+.Was ist eine Speicherklasse und warum würde ich eine verwenden?
+Eine Speicherklasse ist eine wiederverwendbare Vorlage, die die Speicherstandards Ihres Unternehmens, wie Leistung, Kapazität, Sicherheit und Datenschutz, in einem einzigen benannten Objekt aus Speicherklassenrichtlinien zusammenfasst. Bei der Bereitstellung mithilfe einer Speicherklasse werden diese Standards durch die lokale Console-Bereitstellung automatisch durchgesetzt, ohne dass Konfigurationsentscheidungen pro Workload erforderlich sind. Anschließend erfolgt eine Überwachung des Workloads anhand der Klasse, und es erfolgt eine Benachrichtigung, falls die Standards nicht mehr eingehalten werden. link:concept-storage-classes.html["Informationen zu Speicherklassen"].
+
+.Was sind Speicherklassenrichtlinien und wie stehen sie in Beziehung zu Speicherklassen?
+Speicherklassenrichtlinien sind die Bausteine, mit denen eine Speicherklasse erstellt wird. Jede Richtlinie steuert eine Dimension des Speicherverhaltens, sodass Richtlinien unabhängig definiert und anschließend zu einer Klasse zusammengefügt werden. So kann dieselbe Richtlinie in mehreren Klassen wiederverwendet oder eine Richtlinie an einer Stelle aktualisiert und diese Änderung auf alle Klassen angewendet werden, die sie nutzen. link:concept-storage-class-policies.html["Informationen zu Speicherklassenrichtlinien"].
+
+.Welche Arten von Speicherklassenrichtlinien können erstellt werden?
+NetApp Console lokale Bereitstellung umfasst vier Arten von Speicherklassenrichtlinien:
+
+* *Leistungsrichtlinie*: Legt die erwarteten IOPS/TB, die Spitzen-IOPS/TB, die absolut minimalen IOPS und die erwarteten Latenzziele fest, die für die Platzierung und die Drifterkennung verwendet werden.
+* *Kapazitätsrichtlinie*: Steuert Speicherplatzreservierung, automatische Erweiterung, FabricPool Tiering sowie FlexVol oder FlexGroup Bereitstellung für NAS.
+* *Sicherheitsrichtlinie*: Legt Verschlüsselung, Ransomware-Schutz und FIPS-Anforderungen fest.
+* *Datensicherungsstrategie*: Legt die Anzahl der in jedem Intervall aufbewahrten Snapshots für einen konsistenten Sicherungsplan fest.
+
+
+link:concept-storage-class-policies.html["Informationen zu Speicherklassenrichtlinien"].
+
+.Muss ich Speicherklassen und Richtlinien von Grund auf neu erstellen?
+Nein. Die lokale Bereitstellung der Konsole umfasst systemdefinierte Richtlinien für alle vier Richtlinientypen und vordefinierte Speicherklassen. Diese können unverändert verwendet oder als Ausgangspunkt für benutzerdefinierte Richtlinien und Klassen kopiert werden, die auf die Anforderungen Ihrer Organisation zugeschnitten sind. link:concept-storage-class-policies.html["Informationen zu Speicherklassenrichtlinien"].
+
+.Was muss eingerichtet werden, bevor eine Speicherklasse erstellt werden kann?
+Bevor Sie eine Speicherklasse erstellen, sollte Folgendes beachtet werden:
+
+* Mindestens ein ONTAP Cluster muss erkannt werden, damit die lokale NetApp Console-Bereitstellung während der Platzierung Speicherziele zur Auswertung hat.
+* Die Administratorrolle der Organisation ist erforderlich.
+* Speicherklassenrichtlinien, die Ihre Leistungs-, Kapazitäts- und sonstigen Anforderungen abbilden, sind zu erstellen, da Klassen aus Richtlinien zusammengesetzt werden.
+
+
+link:concept-storage-classes.html["Informationen zu Speicherklassen"].
+
+.Was passiert, wenn eine Arbeitslast die Anforderungen ihrer Speicherklasse nicht mehr erfüllt?
+Nach der Bereitstellung prüft die lokale NetApp Console-Bereitstellung kontinuierlich jede Arbeitslast anhand ihrer Speicherklasse. Wenn eine Arbeitslast abweicht, sei es durch eine direkte Änderung der Clusterkonfiguration oder durch nachlassende Leistung, kennzeichnet die NetApp Console den Verstoß sofort und gibt eine Warnung aus. Geführte Schritte zur Behebung können genutzt oder eine automatisierte Behebung konfiguriert werden, um häufige Abweichungen zu beheben. link:concept-storage-classes.html["Informationen zu Speicherklassen"].
+
+
+
+[[storage-fleets-and-folders]]
+== Speicherflotten und Ordner
+
+.Was ist eine Storage Fleet und warum sollte eine verwendet werden?
+Eine Speicherflotte gruppiert gemeinsam verwaltete Speichersysteme. Statt Richtlinien oder Zugriffsrechte für jeden Cluster einzeln zu konfigurieren, werden diese einmalig auf Flottenebene angewendet, sodass alle Cluster in der Flotte nach denselben Standards arbeiten, was wiederholte Arbeit reduziert und ein konsistentes Verhalten gewährleistet. link:concept-storage-fleets.html["Informationen zu Storage-Fleets"].
+
+.Worin besteht der Unterschied zwischen Ordnern und Flotten?
+Ordner gruppieren zusammengehörige Flotten (z. B. nach Region oder Geschäftseinheit) und können keine Speichersysteme direkt zugeordnet bekommen, während Flotten die von Ihnen verwalteten Speichersysteme zusammenfassen. Ordner sind ein Werkzeug zur Organisation und Zugriffsdelegation, das für Mitglieder ohne IAM-Berechtigungen nicht sichtbar ist, da Mitglieder auf Flotten und nicht auf Ordner zugreifen. link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten"].
+
+.Wie wirkt sich die Zuordnung einer Speicherklasse zu einer Flotte auf die Bereitstellung aus?
+Wenn eine Speicherklasse einer Flotte zugeordnet wird, wendet die lokale Bereitstellung in der NetApp Console die Richtlinien dieser Klasse auf alle Bereitstellungen innerhalb der Flotte an. Die in der Flotte bereitgestellten Workloads übernehmen automatisch die Leistungs-, Kapazitäts- und Tiering-Regeln, ohne dass Administratoren Einstellungen auswählen oder überprüfen, wodurch die Zuordnung von Flotte zu Klasse zur primären Methode wird, um konsistente Standards über Cluster hinweg durchzusetzen. link:concept-storage-fleets.html["Informationen zu Storage-Fleets"].
+
+
+
+[[provisioning-storage]]
+== Storage-Bereitstellung
+
+.Welche Bereitstellungsmethoden unterstützt die lokale Bereitstellung von NetApp Console?
+NetApp Console lokale Bereitstellung unterstützt drei Bereitstellungs-Workflows, die alle Speicherklassen erzwingen und weiterhin durch rollenbasierte Zugriffssteuerung und Audit-Protokollierung geregelt werden:
+
+* *Manuelle Bereitstellung*: Sie wählen das Zielsystem und die Konfigurationsdetails für die explizite Steuerung.
+* *Automatisierte Bereitstellung*: Sie geben die Arbeitslastparameter und optional eine Speicherklasse an, und die Console empfiehlt die optimale Platzierung.
+* *KI-gestützte (agentenbasierte) Bereitstellung*: Die Anforderungen werden in natürlicher Sprache beschrieben, und die Console schlägt einen Plan vor, der überprüft und genehmigt wird, bevor die Bereitstellung erfolgt.
+
+
+link:concept-manage-storage.html["Informationen zur Verwaltung von Speicher"].
+
+
+
+[[monitoring-and-alerts]]
+== Überwachung und Warnmeldungen
+
+.Wie werden Zustand und Leistung des Speichers überwacht?
+NetApp Console lokale Bereitstellung bietet flottenweite Dashboards für Zustand und Leistung, um Cluster oder Volumes zu identifizieren, die Aufmerksamkeit erfordern, den Workload Analyzer für detaillierte Volume-Analysen, konfigurierbare Warnungen und Benachrichtigungen sowie geführte oder automatisierte Behebungsmaßnahmen. link:concept-monitor-storage.html["Informationen zur Speicherüberwachung"].
+
+.Was macht der Workload Analyzer?
+Der Workload Analyzer visualisiert das Verhalten eines einzelnen Volumes im Zeitverlauf und korreliert Latenz, Durchsatz, IOPS, Ressourcenauslastung, Kapazität und Konfigurationsänderungen innerhalb desselben Fensters, sodass die Ursachen präzise ermittelt werden können. Es lässt sich feststellen, ob der Speicher oder eine andere Ebene, wie beispielsweise das Netzwerk, die Ursache eines Anwendungsproblems ist, und direkt im Analyzer können Empfehlungen zur Fehlerbehebung umgesetzt werden. link:concept-workload-analyzer.html["Informationen zum Workload Analyzer"].
+
+.Warum kann ein Volumen eine hohe Latenz aufweisen, obwohl die Leistungsdiagramme normal aussehen?
+Eine geringe verfügbare Kapazität kann die Ursache sein. Wenn ein ONTAP System zu mehr als 85 % ausgelastet ist, kann die hohe Auslastung selbst Leistungsprobleme verursachen, sodass der Kapazitätsbereich des Workload Analyzers Latenzzeiten erklären kann, die in den Leistungsdiagrammen allein nicht erfasst werden. link:concept-workload-analyzer.html["Informationen zum Workload Analyzer"].
+
+.Woher stammen die Warnmeldungen in der lokalen NetApp Console-Bereitstellung und wie werden sie kategorisiert?
+Warnmeldungen stammen vom ONTAP Event Management System (EMS) auf erkannten Clustern sowie von NetApp Backup and Recovery Vorgängen und werden in einer einzigen unternehmensweiten Ansicht zusammengeführt. Jede Warnmeldung identifiziert das betroffene System, einen Schweregrad (wie kritisch, Warnung oder Information) und einen betroffenen Bereich (Kapazität, Konnektivität, Datensicherung, Leistung oder Sicherheit). Die Konsole zeigt Warnmeldungen nur für die Flotten an, für die Ihre Berechtigungen dies erlauben. link:concept-console-alerts.html["Informationen zu Benachrichtigungen"].
+
+.Wie legen die Benachrichtigungsregeln für Warnmeldungen fest, wer benachrichtigt wird?
+Eine Benachrichtigungsregel gleicht Warnmeldungen hinsichtlich Dienst, Schweregrad, Auswirkungsbereich und Zielsystem ab und sendet Benachrichtigungen per E-Mail oder Webhook an Benutzer mit festgelegten Zugriffsrollen. Zu beachten ist, dass Regeln für einzelne Systeme und nicht für Flotten gelten und während geplanter Wartungsfenster stummgeschaltet werden können. Die Konsole enthält Standardregeln und ermöglicht die Erstellung benutzerdefinierter Regeln. link:concept-console-alerts.html["Informationen zu Benachrichtigungen"].
+
+.Welche Möglichkeiten bieten benutzerdefinierte Dashboards?
+Benutzerdefinierte Dashboards ermöglichen den Aufbau personalisierter Überwachungsansichten, indem Karten aus vordefinierten Vorlagen zusammengestellt und Umfang, Metriken, Aggregation, Zielressourcen sowie der Zeitraum ausgewählt werden. Die Vorlagen decken Leistung, Kapazität, Zustand und Warnmeldungen ab, und Karten können auf jede Ebene der ONTAP Hierarchie beschränkt werden. Jedes Dashboard und jede Karte ist privat und zeigt Daten nur für Ressourcen an, für die eine Autorisierung zum Anzeigen besteht. link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"].
+
+
+
+[[identity-and-access]]
+== Identität und Zugriff
+
+.Wie funktioniert die rollenbasierte Zugriffssteuerung bei der lokalen Bereitstellung der NetApp Console?
+RBAC ermöglicht die Zuweisung vordefinierter, minimal privilegierter Rollen an Mitglieder auf Organisations-, Ordner- oder Flottenebene, wobei dieselbe Rolle je nach Zuweisungsbereich unterschiedliche effektive Zugriffsrechte gewährt. Dadurch erhalten zentrale Administratoren umfassenden Zugriff, während regionale oder Teamadministratoren auf die von ihnen verwalteten Flotten beschränkt werden. link:concept-iam-rbac.html["Informationen zur rollenbasierten Zugriffssteuerung"].
+
+.Wie funktioniert die Rollenvererbung, und kann sie auf einer niedrigeren Ebene überschrieben werden?
+Eine auf Organisations- oder Ordnerebene zugewiesene Rolle wird an alle untergeordneten Ordner, Flotten und Ressourcen vererbt, sodass Ihre Ordner- und Flottenstruktur bestimmt, wie weitreichend eine Zuweisung gilt. Vererbte Zugriffsrechte können auf einer niedrigeren Ebene nicht überschrieben werden; um sie zu ändern, muss die Zuweisung auf der höheren Ebene angepasst werden, auf der sie ursprünglich erteilt wurde. link:concept-iam-rbac.html#role-inheritance["Informationen zur Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+.Welche Kategorien vordefinierter Rollen stehen zur Verfügung?
+NetApp Console-Lokalbereitstellungsgruppen ordnen vordefinierte Rollen in drei Kategorien ein:
+
+* *Plattformrollen*: Konsolenadministrationsberechtigungen, wie zum Beispiel Organisationsadministrator, Ordner- oder Flottenadministrator, Föderationsadministrator sowie Superadministrator oder Superbetrachter.
+* *Anwendungsrollen*: Speicher- und Überwachungsberechtigungen, wie Speicheradministrator, Speicherbetrachter und Betriebssupportanalyst.
+* *Datendienstrollen*: Berechtigungen für bestimmte Datendienste, wie die Backup and Recovery Rollen und den Classification Viewer.
+
+
+link:reference-iam-predefined-roles.html["Informationen zu den vordefinierten Zugriffsrollen"].
+
+.Warum sollte die lokale NetApp Console-Bereitstellung mit Active Directory integriert werden?
+Durch die Integration mit Active Directory können sich Benutzer mit ihren bestehenden Unternehmensanmeldeinformationen anmelden, wodurch separate Konsolenpasswörter entfallen und Administratoren Benutzer im Verzeichnis nachschlagen können, wenn sie Zugriffsrechte zuweisen. Die Autorisierung bleibt separat: Die Konsole verwendet weiterhin ihre eigenen Rollen, um zu steuern, was jedes Mitglied tun kann. link:concept-secure-access.html["Informationen zum sicheren Zugriff"].
+
+.Wie funktioniert die Multi-Faktor-Authentifizierung für NetApp Console-Benutzer?
+Lokale Benutzer können die Multi-Faktor-Authentifizierung (MFA) aktivieren, um einen zusätzlichen Verifizierungsschritt hinzuzufügen, der das Risiko unberechtigten Zugriffs bei Kompromittierung von Anmeldeinformationen verringert. Benutzer mit Verzeichnisauthentifizierung können MFA nicht über die lokale NetApp Console-Bereitstellung aktivieren. link:concept-secure-access.html["Informationen zum sicheren Zugriff"].
+
+
+
+[[ai-assisted-management]]
+== KI-gestütztes Management
+
+.Welche LLM-Anbieter werden von der lokalen Bereitstellung der NetApp Console für KI-gestütztes Management unterstützt?
+Sie bringen Ihr eigenes Abonnement oder Ihren eigenen Servicezugang für einen unterstützten Anbietertyp mit: OpenAI oder OpenAI-kompatibel. Anschließend geben Sie während der Konfiguration einen gültigen API-Schlüssel an. Außerdem werden die bereitgestellte Console mit Clusterzugriff, ausgehende Netzwerkverbindung zum konfigurierten Endpunkt, die Organization Admin-Rolle sowie Speicherklassen benötigt, die die Bereitstellung steuern. link:concept-llm-integration.html["Informationen zur LLM-Integration"].
+
+.Werden durch die Aktivierung der LLM-Integration meine Speicherdaten oder Abfragen an einen Drittanbieterdienst gesendet?
+Die Konsole sendet Eingabeaufforderungen und zugehörigen Kontext ausschließlich an den von Ihnen konfigurierten LLM-Endpunkt. Wenn es sich bei diesem Endpunkt um einen Cloud-Dienst eines Drittanbieters handelt, werden die Daten über HTTPS an diesen Dienst gesendet. Wenn es sich bei diesem Endpunkt um einen internen, OpenAI-kompatiblen Dienst handelt, verbleiben die Daten für diese Integration auf Ihrem internen Pfad. Alle KI-Aktionen berücksichtigen Ihre rollenbasierte Zugriffssteuerung, und sensible Vorgänge erfordern Ihre Bestätigung. link:concept-llm-integration.html["Informationen zur LLM-Integration"].
+
+.Was kann der Konsolenassistent leisten und wie lässt sich steuern, ob er meinen Speicher verändert?
+Sobald ein LLM verbunden ist, ermöglicht der Konsolenassistent Benutzern die Bereitstellung von Speicher, die Untersuchung von Warnmeldungen und die Beantwortung von Fragen in natürlicher Sprache. Benutzer wählen einen Zugriffsmodus: Im Modus *Nur lesen* gibt der Assistent Antworten und Anleitungen, ohne Änderungen vorzunehmen, während er im Modus *Lesen/Schreiben* auf die Speicherinfrastruktur zugreifen kann, aber die Details zur Überprüfung und Bestätigung durch den Benutzer vor jeder Änderung anzeigt. link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+
+
+
+[[data-protection-and-auditing]]
+== Datenschutz und Auditierung
+
+.Welche Datenschutzfunktionen sind bei der lokalen Bereitstellung von NetApp Console verfügbar?
+NetApp Console lokale Bereitstellung ermöglicht den Zugriff auf NetApp Backup and Recovery, sodass Daten über dieselbe Oberfläche gesichert und wiederhergestellt werden können, wodurch eine konsistente Governance gewährleistet und die Anzahl der von den Teams verwendeten Tools reduziert wird. link:concept-data-services.html["Informationen zu Datendiensten"].
+
+.Wie unterstützt die lokale Bereitstellung der NetApp Console die Auditierung und Protokollaufbewahrung?
+Jede administrative Aktion erzeugt einen Prüfprotokolleintrag, der auf der Audit-Seite eingesehen und gefiltert werden kann. Prüfprotokolle können über einen Webhook an den eigenen Syslog-Server exportiert werden, sodass sie zentrale Überwachungs- oder SIEM-Tools zur längeren Aufbewahrung und Analyse erreichen, und da die Console in Ihrer Umgebung ausgeführt wird, verlassen die Protokolldaten Ihre Infrastruktur niemals. link:task-audit-console-activity.html["Audit NetApp Console lokale Bereitstellungsaktivität"].

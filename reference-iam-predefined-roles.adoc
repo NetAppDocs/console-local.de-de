@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: reference-iam-predefined-roles.html 
+keywords: predefined roles, iam roles, Organization admin, Folder or fleet admin, Super admin, storage roles, analyst roles, backup and recovery roles, role categories, rbac, identity and access management, access roles, netapp console local 
+summary: NetApp Console lokale Bereitstellungsidentitäts- und Zugriffsverwaltung umfasst vordefinierte Rollen, die den Mitgliedern Ihrer Organisation zugewiesen werden können. 
+---
+= NetApp Console lokale Bereitstellungszugriffsrollen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Identitäts- und Zugriffsverwaltung (IAM) in der lokalen NetApp Console-Bereitstellung bietet vordefinierte Rollen, die Sie den Mitgliedern Ihrer Organisation auf verschiedenen Ebenen Ihrer Ressourcenhierarchie zuweisen können. Vor der Zuweisung dieser Rollen ist es wichtig, die Berechtigungen jeder einzelnen Rolle zu verstehen. Rollen lassen sich in folgende Kategorien einteilen: Plattform, Anwendung und Datendienst.
+
+
+
+[[platform-roles]]
+== Plattformrollen
+
+Plattformrollen gewähren Administrationsberechtigungen für die lokale Bereitstellung der NetApp Console, einschließlich Rollenzuweisung und Benutzerverwaltung. Die lokale Bereitstellung der Console verfügt über mehrere Plattformrollen.
+
+[cols="1,2"]
+|===
+| Plattformrolle | Verantwortlichkeiten 
+
+
+| link:reference-iam-platform-roles.html#organization-admin-roles["Organisationsadministrator"] | Diese Rolle ermöglicht es einem Benutzer, uneingeschränkten Zugriff auf alle Flotten und Ordner innerhalb einer Organisation zu erhalten, Mitglieder zu beliebigen Flotten oder Ordnern hinzuzufügen sowie alle Aufgaben auszuführen und alle Datendienste zu nutzen, denen keine explizite Rolle zugeordnet ist. Benutzer mit dieser Rolle verwalten die Organisation, indem sie Ordner und Flotten erstellen, Rollen zuweisen, Benutzer hinzufügen und Systeme verwalten, sofern sie über die entsprechenden Anmeldeinformationen verfügen. 
+
+
+| link:reference-iam-platform-roles.html#organization-admin-roles["Ordner- oder Flottenadministrator"] | Gewährt einem Benutzer uneingeschränkten Zugriff auf zugewiesene Flotten und Ordner. Kann Mitglieder zu den von ihm verwalteten Ordnern oder Flotten hinzufügen sowie beliebige Aufgaben ausführen und jeden Datendienst oder jede Anwendung auf Ressourcen innerhalb des zugewiesenen Ordners oder der Flotte nutzen. 
+
+
+| link:reference-iam-platform-roles.html#federation-roles["Federation Admin"] | Ermöglicht einem Benutzer, Verzeichnisdienstföderationen mit der Console zu erstellen und zu verwalten, sodass sich Benutzer mit ihren bestehenden Verzeichnisanmeldeinformationen authentifizieren können. 
+
+
+| link:reference-iam-platform-roles.html#federation-roles["Federation Viewer"] | Ermöglicht einem Benutzer, bestehende Verzeichnisdienstverbünde mit der Console anzuzeigen. Kann keine Verbünde erstellen oder verwalten. 
+
+
+| link:reference-iam-platform-roles.html#super-admin-roles["Super-Admin"] | Gewährt dem Benutzer alle Administratorrechte. Diese Rolle ist für kleinere Organisationen konzipiert, die die Konsolenverantwortung möglicherweise nicht auf mehrere Benutzer verteilen müssen. 
+
+
+| link:reference-iam-platform-roles.html#super-admin-roles["Superbetrachter"] | Gewährt dem Benutzer alle Betrachterrollen. Diese Rolle ist für kleinere Organisationen konzipiert, die die Verantwortung für die NetApp Console möglicherweise nicht auf mehrere Benutzer verteilen müssen. 
+|===
+
+
+[[application-roles]]
+== Anwendungsrollen
+
+Nachfolgend ist eine Liste der Rollen in der Anwendungskategorie aufgeführt. Jede Rolle gewährt spezifische Berechtigungen innerhalb ihres festgelegten Bereichs. Benutzer ohne die erforderliche Anwendungs- oder Plattformrolle haben keinen Zugriff auf die jeweilige Anwendung.
+
+[cols="1,2"]
+|===
+| Anwendungsrolle | Verantwortlichkeiten 
+
+
+| link:reference-iam-analyst-roles.html["Analyst für operative Unterstützung"] | Bietet Zugriff auf Warnmeldungen und Überwachungstools wie die Audit-Seite. 
+
+
+| link:reference-iam-storage-roles.html["Speicheradministrator"] | Speicherzustands- und Governance-Funktionen verwalten, Speicherressourcen erkennen sowie bestehende Systeme ändern und löschen. 
+
+
+| link:reference-iam-storage-roles.html["Speicherbetrachter"] | Speicherzustand und Verwaltungsfunktionen einsehen sowie zuvor erkannte Speicherressourcen anzeigen. Bestehende Speichersysteme können nicht erkannt, geändert oder gelöscht werden. 
+
+
+| link:reference-iam-storage-roles.html["System-Health-Spezialist"] | Verwaltung von Speicher-, Systemzustands- und Governance-Funktionen, alle Berechtigungen des Storage-Administrators, jedoch ohne die Möglichkeit, bestehende Systeme zu ändern oder zu löschen. 
+|===
+
+
+[[data-service-roles]]
+== Datendienstrollen
+
+Nachfolgend ist eine Liste der Rollen in der Kategorie Datendienste aufgeführt. Jede Rolle gewährt spezifische Berechtigungen innerhalb ihres festgelegten Bereichs. Benutzer, die nicht über die erforderliche Datendienstrolle oder eine Plattformrolle verfügen, haben keinen Zugriff auf den Datendienst.
+
+[cols="1,2"]
+|===
+| Datendienstrolle | Verantwortlichkeiten 
+
+
+| link:reference-iam-backup-rec-roles.html["Backup und Recovery Superadministrator"] | Beliebige Aktionen in NetApp Backup and Recovery ausführen. 
+
+
+| link:reference-iam-backup-rec-roles.html["Backup und Recovery Administrator"] | Backups auf lokale Snapshots durchführen, auf sekundären Speicher replizieren und auf Objektspeicher sichern. 
+
+
+| link:reference-iam-backup-rec-roles.html["Backup und Recovery Restore-Administrator"] | Stellen Sie Workloads in der Sicherung und Wiederherstellung wieder her. 
+
+
+| link:reference-iam-backup-rec-roles.html["Backup and Recovery Klonadministrator"] | Anwendungen und Daten in der Backup and Recovery klonen. 
+
+
+| link:reference-iam-backup-rec-roles.html["Backup und Recovery-Anzeige"] | Informationen zu Backup und Recovery anzeigen. 
+
+
+| Klassifizierungsbetrachter | Ermöglicht Benutzern, NetApp Data Classification-Scanergebnisse anzuzeigen. Benutzer mit dieser Rolle können Compliance-Informationen anzeigen und Berichte für Ressourcen generieren, auf die sie Zugriff haben. Diese Benutzer können das Scannen von Volumes, Buckets oder Datenbankschemata nicht aktivieren oder deaktivieren. Data Classification hat keine Admin-Rolle. 
+
+
+| SnapCenter Admin | Ermöglicht das Sichern von Snapshots lokaler ONTAP-Cluster mithilfe von NetApp Backup and Recovery für Anwendungen. Ein Mitglied mit dieser Rolle kann die folgenden Aktionen ausführen: * Jede Aktion aus Backup and Recovery > Applications ausführen * Alle Systeme in den Flotten und Ordnern verwalten, für die Berechtigungen bestehen * Alle NetApp Console Services nutzen SnapCenter hat keine Viewer-Rolle. 
+|===
+
+
+[[related-links]]
+== Verwandte Links
+
+* link:concept-identity-and-access-management.html["Erfahren Sie mehr über das NetApp Console-Identitäts- und Zugriffsmanagement"]
+* link:task-iam-fleet-mgmt-get-started.html["Erste Schritte mit Identität und Zugriff in der NetApp Console"]
+* link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen in einer NetApp Console-Organisation zuweisen"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur API für NetApp Console IAM"^]
+

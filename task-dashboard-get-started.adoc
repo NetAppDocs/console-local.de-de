@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-get-started.html 
+keywords: dashboards, quick start, get started, custom dashboards, predefined dashboards, monitoring, netapp console local 
+summary: Mit Dashboards in der lokalen NetApp Console-Bereitstellung vertraut machen, indem die Startseite und vordefinierte Dashboards überprüft, benutzerdefinierte Dashboards erstellt und diese aktuell gehalten werden. 
+---
+= Erste Schritte mit Dashboards in NetApp Console lokale Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung umfasst der Workflow zur Überwachung von allgemeinen zu fokussierten Ansichten: Überprüfung des Dashboards auf der Startseite, Überprüfung vordefinierter Dashboards, Erstellung benutzerdefinierter Dashboards und Aktualisierung der Dashboards.
+
+.Erforderliche Zugriffsrollen
+Alle Rollen. Dashboards zeigen nur die Ressourcen an, zu deren Anzeige Sie berechtigt sind. Wenn eine Ressource nicht in der Liste der verfügbaren Ressourcen erscheint, besteht keine Berechtigung zur Anzeige.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"]Ausgangszustand auf der Startseite prüfen
+[role="quick-margin-para"]
+Das Dashboard auf der Startseite bietet einen Überblick über die Kapazität, Warnmeldungen, Leistung und den Status des Datenschutzes auf Organisationsebene.
+
+[role="quick-margin-list"]
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:concept-monitor-storage.html["Informationen zur Speicherüberwachung in der lokalen NetApp Console-Bereitstellung"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"]Weitere vordefinierte Dashboards anzeigen
+[role="quick-margin-para"]
+*Speicher > Dashboards* öffnen, um vordefinierte Dashboards für zusätzliche, rollenbezogene Ansichten anzuzeigen.
+
+[role="quick-margin-list"]
+* link:task-dashboard-manage.html["Dashboards in der lokalen NetApp Console-Bereitstellung verwalten"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drei"] Benutzerdefinierte Dashboards für gezieltes Monitoring erstellen
+[role="quick-margin-para"]
+Benutzerdefinierte Dashboards bieten gezielte Ansichten für ausgewählte Ressourcen, Kennzahlen und Zeitfenster.
+
+[role="quick-margin-list"]
+* link:task-dashboard-create.html["Ein benutzerdefiniertes Dashboard erstellen"]
+* link:task-customize-dashboard-cards.html["Anpassen von Dashboard-Karten in der lokalen NetApp Console-Bereitstellung"]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"] Dashboards aktuell halten
+[role="quick-margin-para"]
+Dashboards können aktualisiert werden, wenn sich Prioritäten ändern, indem benutzerdefinierte Dashboards bearbeitet, dupliziert oder gelöscht werden.
+
+[role="quick-margin-list"]
+* link:task-dashboard-manage.html["Dashboards in der lokalen NetApp Console-Bereitstellung verwalten"]
+* link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"]
+
+
+.Verwandte Informationen
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+

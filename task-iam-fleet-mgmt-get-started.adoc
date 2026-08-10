@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: task-iam-fleet-mgmt-get-started.html 
+keywords: iam, quick start, get started, get started with iam, identity and access management 
+summary: Identität und Zugriff in der lokalen NetApp Console-Bereitstellung werden eingerichtet, indem die Ordner- und Flottenhierarchie erstellt, Mitglieder hinzugefügt, Ressourcen hinzugefügt und diese Ressourcen den richtigen Flotten zugeordnet werden. 
+---
+= Erste Schritte mit Identität und Zugriff in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bei der lokalen Bereitstellung der NetApp Console werden die Ordner- und Flottenhierarchie eingerichtet, Mitglieder und Startberechtigungen hinzugefügt sowie Ressourcen in den richtigen Flotten platziert, sodass die entsprechenden Teams darauf zugreifen und sie verwalten können.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- oder Flottenadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Für die Ersteinrichtung ist die Rolle *Organisationsadministrator* oder *Superadministrator* erforderlich. Nach der Einrichtung lassen sich Ressourcen, Mitgliederzugriffe und Flottenzugriffe entsprechend den Änderungen Ihrer Organisation verwalten.
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"]Ressourcen hinzufügen oder entdecken
+[role="quick-margin-para"]
+Systeme zur lokalen NetApp Console-Bereitstellung hinzufügen. Während der Ersteinrichtung werden Systeme in der Regel hinzugefügt, wenn die Standardflotte ausgewählt ist.
+
+[role="quick-margin-para"]
+Informationen zum Erstellen oder Auffinden von Ressourcen:
+
+[role="quick-margin-list"]
+* https://docs.netapp.com/us-en/storage-management-ontap-onprem/index.html["On-premises ONTAP Cluster"^]
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"]Erstellung der Ordner- und Flottenhierarchie
+[role="quick-margin-para"]
+Zusätzliche Flotten und Ordner, die der Unternehmenshierarchie entsprechen, können erstellt werden.
+
+[role="quick-margin-para"]
+link:task-iam-manage-folders-fleets.html["Informationen zur Organisation Ihrer Ressourcen mit Ordnern und Flotten"].
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drei"]Ressourcen den richtigen Flotten zuordnen
+[role="quick-margin-para"]
+Beim Hinzufügen oder Erkennen eines Systems in der lokalen NetApp Console-Bereitstellung wird die Ressource automatisch der aktuell ausgewählten Flotte zugeordnet. Damit ein System den richtigen Teams zur Verfügung steht, sollte es den entsprechenden Flotten in Ihrer Hierarchie zugeordnet werden.
+
+[role="quick-margin-list"]
+* link:task-iam-manage-resources.html["Informationen zur Verwaltung von Ressourcen in Ordnern und Flotten"].
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"]Mitglieder hinzufügen und Startberechtigungen zuweisen
+[role="quick-margin-para"]
+Mitglieder können hinzugefügt und ihnen Rollen auf Organisations-, Ordner- oder Flottenebene entsprechend ihrer Zuständigkeit zugewiesen werden.
+
+[role="quick-margin-para"]
+link:task-iam-manage-members-permissions.html["Informationen zur Verwaltung von Mitgliedern und deren Berechtigungen"].
+
+
+
+[[after-initial-setup]]
+== Nach der Ersteinrichtung
+
+Nach Abschluss der Ersteinrichtung können Zugriff und Ressourcenzuweisung entsprechend den Veränderungen in Ihrer Organisation verwaltet werden:
+
+* link:task-iam-manage-resources.html["Ressourcen in Ordnern und Flotten verwalten"]
+* link:task-iam-manage-roles.html["Mitgliederzugriffe über Flotten und Ordner hinweg verwalten (mitgliederzentriert)"]
+* link:task-iam-users-fleets-assign.html["Verwaltung des Zugriffs auf eine bestimmte Flotte oder einen Ordner (flottenzentriert)"]
+* link:task-iam-manage-folders-fleets.html#delete-a-folder-or-fleet["Ordner und Flotten löschen, wenn sie nicht mehr benötigt werden"]
+
+
+.Verwandte Informationen
+* link:concept-identity-and-access-management.html["Informationen zum Identitäts- und Zugriffsmanagement in der NetApp Console"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur API für Identität und Zugriff"^]
+

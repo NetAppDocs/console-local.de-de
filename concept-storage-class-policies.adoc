@@ -1,0 +1,120 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-class-policies.html 
+keywords: storage class policies, policies, storage class, IOPS, latency, throughput, capacity, security, data protection, performance policy, tiering, encryption, ransomware protection, storage standardization, policy enforcement, compliance monitoring, netapp console local 
+summary: Informationen zu den Richtlinien, die als Bausteine für Speicherklassen in der lokalen Bereitstellung der NetApp Console dienen. 
+---
+= Verständnis der Speicherklassenrichtlinien in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Speicherklassenrichtlinien sind die Bausteine, aus denen eine Speicherklasse erstellt wird. Jede Richtlinie steuert einen bestimmten Aspekt des Speicherverhaltens. Wenn Richtlinien zu einer Speicherklasse kombiniert werden, entsteht eine wiederverwendbare Vorlage, die die NetApp Console lokale Bereitstellung automatisch zum Bereitstellungszeitpunkt durchsetzt und während des gesamten Lebenszyklus einer Arbeitslast kontinuierlich überwacht.
+
+
+
+[[policies-as-building-blocks]]
+== Richtlinien als Bausteine
+
+Eine Speicherklasse besteht aus einer oder mehreren Richtlinien, die jeweils eine andere Dimension des Speicherverhaltens regeln. Speicheradministratoren definieren Richtlinien, um Unternehmensstandards wie Leistungserwartungen, Kapazitätsgrenzen und Datenplatzierungsregeln abzubilden, und stellen diese anschließend zu Speicherklassenvorlagen zusammen. Wenn eine Arbeitslast mithilfe einer Speicherklasse bereitgestellt wird, übernimmt sie alle Richtlinien dieser Klasse. Dieses Design trennt die Verantwortung für die Definition von Standards von der Bereitstellung, sodass Speicher konsistent durch automatisierte Workflows bereitgestellt werden kann, ohne dass individuelle Konfigurationsentscheidungen erforderlich sind.
+
+
+
+[[types-of-storage-class-policies]]
+== Arten von Speicherklassenrichtlinien
+
+NetApp Console lokale Bereitstellung umfasst vier Arten von Richtlinien, die zur Erstellung von Speicherklassen verwendet werden können:
+
+Leistungsrichtlinie:: Eine Leistungsrichtlinie legt die erwarteten IOPS/TB, die maximalen IOPS/TB, die absoluten minimalen IOPS und die erwarteten Latenzziele für eine Arbeitslast fest. Die lokale Bereitstellung der Console verwendet diese Werte, um bei der Bereitstellung Cluster mit ausreichendem Leistungsspielraum zu empfehlen und Abweichungen bei IOPS oder Latenz nach der Bereitstellung zu erkennen.
+Kapazitätsrichtlinie:: Eine Kapazitätsrichtlinie steuert, wie ein Volume Speicherplatz belegt und verwaltet. Sie legt die Speicherplatzreservierung (thick, thin oder Systemstandard), das automatische Wachstum, FabricPool Tiering sowie fest, ob NAS-Workloads als FlexVol oder FlexGroup Volumes bereitgestellt werden.
+Sicherheitsrichtlinie:: Eine Sicherheitsrichtlinie legt die Anforderungen für Verschlüsselung, Ransomware-Schutz und FIPS für eine Arbeitslast fest. Jedes Attribut kann auf einen erforderlichen Wert gesetzt oder auf „beliebig“ belassen werden, um die Systemvorgabe zu übernehmen.
+Datensicherungsstrategie:: Eine Datensicherungsstrategie legt die Anzahl der in jedem Intervall aufbewahrten Snapshots fest, damit Workloads, die die Strategie verwenden, einen konsistenten Sicherungsplan erhalten.
+
+
+
+
+[[default-policies]]
+== Standardrichtlinien
+
+Die lokale Bereitstellung über die Console umfasst systemdefinierte Richtlinien für alle vier Richtlinientypen. Diese Richtlinien können beim Erstellen einer Speicherklasse unverändert verwendet oder als Ausgangspunkt für benutzerdefinierte Richtlinien kopiert werden, die auf die Anforderungen Ihrer Organisation zugeschnitten sind.
+
+
+
+[[performance-policies]]
+=== Leistungsrichtlinien
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Name | Typ | Erwartete IOPS/TB | Maximale IOPS/TB | Absolute minimale IOPS | Erwartete Latenz (ms) | Zusammenfassung 
+
+
+| Extrem für Datenbankdaten | System definiert | 12.288 | 24.576 | 2.000 | 1 | Verwendung für transaktionale Datenbank-Datenvolumen, die kontinuierlich hohe IOPS und Latenzzeiten im Submillisekundenbereich erfordern. 
+
+
+| Extrem für Datenbankprotokolle | System definiert | 22.528 | 45.056 | 4.000 | 1 | Für Datenbanktransaktionsprotokoll-Volumes, die den höchsten IOPS-Mindestwert erfordern, um Schreibengpässe zu verhindern. 
+
+
+| Extrem für gemeinsam genutzte Datenbankdaten | System definiert | 16.384 | 32.768 | 2.000 | 1 | Für gemeinsam genutzte Datenbank-Volumes, auf die mehrere Hosts zugreifen und die hohen Durchsatz sowie konstante Latenz erfordern. 
+
+
+| Extreme Performance | System definiert | 6.144 | 12.288 | 1.000 | 1 | Verwendung für HPC-, KI/ML- und Analyse-Workloads, die hohe Burst-IOPS und vorhersehbar niedrige Latenz erfordern. 
+
+
+| Performance | System definiert | 2.048 | 4.096 | 500 | 2 | Verwendung für virtualisierte und Unternehmensanwendungen, die eine zuverlässige Leistung ohne extreme IOPS-Anforderungen benötigen. 
+
+
+| Wert | System definiert | 128 | 512 | 75 | 17 | Geeignet für kostensensitive Workloads wie Home-Verzeichnisse, Dateifreigaben und Archive. 
+|===
+
+
+[[capacity-policies]]
+=== Kapazitätsrichtlinien
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Name | Typ | Speicherplatzreservierung | Autowachstumsmodus | Tiering-Richtlinie | Volume-Typ (NAS) | Zusammenfassung 
+
+
+| Standard | System definiert | Systemstandard | Systemstandard | keine | Systemstandard | Für allgemeine Arbeitslasten geeignet, bei denen das standardmäßige Kapazitätsverhalten der Plattform akzeptabel ist. 
+
+
+| Produktion | System definiert | Systemstandard | wachsen | keine | Systemstandard | Für Produktionsworkloads geeignet, die sich automatisch erweitern müssen, um Ausfälle aufgrund von Speicherplatzmangel zu verhindern. 
+|===
+
+
+[[security-policies]]
+=== Sicherheitsrichtlinien
+
+[cols="2,1,1,1,1,3"]
+|===
+| Name | Typ | Verschlüsselung | Schutz vor Ransomware | FIPS | Zusammenfassung 
+
+
+| Standard | System definiert | beliebig | beliebig | beliebig | Für Arbeitslasten geeignet, bei denen das standardmäßige Sicherheitsverhalten der Plattform akzeptabel ist. 
+
+
+| Anti-Ransomware | System definiert | beliebig | am | beliebig | Zur Verwendung bei Arbeitslasten mit sensiblen oder geschäftskritischen Daten, die einen aktiven Ransomware-Schutz erfordern. 
+
+
+| Produktion | System definiert | aktiviert | beliebig | beliebig | Zur Verwendung bei Produktionsworkloads, bei denen Verschlüsselung aus Compliance-Gründen erforderlich ist. 
+|===
+
+
+[[data-protection-policies]]
+=== Datensicherungsstrategien
+
+[cols="2,1,1,1,1,1,3"]
+|===
+| Name | Typ | Stündliche Momentaufnahmen | Tagesaufnahmen | Wöchentliche Momentaufnahmen | Monatliche Momentaufnahmen | Zusammenfassung 
+
+
+| Standard | System definiert | 6 | 2 | 2 | 0 | Geeignet für Standard-Workloads, die kurzfristige Wiederherstellungspunkte ohne langfristigen Aufbewahrungsaufwand erfordern. 
+
+
+| 3-monatlich stündlich | System definiert | 23 | 6 | 4 | 3 | Zur Verwendung bei regulierten oder geschäftskritischen Arbeitslasten, die granulare Wiederherstellungspunkte innerhalb eines Tages und eine dreimonatige historische Aufbewahrung erfordern. 
+|===

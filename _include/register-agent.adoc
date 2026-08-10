@@ -1,0 +1,24 @@
+= 
+:allow-uri-read: 
+
+
+Melden Sie sich bei der Console an und verknüpfen Sie den Console-Agent mit Ihrer Organisation. Wie Sie sich anmelden, hängt vom Modus ab, in dem Sie die Console verwenden. Wenn Sie die Console im Standardmodus verwenden, melden Sie sich über die SaaS-Website an. Wenn Sie die Console im eingeschränkten oder privaten Modus verwenden, melden Sie sich lokal vom Console-Agent-Host an.
+
+.Schritte
+. Einen Webbrowser öffnen und die Console Agent-Host-URL eingeben:
++
+Die Host-URL der Konsole kann je nach Konfiguration des Hosts ein localhost, eine private IP-Adresse oder eine öffentliche IP-Adresse sein. Wenn sich der Console Agent beispielsweise in der Public Cloud ohne öffentliche IP-Adresse befindet, ist eine private IP-Adresse eines Hosts anzugeben, der eine Verbindung zum Console Agent Host hat.
+
+. Registrieren oder anmelden.
+. Nach dem Einloggen wird die Konsole eingerichtet:
++
+.. Die Console-Organisation angeben, die mit dem Console-Agenten verknüpft wird.
+.. Geben Sie einen Namen für das System ein.
+.. Unter *Befinden Sie sich in einer sicheren Umgebung?* bleibt der eingeschränkte Modus deaktiviert.
++
+Der eingeschränkte Modus wird nicht unterstützt, wenn der Console-Agent lokal installiert ist.
+
+.. *Los geht's* auswählen.
+
+
+

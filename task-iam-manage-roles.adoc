@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-roles.html 
+keywords: fleets, access, resources, user roles, iam, identity and access management, folder, organization, permissions, roles, members, access roles, directory users, AD, Active Directory, directory services 
+summary: Mitgliederzugriff in Ihrer Console-Organisation verwalten. Rollen zuweisen, um Berechtigungen festzulegen. Mitglieder entfernen, wenn sie das Unternehmen verlassen. 
+---
+= Mitgliederzugriff in der lokalen NetApp Console-Bereitstellung verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung können die Rollen eines Benutzers über mehrere Ordner oder Flotten hinweg überprüft oder geändert werden, etwa um alles zu sehen, worauf ein Storage-Ingenieur Zugriff hat, eine neue Rolle in einer anderen Region hinzuzufügen oder den Zugriff dieses Benutzers zu entfernen, wenn sich die Zuständigkeiten ändern.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- bzw. Flottenadministrator (für die von ihnen verwalteten Ordner und Flotten). link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Sie können die Zugriffsrechte je nach Bedarf auf zwei Arten einsehen und verwalten. Wenn die Rollen eines bestimmten Benutzers in der gesamten Flotte Ihrer Organisation angezeigt werden sollen, ist die Seite *Members* zu verwenden.
+
+Wenn Sie überprüfen möchten, wer Zugriff auf eine bestimmte Flotte hat, sollten stattdessen die dieser Flotte zugewiesenen Mitglieder überprüft werden. link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"].
+
+Um ein neues Mitglied, ein Servicekonto oder einen Verzeichnisbenutzer hinzuzufügen und die erste Rolle zuzuweisen, sollte stattdessen die Onboarding-Aufgabe verwendet werden. link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen zuweisen"].
+
+
+
+[[understand-how-access-is-granted-in-netapp-console]]
+== Informationen darüber, wie der Zugriff in der NetApp Console gewährt wird
+
+NetApp Console verwendet rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung von Mitgliedsberechtigungen. Vordefinierte Rollen können auf Organisations-, Ordner- oder Flottenebene zugewiesen werden, abhängig vom benötigten Zugriffsumfang eines Mitglieds.
+
+
+
+[[using-role-inheritance]]
+[[role-inheritance]]
+=== Verwendung der Rollenvererbung
+
+Eine Rolle, die Sie auf Organisations- oder Ordnerebene zuweisen, wird von den darunterliegenden Unterbereichen geerbt, daher sollte eine geerbte Zuweisung in dem übergeordneten Bereich geändert werden, in dem sie ursprünglich vergeben wurde.
+
+link:concept-iam-rbac.html#role-inheritance["Informationen zur Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+[[view-roles-assigned-to-a-member]]
+[[manage-permissions]]
+== Zugewiesene Rollen eines Mitglieds anzeigen
+
+Bestätigen Sie genau, welche Rollen ein Mitglied innehat und auf welcher Ebene, bevor eine Änderung vorgenommen wird. Beispielsweise kann überprüft werden, ob ein Teammitglied bereits die Storage admin Rolle auf der  `Production-EU-West` Flotte hat.
+
+Wenn Sie die Rolle „Ordner- oder Flottenadministrator“ besitzen, werden auf der Seite alle Mitglieder in der Organisation angezeigt. Es können jedoch nur die Berechtigungen für die Ordner und Flotten angezeigt und verwaltet werden, die Sie administrieren. link:reference-iam-predefined-roles.html["Informationen zu Ordner- oder Flottenadministratoraktionen in der lokalen Bereitstellung der NetApp Console"].
+
+. Auf der Seite *Mitglieder* zu einem Mitglied in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. In der Tabelle die entsprechende Zeile für die Organisation, den Ordner oder die Flotte erweitern, in der die zugewiesene Rolle des Mitglieds angezeigt werden soll, und in der Spalte *Rolle* *Anzeigen* auswählen.
+
+
+
+
+[[assign-or-modify-member-access]]
+== Mitgliederzugriff zuweisen oder ändern
+
+Sie können die Zugriffsrechte eines Mitglieds anpassen, sobald sich dessen Verantwortlichkeiten ändern. Wenn beispielsweise ein Teammitglied die Backup und Recovery Administratorrolle für die Flotte einer zweiten Region übernimmt, kann diese Rolle für die betreffende Region hinzugefügt werden, ohne die bestehenden Speicherrollen zu verändern.
+
+Wenn ein neues Mitglied hinzugefügt und ihm seine erste Rolle zugewiesen werden soll, siehe link:task-iam-manage-members-permissions.html#add-members["Mitglieder hinzufügen und Rollen zuweisen"].
+
+
+
+[[add-an-access-role-to-an-existing-member]]
+=== Einer bestehenden Mitgliedsperson eine Zugriffsrolle hinzufügen
+
+Einem Mitglied kann auf Organisations-, Ordner- oder Flottenebene eine zusätzliche Rolle zugewiesen werden, wenn sich dessen Verantwortlichkeiten erweitern. Beispielsweise erhält ein Storage-Administrator die Backup und Recovery Admin-Rolle auf Organisationsebene, sodass Backup und Recovery Aufgaben über alle Flotten hinweg verwaltet werden können, ohne dass die bestehenden Speicherberechtigungen verloren gehen.
+
+Sie können einem Mitglied eine Zugriffsrolle für Ihre Organisation, Ihren Ordner oder Ihre Flotte zuweisen.
+
+Mitglieder können innerhalb derselben Flotte und in verschiedenen Flotten mehrere Rollen innehaben. Beispielsweise können kleinere Organisationen einem Benutzer alle verfügbaren Zugriffsrollen zuweisen, während größere Organisationen Benutzern spezialisiertere Aufgaben zuweisen. Alternativ kann einem Benutzer die Ransomware resilience Admin-Rolle auf Organisationsebene zugewiesen werden. In diesem Beispiel wäre der Benutzer in der Lage, Ransomware resilience Aufgaben für alle Flotten innerhalb Ihrer Organisation auszuführen.
+
+Ihre Zugriffsrollenstrategie sollte mit der Art und Weise übereinstimmen, wie Sie Ihre NetApp Ressourcen organisiert haben.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. Wählen Sie eine der Mitglieds-Registerkarten aus: *Benutzer*, *Verzeichnisbenutzer* oder *Dienstkonten*.
+. Wählen Sie das Aktionen-Menü image:icon-action.png["ein Symbol mit drei vertikalen Punkten"] neben dem Mitglied, dem Sie eine Rolle zuweisen möchten, und wählen Sie *Rolle hinzufügen* aus.
+. Zum Hinzufügen einer Rolle sind die Schritte im Dialogfeld auszuführen:
++
+** *Organisation, Ordner oder Flotte auswählen*: Die Ebene der Ressourcenhierarchie auswählen, für die das Mitglied Berechtigungen erhalten soll.
++
+Wenn die Organisation oder ein Ordner ausgewählt wird, hat das Mitglied Berechtigungen für alles, was sich innerhalb der Organisation oder des Ordners befindet.
+
+** *Kategorie auswählen*: Eine Rollenkategorie auswählen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"^].
+** Wählen Sie eine *Rolle*: Es ist eine Rolle auszuwählen, die dem Mitglied Berechtigungen für die Ressourcen gewährt, die mit der ausgewählten Organisation, dem Ordner oder der Flotte verknüpft sind.
+** *Rolle hinzufügen*: Wenn Sie Zugriff auf zusätzliche Ordner oder Flotten innerhalb Ihrer Organisation gewähren möchten, wählen Sie *Rolle hinzufügen*, geben Sie einen anderen Ordner, eine andere Flotte oder eine andere Rollenkategorie an und wählen Sie dann eine Rollenkategorie und eine entsprechende Rolle.
+
+
+. *Neue Rollen hinzufügen* auswählen.
+
+
+
+
+[[change-a-members-assigned-role]]
+=== Die einem Mitglied zugewiesene Rolle ändern
+
+Ersetzen Sie die bestehende Rolle eines Mitglieds durch eine andere, wenn sich dessen Verantwortlichkeiten ändern. Zum Beispiel, wenn ein Storage Viewer in der  `Production-US-East` Flotte stattdessen die Storage Admin-Rolle benötigt.
+
+
+NOTE: Jeder Benutzer muss mindestens eine Rolle haben. Es können nicht alle Rollen von einem Benutzer entfernt werden. Wenn alle Rollen entfernt werden müssen, ist der Benutzer aus Ihrer Organisation zu löschen.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. Wählen Sie eine der Mitglieds-Registerkarten aus: *Benutzer*, *Verzeichnisbenutzer* oder *Dienstkonten*.
+. Auf der Seite *Mitglieder* zu einem Mitglied in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. In der Tabelle die entsprechende Zeile für die Organisation, den Ordner oder die Flotte erweitern, in der die zugewiesene Rolle des Mitglieds geändert werden soll, und in der Spalte *Rolle* *Anzeigen* auswählen, um die diesem Mitglied zugewiesenen Rollen anzuzeigen.
+. Sie können eine bestehende Rolle für ein Mitglied ändern oder eine Rolle entfernen.
++
+.. Um die Rolle eines Mitglieds zu ändern, *Ändern* neben der Rolle auswählen, die geändert werden soll. Eine Rolle kann nur in eine Rolle innerhalb derselben Rollenkategorie geändert werden. Beispielsweise ist ein Wechsel von einer Datendienstrolle zu einer anderen möglich. Die Änderung bestätigen.
+.. Um einem Mitglied die Rolle zu entziehen, image:icon-delete.png["Ein Symbol, das einem Mülleimer ähnelt"] neben der entsprechenden Rolle auswählen, um dem Mitglied die jeweilige Rolle zu entziehen. Es erfolgt eine Aufforderung, die Entfernung zu bestätigen.
+
+
+
+
+
+
+[[remove-a-member-from-your-organization]]
+=== Ein Mitglied aus Ihrer Organisation entfernen
+
+Ein Mitglied wird entfernt, wenn es die Organisation verlässt oder seine Rolle so ändert, dass kein Zugriff auf die Console mehr erforderlich ist. Zum Beispiel, wenn der Auftrag eines externen Dienstleisters endet oder ein Mitarbeiter in ein Team außerhalb Ihrer Console-Organisation wechselt.
+
+[NOTE]
+====
+.Verzeichnisbenutzer
+Wenn Sie einen Benutzer aus Ihrem Verzeichnis entfernen, kann sich dieser Benutzer nicht mehr authentifizieren. Der Benutzer sollte außerdem aus Ihrer Console Organisation entfernt werden, um die Mitgliederliste korrekt zu halten und alle Rollen zu entfernen, die ihm bei der lokalen Console Bereitstellung zugewiesen wurden.
+
+====
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. Wählen Sie eine der Mitglieds-Registerkarten aus: *Benutzer*, *Verzeichnisbenutzer* oder *Dienstkonten*.
+. Auf der Seite *Mitglieder* zu einem Mitglied in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Benutzer löschen* wählen.
+. Bestätigen Sie, dass das Mitglied aus Ihrer Organisation entfernt werden soll.
+

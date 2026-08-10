@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+. Wählen Sie das Aktionen-Menü image:icon-action.png["ein Symbol mit drei vertikalen Punkten"] neben dem Mitglied, dem Sie eine Rolle zuweisen möchten, und wählen Sie *Rolle hinzufügen* aus.
+. Zum Hinzufügen einer Rolle sind die Schritte im Dialogfeld auszuführen:
++
+** *Organisation, Ordner oder Flotte auswählen*: Die Ebene der Ressourcenhierarchie auswählen, für die das Mitglied Berechtigungen erhalten soll.
++
+Wenn die Organisation oder ein Ordner ausgewählt wird, hat das Mitglied Berechtigungen für alles, was sich innerhalb der Organisation oder des Ordners befindet.
+
+** *Kategorie auswählen*: Eine Rollenkategorie auswählen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"^].
+** Wählen Sie eine *Rolle*: Es ist eine Rolle auszuwählen, die dem Mitglied Berechtigungen für die Ressourcen gewährt, die mit der ausgewählten Organisation, dem Ordner oder der Flotte verknüpft sind.
+** *Rolle hinzufügen*: Wenn Sie Zugriff auf zusätzliche Ordner oder Flotten innerhalb Ihrer Organisation gewähren möchten, wählen Sie *Rolle hinzufügen*, geben Sie einen anderen Ordner, eine andere Flotte oder eine andere Rollenkategorie an und wählen Sie dann eine Rollenkategorie und eine entsprechende Rolle.
+
+
+. *Neue Rollen hinzufügen* auswählen.
+
+
+. Auf der Seite *Mitglieder* zu einem Mitglied in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. In der Tabelle die entsprechende Zeile für die Organisation, den Ordner oder die Flotte erweitern, in der die zugewiesene Rolle des Mitglieds geändert werden soll, und in der Spalte *Rolle* *Anzeigen* auswählen, um die diesem Mitglied zugewiesenen Rollen anzuzeigen.
+. Sie können eine bestehende Rolle für ein Mitglied ändern oder eine Rolle entfernen.
++
+.. Um die Rolle eines Mitglieds zu ändern, *Ändern* neben der Rolle auswählen, die geändert werden soll. Eine Rolle kann nur in eine Rolle innerhalb derselben Rollenkategorie geändert werden. Beispielsweise ist ein Wechsel von einer Datendienstrolle zu einer anderen möglich. Die Änderung bestätigen.
+.. Um einem Mitglied die Rolle zu entziehen, image:icon-delete.png["Ein Symbol, das einem Mülleimer ähnelt"] neben der entsprechenden Rolle auswählen, um dem Mitglied die jeweilige Rolle zu entziehen. Es erfolgt eine Aufforderung, die Entfernung zu bestätigen.
+
+
+
+
+. Auf der Seite *Mitglieder* zu einem Mitglied in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. In der Tabelle die entsprechende Zeile für die Organisation, den Ordner oder die Flotte erweitern, in der die zugewiesene Rolle des Mitglieds angezeigt werden soll, und in der Spalte *Rolle* *Anzeigen* auswählen.
+

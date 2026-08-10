@@ -1,0 +1,119 @@
+---
+sidebar: sidebar 
+permalink: concept-identity-and-access-management.html 
+keywords: iam overview, overview, how iam works, iam example, organization, folders, fleets, resources, members, roles, permissions, resource hierarchy, identity and access management, access roles, iam, authentication, directory users, AD, Active Directory, directory services 
+summary: 'Die Identitäts- und Zugriffsverwaltung (IAM) der lokalen NetApp Console-Bereitstellung ermöglicht die Strukturierung und Steuerung des Ressourcenzugriffs entsprechend der Unternehmenshierarchie, beispielsweise nach Standort, Abteilung oder Flotte.' 
+---
+= Informationen zur Identitäts- und Zugriffsverwaltung bei der lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die Identitäts- und Zugriffsverwaltung (IAM) in der lokalen NetApp Console-Bereitstellung steuert, wer sich anmelden kann, wie Identitäten verifiziert werden, auf welche Ressourcen Benutzer zugreifen können und welche Aktionen sie ausführen können. In der lokalen NetApp Console-Bereitstellung umfasst IAM rollenbasierte Zugriffssteuerung (RBAC), Multi-Faktor-Authentifizierung (MFA) und verzeichnisgestützte Authentifizierung sowie das Hierarchie- und Auditmodell, das die delegierte Administration unterstützt.
+
+Auf dieser Seite wird das NetApp Console IAM-Modell für die lokale Bereitstellung auf hoher Ebene erläutert. Für detaillierte Beispiele zur Hierarchieplanung siehe link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"].
+
+
+NOTE: Die Rollen _Super admin_, _Organization admin_ oder _Folder or fleet admin_ sind erforderlich, um IAM in der NetApp Console zu verwalten.
+
+
+
+[[what-iam-means-in-netapp-console-local-deployment]]
+== Was IAM in der lokalen Bereitstellung der NetApp Console bedeutet
+
+NetApp Console lokale Bereitstellung IAM kombiniert Identitätsprüfung, Zugriffskontrolle, Delegierung und Auditierbarkeit:
+
+* Die _Authentifizierung_ bestimmt, wie sich Benutzer anmelden, entweder mit lokalen Anmeldeinformationen oder über Ihre Verzeichniskonfiguration.
+* Die _Autorisierung_ legt fest, was Mitglieder nach der Anmeldung tun können, basierend auf vordefinierten Rollen und dem Bereich, in dem Sie ihnen diese zuweisen.
+* _Hierarchie und Zugriffsbereich_ bestimmen, auf welche Ordner, Flotten und Ressourcen ein Mitglied zugreifen kann.
+* Die _Mitglieder- und Berechtigungsverwaltung_ legt fest, wie Benutzer und Dienstkonten hinzugefügt werden und wie MFA sowie Dienstkontogeheimnisse verwaltet werden.
+* _Audit and compliance tracking_ zeichnet IAM-bezogene Aktivitäten auf, sodass überprüft werden kann, wer wann die Zugriffsrechte geändert hat.
+
+
+
+
+[[how-authentication-works]]
+== Wie die Authentifizierung funktioniert
+
+NetApp Console lokale Bereitstellung unterstützt sowohl lokale Identitäten als auch die Integration externer Identitäten.
+
+Sie können die lokale Bereitstellung von NetApp Console in Active Directory integrieren, sodass sich Benutzer mit ihren bestehenden Unternehmensanmeldeinformationen anmelden. Dadurch entfällt die Notwendigkeit separater Passwörter in der lokalen Console Bereitstellung, und Administratoren können Verzeichnisbenutzer beim Zuweisen von Zugriffsrechten nachschlagen.
+
+Für lokale Benutzer fügt die Multi-Faktor-Authentifizierung (MFA) einen zusätzlichen Verifizierungsschritt hinzu, um das Risiko eines unbefugten Zugriffs zu verringern, falls die Anmeldeinformationen kompromittiert werden.
+
+Weitere Informationen zu Authentifizierung und sicheren Anmeldeoptionen link:concept-secure-access.html["Informationen zum sicheren Zugriff in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+[[how-authorization-works]]
+== Funktionsweise der Autorisierung
+
+Nach der Anmeldung eines Benutzers verwendet die lokale NetApp Console-Bereitstellung RBAC, um festzulegen, was dieser Benutzer sehen und tun kann.
+
+Die Integration von Active Directory oder LDAP übernimmt die Authentifizierung. NetApp Console lokale Bereitstellungsautorisierung bleibt separat: Administratoren weisen vordefinierte Rollen auf Organisations-, Ordner- oder Flottenebene zu, um zu steuern, auf was jedes Mitglied zugreifen kann.
+
+Dieselbe Rolle gewährt je nach zugewiesenem Bereich unterschiedliche Zugriffsrechte. Mit diesem Modell erhalten zentrale Administratoren umfassende Zugriffsrechte, während regionale oder Team-Administratoren auf die von ihnen verwalteten Flotten beschränkt sind.
+
+Rollen, die Sie auf Organisations- oder Ordnerebene zuweisen, werden an untergeordnete Bereiche vererbt. Dieses Vererbungsmodell ist ein wesentlicher Bestandteil der Art und Weise, wie NetApp Console den Zugriff über Ordner und Flotten hinweg delegiert.
+
+NetApp entwirft NetApp Console lokale Bereitstellungsrollen nach dem Prinzip der minimalen Berechtigungen, sodass jede Rolle nur die Berechtigungen enthält, die für ihre Aufgaben erforderlich sind.
+
+link:concept-iam-rbac.html#role-inheritance["Informationen zu rollenbasierter Zugriffssteuerung und Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+[[how-the-iam-hierarchy-works]]
+== Wie die IAM-Hierarchie funktioniert
+
+NetApp Console lokale Bereitstellung verwendet eine Hierarchie zur Gruppierung von Ressourcen und zur Festlegung des Zugriffsbereichs. An oberster Stelle steht die Organisation, gefolgt von Ordnern, dann Flotten und schließlich den Ressourcen (einschließlich möglicher Unterordner), die diesen Flotten zugeordnet sind.
+
+Diese Hierarchie ermöglicht die Delegierung. Beispielsweise kann ein Organization-Administrator den Zugriff in der gesamten Organization verwalten, während ein Folder- oder Fleet-Administrator nur die Ressourcen und Mitglieder innerhalb des Teils der Hierarchie verwalten kann, den er besitzt.
+
+NetApp Console IAM basiert auf drei Arten von Komponenten: Organisationskomponenten, die die Hierarchie definieren, Ressourcen, die innerhalb dieser Hierarchie zugewiesen werden, und Mitglieder und Rollen, die steuern, wer worauf Zugriff hat.
+
+Da Rollen innerhalb dieser Hierarchie vererbt werden, hat Ihre Ordner- und Flottenstruktur direkten Einfluss darauf, wie weitreichend jede Zugriffszuweisung gilt.
+
+link:task-iam-manage-folders-fleets.html["Informationen dazu, wie Flotten zu Ihrer Organisation hinzugefügt werden können."^].
+
+
+
+[[member-security-and-credentials]]
+== Mitgliedersicherheit und Zugangsdaten
+
+IAM in NetApp Console lokale Bereitstellung umfasst auch operative Kontrollen zur Sicherung des Mitgliederzugriffs, nachdem Konten existieren.
+
+Für lokale Benutzer können Administratoren die Wiederherstellung des Zugriffs unterstützen, indem sie das Zurücksetzen von Passwörtern veranlassen, die Multi-Faktor-Authentifizierung (MFA) entfernen oder vorübergehend deaktivieren und das MFA-Verhalten der lokalen Benutzer überprüfen. Für Dienstkonten können Administratoren Anmeldeinformationen neu erstellen, wenn Geheimnisse verloren gehen oder geändert werden.
+
+Diese Kontrollmechanismen sind Teil von IAM, da sie festlegen, wie Identitäten im Laufe der Zeit geschützt bleiben und nicht nur, wie der Zugriff anfänglich zugewiesen wird.
+
+link:task-manage-member-security.html["Informationen zur Verwaltung der Mitgliedersicherheit"].
+
+
+
+[[audit-iam-activity]]
+== IAM-Aktivität prüfen
+
+IAM in NetApp Console lokale Bereitstellung umfasst die Möglichkeit, zugriffsbezogene Aktivitäten zu überprüfen und zu exportieren.
+
+Auf der Seite „Audit“ können Aktionen im Zusammenhang mit der Verwaltung Ihrer Organisation eingesehen werden, wie das Hinzufügen von Mitgliedern, das Erstellen von Flotten und das Zuordnen von Ressourcen. Audit-Protokolle können auch nach dem Tenancy Service gefiltert werden, um sich auf IAM-bezogene Änderungen zu konzentrieren, oder Audit-Protokolle können in ein externes System exportiert werden.
+
+Die Nachvollziehbarkeit ist ein wichtiges IAM-Prinzip, da sie es ermöglicht, zu überprüfen, wer den Zugriff geändert hat, wann die Änderung erfolgte und ob die Änderung erfolgreich war.
+
+link:task-audit-console-activity.html["Informationen zur Überprüfung der lokalen Bereitstellungsaktivität der NetApp Console"].
+
+
+
+[[next-steps-with-iam-in-netapp-console]]
+== Nächste Schritte mit IAM in der NetApp Console
+
+* link:task-iam-fleet-mgmt-get-started.html["Erste Schritte mit Identität und Zugriff in der NetApp Console"]
+* link:concept-secure-access.html["Informationen zum sicheren Zugriff in der lokalen Bereitstellung der NetApp Console"]
+* link:concept-iam-rbac.html["Informationen zu RBAC in der lokalen NetApp Console-Bereitstellung"]
+* link:task-audit-console-activity.html["Überwachung oder Prüfung der lokalen Bereitstellungsaktivität der NetApp Console"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur API für NetApp Console IAM"^]
+

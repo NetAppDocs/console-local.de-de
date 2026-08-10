@@ -1,0 +1,15 @@
+= 
+:allow-uri-read: 
+
+
+. *Administration > Anmeldeinformationen* auswählen.
+. *Organisationsanmeldeinformationen* auswählen.
+. *Anmeldeinformationen hinzufügen* auswählen und den Schritten im Assistenten folgen.
++
+.. *Speicherort der Anmeldeinformationen*: *Amazon Web Services > Agent* auswählen.
+.. *Anmeldeinformationen definieren*: Es sind ein AWS-Zugriffsschlüssel und ein geheimer Schlüssel einzugeben.
+.. *Marketplace Subscription*: Ein Marketplace-Abonnement kann mit diesen Zugangsdaten verknüpft werden, indem jetzt ein Abonnement abgeschlossen oder ein bestehendes Abonnement ausgewählt wird.
+.. *Überprüfung*: Die Angaben zu den neuen Zugangsdaten bestätigen und *Hinzufügen* auswählen.
+
+
+

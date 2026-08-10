@@ -1,0 +1,154 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-folders-fleets.html 
+keywords: folders, fleets, resource hierarchy, create folders, create fleets, iam, identity and access management, fleet id, initial iam setup, fleet hierarchy design, folder hierarchy configuration, rbac setup, tenancy setup, organizational onboarding, team structure alignment, delegated administration model, access governance planning, operational readiness 
+summary: Ordner und Flotten können hinzugefügt werden, um der Unternehmensstruktur zu entsprechen. Nach dem Erstellen von Ordnern und Flotten ist es möglich, Ressourcen damit zu verknüpfen und den Zugriff der Mitglieder auf diese Flotten zu verwalten. 
+---
+= Ordner und Flotten zur lokalen NetApp Console-Bereitstellungsorganisation hinzufügen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Ordner und Flotten können entsprechend der Unternehmensstruktur erstellt, der Zugriff gesteuert und Ressourcen in der lokalen Bereitstellung der NetApp Console organisiert werden.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- oder Flottenadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+NetApp Console lokale Bereitstellung erstellt beim Erstellen einer Organisation standardmäßig eine Flotte. Weitere Flotten können hinzugefügt und mit Ordnern gruppiert werden. link:concept-identity-and-access-management.html["Informationen zur Ressourcenhierarchie in der NetApp Console"].
+
+
+
+[[using-folders-and-fleets-to-organize-resources]]
+== Verwendung von Ordnern und Flotten zur Organisation von Ressourcen
+
+Ordner und Flotten sind die beiden Bausteine, mit denen Sie Ihre Organisation so gestalten, dass sie der tatsächlichen Arbeitsweise Ihrer Teams entspricht. Beispielsweise ein Ordner pro Region mit jeweils einer Produktions- und einer Entwicklungsflotte.
+
+* Ordner gruppieren verwandte Flotten und unterstützen die delegierte Administration sowie die Rollenvererbung.
+* Flotten sind der Bereich, in dem Ressourcen für die Verwaltung zugeordnet werden und Benutzern operativer Zugriff gewährt wird.
+
+
+Sie können Ordner und Flotten zuerst erstellen und Ressourcen sowie Mitgliederzugriffe später hinzufügen. Dies ermöglicht die Planung Ihrer Ressourcenhierarchie, bevor Benutzer und Ressourcen in der lokalen NetApp Console-Bereitstellung hinzugefügt werden. Wenn Ihre Struktur bereits definiert ist, können Ressourcen hinzugefügt und Zugriffsrechte zugewiesen werden, wenn die Flotte erstellt wird. Flotten können jederzeit aktualisiert werden.
+
+Beispielsweise Produktionscluster in einer Produktionsflotte und Testcluster in einer Testflotte zusammenfassen und jedem Team nur Zugriff auf die Flotte gewähren, die es besitzt.
+
+
+
+[[folders]]
+=== Ordner
+
+Ordner organisieren Flotten nach Unternehmensstruktur, wie Geschäftsbereich, Region oder Team. Ordner können verschachtelt werden, um die Organisation widerzuspiegeln.
+
+Auf Ordnerebene zugewiesene Rollen werden an untergeordnete Ordner und Flotten vererbt. Ein Ordner kann auch verwendet werden, um Flottenzuweisungsaufgaben an einen Ordner- oder Flottenadministrator für diesen Teil der Hierarchie zu delegieren.
+
+
+NOTE: Mitglieder arbeiten in Flotten, nicht in Ordnern. Eine Ressource, die nur einem Ordner zugeordnet ist, ist für Mitglieder erst verwaltbar, wenn sie einer Flotte zugeordnet ist.
+
+Ein regionales Unternehmen könnte beispielsweise Ordner verwenden, um ONTAP Speicher nach Geschäftsbereich und Workload zu organisieren. Es könnte einen Hauptordner für North America, Unterordner für Production und Development sowie Flotten für ONTAP Cluster erstellen, die SAP, VMware und Backup Volumes hosten. Speicheradministratoren, die dem Ordner North America zugewiesen sind, erhalten Zugriff auf alle untergeordneten Flotten, während Anwendungsteams nur Zugriff auf die Flotten erhalten, die sie verwalten.
+
+
+
+[[fleets]]
+=== Flotten
+
+Ressourcen werden Flotten zugeordnet, sodass Mitglieder sie verwalten können. Eine Flotte kann direkt unter der Organisation oder innerhalb eines Ordners existieren.
+
+Ein Gesundheitsunternehmen nutzt beispielsweise ONTAP Storage in getrennten Produktions- und Entwicklungsumgebungen. Die Produktionsumgebung führt klinische Anwendungen und Patientenakten-Datenbanken aus, während die Entwicklungsumgebung Tests und Validierung unterstützt. Diese Trennung schützt Live-Daten, erzwingt einen strengeren Zugriff in der Produktion, unterstützt die Nachvollziehbarkeit und das Prinzip der minimalen Berechtigungen und ermöglicht es den Entwicklerteams, zu arbeiten, ohne die patientennahen Workloads zu beeinträchtigen.
+
+Benutzer navigieren auf der Seite *Systeme* zwischen den zugewiesenen Flotten, um die mit jeder Flotte verbundenen Ressourcen zu verwalten.
+
+
+
+[[add-a-folder-or-fleet]]
+== Einen Ordner oder eine Flotte hinzufügen
+
+Eine Flotte kann hinzugefügt werden, wenn ein neuer Bereich für Ressourcen und den Zugriff von Mitgliedern benötigt wird, und ein Ordner, wenn zusammengehörige Flotten gruppiert und deren Verwaltung delegiert werden sollen. Beispielsweise kann ein  `Production` Ordner hinzugefügt werden, der eine  `Production-US-East` Flotte und eine  `Production-EU-West` weitere Flotte enthält; anschließend kann einer regionalen Leitung die Ordner- oder Flottenadministratorrolle ausschließlich für die eigene Flotte zugewiesen werden.
+
+Sie können bis zu sieben Hierarchieebenen erstellen.
+
+Ressourcen können hinzugefügt und Mitgliederzugriffe beim Erstellen einer Flotte oder eines Ordners zugewiesen werden, alternativ ist dies auch zu einem späteren Zeitpunkt möglich.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Organisation* auswählen.
+. Auf der Seite *Organisation* die Option *Ordner oder Flotte hinzufügen* auswählen.
+. *Ordner* oder *Flotte* auswählen.
+. Unter *Name und Speicherort*: Ein Name und ein Speicherort für den Ordner oder die Flotte werden eingegeben und ausgewählt.
+
+
+[[associate-resource-folder]]
+. Optional: Der Abschnitt *Ressourcen* kann erweitert werden, um Ressourcen mit der Flotte oder dem Ordner zu verknüpfen.
++
+.. Markieren Sie das Kästchen neben der Ressource, die Sie zuordnen möchten, und wählen Sie dann *Associate with the fleet*. Falls noch keine Systeme zur NetApp Console lokalen Bereitstellung hinzugefügt wurden, ist dieser Schritt auch später möglich.
++
+
+NOTE: Mitglieder können erst dann auf Ressourcen in einem Ordner zugreifen, wenn diese Ressourcen einer Flotte zugewiesen sind.
+
+
+
+. Optional: Der Abschnitt *Zugriff* kann erweitert werden, um Mitgliedern Zugriffsrechte zuzuweisen. *Mitglied hinzufügen* kann ausgewählt werden, um Zugriff und eine Rolle zuzuweisen. Standardmäßig hat der Benutzer, der die Flotte erstellt, Zugriff darauf.
++
+link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+. Wählen Sie *Add*.
+
+
+
+
+[[rename-a-folder-or-fleet]]
+== Einen Ordner oder eine Flotte umbenennen
+
+Ordner oder Flotten können bei Bedarf umbenannt werden. Die Umbenennung hat keine Auswirkungen auf zugehörige Ressourcen oder den Mitgliederzugriff.
+
+.Schritte
+. Auf der Seite *Organisation* in der Tabelle zu einer Flotte oder einem Ordner navigieren, image:icon-action.png["Ein Symbol mit drei Punkten"] auswählen und anschließend *Ordner bearbeiten* oder *Flotte bearbeiten* wählen.
+. Auf der Seite *Bearbeiten* einen neuen Namen eingeben und *Anwenden* auswählen.
+
+
+
+
+[[delete-a-folder-or-fleet]]
+== Einen Ordner oder eine Flotte löschen
+
+Ordner und Flotten, die nicht mehr benötigt werden, können gelöscht werden, beispielsweise nach einer Teamumstrukturierung oder dem Abschluss einer Flotte.
+
+Bevor Sie einen Ordner oder eine Flotte löschen, sind die folgenden Prüfungen abzuschließen:
+
+* Es sollte sichergestellt sein, dass der Ordner oder die Flotte keine Ressourcen enthält. link:task-iam-manage-resources.html#remove-resource["Informationen zum Entfernen von Ressourcenverknüpfungen"].
+* Mitglieder, die weiterhin Zugriff auf den Ordner oder die Flotte haben, werden angezeigt. link:task-iam-users-fleets-assign.html["Mitgliederzugriffszuweisungen anzeigen"].
+* Entfernen oder aktualisieren Sie bei Bedarf die Zugriffsrechte der Mitglieder. link:task-iam-users-fleets-assign.html["Mitgliederzugriffszuweisungen ändern"].
+* Wenn eine Flotte gelöscht wird, sollten Ressourcen zuerst zur Zielflotte verschoben werden. link:task-iam-manage-resources.html["Informationen zum Verschieben von Ressourcen zwischen Flotten"].
+
+
+.Schritte
+. Auf der Seite *Organisation* in der Tabelle zu einer Flotte oder einem Ordner navigieren, image:icon-action.png["Ein Symbol mit drei Punkten"] auswählen und anschließend *Löschen* wählen.
+. Bestätigen Sie, dass der Ordner oder die Flotte gelöscht werden soll.
+
+
+
+
+[[manage-fleets-and-folders-in-netapp-console-local-deployment]]
+== Flotten und Ordner in der lokalen NetApp Console-Bereitstellung verwalten
+
+Nach der Ersteinrichtung sind folgende Aktionen möglich:
+
+* *Ressourcenzuordnungen für Ordner und Flotten verwalten*: link:task-iam-manage-resources.html["Informationen dazu, wie Ressourcen Flotten und Ordnern zugeordnet werden können"].
+* *Zugriffsrechte für einen Ordner oder eine Flotte anzeigen oder aktualisieren*: link:task-iam-users-fleets-assign.html["Informationen dazu, wie Benutzern Zugriff auf Flotten gewährt wird"].
+* *Ein Mitglied über mehrere Ordner und Flotten hinweg verwalten*: link:task-iam-manage-roles.html["Informationen zur Verwaltung des Mitgliederzugriffs"].
+* *Fügen Sie weitere Mitglieder hinzu und weisen Sie ihnen Startberechtigungen zu*: link:task-iam-manage-members-permissions.html["Informationen zur Verwaltung von Mitgliedern und Berechtigungen"].
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-identity-and-access-management.html["Informationen zu Identität und Zugriff in der NetApp Console"]
+* link:task-iam-fleet-mgmt-get-started.html["Erste Schritte mit Identität und Zugriff in der NetApp Console"]
+* link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur Identity and Access API"^]
+

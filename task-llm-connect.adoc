@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: task-llm-connect.html 
+keywords: LLM, AI, connect, large language model, console assistant, openai, openai-compatible, proxy, netapp console 
+summary: OpenAI oder einen OpenAI-kompatiblen Endpunkt verbinden, um den Console-Assistenten und die KI-gestützte Verwaltung in der lokalen NetApp Console-Bereitstellung zu ermöglichen. 
+---
+= LLM verbinden und den NetApp Console Assistenten in der NetApp Console lokalen Bereitstellung aktivieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Verbinden Sie Ihr großes Sprachmodell (LLM) mit der lokalen NetApp Console-Bereitstellung, um den Console-Assistenten und die KI-gestützte Speicherverwaltung zu aktivieren.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+.Erforderliche Zugriffsrollen
+Super Admin oder Organisationsadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Nach der Einrichtung öffnen die Benutzer den Konsolenassistenten über das Dashboard und wählen einen Zugriffsmodus aus:
+
+* Im *Nur-Lese-Modus* beantwortet der Assistent Fragen und gibt Hilfestellungen, ohne Änderungen vorzunehmen.
+* Im *Lese/Schreib*-Modus kann der Assistent auf die Speicherinfrastruktur zugreifen. Vor jeder Änderung werden Details zur Überprüfung und Bestätigung angezeigt. Für asynchrone Vorgänge, wie die Volume-Erstellung, wird ein Auftrag erstellt, den Benutzer über den Assistenten einsehen können.
+
+
+Um Ihr LLM zu verbinden, einen Anbieterpfad auswählen, Endpunktdetails und API-Schlüssel eingeben und anschließend ein Modell unter *Administration > AI Tools* auswählen. Assistentenaktionen bleiben innerhalb Ihrer Speicherrichtlinien und rollenbasierten Zugriffskontrollen.
+
+
+
+[[gather-what-you-need-before-you-connect-an-llm]]
+== Sammeln Sie alles Notwendige, bevor Sie eine Verbindung zu einem LLM herstellen.
+
+Bevor Sie Ihr LLM verbinden, sollten Sie Folgendes bereithalten:
+
+* Ihre Entscheidung für einen Anbietertyp: OpenAI oder OpenAI-kompatibel. link:concept-llm-integration.html["Informationen zu den verfügbaren Anbieteroptionen."]
+* Ein gültiger API-Schlüssel für den ausgewählten Anbieterpfad.
+* Die Endpunkt-URL für Ihren Anbieterpfad.
+* Ihre Proxy- oder Gateway-URL, falls Ihre Organisation eine benötigt.
+* Ihr Benutzername oder Ihre Single Sign-On (SSO)-ID für das LLM-Anbieterkonto, falls erforderlich.
+* Netzwerkzugriff von der lokalen NetApp Console-Bereitstellung zum ausgewählten Endpunkt.
+* Speicherklassen und rollenbasierte Zugriffskontrollen für die Assistentenaktionen, die Sie zulassen möchten.
+
+
+Details zu den unterstützten Modellen sind unter link:reference-llm-supported-models.html["Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung"] zu finden.
+
+
+
+[[connect-an-llm-to-netapp-console-local-deployment]]
+== Eine LLM mit einer lokalen NetApp Console-Bereitstellung verbinden
+
+Anbietereinstellungen, API-Schlüssel und Modell eingeben, um Ihre LLM mit der lokalen NetApp Console-Bereitstellung zu verbinden.
+
+.Schritte
+. Anmeldung bei der lokalen NetApp Console-Bereitstellung.
+. *Administration > AI Tools* auswählen.
+. Das Menü auswählen und anschließend *Bearbeiten* wählen.
+. Unter *Anbietertyp* einen Anbietertyp auswählen.
++
+link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"].
+
+. Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben.
+. Geben Sie die Proxy- oder Gateway-URL und die Zugangsdaten ein.
+. Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert.
+. Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen.
+. Ein Modell aus der Liste auswählen.
+. Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
++
+Falls das Speichern oder Testen fehlschlägt, sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft und anschließend ein erneuter Versuch unternommen werden.
+
+
+
+link:task-llm-troubleshoot-integration.html["Fehlerbehebung bei Ihrer LLM-Integration"].
+
+
+
+[[verify-that-llm-integration-works]]
+== Es wird überprüft, ob die LLM Integration funktioniert.
+
+Nachdem die Konfiguration gespeichert wurde, lassen sich die Verfügbarkeit und das Verhalten des Assistenten überprüfen.
+
+.Schritte
+. Bestätigt wird, dass die Schaltfläche *Konsolenassistent* auf dem NetApp Console Dashboard für die lokale Bereitstellung angezeigt wird.
+. Den Assistenten im *Nur-Lese-Modus* öffnen und eine einfache Abfrage ausführen.
+. Den Assistenten im *Lese-/Schreibmodus* öffnen und bestätigen, dass speicherverändernde Aktionen vor der Ausführung eine Benutzerbestätigung erfordern.
+. Es sollte überprüft werden, dass die Benutzer, die Aktionsworkflows benötigen, über die erforderlichen rollenbasierten Zugriffskontrollen verfügen.
+
+
+Nach Abschluss der Validierung können Benutzer den Konsolenassistenten über das Dashboard öffnen und Aufgaben in einfacher Sprache beschreiben. Beispiele für die Nutzung und Endbenutzer-Workflows finden sich unter link:task-console-asst-use.html["Den NetApp Console Assistenten verwenden"].
+
+
+
+[[protect-credentials-and-monitor-llm-usage]]
+== Zugangsdaten schützen und LLM-Nutzung überwachen
+
+* Nach Möglichkeit sollte ein dedizierter API-Schlüssel für die lokale Bereitstellungsintegration der Konsole verwendet werden.
+* API-Schlüssel werden gemäß den Richtlinien Ihrer Organisation rotiert.
+* Der Zugriff auf die Einstellungen der KI-Tools ist ausschließlich auf die erforderlichen Administratorrollen beschränkt.
+* Die API-Nutzung und Warnmeldungen auf Anbieterseite werden überwacht, um ungewöhnliche Aktivitäten oder Kostenspitzen nachzuverfolgen.
+

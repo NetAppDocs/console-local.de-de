@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: task-console-asst-use.html 
+keywords: console assistant, ai assistant, ask questions, provision storage, natural language, agentic, netapp console local 
+summary: Mit dem Console-Assistenten können Speicher bereitgestellt, Warnmeldungen untersucht und Antworten in natürlicher Sprache in der lokalen NetApp Console-Bereitstellung erhalten werden. 
+---
+= Den NetApp Console-Assistenten in der NetApp Console lokalen Bereitstellung verwenden
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der NetApp Console Assistent in der NetApp Console lokalen Bereitstellung ermöglicht das Verwalten von Speicher und das Erhalten von Antworten in natürlicher Sprache. Bedarf kann in einfacher Sprache beschrieben werden, und die NetApp Console lokale Bereitstellung handelt entsprechend den Speicherrichtlinien und dem rollenbasierten Zugriff.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+Die Aktionen des Assistenten sind durch Ihre zugewiesene rollenbasierte Zugriffsberechtigung eingeschränkt. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+
+
+[[see-what-you-can-do-with-the-console-assistant]]
+== Erfahren Sie, was mit dem Console Assistent möglich ist
+
+Der Console-Assistent ist eine natürlichsprachliche Schnittstelle zur lokalen NetApp Console-Bereitstellung. Es kann eine Frage gestellt oder eine Aufgabe beschrieben werden, woraufhin eine Antwort oder ein Aktionsvorschlag zurückgegeben wird. Der Assistent bietet folgende Funktionen:
+
+* *Speicher bereitstellen* Eine Arbeitslast wird in einfacher Sprache beschrieben. Der Assistent empfiehlt eine Speicherklasse und einen Speicherort und erstellt anschließend das Volume oder die LUN, nachdem die Details bestätigt wurden. Beispielsweise kann der Assistent aufgefordert werden, ein CIFS-Volume mit einer bestimmten Kapazität zu erstellen. Der Assistent identifiziert den Cluster und die Storage Virtual Machine (SVM), trägt die erforderlichen Parameter ein und stellt den Speicher bereit.
+* *Suchen und Hilfe erhalten* Stellen Sie Fragen zu Ihrer Speicherumgebung, finden Sie lokale Bereitstellungsfunktionen der Console und erhalten Sie kontextbezogene Antworten aus der NetApp Dokumentation und dem aktuellen Flottenstatus.
+* *Warnungen untersuchen* Der Assistent kann gebeten werden, eine aktive Warnmeldung zu überprüfen. Er analysiert das Problem und schlägt eine Lösung vor oder führt nach Ihrer Bestätigung eine Behebungsmaßnahme durch.
+
+
+Der Assistent sendet Anfragen ausschließlich an den LLM-Endpunkt, der von Ihrem Administrator in der lokalen Console-Bereitstellung konfiguriert wurde. Vor der Durchführung speicherverändernder Aktionen wird eine Bestätigung angefordert, und alle Aktionen berücksichtigen die Ihrem Konto zugewiesenen rollenbasierten Zugriffskontrollen.
+
+
+
+[[confirm-that-you-can-use-the-console-assistant]]
+== Bestätigen Sie, dass der Konsolenassistent verwendet werden kann.
+
+* Ein Organisationsadministrator oder Superadministrator muss den Konsolenassistenten aktivieren, indem ein großes Sprachmodell (LLM) mit der lokalen Console-Bereitstellung verbunden wird. Wenn die Schaltfläche *Console assistant* im Dashboard nicht angezeigt wird, sollte der Administrator gebeten werden, sie zu aktivieren. Weitere Informationen finden sich unter link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+* Stellen Sie sicher, dass Sie über die rollenbasierten Zugriffskontrollen verfügen, die für die Aktionen erforderlich sind, die der Assistent ausführen soll.
+
+
+
+
+[[ask-the-console-assistant-a-question-or-request-an-action]]
+== Dem Konsolenassistenten kann eine Frage gestellt oder eine Aktion angefordert werden.
+
+Den Konsolenassistenten öffnen, einen Zugriffsmodus auswählen und eine Eingabeaufforderung eingeben, die die Anfrage beschreibt.
+
+.Schritte
+. Wählen Sie im Dashboard für die lokale Bereitstellung der NetApp Console die Schaltfläche *Console assistant* aus.
+. Zugriffsmodus auswählen:
++
+** *Nur lesen* ermöglicht es, Fragen zu stellen und Hilfestellung zu erhalten, ohne Änderungen vorzunehmen.
+** *Lesen/Schreiben* auswählen, damit der Assistent auf Ihre Speicherinfrastruktur zugreifen kann.
+
+
+. Geben Sie eine Eingabeaufforderung ein, die Ihre Frage oder Aufgabe beschreibt, und wählen Sie dann *Senden*.
++
+Beispiel: `Create a 10GiB volume for home directories named home, and share it with Everyone set to FULL_CONTROL.`
+
+. Antwort des Assistenten überprüfen:
++
+** Für eine Frage gibt der Assistent eine Antwort zurück, auf die Sie reagieren können.
+** Bei einer Aktion zeigt der Assistent die vorgeschlagene Aktion an, fragt nach fehlenden Details wie der Berechtigungsstufe und bittet dann um Bestätigung, bevor er fortfährt.
+
+
+. Die Aktion wird bestätigt. Bei asynchronen Vorgängen, wie der Volume-Erstellung, erstellt der Assistent einen Auftrag, um die Anfrage abzuschließen.
+. Um den Status einer Anfrage zu überprüfen, kann der Assistent befragt werden. Beispielsweise kann  `Let me know when the job completes` eingegeben werden, woraufhin der Assistent den aktuellen Status zurückmeldet.
+

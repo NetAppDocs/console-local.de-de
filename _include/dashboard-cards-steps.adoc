@@ -1,0 +1,31 @@
+= 
+:allow-uri-read: 
+
+
+. *Karte hinzufügen* auswählen.
+. Den *Ressourcentyp* für die Karte auswählen, zum Beispiel Flotte, System oder Volumen, und anschließend Ressourcen aus der Liste der verfügbaren Ressourcen auswählen.
+. *Weiter* auswählen, um mit der Auswahl einer Kennzahl und eines Kartentyps fortzufahren.
+. Wählen Sie eine anzuzeigende Metrik aus. Die verfügbaren Metriken können nach Typ gefiltert werden: der *Metriktyp*: *Leistung*, *Kapazität*, *Status* oder *Warnungen*, oder es kann nach einer bestimmten Metrik anhand ihres Namens gesucht werden. Die verfügbaren Metriken hängen vom ausgewählten Ressourcentyp ab.
++
+link:reference-dashboard-card-templates.html#metrics-list["Informationen zu den verfügbaren Kennzahlen."]
+
+. Eine Karte für die Aufnahme in das Dashboard auswählen und *Weiter* wählen.
++
+Sie können jeweils nur eine Karte auswählen. Die Kartenvorschau zeigt Live-Daten für die ausgewählte Metrik und den Ressourcentyp an.
+
+. Benennen Sie Ihre Karte. Der Name muss innerhalb des Dashboards eindeutig sein.
+. Die Kartenvorschau kann überprüft, ein Kartenname und eine Beschreibung eingegeben und anschließend *Hinzufügen* ausgewählt werden.
+. Diese Schritte für zusätzliche Karten wiederholen.
+
+
+. *Storage > Dashboards > Card Templates* auswählen.
+. Vorlagen lassen sich nach Metriktyp, Metrik oder Zielressourcentyp durchsuchen, sortieren oder filtern.
+. Wählen Sie eine Vorlage aus, dann *Karte aus Vorlage erstellen* auswählen.
++
+Zeitfenster und Aggregation werden auf Dashboard-Ebene konfiguriert. Die festgelegten Werte gelten für alle Karten im Dashboard.
+
+. Der Umfang, die Aggregation, der Zielressourcentyp, die Zielressourcen und das Zeitfenster können angepasst werden.
+. Die Kartenvorschau wird angezeigt, ein Name und eine Beschreibung können eingegeben werden.
+. Die Karte kann zu einem bestehenden Dashboard hinzugefügt oder ein neues Dashboard erstellt werden.
+. Das Dashboard speichern.
+

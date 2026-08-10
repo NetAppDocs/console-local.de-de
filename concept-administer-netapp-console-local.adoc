@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: concept-administer-netapp-console-local.html 
+keywords: administer Console local deployment, audit, audit log, compliance, SIEM, webhook, VM maintenance, access management, demonstrate compliance, operational visibility, netapp console local 
+summary: Informationen zur Verwaltung und Überwachung der lokalen Bereitstellung von NetApp Console, einschließlich Audit-Aktivitäten, Abonnements, Wartung, Fehlerbehebung und Mitgliederzugriff. 
+---
+= Informationen zur Administration und Überwachung in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Nach der Bereitstellung der NetApp Console lokalen Bereitstellung können die Verwaltungs- und Überwachungstools genutzt werden, um Aktivitäten zu überprüfen, die VM zu warten und den Mitgliederzugriff zu verwalten.
+
+
+
+[[audit-activity]]
+== Prüfungsaktivität
+
+Benutzer- und API-Aktivitäten können überprüft, der Status von Console-Vorgängen nachverfolgt, Audit-Protokolle heruntergeladen und Protokolle zu externen Tools exportiert werden, wenn eine längere Aufbewahrung oder zusätzliche Analysen erforderlich sind.
+
+* link:task-audit-console-activity.html["Audit NetApp Console lokale Bereitstellungsaktivität"]
+* link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellungskanäle in der lokalen NetApp Console-Bereitstellung einrichten"]
+
+
+
+
+[[licenses-and-subscriptions]]
+== Licenses and subscriptions
+
+Die Informationen zu Licenses and subscriptions geben Aufschluss über Serviceberechtigungen und den Abonnementstatus für Ihre NetApp Console-Umgebung.
+
+link:https://docs.netapp.com/us-en/console-licenses-subscriptions/index.html["Informationen zu Licenses and subscriptions"^].
+
+
+
+[[maintain-and-troubleshoot-the-console-local-deployment-vm]]
+== Wartung und Fehlerbehebung der lokalen Console Bereitstellungs-VM
+
+Die VM, die die lokale Console-Bereitstellung hostet, wird gewartet, Netzwerk- und Systemeinstellungen werden überprüft, auf Diagnosetools wird zugegriffen und Probleme werden behoben, wenn der Dienst oder der Agent sich nicht wie erwartet verhält.
+
+link:task-console-local-vm-config.html["Pflegen Sie Ihren vCenter oder ESXi Host für die lokale Console-Bereitstellung"].
+
+
+
+[[manage-users-and-access]]
+== Benutzer und Zugriff verwalten
+
+Die Zugriffsrechte der Mitglieder in der gesamten Organisation können überprüft, auf Flottenebene angepasst und Sicherheitseinstellungen wie MFA-Wiederherstellung und Anmeldeinformationen für Dienstkonten verwaltet werden.
+
+* link:task-iam-manage-roles.html["Mitgliederzugriff in der NetApp Console verwalten"]
+* link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen in der lokalen NetApp Console-Bereitstellung anzeigen oder ändern"]
+* link:task-manage-member-security.html["Mitgliedersicherheit in der lokalen NetApp Console-Bereitstellung verwalten"]
+

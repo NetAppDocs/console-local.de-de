@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: reference-alert-remediation.html 
+keywords: alert remediation, fix-it, guided remediation, automated remediation, ONTAP alerts, storage alerts, compliance alerts, remediate drift, alert actions, netapp console local 
+summary: Referenz für Abhilfemaßnahmen, die in der lokalen NetApp Console-Bereitstellung verfügbar sind, einschließlich zugehöriger Warnungen, Auswirkungsbereiche und Aktionszusammenfassungen. 
+---
+= Maßnahmen zur Behebung von Warnungen in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Diese Referenz dient dem Verständnis der in *Fix it* in der lokalen NetApp Console-Bereitstellung verfügbaren Korrekturmaßnahmen. Für jede Aktion beschreibt die Tabelle, was die Aktion bewirkt und die zugehörige Warnung. Die Aktionsdetails im Bestätigungsdialog sollten vor der Ausführung überprüft werden.
+
+
+
+[[remediation-actions]]
+== Abhilfemaßnahmen
+
+[cols="20,17,28,12,23"]
+|===
+| Abhilfemaßnahme | Alarmname | Alarmbeschreibung | Wirkungsbereich | Zusammenfassung der Sanierungsmaßnahmen 
+
+
+| *Automatisches Volumenwachstum aktivieren* | Volume voll | Das Volume hat nur noch wenig freien Speicherplatz und nähert sich der vollen Kapazität. | Kapazität | Erhöht automatisch die Größe eines Volumes (bis zu einem konfigurierten Grenzwert), um das Risiko eines Speicherplatzmangels zu verringern. 
+
+
+| *Volumengröße ändern* | Volume voll | Das Volume hat nur noch wenig freien Speicherplatz und nähert sich der vollen Kapazität. | Kapazität | Erhöht die Größe eines Volumes, um sofort mehr Speicherplatz bereitzustellen. 
+
+
+| *Volume online schalten* | Volume offline | Das Volume ist offline und stellt keine Daten bereit. | Verfügbarkeit | Bringt ein Offline-Volume online, sodass es die Datenbereitstellung wieder aufnehmen kann. 
+
+
+| *Aggregat online schalten* | Offline-Aggregat | Das Aggregat ist nicht online und die darauf gehosteten Volumes sind möglicherweise nicht verfügbar. | Verfügbarkeit | Bringt ein Offline-Aggregat online, um den Zugriff auf die von ihm gehosteten Volumes wiederherzustellen. 
+
+
+| *LUN online schalten* | LUN offline | Die LUN ist offline und der Hostzugriff ist nicht verfügbar. | Verfügbarkeit | Bringt eine Offline-LUN online, sodass Hosts wieder Zugriff und E/A durchführen können. 
+
+
+| *Volume entsperren* | Volume eingeschränkt | Das Volume befindet sich in einem eingeschränkten Zustand und kann E/A-Vorgänge möglicherweise nicht wie gewohnt ausführen. | Verfügbarkeit | Stellt ein eingeschränktes Volume wieder in den Online-Zustand, sodass Clients wieder darauf zugreifen können. 
+
+
+| *NVMe Namespace online schalten* | NVMe Namespace ist offline | Der NVMe-Namensraum ist offline und Hostzugriff ist nicht verfügbar. | Verfügbarkeit | Bringt einen Offline-NVMe-Namensraum online, um den Hostzugriff wiederherzustellen. 
+
+
+| *Intercluster-LIF aktivieren* | Intercluster-LIF ausgefallen | Ein Intercluster-LIF ist ausgefallen und die Kommunikation zwischen den Clustern kann beeinträchtigt sein. | Konnektivität | Aktiviert eine Intercluster-LIF, um die für die Replikation verwendete Cluster-zu-Cluster-Konnektivität wiederherzustellen. 
+
+
+| *MetroCluster AUSO erneut aktivieren* | MetroCluster automatische ungeplante Umschaltung deaktiviert | Die automatische ungeplante Umschaltung ist auf diesem Cluster deaktiviert. | Verfügbarkeit | Aktiviert die automatische ungeplante Umschaltung (AUSO) wieder, damit der MetroCluster Schutz wie vorgesehen funktioniert. 
+
+
+| *Service Processor Netzwerk konfigurieren* | Service Processor ist nicht konfiguriert. | Das Service Processor (SP) Netzwerk ist nicht konfiguriert. | Verwaltbarkeit | Konfiguriert die SP Netzwerkeinstellungen, um den Zugriff auf das Out-of-Band-Management zu ermöglichen. 
+
+
+| *Nicht zugewiesene Datenträger zuweisen* | Nicht zugewiesene Datenträger erkannt | Es sind nicht zugewiesene Datenträger vorhanden, deren Kapazität möglicherweise ungenutzt ist. Die Datenträger sollten einem Knoten zugewiesen werden, damit sie für die Speicherung verwendet werden können. | Verfügbarkeit | Weist derzeit nicht zugewiesene Datenträger einem Knoten zu, damit diese für die Speicherung verwendet werden können. 
+
+
+| *Wiederherstellung des Speicherplatzes im Root-Volume* | Root-Volume-Speicherplatz des Knotens niedrig | Der verfügbare Speicherplatz auf dem Root-Volume des Knotens ist gering und kann den normalen Systembetrieb beeinträchtigen. | Systemgesundheit | Gibt Speicherplatz auf dem Root-Volume des Knotens frei, indem der größte Snapshot oder die größte Core-Dump-Datei gelöscht wird. Löschvorgänge sind dauerhaft. 
+|===

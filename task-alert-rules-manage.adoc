@@ -1,0 +1,178 @@
+---
+sidebar: sidebar 
+permalink: task-alert-rules-manage.html 
+keywords: notifications, alerts, notification rules, alert rules, severity, impact area, email, webhook, mute, netapp console local 
+summary: Benachrichtigungsregeln in der lokalen Bereitstellung der NetApp Console konfigurieren, um zu steuern, welche Warnungen Benachrichtigungen auslösen, wer sie erhält und wie sie zugestellt werden. 
+---
+= Benachrichtigungsregeln für Warnungen in der lokalen NetApp Console-Bereitstellung konfigurieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Benachrichtigungsregeln in der lokalen Bereitstellung der NetApp Console konfigurieren, um zu steuern, welche Warnungen Benachrichtigungen auslösen, wer sie erhält und wie sie zugestellt werden.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator, Speicheradministrator, Analyst für Betriebssupport oder eine der Administratorrollen für NetApp Backup and Recovery. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Benachrichtigungsregeln ermöglichen das Weiterleiten der passenden Warnmeldungen über die für Ihre Umgebung geeigneten Kanäle an die richtigen Personen, während gleichzeitig die Anzahl nicht relevanter Warnmeldungen reduziert wird. Benachrichtigungsregeln ergänzen die Alerts-Seite: Die Warnmeldung wird im Alerts-Workflow untersucht oder behoben, anschließend lässt sich mit Regeln steuern, wie ähnliche Warnmeldungen künftig zugestellt werden.
+
+Eine Benachrichtigungsregel ordnet Warnmeldungen anhand von Bedingungen zu, die Sie definieren, wie Dienst, Schweregrad und Auswirkungsbereich, und sendet anschließend eine Benachrichtigung über die von Ihnen ausgewählten Kanäle. Die lokale Bereitstellung der Console enthält Standard-Benachrichtigungsregeln, die angezeigt und angepasst werden können, und es besteht die Möglichkeit, eigene benutzerdefinierte Regeln zu erstellen. Regeln können auch stummgeschaltet werden, um Benachrichtigungen während geplanter Ereignisse wie Wartungsfenster vorübergehend zu unterdrücken.
+
+* link:https://docs.netapp.com/us-en/ontap-ems/acp-auto-events.html["Weitere Informationen zu ONTAP EMS und den verfügbaren Warnmeldungen."^]
+
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Damit Benachrichtigungen per E-Mail zugestellt werden, muss Ihr Organisationsadministrator einen E-Mail-Server in der lokalen NetApp Console-Bereitstellung konfigurieren. Damit Benachrichtigungen an ein externes System zugestellt werden, muss Ihr Organisationsadministrator einen Webhook konfigurieren. Die Schritte sind unter link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellung konfigurieren"] zu finden.
+* Das Benachrichtigungscenter der lokalen NetApp Console-Bereitstellung zeigt Benachrichtigungen standardmäßig an, sodass für Benachrichtigungen in der NetApp Console keine zusätzliche Einrichtung erforderlich ist.
+
+
+
+
+[[view-notification-rules]]
+== Benachrichtigungsregeln anzeigen
+
+Die Seite mit den Benachrichtigungsregeln ist der zentrale Ort, um alle für Ihre Organisation geltenden Regeln einzusehen und zu verwalten. Jede Regel zeigt ihre wichtigsten Attribute an, sodass Sie Ihr Benachrichtigungsverhalten schnell beurteilen und anpassen können.
+
+.Schritte
+. In der linken Navigation *Health > Alerts* auswählen.
+. *Benachrichtigungseinstellungen* auswählen.
+. Überprüfen Sie die Regeln in der Liste. Jede Regel zeigt ihren aktiven Status, ihren Namen, die überwachten Dienste und Schweregrade, die Rollen, die zum Empfang von Benachrichtigungen berechtigt sind, die aktivierten Zustellungskanäle, das Datum der letzten Änderung und einen eventuell geplanten Stummschaltungszeitraum an.
+. Um eine bestimmte Regel zu finden, können die Filter- und Suchsteuerelemente verwendet werden, um nach aktivem Status, Dienst, Schweregrad, Rolle, Kanal oder Stummschaltungsstatus zu filtern.
+
+
+
+
+[[create-a-notification-rule]]
+== Eine Benachrichtigungsregel erstellen
+
+Erstellen Sie eine Benachrichtigungsregel, um die Bedingungen zu definieren, die eine Benachrichtigung auslösen, und wie diese Benachrichtigung zugestellt wird.
+
+
+NOTE: Benachrichtigungsregeln lassen sich nicht für Flotten festlegen. Sie können nur für einzelne Systeme festgelegt werden. In großen Umgebungen mit vielen Systemen empfiehlt sich die Erstellung allgemeinerer Regeln nach Schweregrad, anstatt Regeln für jedes System einzeln zu duplizieren. Beispielsweise dient eine einzige Regel für den Schweregrad „Kritisch“, die alle Systeme abdeckt, als Auffangregel, ergänzt durch gezielte Regeln für Systeme, die ein anderes Routing oder andere Empfänger benötigen.
+
+.Beispiel einer Benachrichtigungsregel für kritische Warnmeldungen in allen Systemen
+Angenommen, Sie möchten sicherstellen, dass keine kritische Warnung unbemerkt bleibt, unabhängig vom System, aus dem sie stammt. Es kann eine allgemeine Regel erstellt werden, die alle kritischen Warnungen an das Console Notification Center für Speicheradministratoren weiterleitet.
+
+In diesem Beispiel wird eine Regel mit den folgenden Einstellungen erstellt:
+
+* *Services*: Alle
+* *Schweregrad*: Kritisch
+* *IAM role*: Storage-Administrator
+* *System*: (Dieses Feld leer lassen, um auf alle Systeme anzuwenden)
+* *Übermittlungsmethode*: Konsolenbenachrichtigungszentrum
+
+
+Mit dieser Regel erhalten Speicheradministratoren in der NetApp Console eine Benachrichtigung für jede kritische Warnung in allen Systemen. Diese Regel dient als Grundlage, die durch gezieltere Regeln ergänzt werden kann.
+
+.Beispiel einer gezielten Benachrichtigungsregel für Storage-Admin-Kapazitätswarnungen
+Angenommen, Ihre Speicheradministratoren müssen umgehend auf kritische Kapazitätsprobleme eines bestimmten Produktionssystems reagieren, aber Sie möchten nicht, dass ihre Postfächer mit Warnmeldungen mit niedrigerem Schweregrad überflutet werden. Es kann eine gezielte Regel erstellt werden, die Speicheradministratoren nur dann per E-Mail benachrichtigt, wenn eine kritische Kapazitätswarnung für dieses System ausgelöst wird.
+
+In diesem Beispiel wird eine Regel mit den folgenden Einstellungen erstellt:
+
+* *Services*: ONTAP Management
+* *Schweregrad*: Kritisch
+* *Auswirkungsbereich*: Kapazität
+* *IAM role*: Storage-Administrator
+* *System*: <system_name>
+* *Zustellungsmethode*: E-Mail
+
+
+Mit dieser Regel sendet Console local deployment allen Speicheradministratoren des angegebenen Systems eine E-Mail, wenn eine kritische Kapazitätswarnung auftritt. Warnungen mit einem niedrigeren Schweregrad, wie beispielsweise Warnungen oder Informationen, generieren keine E-Mail, sodass sich das Team auf die Probleme konzentrieren kann, die dringend Aufmerksamkeit erfordern.
+
+.Schritte
+. In der linken Navigation *Health > Alerts* auswählen.
+. *Benachrichtigungseinstellungen* auswählen und dann *Regel hinzufügen* auswählen.
+. Definieren Sie die Bedingungen, auf die die Regel zutrifft:
++
+** *Regelname*: Geben Sie einen kurzen, aussagekräftigen Namen ein. Dieses Feld ist erforderlich.
+** *Regelbeschreibung*: Optional kann zusätzlicher Kontext zum Zweck der Regel eingegeben werden.
+** *Dienste*: Es kann ein oder mehrere ONTAP oder Plattformdienste ausgewählt werden, auf die die Regel angewendet wird.
+** *Rollen*: Die Zugriffsrollen, die Benutzer haben müssen, um Benachrichtigungen zu erhalten, wenn die Regel ausgelöst wird, können ausgewählt werden.
+** *Schweregrade*: Es kann ausgewählt werden, welche Schweregrade die Regel überwacht, wie zum Beispiel Kritisch, Warnung, Fehler oder Information.
+** *Wirkungsbereich*: die passenden Betriebsbereiche wie Kapazität oder Leistung auswählen.
+** *Alarmname*: Es werden die spezifischen Alarmtypen ausgewählt, die die Regel auslösen.
+** *System*: Wählen Sie den Systemkontext aus, auf den die Regel angewendet wird.
+
+
+. Wählen Sie die Zustellungskanäle für die Benachrichtigung aus:
++
+** *E-Mail*: Sendet Benachrichtigungs-E-Mails an Benutzer mit den ausgewählten Rollen. Erfordert einen konfigurierten E-Mail-Server.
+** *Webhook*: Sendet Alarmdaten an ein externes System. Erfordert die Auswahl einer konfigurierten Webhook-Integration.
+** *Konsolenbenachrichtigungszentrum*: Zeigt Echtzeitwarnungen für Benutzer mit den ausgewählten Rollen an.
+
+
+. Optional kann die Benachrichtigung dieser Regel während eines geplanten Zeitraums, wie zum Beispiel eines Wartungsfensters, unterdrückt werden, indem ein Zeitplan für *Benachrichtigungen stummschalten* festgelegt und eine Wiederholung ausgewählt wird, falls der Stummschaltungszeitraum wiederholt werden soll. Mehrere Stummschaltungsfenster können pro Regel hinzugefügt werden, was für wiederkehrende Wartungszyklen wie wöchentliche Patches nützlich ist.
+. *Erstellen* auswählen.
+
+
+
+
+[[enable-or-disable-a-notification-rule]]
+== Aktivieren oder Deaktivieren einer Benachrichtigungsregel
+
+Aktivieren oder deaktivieren Sie einzelne Benachrichtigungsregeln, um festzulegen, unter welchen Bedingungen Benachrichtigungen ausgelöst werden. Regeln, die für Ihre Umgebung nicht relevant sind, können deaktiviert werden, um die Anzahl der Benachrichtigungen zu reduzieren. Regeln können wieder aktiviert werden, um deren Benachrichtigungen erneut zu erhalten.
+
+.Schritte
+. In der linken Navigation *Health > Alerts* auswählen.
+. *Benachrichtigungseinstellungen* auswählen.
+. Suchen Sie die Regel, die geändert werden soll.
+. Den *Aktiv*-Schalter der Regel ein- oder ausschalten. Die Änderung wird sofort wirksam.
+
+
+
+
+[[mute-a-notification-rule]]
+== Benachrichtigungsregel stummschalten
+
+Eine Benachrichtigungsregel kann stummgeschaltet werden, um die Zustellung von Warnungen während eines geplanten Ereignisses, wie eines Wartungsfensters, zu unterdrücken, ohne die Regel zu deaktivieren. Warnungen werden während der Stummschaltung weiterhin auf der Seite „Warnungen“ angezeigt, nur die E-Mail-, Webhook- und In-Console-Benachrichtigungen werden unterdrückt. Nach Ablauf des Stummschaltungszeitraums werden die Benachrichtigungen automatisch wieder aufgenommen.
+
+Sie können einer einzelnen Regel mehrere Stummschaltungsfenster hinzufügen und jedes einzelne so konfigurieren, dass es nach einem Zeitplan wiederholt wird.
+
+.Beispiele für stumme Fenster
+* *Einmaliges Wartungsfenster*: Sie führen am Samstagabend ein Firmware-Upgrade auf einem Speichersystem durch und möchten die erwarteten Benachrichtigungen während dieses Wartungsfensters unterdrücken. Ein Stummschaltungsfenster wird für Samstag von 22:00 Uhr bis Sonntag 2:00 Uhr ohne Wiederholung festgelegt. Nach Ablauf des Fensters werden die Benachrichtigungen automatisch wieder aufgenommen.
+* *Wöchentlich wiederkehrendes Patch-Fenster*: Ihr Team patcht die Systeme jeden Sonntag von Mitternacht bis 4:00 Uhr. Ein Stummschaltungsfenster mit wöchentlicher Wiederholung sorgt dafür, dass Benachrichtigungen jede Woche automatisch ohne manuelle Eingriffe unterdrückt werden. Wenn ein zweites System einen eigenen Patch-Zeitplan zu einer anderen Zeit hat, kann derselben Regel ein zweites Stummschaltungsfenster mit eigener Startzeit und Wiederholung hinzugefügt werden.
+
+
+.Schritte
+. In der linken Navigation *Health > Alerts* auswählen.
+. *Benachrichtigungsregeln* auswählen.
+. In der Regelliste die Regel suchen, die stummgeschaltet werden soll, und das Aktionsmenü für diese Regel auswählen.
+. *Bearbeiten* auswählen.
+. Im Abschnitt *Benachrichtigungen stummschalten* das Start- und Enddatum sowie die Uhrzeit für das Stummschaltungsfenster festlegen.
+. Optional kann eine Wiederholung ausgewählt werden, um das Fenster nach einem Zeitplan zu wiederholen.
+. Zum Hinzufügen weiterer Stummschaltfenster *Stummschaltfenster hinzufügen* auswählen und die vorherigen Schritte wiederholen.
+. *Speichern* auswählen.
+
+
+
+
+[[delete-a-notification-rule]]
+== Löschen einer Benachrichtigungsregel
+
+Löschen Sie eine Benachrichtigungsregel, wenn Sie sie nicht mehr benötigen. Durch das Löschen einer Regel wird diese endgültig entfernt, sodass sie nicht wiederhergestellt werden kann.
+
+.Schritte
+. In der linken Navigation *Health > Alerts* auswählen.
+. *Benachrichtigungseinstellungen* auswählen.
+. In der Regelliste die Regel suchen, die gelöscht werden soll, und das Aktionsmenü für diese Regel auswählen.
+. Im Aktionsmenü die Option *Löschen* auswählen.
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellung konfigurieren"]
+* link:concept-console-alerts.html["Informationen zu Konsolenwarnungen"]
+* link:task-alerts-monitor.html["Benachrichtigungen anzeigen"]
+

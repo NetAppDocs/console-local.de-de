@@ -1,0 +1,16 @@
+= 
+:allow-uri-read: 
+
+
+. Die Auswahl kann überprüft werden, um zu verifizieren, dass die Einrichtung korrekt ist.
++
+.. Das Kästchen *Agentenkonfiguration validieren* ist standardmäßig aktiviert, damit die NetApp Console bei der Bereitstellung die Netzwerkverbindungsanforderungen überprüft. Wenn die NetApp Console den Agenten nicht bereitstellen kann, wird ein Bericht bereitgestellt, der bei der Fehlerbehebung unterstützt. Bei erfolgreicher Bereitstellung wird kein Bericht bereitgestellt.
+
+
++
+[]
+====
+Wenn weiterhin die für Agent-Upgrades verwendete link:reference-networking-saas-console-previous.html["vorherige Endpunkte"] genutzt wird, schlägt die Validierung mit einem Fehler fehl. Zur Vermeidung dieses Problems das Kästchen deaktivieren, um die Validierungsprüfung zu überspringen.
+
+====
+

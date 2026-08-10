@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: task-provisioning-agentic.html 
+keywords: agentic provisioning, AI-assisted provisioning, natural language, conversational provisioning, plan-and-approve, storage class, Console assistant, LLM, RBAC, netapp console local 
+summary: Mit KI-gesteuerter agentenbasierter Bereitstellung werden Speicheranforderungen in der lokalen NetApp Console-Bereitstellung autonom erfüllt. 
+---
+= Bereitstellung von Speicher mit KI-gestützten (agentenbasierten) Workflows in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der NetApp Console lokalen Bereitstellung empfiehlt sich die KI-gestützte (agentenbasierte) Bereitstellung, wenn Speicherplatz dialogbasiert angefordert, ein vorgeschlagener Plan überprüft und die Änderung genehmigt werden soll. Dieser Ansatz ist nützlich, wenn schnellere Anfragen mit weniger Navigation in der Benutzeroberfläche gewünscht werden, während die Bereitstellung weiterhin an Speicherklassen und rollenbasierte Zugriffssteuerung (RBAC) ausgerichtet bleibt.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator, Ordner- oder Flottenadministrator oder Speicheradministrator. Ihre KI-gestützten Aktionen unterliegen denselben rollenbasierten Zugriffsbeschränkungen wie UI-basierte Aktionen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Für die agentische Bereitstellung ist eine LLM-Integration erforderlich, die in Ihrer NetApp Console lokalen Bereitstellungsumgebung konfiguriert und verfügbar ist.
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Stellen Sie sicher, dass die LLM-Integration für Ihre lokale NetApp Console-Bereitstellung konfiguriert und aktiviert ist.
+* Die Zielflotte muss die erkannten Speichersysteme enthalten.
+* Es muss sichergestellt sein, dass die Speicherklassen konfiguriert und der Flotte zugeordnet sind, damit der Assistent plangemäße Vorschläge entsprechend der Klasse machen kann.
+
+
+.Schritte (werden noch einmal überprüft)
+. Den NetApp Konsolenassistenten öffnen.
+. Beschreiben Sie, was Sie benötigen, in einfacher Sprache (zum Beispiel Protokoll, Größe, Umgebung, Leistungsziel und gegebenenfalls Zielflotte).
+. Überprüfung des vorgeschlagenen Plans, einschließlich: der ausgewählten Flotte und der Platzierung des Zielsystems (falls zutreffend), der ausgewählten oder empfohlenen Speicherklasse sowie der wichtigsten Einstellungen, die angewendet werden (Kapazitätsverhalten, Schutzzeitplan, Sicherheitsanforderungen und gegebenenfalls QoS-bezogene Absichten, falls angezeigt).
+. Bestätigen oder passen Sie den Plan an. Falls der Plan eine unerwartete Klasse oder Platzierung auswählt, die gewünschte Klasse, Flotte oder Einschränkungen angeben und den Plan neu generieren.
+. Die Ausführung zur Bereitstellung der Arbeitslast genehmigen.
+. Die erstellte Ressource im Speicherinventar kann überprüft und bestätigt werden, dass sie der vorgesehenen Speicherklasse für die laufende Driftüberwachung zugeordnet ist.
+

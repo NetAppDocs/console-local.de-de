@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: concept-custom-dashboards.html 
+keywords: dashboards, predefined dashboards, custom dashboards, cards, card templates, metrics, KPI, fleet health, performance monitoring, capacity monitoring, storage visibility, netapp console local, monitoring 
+summary: Es wird erläutert, wie vordefinierte Home-Page-Dashboards und benutzerdefinierte Dashboards in der lokalen Bereitstellung der NetApp Console zusammenwirken. 
+---
+= Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Benutzerdefinierte Dashboards in der lokalen NetApp Console-Bereitstellung ermöglichen die Erstellung fokussierter Überwachungsansichten für bestimmte Teams, Flotten, Workloads und operative Ziele. Benutzerdefinierte Dashboards ergänzen das Dashboard der Startseite, indem sie gezielte Sichtbarkeit zur umfassenden, stets verfügbaren Überwachung hinzufügen.
+
+
+
+[[how-dashboard-types-work-together]]
+== Wie Dashboard-Typen zusammenarbeiten
+
+Startseite Dashboard:: Sofort einsatzbereite Überwachungsbereiche für Kapazität, Warnmeldungen, Leistungskapazität, Lizenzen und Datenschutzstatus. Die Ansichten sind vorkonfiguriert und werden automatisch aktualisiert. link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"].
+Benutzerdefinierte Dashboards:: Rollenspezifische Überwachungsansichten, die aus vordefinierten Karten erstellt sind, einschließlich auswählbarem Bereich, Metriken, Zielressourcen und Zeitfenstern.
+
+
+Beides zusammen verwenden: * Auf der Startseite mit der täglichen Basisüberwachung beginnen. * Benutzerdefinierte Dashboards für gezielte Untersuchungen nach Team, Flotte, Arbeitslast oder betrieblicher Fragestellung nutzen.
+
+Sie können jeweils nur ein benutzerdefiniertes Dashboard zur Startseite hinzufügen.
+
+
+
+[[understand-custom-dashboards]]
+== Informationen zu benutzerdefinierten Dashboards
+
+Ein benutzerdefiniertes Dashboard ist eine gespeicherte Sammlung von Karten, die Sie in einem Raster anordnen. Jede Karte basiert auf einer vordefinierten Kartenvorlage mit einer Kennzahl und einem Diagrammtyp. Wenn eine Karte hinzugefügt wird, werden Geltungsbereich, Zielobjekte, Aggregation und Zeitfenster konfiguriert.
+
+Benutzerdefinierte Dashboards und Karten sind privat für Sie. Jede Karte zeigt nur Daten der Speicherressourcen an, zu deren Anzeige Sie berechtigt sind.
+
+Sie können das benutzerdefinierte Dashboard von Ihrer Startseite entfernen und ein anderes hinzufügen, wenn sich die Überwachungsprioritäten ändern.
+
+
+
+[[monitor-what-matters]]
+== Überwachen Sie, was wichtig ist
+
+Kartenvorlagen sind nach Metriktyp organisiert, sodass ein Dashboard auf einen bestimmten Betriebsbereich fokussiert werden kann. Beispielsweise können Kapazitätskarten genutzt werden, um ein Volumen zu überwachen, das schneller als erwartet wächst, oder Alarmkarten, um wiederholte Ausfälle in einem stark ausgelasteten Cluster zu verfolgen:
+
+Performance:: Latenz, IOPS, Durchsatz, Auslastung und Leistungskapazität über die gesamte Flotte, Systeme, SVMs, Volumes und LUNs hinweg.
+Kapazität:: Verwendete Kapazität, freie Kapazität, prozentual genutzte Kapazität und Snapshot-Kapazität über die gesamte Flotte, Systeme, SVMs, Volumes, LUNs und lokale Tiers.
+Systemzustand:: Gesundheitszustand, Anzahl degradierter oder kritischer Objekte, ausgefallene Festplatten, Netzwerkschnittstellenfehler und Hot-Objekte.
+Warnmeldungen:: Anzahl kritischer Warnmeldungen, Warnmeldungen nach Schweregrad, Warnmeldungen nach Wirkungsbereich, aktuelle Warnmeldungen und Warntrends im Zeitverlauf.
+
+
+Einen vollständigen Katalog der vordefinierten Karten und Metriken enthält link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"].
+
+
+
+[[resource-types]]
+== Ressourcentypen
+
+Sie können Karten auf jeder Ebene der ONTAP Speicherhierarchie zuordnen: Flotte, Cluster, System (Knoten), SVM, Volume, LUN und lokale Ebene (Aggregat). Die verfügbaren Ressourcentypen hängen von der ausgewählten Kartenvorlage ab.
+
+
+
+[[plan-dashboard-views]]
+== Plan Dashboard-Ansichten
+
+Benutzerdefinierte Dashboards lassen sich um Ziele der Speicherverwaltung wie Workload-Performance-Triage, Kapazitätsplanung, Risikoerkennung und Priorisierung von Warnmeldungen organisieren.
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-dashboard-get-started.html["Erste Schritte mit Dashboards in NetApp Console lokale Bereitstellung"]
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"]
+

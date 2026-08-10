@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: task-console-local-vm-config.html 
+keywords: Console local VM, vcenter, esxi, increase cpu, increase ram, vm maintenance, Console local maintenance, Console local operating system, Console local host 
+summary: Nach der Bereitstellung der Console local deployment können Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden. Beispielsweise ist es möglich, die CPU oder den RAM der VM-Instanz zu erhöhen, die Console local deployment hostet. 
+---
+= Pflegen Sie Ihren vCenter oder ESXi-Host für die lokale Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung können nach der Bereitstellung Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden. Beispielsweise ist es möglich, die CPU oder den Arbeitsspeicher der VM-Instanz zu erhöhen, die die Console lokale Bereitstellung hostet.
+
+Diese Wartungsaufgaben lassen sich über die VM-Webkonsole ausführen:
+
+* Festplattengröße vergrößern
+* Die lokale NetApp Console-Bereitstellung neu starten
+* Statische Routen aktualisieren
+* Suchdomänen aktualisieren
+
+
+.Einschränkungen
+Über die Wartungskonsole können Sie lediglich Informationen zur IP-Adresse, zum DNS und zu den Gateways anzeigen (nicht aktualisieren).
+
+
+
+[[access-the-vm-maintenance-console]]
+== Zugriff auf die VM-Wartungskonsole
+
+Über den vSphere Client ist ein Zugriff auf die Wartungskonsole möglich.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+
+
+
+
+[[change-the-maint-user-password]]
+=== Das Wartungsbenutzerpasswort ändern
+
+Sie können das Passwort für den  `maint` Benutzer ändern.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `1` ein, um das  `System Configuration` Menü anzuzeigen.
+. Geben Sie  `1` ein, um das Wartungsbenutzerpasswort zu ändern, und folgen Sie den Anweisungen auf dem Bildschirm.
+
+
+
+
+[[increase-the-cpu-or-ram-of-the-vm-instance]]
+=== CPU oder RAM der VM-Instanz erhöhen
+
+Sie können die CPU oder den RAM der VM-Instanz erhöhen, die die lokale NetApp Console-Bereitstellung hostet.
+
+Die Einstellungen der VM-Instanz im vCenter oder ESXi-Host werden bearbeitet, anschließend werden die Änderungen über die Wartungskonsole angewendet.
+
+.Schritte im vSphere Client
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. Klicken Sie mit der rechten Maustaste auf die VM-Instanz und wählen Sie *Einstellungen bearbeiten*.
+. Erhöhen Sie den für /opt oder die /var-Partition verwendeten Festplattenspeicher.
++
+.. *Festplatte 2* auswählen, um den für /opt verwendeten Festplattenspeicher zu erhöhen.
+.. *Festplatte 3* auswählen, um den für /var verwendeten Festplattenspeicher zu erhöhen.
+
+
+. Speichern Sie Ihre Änderungen.
+
+
+.Schritte in der Wartungskonsole
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Menü `1 to view the `System Configuration` aufrufen.
+. Geben Sie  `2` ein und folgen Sie den Anweisungen auf dem Bildschirm. Die Konsole sucht nach neuen Einstellungen und vergrößert die Größe der Partitionen.
+
+
+
+
+[[view-network-settings-for-the-console-local-deployment-vm]]
+=== Netzwerkeinstellungen für die lokale Console-Bereitstellungs-VM anzeigen
+
+Die Netzwerkeinstellungen der Console lokalen Bereitstellungs-VM im VSphere-Client können angezeigt werden, um Netzwerkprobleme zu bestätigen oder zu beheben. Es können lediglich die folgenden Netzwerkeinstellungen angezeigt werden (kein Update möglich): IP-Adresse und DNS-Details.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `2` ein, um das  `Network Configuration` Menü anzuzeigen.
+. Geben Sie eine Zahl zwischen 1 und 6 ein, um die entsprechenden Netzwerkeinstellungen anzuzeigen.
+
+
+
+
+[[update-the-static-routes-for-the-console-local-deployment-vm]]
+=== Die statischen Routen für die lokale NetApp Console-Bereitstellungs-VM aktualisieren
+
+Statische Routen für die lokale NetApp Console-Bereitstellungs-VM können nach Bedarf hinzugefügt, aktualisiert oder entfernt werden.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `2` ein, um das  `Network Configuration` Menü anzuzeigen.
+. Geben Sie  `7` ein, um statische Routen zu aktualisieren und den Anweisungen auf dem Bildschirm zu folgen.
+. Drücken Sie die Eingabetaste.
+. Optional sind weitere Änderungen möglich.
+. Geben Sie  `9` ein, um Ihre Änderungen zu übernehmen.
+
+
+
+
+[[update-domain-search-settings-for-the-console-local-deployment-vm]]
+=== Domänensucheinstellungen für die lokale NetApp Console-Bereitstellungs-VM aktualisieren
+
+Sie können die Suchdomäneneinstellungen für die lokale NetApp Console VM-Instanz aktualisieren.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `2`` ein, um das  `Network Configuration` Menü anzuzeigen.
+. Geben Sie  `8` ein, um die Einstellungen für die Domänensuche zu aktualisieren, und folgen Sie den Anweisungen auf dem Bildschirm.
+. Drücken Sie die Eingabetaste.
+. Optional sind weitere Änderungen möglich.
+. Geben Sie  `9` ein, um Ihre Änderungen zu übernehmen.
+
+
+
+
+[[access-the-console-local-deployment-diagnostic-tools]]
+[[connect-vcenter-host]]
+=== Zugriff auf die lokalen Bereitstellungsdiagnosetools der Konsole
+
+Diagnosetools stehen zur Verfügung, um Probleme mit der lokalen Console-Bereitstellung zu beheben. NetApp Support kann darum bitten, dies im Rahmen der Fehlerbehebung zu tun.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `3` ein, um das Menü „Support und Diagnose“ anzuzeigen.
+. Geben Sie  `1` ein, um auf die Diagnosetools zuzugreifen und den Anweisungen auf dem Bildschirm zu folgen.
+
+
+
+
+[[access-the-console-local-deployment-diagnostic-tools-remotely]]
+=== Remote-Zugriff auf die lokalen Bereitstellungsdiagnosetools der Konsole
+
+Mit einem Tool wie PuTTY ist der Remote-Zugriff auf Diagnosetools möglich. Der SSH-Zugriff auf die lokale VM der Console-Bereitstellung wird durch die Vergabe eines Einmalpassworts ermöglicht.
+
+SSH-Zugriff ermöglicht erweiterte Terminalfunktionen wie Kopieren und Einfügen.
+
+.Schritte
+. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
+. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
+. *Webkonsole starten* auswählen.
+. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
+. Geben Sie  `3` ein, um das  `Support and Diagnostics` Menü anzuzeigen.
+. Geben Sie  `2` ein, um auf die Diagnosetools zuzugreifen, und folgen Sie den Anweisungen auf dem Bildschirm, um ein Einmalpasswort zu konfigurieren, das nach 24 Stunden abläuft.
+. Verwenden Sie ein SSH-Tool wie Putty, um mit dem Benutzernamen `diag` und dem von Ihnen konfigurierten Einmalpasswort eine Verbindung zur lokalen VM-Bereitstellung der Konsole herzustellen.
+

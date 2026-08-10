@@ -1,0 +1,10 @@
+= Einführung der lokalen NetApp Console-Bereitstellung
+:allow-uri-read: 
+
+
+
+
+[[introducing-netapp-console-local-deployment]]
+=== Einführung der lokalen NetApp Console-Bereitstellung
+
+https://docs.netapp.com/us-en/console-local/netapp-console-local.html["Lokale Bereitstellung der NetApp Console kennenlernen"].

@@ -1,0 +1,153 @@
+---
+sidebar: sidebar 
+permalink: task-iam-manage-resources.html 
+keywords: resource, hierarchy, association, access, resource permissions, resource hierarchy, iam, identity and access management 
+summary: Der Benutzerzugriff auf Ressourcen wird gesteuert, indem diese zu Flotten und Ordnern in der lokalen NetApp Console-Bereitstellungsorganisation hinzugefügt werden. Zugriff für Benutzer wird auf Flottenebene gewährt. 
+---
+= Ressourcen in Ordnern und Flotten in der lokalen NetApp Console-Bereitstellung verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Ressourcenzugriff in der lokalen NetApp Console-Bereitstellung wird verwaltet, indem Ressourcen dem richtigen Ordner oder der richtigen Flotte zugeordnet werden, was steuert, welche Teams auf diese zugreifen und sie verwalten können.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- oder Flottenadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Ressourcen können dort platziert werden, wo die richtigen Teams sie verwalten können, sie können bei einem Eigentümerwechsel verschoben und Verknüpfungen entfernt werden, wenn sie nicht mehr benötigt werden.
+
+Eine _Ressource_ ist eine Entität, die von der lokalen Console Bereitstellung erkannt wird, wie beispielsweise eine Speicherressource oder eine Backup und Recovery Workload.
+
+
+
+[[console-resource-types]]
+== Konsolenressourcentypen
+
+Die lokale Bereitstellung über die Konsole unterstützt sowohl Speicherressourcen als auch Backup und Recovery Workloads. Entweder Speicherressourcen oder Backup und Recovery Workloads können einer Flotte zugeordnet werden, um Zugriff und Verwaltung zu steuern.
+
+Speicherressourcen:: Speicherressourcen sind die am häufigsten vorkommende Ressourcenart in Ihrem Unternehmen. Wenn ein Speichersystem zu einer lokalen Console-Bereitstellung hinzugefügt wird, sollte es einer Flotte zugeordnet werden, damit die zuständigen Teams darauf zugreifen und es verwalten können. Nach dem Hinzufügen eines ONTAP Clusters kann dieser beispielsweise der  `Production-US-East` Flotte zugeordnet werden.
+Backup- und Recovery-Workloads:: Auch Backup and Recovery Workloads gelten als Ressourcen. Mitgliedern können Zugriffsberechtigungen für Backup and Recovery Workloads zugewiesen werden, indem die Workloads Flotten zugeordnet werden. Beispielsweise kann einem Mitglied Zugriff auf einen Backup and Recovery Workload gewährt werden, indem dieser einer Flotte zugeordnet wird, auf die das Mitglied Zugriff hat, und die entsprechende Backup and Recovery Rolle vergeben wird.
+
+
+
+
+[[view-the-resources-in-your-organization]]
+== Die Ressourcen in Ihrer Organisation anzeigen
+
+Die Ressourcen in Ihrer Organisation können angezeigt werden, um eine bestimmte Ressource zu finden und zu sehen, welchen Flotten oder Ordnern sie zugeordnet ist. Wenn noch keine Ordner oder Flotten erstellt wurden, sind alle Ressourcen direkt der Standardflotte unter der Organisation zugeordnet.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Ressourcen* auswählen.
+. *Erweiterte Suche & Filterung* auswählen.
+. Mit den verfügbaren Optionen lässt sich eine Ressource finden:
++
+** *Suche nach Ressourcennamen*: Ein Text-String kann eingegeben und *Hinzufügen* ausgewählt werden.
+** *Plattform*: Eine oder mehrere Plattformen wie Amazon Web Services können ausgewählt werden.
+** *Ressourcen*: Es können eine oder mehrere Ressourcen ausgewählt werden, wie zum Beispiel Cloud Volumes ONTAP.
+** *Organisation, Ordner oder Flotte*: Die gesamte Organisation, ein bestimmter Ordner oder eine bestimmte Flotte kann ausgewählt werden.
+
+
+. *Suchen* auswählen.
+
+
+
+
+[[associate-a-resource-with-a-folder-or-fleet]]
+[[associate-resource]]
+== Eine Ressource mit einem Ordner oder einer Flotte verknüpfen
+
+Eine Ressource wird einer Flotte oder einem Ordner zugeordnet, sodass die zuständigen Teams sie verwalten können. Beispielsweise kann nach dem Hinzufügen eines ONTAP Clusters dieser der  `Production-US-East` Flotte zugeordnet werden, sodass die regionalen Storage-Administratoren dieser Flotte die Verwaltung übernehmen können.
+
+
+NOTE: Benutzer mit der Rolle „Organisationsadministrator“ können einem Ordner Ressourcen hinzufügen, um Flottenzuordnungsaufgaben an den Ordner- oder Flottenadministrator für diesen Ordner zu delegieren. link:task-iam-manage-folders-fleets.html#associate-resource-folder["Eine Ressource mit einem Ordner verknüpfen"].
+
+.Schritte
+. Auf der Seite *Ressourcen* zu einer Ressource in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und dann *Einem Ordner oder einer Flotte zuordnen* wählen.
+. Wählen Sie einen Ordner oder eine Flotte aus und wählen Sie dann *Akzeptieren*.
+. Um einen weiteren Ordner oder eine Flotte zuzuordnen, *Ordner oder Flotte hinzufügen* auswählen und dann den Ordner oder die Flotte auswählen.
++
+Beachten Sie, dass Sie nur aus den Ordnern und Flotten auswählen können, für die Sie Administratorrechte besitzen.
+
+. *Ressourcen zuordnen* auswählen.
++
+** Wenn Sie die Ressource Flotten zugeordnet haben, können Mitglieder, die über Berechtigungen für diese Flotten verfügen, nun über die Console auf die Ressource zugreifen.
+** Wenn Sie die Ressource einem Ordner zugeordnet haben, kann ein _Ordner- oder Flottenadministrator_ nun auf die Ressource zugreifen und sie einer Flotte innerhalb des Ordners zuordnen. link:task-iam-manage-folders-fleets.html#associate-resource-folder["Eine Ressource mit einem Ordner verknüpfen"].
+
+
+
+
+
+
+[[view-the-folders-and-fleets-associated-with-a-resource]]
+[[view-folders-and-fleets]]
+== Ordner und Flotten, die einem Ressourcenobjekt zugeordnet sind, anzeigen
+
+Es kann überprüft werden, mit welchen Flotten oder Ordnern eine Ressource verknüpft ist.
+
+
+NOTE: Welche Mitglieder Zugriff auf die Ressource haben, lässt sich durch Überprüfung der Mitglieder feststellen, die dem zugehörigen Ordner oder der Flotte zugewiesen sind. link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"].
+
+.Schritte
+. Auf der Seite *Ressourcen* zu einer Ressource in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+
+
+Das folgende Beispiel zeigt eine Ressource, die einer Flotte zugeordnet ist.
+
+image:screenshot-iam-resource-details.png["Ein Screenshot der Ressourcendetailseite, der eine Ressource zeigt, die einer Flotte zugeordnet ist, die sich direkt unterhalb der Organisation befindet."]
+
+
+NOTE: Welche Mitglieder Zugriff auf die Ressource haben, lässt sich durch Überprüfung des zugehörigen Ordners oder der Flotte feststellen.
+
+link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"]. link:task-iam-manage-roles.html["Mitgliederzugriff verwalten"].
+
+
+
+[[remove-a-resource-from-a-folder-or-fleet]]
+[[remove-resource]]
+== Eine Ressource aus einem Ordner oder einer Flotte entfernen
+
+Die Verknüpfung einer Ressource mit einem Ordner oder einer Flotte kann entfernt werden, damit Mitglieder sie dort nicht verwalten können.
+
+
+NOTE: Um ein Speichersystem aus der gesamten Organisation zu entfernen, auf die Seite *Systeme* gehen und das System entfernen.
+
+.Schritte
+. Auf der Seite *Ressourcen* zu einer Ressource in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. Um eine Ressource aus einem Ordner oder einer Flotte zu entfernen, image:icon-delete.png["Ein Symbol eines Mülleimers"] neben dem Ordner oder der Flotte auswählen.
+. *Löschen* auswählen, um die Verknüpfung zu entfernen.
+
+
+
+
+[[move-a-resource-between-fleets]]
+== Eine Ressource zwischen Flotten verschieben
+
+Eine Ressource kann von einer Flotte in eine andere verschoben werden, indem ihre Zuordnung zur aktuellen Flotte entfernt und sie anschließend der Zielflotte zugeordnet wird.
+
+
+NOTE: Der Zugriff auf die Ressource ändert sich, sobald sich die Zuordnung ändert. Nach Möglichkeit sollten beide Schritte in einem Wartungsfenster abgeschlossen werden.
+
+.Schritte
+. Auf der Seite *Ressourcen* zu einer Ressource in der Tabelle navigieren, image:icon-action.png["Ein Symbol, das aus drei nebeneinanderliegenden Punkten besteht"] auswählen und anschließend *Details anzeigen* wählen.
+. Wählen Sie image:icon-delete.png["Ein Symbol eines Mülleimers"] neben der aktuellen Flotte *Löschen* aus.
+. *Ordner oder Flotte hinzufügen* auswählen.
+. Die Zielflotte auswählen und *Akzeptieren* wählen.
+. *Ressourcen zuordnen* auswählen.
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-identity-and-access-management.html["Informationen zu Identität und Zugriff in der NetApp Console"]
+* link:task-iam-fleet-mgmt-get-started.html["Erste Schritte mit Identität und Zugriff in der NetApp Console"]
+* link:task-iam-users-fleets-assign.html["Zugriffszuweisungen für die Flotte nach dem Verschieben von Ressourcen verwalten"]
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur API für Identität und Zugriff"^]
+

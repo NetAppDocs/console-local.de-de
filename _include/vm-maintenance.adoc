@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+Die Wartung des Betriebssystems auf dem Console agent Host liegt in Ihrer (Kunden-)Verantwortung. Beispielsweise sollten Sie (als Kunde) Sicherheitsupdates für das Betriebssystem auf dem Console agent Host gemäß den Standardverfahren Ihres Unternehmens für die Betriebssystemverteilung anwenden.
+
+Beachten Sie, dass Sie (Kunde) beim Anwenden kleinerer Sicherheitsupdates keine Dienste auf dem Console gent Host stoppen müssen.
+
+Falls Sie (Kunde) die Console-Agent-VM stoppen und anschließend wieder starten müssen, sollte dies über die Konsole Ihres Cloud-Anbieters oder mithilfe der Standardverfahren für die lokale Verwaltung erfolgen.

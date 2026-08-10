@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: task-storage-dashboard.html 
+keywords: storage dashboard, home page, fleet health, capacity monitoring, IOPS, performance metrics, alerts, storage KPIs, monitoring, netapp console local 
+summary: Innerhalb der lokalen NetApp Console-Bereitstellung sind Metriken auf der Startseite einsehbar. 
+---
+= Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Das Dashboard der Startseite in der lokalen NetApp Console-Bereitstellung dient als Standard-Ausgangspunkt für die Überwachung von Speicherzustand und -leistung. Es bietet wichtige Kennzahlen zu Flottenzustand, Warnmeldungen, Sicherheit, Kapazitätsauslastung, Latenz, Durchsatz und IOPS.
+
+Das Dashboard auf der Startseite ist automatisch auf nur die Flotten und Systeme beschränkt, die Sie anzeigen dürfen. Außerdem kann der Startseite ein benutzerdefiniertes Dashboard für die rollenspezifische Überwachung hinzugefügt werden.
+
+Die Karten dienen als mehrstufiger Triage-Workflow. Zunächst bieten *Fleet health* und *Alerts* einen Überblick über Risikobereiche. *System health status* und *Recommended remediations* ermöglichen die Identifizierung betroffener Ressourcen. *Capacity usage*, *Latency*, *Throughput* und *IOPS* unterstützen die Untersuchung der Ursachen.
+
+
+
+[[fleet-health]]
+== Flottengesundheit
+
+Die Karte *Fleet health* zeigt eine Übersicht auf hoher Ebene für die fünf wichtigsten Flotten, einschließlich Systemanzahl, genutzter Kapazität, Sicherheitskonformität und kritischer Warnmeldungen. Mit dieser Karte lässt sich feststellen, welche Flotten sofortige Aufmerksamkeit erfordern. Durch Auswahl des Flottennamens wird ein ausschließlich für diese Flotte bestimmtes Dashboard angezeigt.
+
+
+
+[[recommended-remediations]]
+== Empfohlene Abhilfemaßnahmen
+
+Die Karte „Empfohlene Abhilfemaßnahmen“ listet aktive Probleme und empfohlene Maßnahmen auf. Die Karte priorisiert Abhilfemaßnahmen basierend auf Kapazitätsdruck, Offline-Ressourcen und schutzbezogenen Risiken.
+
+
+
+[[alerts]]
+== Warnmeldungen
+
+Die *Warnungen*-Karte fasst das Warnaufkommen im ausgewählten Zeitraum zusammen und gruppiert es nach Schweregrad. Mit dieser Karte lässt sich die aktuelle Anzahl an Vorfällen nachvollziehen und es werden kürzliche Änderungen bei kritischen, Warn- oder Informationswarnungen sichtbar.
+
+
+
+[[security]]
+== Sicherheit
+
+Die *Security*-Karte fasst Compliance- und Schutzkennzahlen zusammen, wie Systemkonformität und ransomware-bezogene Kontrollen. In dieser Ansicht lassen sich Sicherheitstrends über Ihre Ressourcen hinweg überwachen.
+
+
+
+[[capacity-usage]]
+== Kapazitätsauslastung
+
+Die Karte *Kapazitätsauslastung* zeigt prognostizierte und historische Nutzungstrends ausgewählter Flotten oder Systeme an. Mit dieser Karte lassen sich Wachstumsmuster erkennen und zusätzliche Kapazitäten planen.
+
+
+
+[[latency]]
+== Latenz
+
+Die *Latenz*-Karte erfasst das Reaktionszeitverhalten im Zeitverlauf über die ausgewählten Systeme hinweg. Dieser Trend ermöglicht das Erkennen aufkommender Leistungsverzögerungen und den Vergleich der relativen Latenz zwischen Ressourcen.
+
+
+
+[[throughput]]
+== Durchsatz
+
+Die *Durchsatzkarte* zeigt Datentransferraten im Zeitverlauf für ausgewählte Systeme an. Mit dieser Karte lassen sich die Auslastungsintensität nachvollziehen und Änderungen der Durchsatzanforderungen überwachen.
+
+
+
+[[iops]]
+== IOPS
+
+Die *IOPS*-Karte zeigt die Ein-/Ausgabe-Betriebsraten im Zeitverlauf an. Mit dieser Karte lassen sich die Aktivitätsniveaus zwischen Systemen vergleichen und kontinuierlicher oder intermittierender E/A-Bedarf erkennen.
+
+
+
+[[dashboard-card-example-metric-card]]
+== Dashboard-Karte (Beispiel für eine Metrikkarte)
+
+Der untere Bereich *Dashboard* kann ein vom Benutzer ausgewähltes benutzerdefiniertes Dashboard enthalten, beispielsweise die durchschnittliche Latenz für einen ausgewählten Produktionsbereich. Diese Karten ermöglichen ein fokussiertes Monitoring nach Team, Workload oder Ziel.
+
+
+
+[[system-health-status]]
+== Systemgesundheitsstatus
+
+Die Karte *System health status* listet die einzelnen Systeme mit ihrem aktuellen Zustand auf. Mit dieser Karte lassen sich fehlerhafte Systeme schnell identifizieren und Statusänderungen mit Warnmeldungen und Leistungssignalen in Zusammenhang bringen.
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"]
+

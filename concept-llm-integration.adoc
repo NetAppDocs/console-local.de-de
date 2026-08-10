@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: concept-llm-integration.html 
+keywords: LLM, AI, artificial intelligence, AI-assisted management, large language model, proxy, openai-compatible, netapp console 
+summary: Die Integration der lokalen NetApp Console Bereitstellung mit OpenAI und OpenAI-kompatiblen Modellen, einschließlich Anbieter-, Proxy- und Sicherheitsentscheidungen, wird erläutert. 
+---
+= Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung verbindet sich mit einem Large Language Model (LLM) für KI-gestütztes Speichermanagement. Nach der Einrichtung ist es möglich, Speicher mit natürlicher Sprache bereitzustellen, Warnmeldungen zu untersuchen und Speicherempfehlungen zu erhalten.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+Die KI-gestützte Verwaltung ermöglicht es Benutzern, Anfragen in einfacher Sprache zu beschreiben, während die lokale NetApp Console-Bereitstellung Ihre Speicherrichtlinien anwendet.
+
+Die lokale Bereitstellung über die Console sendet LLM-Anfragen nur an den von Ihnen konfigurierten Endpunkt.
+
+
+
+[[what-you-can-do-with-ai-assisted-storage-management]]
+== Was mit KI-gestütztem Speichermanagement möglich ist
+
+Wenn die LLM-Integration aktiviert ist, stellt die lokale Bereitstellung über den NetApp Console Assistenten drei Funktionen bereit:
+
+* *Speicherbereitstellung* Die Anforderungen an die Arbeitslast werden in einfacher Sprache beschrieben. Die lokale Bereitstellung über die NetApp Console empfiehlt und führt einen Bereitstellungsplan basierend auf den Speicherklassen aus.
+* *Alarmreaktion* Die lokale NetApp Console-Bereitstellung wird aufgefordert, einen aktiven Alarm zu untersuchen. Das Problem wird analysiert und basierend auf den zugewiesenen Berechtigungen wird eine Aktion vorgeschlagen oder ausgeführt.
+* *Suche und Anleitung* Es können Fragen zur Speicherumgebung oder zur ONTAP Administration gestellt werden. Die lokale NetApp Console-Bereitstellung liefert kontextbezogene Antworten aus der Dokumentation und dem aktuellen Flottenstatus.
+
+
+
+
+[[choose-read-only-or-readwrite-access-for-the-console-assistant]]
+== Wählen Sie Lesezugriff oder lesen/schreiben für den NetApp Console Assistenten aus.
+
+Nutzer wählen einen Zugriffsmodus für den Assistenten je nach gewünschtem Ergebnis:
+
+* *Nur-Lese-Modus* zur Anleitung und Untersuchung, ohne Infrastrukturänderungen vorzunehmen.
+* *Lesen/Schreiben*-Modus für die geführte Ausführung. Die lokale Bereitstellung über die NetApp Console zeigt die vorgeschlagene Aktion, fordert eine Bestätigung an und führt dann die Änderung aus.
+
+
+
+
+[[understand-what-controls-console-assistant-actions]]
+== Was die Aktionen des NetApp Console Assistenten steuert
+
+Die lokale Bereitstellung der Console steuert die Aktionen des Console-Assistenten über dasselbe Governance-Modell, das plattformweit verwendet wird:
+
+* Rollenbasierte Zugriffskontrollen begrenzen, was jeder Benutzer sehen und tun kann.
+* Speicherrichtlinien schränken die Bereitstellung und damit verbundene Aktionen ein.
+* Der Konsolenassistent verlangt eine Bestätigung, bevor er speicherverändernde Aktionen ausführt.
+
+
+
+
+[[choose-an-llm-provider-path]]
+== Einen LLM Anbieterpfad auswählen
+
+NetApp Console lokale Bereitstellung unterstützt folgende LLM-Anbietertypen:
+
+* *OpenAI* für den direkten Zugriff auf OpenAI Modelle.
+* *OpenAI-kompatibel* für einen kompatiblen Endpunkt, wie z. B. ein Enterprise Gateway oder einen Proxy-Service.
+* Anthropic für die Claude-Modelle von Anthropic.
+
+
+Die Modellverfügbarkeit hängt vom konfigurierten Endpunkt ab. Ein Modell aus der Liste in der NetApp Console lokalen Bereitstellung auswählen.
+
+Details zu den unterstützten Modellen sind unter link:reference-llm-supported-models.html["Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung"] zu finden.
+
+
+
+[[understand-where-llm-requests-go]]
+== Verstehen, wohin LLM-Anfragen gehen
+
+Der Datenfluss hängt vom gewählten Endpunktpfad ab:
+
+* Wenn ein OpenAI-Endpunkt konfiguriert ist, sendet die Console lokale Bereitstellung Eingabeaufforderungen und Kontext an den OpenAI-Endpunkt.
+* Wenn ein OpenAI-kompatibler Endpunkt konfiguriert wird, sendet die Console lokale Bereitstellung Eingabeaufforderungen und Kontext an den kompatiblen Endpunkt, den Ihre Organisation konfiguriert.
+
+
+
+
+[[protect-llm-credentials-and-control-admin-access]]
+== LLM-Zugangsdaten schützen und Administratorzugriff kontrollieren
+
+Die Integration lässt sich mit diesen Steuerelementen schützen:
+
+* Der API-Schlüssel ist als privilegierte Zugangsberechtigung zu behandeln und gemäß den Richtlinien Ihrer Organisation zu rotieren.
+* Die Nutzung und Warnmeldungen auf Anbieterseite bieten Hinweise auf unerwartete Aktivitäten.
+
+
+
+
+[[connect-your-llm]]
+== LLM verbinden
+
+Nachdem diese Entscheidungen getroffen wurden, erfolgt die Fortsetzung mit link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+
+Falls Verbindungs- oder Laufzeitprüfungen fehlschlagen, siehe link:task-llm-troubleshoot-integration.html["Fehlerbehebung bei der LLM Integration"].

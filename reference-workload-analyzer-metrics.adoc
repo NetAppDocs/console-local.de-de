@@ -1,0 +1,228 @@
+---
+sidebar: sidebar 
+permalink: reference-workload-analyzer-metrics.html 
+keywords: workload analyzer, latency, delay center, throughput, IOPS, resource utilization, capacity, capacity forecast, QoS, storage efficiency, snapshot, performance troubleshooting, metrics reference, netapp console local 
+summary: Referenz für alle im Workload Analyzer verfügbaren Metriken, geordnet nach Analysebereich. 
+---
+= Workload Analyzer-Metriken in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen Bereitstellung der NetApp Console zeigt der Workload Analyzer Metriken in sechs Abschnitten an. Jede Metrikbeschreibung erläutert, wie der Analyzer die Metrik im Diagramm darstellt und was sie über das Volumenverhalten aussagt.
+
+
+
+[[qos-reference-lines-in-latency-charts]]
+=== QoS-Referenzlinien in Latenzdiagrammen
+
+Wenn für das ausgewählte Volume eine QoS-Richtlinie verwendet wird, stehen im Metrik-Picker zwei zusätzliche Referenzzeilen zur Verfügung:
+
+[cols="20,80"]
+|===
+| Referenzlinie | Beschreibung 
+
+
+| Maximales QoS-Limit | Die maximale Latenzgrenze, die durch die QoS-Richtlinie definiert ist. Wenn die Latenzlinie sich dieser Grenze nähert oder sie berührt, drosselt ONTAP die Arbeitslast, und das QoS-Limit, nicht eine physische Ressource, ist die dominierende Ursache für die Latenz. 
+
+
+| QoS-Limit (Min.) | Die durch die QoS-Richtlinie garantierte Mindestlatenz. Diese Zeile gibt die für die Arbeitslast durchgesetzte Antwortzeit-Untergrenze an. Wenn andere Arbeitslasten QoS-Mindestwerte verwenden, um ihren Durchsatz zu garantieren, kann ONTAP diese Arbeitslast drosseln, was dann zu einer höheren Latenz führt. 
+|===
+Diese horizontalen Linien werden beim Überfahren mit der Maus nicht in der Verzögerungszentrumsanalyse angezeigt. Sie dienen als Referenzschwellenwerte, nicht als Verursacher der Latenz.
+
+
+
+[[latency-breakdown-by-io-type]]
+=== Latenzaufschlüsselung nach I/O-Typ
+
+Nutzen Sie die Aufschlüsselung der I/O-Typen im Abschnitt *Latenzanalyse*, nachdem im Dropdown-Menü „Ansicht“ die Option *Aufschlüsselung nach Verzögerungszentrum* ausgewählt wurde. Das Diagramm unterteilt die Gesamtlatenz in drei Kategorien, basierend auf der Richtung der I/O-Operation. Diese Metriken geben Aufschluss darüber, ob ein Leistungsproblem Lese-, Schreib- oder Metadatenoperationen betrifft.
+
+[cols="20,40,40"]
+|===
+| Latenztyp | Beschreibung | Häufige Ursachen für erhöhte Werte 
+
+
+| Leselatenz | Durchschnittliche Zeit für die Bearbeitung einer Leseanfrage eines Clients auf dem Volume, vom Eingang der Anfrage bis zur Rückgabe der Daten. Leseanfragen müssen den gesamten I/O-Pfad vom Netzwerkprotokoll durch den Datenverarbeitungs-Stack bis zu dem Aggregat durchlaufen, in dem sich die Daten befinden. | Aggregat- oder Festplattenkonflikte; Cache-Fehlzugriffe, die Lesevorgänge auf die physische Festplatte fördern; kalte Daten, die über eine Cloud-Kapazitätsebene mittels FabricPool abgerufen werden; knotenübergreifende Lesevorgänge, wenn sich die Daten auf einem anderen Knoten befinden als dem, der die Anfrage bearbeitet. 
+
+
+| Schreiblatenz | Durchschnittliche Zeit bis zur Bestätigung einer Schreibanforderung eines Clients auf dem Volume. ONTAP bestätigt einen Schreibvorgang, sobald dieser im NVRAM Write-Log gespeichert wurde; die Daten werden anschließend in das Aggregat geschrieben. | Netzwerkkartenauslastung oder hohe Roundtrip-Latenz zwischen dem Client und dem Speicherknoten; synchroner SnapMirror, der auf die Bestätigung des Empfangs durch den Ziel-Cluster wartet, bevor der Schreibvorgang bestätigt werden kann; NVRAM-Druck bei hoher Schreiblast; CPU-Overhead durch Inline-Deduplizierung, Komprimierung oder Kompaktierung im Schreib-I/O-Pfad. 
+
+
+| Andere Latenz | Durchschnittliche Zeit für alle Operationen auf dem Volume, die weder Lesen noch Schreiben erfordern, einschließlich Dateiöffnungen, Attributabfragen, Verzeichnisdurchläufe, Dateierstellungen und Sperren. Erhöhte andere Latenz kann die Reaktionsfähigkeit von Anwendungen beeinträchtigen, selbst wenn die Lese- und Schreiblatenz normal erscheint. | CPU-Belastung durch Inline-Effizienzoperationen, die mit der Metadatenverarbeitung konkurrieren; hohe Namespace-Aktivität durch Workloads, die eine große Anzahl von Dateierstellungen, -löschungen oder Verzeichnisscans erzeugen; QoS-Drosselung, die die Gesamt-IOPS einschränkt, sodass weniger IOPS für Metadatenoperationen verfügbar sind; Overhead bei der Volume-Aktivierung, wenn viele Volumes gleichzeitig aktiv sind. 
+|===
+
+
+[[throughput-components]]
+== Durchsatzkomponenten
+
+Die Durchsatzkomponenten im Abschnitt *Throughput Analysis* werden nach Auswahl von *Breakdown (RWO)* im Dropdown-Menü „View“ angezeigt. Der Analyzer zeigt sowohl IOPS als auch MB/s gleichzeitig an.
+
+[cols="20,40,40"]
+|===
+| Komponente | Beschreibung | Dargestellt als 
+
+
+| Lese-IOPS | Lesevorgänge pro Sekunde. | Gestapelte Fläche im IOPS-Diagramm. 
+
+
+| Schreib-IOPS | Schreibvorgänge pro Sekunde. | Gestapelte Fläche im IOPS-Diagramm. 
+
+
+| Andere IOPS | Metadaten und andere Nicht-Daten-Operationen pro Sekunde. | Gestapelte Fläche im IOPS-Diagramm. 
+
+
+| Lesen MB/s | Lesedurchsatz in Megabyte pro Sekunde. | Gestapelte Fläche im MB/s-Diagramm. 
+
+
+| Schreib-MB/s | Schreibdurchsatz in Megabyte pro Sekunde. | Gestapelte Fläche im MB/s-Diagramm. 
+
+
+| Cloud Durchsatz | Durchsatz in Megabyte pro Sekunde zwischen dem Volume und der Cloud-Kapazitäts-Tier. Diese Metrik erscheint nur für Workloads, die Kapazität über FabricPool in die Cloud tiern. | Gestapelte Fläche im MB/s-Diagramm. 
+|===
+Die Komponenten Lesen, Schreiben und Sonstige ergeben zusammen den Gesamt-IOPS- oder MB/s-Wert. Beim Überfahren des Diagramms mit dem Mauszeiger werden der Wert jeder Komponente, ihr prozentualer Anteil am Gesamtwert sowie die durchschnittliche I/O-Größe (MB/s ÷ IOPS) pro Kategorie angezeigt.
+
+
+
+[[resource-utilization-metrics]]
+== Kennzahlen zur Ressourcenauslastung
+
+Im Abschnitt *Ressourcenauslastung* lassen sich die Kennzahlen zur Ressourcenauslastung einsehen. Der Analysator zeigt jede Ressource, die das Volume bedient, als eigene Zeile an. Ressourcen werden nicht gestapelt.
+
+
+
+[[node-metrics]]
+=== Knotenmetriken
+
+[cols="25,75"]
+|===
+| Metrik | Beschreibung 
+
+
+| Knotenauslastung | Gesamtauslastungsgrad des Knotens. Durch Überfahren mit der Maus werden die CPU-Auslastung, die Netzwerkauslastung und der verfügbare Spielraum für jeden Knoten angezeigt. 
+
+
+| CPU-Auslastung | Prozentuale Auslastung der CPU-Kapazität des Knotens. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+
+
+| Netzwerkauslastung | Prozentsatz der ausgelasteten Knotennetzwerkkapazität. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+
+
+| Reserve | Die verbleibende Knotenkapazität steht für zusätzliche Arbeitslast zur Verfügung. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+|===
+
+
+[[aggregate-metrics]]
+=== Aggregierte Kennzahlen
+
+[cols="25,75"]
+|===
+| Metrik | Beschreibung 
+
+
+| Aggregat-Auslastung | Prozentsatz der Festplattenauslastung für das Aggregat. Durch Überfahren mit dem Mauszeiger werden der Wert der Festplattenauslastung, die Anzahl der Volumes im Aggregat und der verfügbare Headroom angezeigt. 
+
+
+| Festplatte belegt | Prozentsatz der Zeit, in der die Festplatten des Aggregats aktiv E/A-Operationen verarbeiten. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+
+
+| Anzahl der Volumes | Anzahl der aktuell auf dem Aggregat gehosteten Volumes. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+
+
+| Reserve | Verbleibende Aggregatkapazität, die für zusätzliche Arbeitslasten verfügbar ist. Dieser Wert wird im Tooltip angezeigt. 
+|===
+Wenn die Auslastungslinie eines Knotens oder eines Aggregats den Schwellenwert für hohe Auslastung überschreitet, der im Diagramm mit einer gestrichelten Referenzlinie gekennzeichnet ist, können andere Workloads auf dieser Ressource mit dem ausgewählten Volume um die I/O-Kapazität konkurrieren.
+
+
+
+[[capacity-metrics]]
+== Kapazitätskennzahlen
+
+
+
+[[capacity-view]]
+=== Kapazitätsansicht
+
+Im Abschnitt *Kapazitätsanalyse* lassen sich die Kennzahlen der Kapazitätsansicht überprüfen, nachdem im Dropdown-Menü „Ansicht“ die Option *Kapazitätsansicht* ausgewählt wurde.
+
+[cols="25,75"]
+|===
+| Metrik | Beschreibung 
+
+
+| Physische Kapazität | Der nach den Speicheroptimierungsmaßnahmen belegte Speicherplatz auf der Festplatte. Dies ist der unterste Bereich im Diagramm. Physisch + Verfügbar ergibt immer die Gesamtgröße des Volumens. 
+
+
+| Verfügbare Kapazität | Der verbleibende freie Platz im Volumen. Dies ist der oberste gestapelte Bereich im Diagramm. Er verringert sich mit zunehmender Physical Capacity. 
+
+
+| Speichereffizienzverhältnis | Gesamteffizienzverhältnis (logische Daten ÷ physische Daten). Im Tooltip beim Überfahren mit der Maus wird dieser Wert angezeigt. Er spiegelt die kombinierten Einsparungen durch Deduplizierung, Komprimierung und Verdichtung wider. 
+
+
+| Einsparungen durch Deduplizierung | Speicherplatz wird durch das Entfernen doppelter Datenblöcke eingespart. Dieser Wert wird im Tooltip beim Überfahren mit der Maus angezeigt. 
+
+
+| Einsparungen durch Kompression | Durch die Inline-Komprimierung von Daten wird Speicherplatz eingespart. Der Tooltip beim Überfahren mit der Maus zeigt diesen Wert an. 
+
+
+| Einsparungen bei der Verdichtung | Platzersparnis durch das Zusammenfassen mehrerer kleiner Blöcke zu einem einzigen physischen Block. Der Tooltip beim Überfahren mit der Maus zeigt diesen Wert an. 
+|===
+
+
+[[snapshot-view]]
+=== Momentaufnahmeansicht
+
+Die Snapshot-Ansicht eignet sich, um Snapshot-spezifische Metriken zu überprüfen.
+
+[cols="25,40,35"]
+|===
+| Metrik | Beschreibung | Dargestellt als 
+
+
+| Verfügbare Momentaufnahme | Vorab zugewiesener Speicherplatz, der als Prozentsatz der Volume-Größe konfiguriert ist und für Snapshots reserviert wird. | Horizontale Bezugslinie. 
+
+
+| Verwendeter Snapshot | Tatsächlich von Snapshot-Kopien belegter Speicherplatz. | Flächendiagramm unterhalb der Reservelinie. 
+|===
+Bewegen Sie den Mauszeiger über das Diagramm, um die Größe der Snapshot-Reserve, den belegten Snapshot-Speicherplatz und dessen prozentualen Anteil an der Reserve, die Gesamtzahl der Snapshots sowie das Alter des ältesten Snapshots zu sehen. Wenn der Snapshot-Verbrauch die Reserve überschreitet, belegen Snapshots Speicherplatz im Datenbereich des Volumes.
+
+
+
+[[forecast-behavior]]
+== Prognoseverhalten
+
+Verwenden Sie die Option „Prognose anzeigen“ in einem beliebigen Analyseabschnitt, wenn zukünftige Werte über den aktuellen Zeitpunkt hinaus basierend auf dem beobachteten Trend projiziert werden sollen. Die folgenden Verhaltensweisen gelten für alle Abschnitte:
+
+[cols="25,75"]
+|===
+| Aspekt | Verhalten 
+
+
+| Projektionsfenster | Projektionen erfolgen basierend auf dem ausgewählten Zeitraum. Bei einer 2-Stunden-Ansicht beträgt das Projektionsfenster etwa 1 Stunde. Bei einer 7-Tage-Ansicht erstreckt sich das Projektionsfenster über mehrere Tage. 
+
+
+| Visueller Stil | Der Analysator stellt Prognosewerte als gestrichelte Linie dar. Eine vertikale Trennlinie markiert die Grenze zwischen Ist-Daten und prognostizierten Werten. 
+
+
+| Schwellenwertwarnungen | Der Analysator zeigt eine Hinweismeldung an, wenn die Prognose darauf hindeutet, dass das Volumen einen Warn- oder kritischen Schwellenwert überschreiten wird, zusammen mit einer geschätzten Zeit bis zum Überschreiten. 
+
+
+| Trendbasis | Die Prognose verwendet die Änderungsrate des jüngsten Abschnitts des ausgewählten Zeitraums. Hohe Volatilität in den aktuellen Daten verringert das Vertrauen in die Prognose. 
+
+
+| Mindestdaten erforderlich | Für die Kapazitätsprognose werden mindestens 10 Tage an historischen Daten benötigt. Wenn weniger als 30 Tage Kapazität verbleiben, bevor das Volume voll ist, identifiziert das Analysesystem den Speicher als nahezu voll. 
+|===
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-workload-analyzer.html["Informationen zum Workload Analyzer für die lokale Bereitstellung der NetApp Console"]
+* link:task-analyzer-volume-latency-investigate.html["Hohe Latenz auf einem Volumen untersuchen"]
+* link:task-analyzer-volume-throughput-investigate.html["Untersuchung hoher Anforderungen an den Durchsatz eines Volumes"]
+* link:task-analyzer-volume-capacity-investigate.html["Kapazitätswachstum eines Volumens untersuchen"]
+

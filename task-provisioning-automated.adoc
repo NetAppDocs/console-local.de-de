@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: task-provisioning-automated.html 
+keywords: automated provisioning, automation, policy-driven, storage class, netapp console 
+summary: Automatisierte Speicherbereitstellung mithilfe von Speicherklassen und -richtlinien in der lokalen Bereitstellung der NetApp Console konfigurieren. 
+---
+= Automatische Speicherbereitstellung in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung wird die automatisierte Bereitstellung verwendet, um Speicher basierend auf Speicherklassenstandards und Flottenkapazität zuzuweisen. Die automatisierte Bereitstellung ist optimal, wenn konsistente Ergebnisse und weniger manuelle Entscheidungen gewünscht werden.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator, Ordner- oder Flottenadministrator oder Speicheradministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Bei der automatisierten Bereitstellung wird in der Regel der am besten geeignete Platz aus den verfügbaren Systemen in der Flotte anhand der Kapazität und des Leistungsspielraums ausgewählt, anschließend wird die Arbeitslast mit auf die Speicherklasse abgestimmten Einstellungen bereitgestellt.
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Mindestens ein ONTAP Cluster muss in der Zielflotte erkannt werden.
+* Wenn klassenbasierte Ergebnisse gewünscht sind, sollte sichergestellt werden, dass die Speicherklasse existiert und mit der Flotte verknüpft ist.
+

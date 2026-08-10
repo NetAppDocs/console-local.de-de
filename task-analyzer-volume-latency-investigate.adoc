@@ -1,0 +1,68 @@
+---
+sidebar: sidebar 
+permalink: task-analyzer-volume-latency-investigate.html 
+keywords: latency, slow performance, delay center, workload analyzer, investigate, netapp console 
+summary: Die Latenz eines Volumes kann mit dem Workload Analyzer untersucht werden, um zu erkennen, welcher Teil des I/O-Pfads für langsame Antwortzeiten verantwortlich ist. 
+---
+= Hohe Latenz auf einem Volume in der lokalen NetApp Console-Bereitstellung untersuchen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Workload Analyzer in der lokalen NetApp Console-Bereitstellung hilft dabei, die Ursache für die langsamen Antwortzeiten eines Volumes zu identifizieren.
+
+Wenn der Analysator über eine Warnung oder aus der Volumenübersicht geöffnet wird, ist das Volumen bereits ausgewählt und der Fokus kann auf den Zeitbereich und die Diagrammaufschlüsselungen gelegt werden.
+
+Wenn die Anwendungsleistung nachlässt, lässt sich ermitteln, welcher Teil des I/O-Pfads die Verlangsamung verursacht. Der Abschnitt zur Latenzanalyse unterteilt die Antwortzeit nach Verzögerungszentrum, sodass zwischen Netzwerkproblemen, Datenverarbeitungsaufwand, Aggregate-Contention und anderen Einflussfaktoren unterschieden werden kann.
+
+.Schritte
+. Der Workload Analyzer kann mit einer der folgenden Methoden geöffnet werden:
++
+** Im Menü *Health* die Option *Workload Analyzer* auswählen, dann im Feld *Volume* nach dem Volume suchen und das gewünschte Volume zur Untersuchung auswählen.
+** Auf der Seite *Speicher > Flotten > Inventar* zu einem Volume navigieren, das analysiert werden soll, und im Aktionsmenü *Analysieren* auswählen.
+** Auf der Seite *Warnungen > Übersicht* eine kapazitätsbezogene Warnung für das Volume auswählen, das untersucht werden soll, dann in den Warnungsdetails *Analysieren* auswählen.
+
+
+. Den *Zeitraum* so einstellen, dass er den Zeitraum abdeckt, in dem das Leistungsproblem aufgetreten ist, dann *Analysieren* auswählen.
+. Im Abschnitt *Ereigniszeitleiste* sind Konfigurationsänderungen und Warnmeldungen zu sehen, die mit dem Anstieg der Latenzzeit übereinstimmen.
++
+Der Analysator stellt Konfigurationsänderungsereignisse (Schraubenschlüssel-Symbol) und Alarmereignisse (Warn- und Kritisch-Symbole) auf derselben Zeitachse wie das Latenzdiagramm dar, sodass leicht erkennbar ist, ob eine Änderung der Verschlechterung vorausging.
+
+. Im Abschnitt *Latenz* das Dropdown-Menü *Ansicht* öffnen und *Aufschlüsselung nach Verzögerungszentrum* auswählen. Das Diagramm zeigt den Beitrag jedes Verzögerungszentrums zur Gesamtlatenz im Zeitverlauf. Zu den Verzögerungszentren gehören:
++
+** Leselatenz
+** Schreiblatenz
+** Andere Latenz
+
+
+. Fahren Sie mit dem Mauszeiger über einen Punkt im Diagramm, an dem die Latenz am höchsten ist, um den Wert jedes Verzögerungszentrums und dessen prozentualen Anteil an der Gesamtlatenz zu sehen.
++
+Das Zentrum mit der größten Verzögerung weist in der Regel auf die Ressource hin, die am stärksten ausgelastet ist. Wenn eine gemeinsam genutzte Ressource die Nachfrage nicht decken kann, müssen die Volumes, die sie verwenden, länger auf E/A warten. Die Last auf dieser Ressource kann verringert werden, beispielsweise durch das Verschieben von Workloads oder das Anpassen eines QoS-Limits, um die Latenz zu senken.
+
+. Den dominanten Faktor identifizieren und den Wert zur Bestimmung der nächsten Schritte verwenden:
++
+** Hohe *Leselatenz* kann auf Festplatten-Contention hinweisen. Im Abschnitt *Ressourcenauslastung* lässt sich der prozentuale Anteil der Auslastung des Aggregats bestätigen.
+** Eine hohe *Schreiblatenz* kann auf eine Auslastung der Netzwerkkarte oder auf Probleme mit dem Netzwerkpfad außerhalb des Clusters hinweisen.
+** Eine hohe *sonstige Latenz* kann darauf hindeuten, dass die Inline-Effizienzeinstellungen mehr CPU-Leistung verbrauchen, als die Arbeitslast verträgt. Eine Anpassung der Effizienzeinstellungen oder von QoS kann in Betracht gezogen werden.
+** Hohe *Cloud-Latenz* kann darauf hindeuten, dass die Arbeitslast häufig auf kalte Daten in der Kapazitätsebene zugreift. Eine Anpassung der Tiering-Richtlinie kann in Betracht gezogen werden.
+
+
+. Wenn die Verzögerungszentren die Verlangsamung nicht erklären, sollte der Abschnitt *Kapazitätsanalyse* geprüft werden. Wenn das ONTAP-System zu mehr als 85 % ausgelastet ist, kann die hohe Auslastung unabhängig von der Aufschlüsselung der Verzögerungszentren zu Leistungsproblemen führen.
+. Wenn die Latenz unmittelbar nach einem Änderungsereignis anstieg, können die Ereignisdetails zusammen mit den zugehörigen Diagrammen zur Validierung der wahrscheinlichen Ursache herangezogen werden:
++
+** Bei Änderungen der Dienstgüte (QoS) die Latenzlinie mit den QoS-Grenzwertlinien vergleichen und die Durchsatzdiagramme prüfen, um festzustellen, ob die Nachfrage eine Richtlinienobergrenze erreicht.
+** Bei Verschiebungen von Aggregaten oder Volumes wird der Latenzanstieg mit den für denselben Zeitraum angezeigten Werten für die Auslastung von Node und Aggregat verglichen.
+** Bei Änderungen der Tiering-Richtlinie den Beitrag der Cloud-Latenz prüfen, um festzustellen, ob der Zugriff auf kalte Daten nach der Änderung zugenommen hat.
+
+
+
+
+.Nachdem Sie fertig sind
+Wenn ein Konfigurations- oder Platzierungsproblem die Ursache des Problems ist und eine lokale Bereitstellung über die Console das Problem beheben kann, kann die Warnung auf dem Volume eine Fix-It-Option bieten.
+
+link:reference-workload-analyzer-metrics.html["Informationen zu den Metriken des Workload Analyzers in der lokalen NetApp Console-Bereitstellung"].

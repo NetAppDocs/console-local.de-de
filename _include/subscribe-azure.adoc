@@ -1,0 +1,43 @@
+= 
+:allow-uri-read: 
+
+
+.Schritte
+. *Administration > Anmeldeinformationen* auswählen.
+. *Organisationsanmeldeinformationen* auswählen.
+. Das Aktionsmenü für einen Satz von Anmeldeinformationen, die einem Console-Agent zugeordnet sind, auswählen und anschließend *Abonnement konfigurieren* wählen.
++
+Sie müssen Anmeldeinformationen auswählen, die einem Console-Agenten zugeordnet sind. Es kann kein Marketplace-Abonnement mit Anmeldeinformationen verknüpft werden, die der NetApp Console zugeordnet sind.
+
+. Um die Anmeldeinformationen mit einem bestehenden Abonnement zu verknüpfen, das Abonnement aus der Dropdown-Liste auswählen und *Konfigurieren* wählen.
+. Um die Anmeldeinformationen mit einem neuen Abonnement zu verknüpfen, *Abonnement hinzufügen > Weiter* auswählen und die Schritte im Azure Marketplace befolgen:
++
+.. Melden Sie sich gegebenenfalls bei Ihrem Azure-Konto an.
+.. *Abonnieren* auswählen.
+.. Füllen Sie das Formular aus und wählen Sie *Abonnieren*.
+.. Nach Abschluss des Abonnementvorgangs *Konto jetzt konfigurieren* auswählen.
++
+Sie werden zur NetApp Console weitergeleitet.
+
+.. Auf der Seite *Subscription Assignment*:
++
+*** Wählen Sie die Console-Organisationen oder -Konten aus, mit denen dieses Abonnement verknüpft werden soll.
+*** Im Feld *Vorhandenes Abonnement ersetzen* kann ausgewählt werden, ob das bestehende Abonnement für eine Organisation oder ein Konto automatisch durch dieses neue Abonnement ersetzt werden soll.
++
+Die Konsole ersetzt das bestehende Abonnement für alle Anmeldeinformationen in der Organisation oder im Konto durch dieses neue Abonnement. Wenn ein Satz von Anmeldeinformationen noch nie einem Abonnement zugeordnet war, wird dieses neue Abonnement diesen Anmeldeinformationen nicht zugeordnet.
+
++
+Für alle anderen Organisationen oder Konten ist das Abonnement manuell zuzuordnen, indem diese Schritte wiederholt werden.
+
+*** *Speichern* auswählen.
++
+Das folgende Video zeigt die Schritte zum Abonnieren über den Azure Marketplace:
+
++
+.NetApp Intelligent Services vom Azure Marketplace abonnieren
+video::b7e97509-2ecf-4fa0-b39b-b0510109a318[panopto]
+
+
+
+
+

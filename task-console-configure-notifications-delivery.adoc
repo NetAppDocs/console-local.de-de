@@ -1,0 +1,128 @@
+---
+sidebar: sidebar 
+permalink: task-console-configure-notifications-delivery.html 
+keywords: console local, SMTP, email server, webhook,  notifications delivery, alert routing, incident response, operational awareness, third-party integration, SIEM 
+summary: Die Zustellungskanäle für Benachrichtigungen für die lokale Bereitstellung der NetApp Console konfigurieren. 
+---
+= Benachrichtigungszustellungskanäle in der lokalen NetApp Console-Bereitstellung einrichten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung können mehrere Kanäle für Benachrichtigungen eingerichtet werden, darunter E-Mail und Webhooks.
+
+.Erforderliche Zugriffsrollen
+Super Admin oder Organisationsadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Standardmäßig werden Benachrichtigungen bei der lokalen Bereitstellung der Console über das integrierte Benachrichtigungssystem angezeigt. Die Konfiguration zusätzlicher Zustellungskanäle ermöglicht den Empfang von Benachrichtigungen auf die Weise, die am besten zum eigenen Workflow passt.
+
+Sie können alle Benachrichtigungen über dieselben Kanäle versenden oder für verschiedene Benachrichtigungstypen unterschiedliche Kanäle verwenden. Beispielsweise können dringende Speicherwarnungen per E-Mail versendet werden, während anderer Alarmverkehr über einen Webhook an ein externes Überwachungstool weitergeleitet wird.
+
+Nachdem Benachrichtigungskanäle eingerichtet wurden, lassen sich Benachrichtigungsregeln konfigurieren und verschiedenen Kanälen zuweisen. link:task-alert-rules-manage.html["Informationen zur Konfiguration von Benachrichtigungsregeln"].
+
+
+
+[[configure-an-email-server]]
+== E-Mail-Server konfigurieren
+
+Wenn ein E-Mail-Server konfiguriert ist, sendet Console local deployment Benachrichtigungen, Warnungen und Benutzereinladungen darüber. Console local deployment unterstützt SMTP-E-Mail-Server, die entweder Ihr bestehender Unternehmens-E-Mail-Server oder ein E-Mail-Dienst eines Drittanbieters sein können.
+
+.Schritte
+. *Administration > Konsole* auswählen.
+. *Konfiguration* öffnet die Seite „Systemkonfigurationen“.
+. Im Abschnitt *E-Mail-Server* auf *Konfigurieren* auswählen.
+. Geben Sie die Verbindungsdetails für Ihren E-Mail-Server ein:
++
+** Einen Absendernamen und eine Absender-E-Mail-Adresse hinzufügen.
+** Der *SMTP-Host*: Hostname oder IP-Adresse Ihres SMTP-Servers. Bei mehreren Servern ist der primäre anzugeben.
+** Wählen Sie das Verbindungsprotokoll aus der Dropdown-Liste *Verbindungssicherheit* aus. Der Port ist vorkonfiguriert und schreibgeschützt: 25 für SMTP mit STARTTLS oder 465 für SMTPS.
++
+SMTPS (Port 465) stellt sofort eine verschlüsselte Verbindung her und wird für sicherheitskritische Umgebungen empfohlen. STARTTLS (Port 25) wertet eine unverschlüsselte Verbindung auf und kann auf unverschlüsselte Übertragung zurückgreifen, falls die Verschlüsselungsaushandlung fehlschlägt.
+
+
+
+. *Test-E-Mail* auswählen, um eine Test-E-Mail an einen angegebenen Empfänger zu senden.
+. Nach erfolgreichem Test *Speichern* auswählen, um die Konfiguration zu speichern.
++
+Falls der Test fehlschlägt, sollten die eingegebenen Einstellungen erneut überprüft und zusätzlich sichergestellt werden, dass die lokale Console-Bereitstellung Netzwerkzugriff auf den E-Mail-Server hat.
+
+
+
+
+
+[[update-an-email-server-configuration]]
+=== Aktualisierung einer E-Mail-Server-Konfiguration
+
+Sie können eine bestehende E-Mail-Server-Konfiguration aktualisieren, wenn Sie einen anderen E-Mail-Server verwenden möchten.
+
+.Schritte
+. *Administration > Konsole* auswählen.
+. *Konfiguration* öffnet die Seite „Systemkonfigurationen“.
+. Im Abschnitt *E-Mail-Server* auf *Konfigurieren* auswählen.
+. *Felder löschen* auswählen, um die bestehende Konfiguration zu löschen.
+. Geben Sie die neuen Verbindungsdaten für Ihren E-Mail-Server ein.
+. *Test-E-Mail* auswählen, um eine Test-E-Mail an einen angegebenen Empfänger zu senden.
+. Nach erfolgreichem Test auf *Speichern* auswählen, um die neue Konfiguration zu speichern.
++
+Falls der Test fehlschlägt, sollten die eingegebenen Einstellungen erneut überprüft und zusätzlich sichergestellt werden, dass die lokale Console-Bereitstellung Netzwerkzugriff auf den E-Mail-Server hat.
+
+
+
+
+
+[[remove-an-email-server-configuration]]
+=== Eine E-Mail-Serverkonfiguration entfernen
+
+Sie können die E-Mail-Server-Konfiguration entfernen, wenn Sie nicht mehr möchten, dass die lokale Console Bereitstellung E-Mails versendet.
+
+.Schritte
+. *Administration > Konsole* auswählen.
+. *Konfiguration* auswählen, um die Seite Systemkonfiguration zu öffnen.
+. Im Abschnitt *E-Mail-Server* auf *Konfigurieren* auswählen.
+. *Felder löschen* auswählen, um die bestehende Konfiguration zu löschen.
+. *Speichern* auswählen, um die gelöschte Konfiguration zu speichern, wodurch die E-Mail-Server-Konfiguration aus der Console lokalen Bereitstellung entfernt wird.
+
+
+
+
+[[configure-a-webhook]]
+== Einen Webhook konfigurieren
+
+Webhooks können eingerichtet werden, um Benachrichtigungen von der lokalen Console Bereitstellung an andere Tools oder Dienste zu senden. Es ist möglich, mehrere Webhooks zu konfigurieren, die jeweils auf einen anderen Endpunkt verweisen. Zum Beispiel einen für ein SIEM und einen weiteren für einen On-Call-Paging-Dienst.
+
+Nachdem ein Webhook erstellt wurde, können Benutzer mit der Rolle Storage admin diesen bestimmten Alarmregeln zuweisen. Beispielsweise ist es möglich, kritische Alarme per E-Mail zu versenden, während alle Alarme über einen Webhook an ein Drittanbieter-Überwachungstool weitergeleitet werden.
+
+
+NOTE: Bei der lokalen Bereitstellung über die Konsole wird keine Zugriffskontrolle für Webhook-Endpunkte erzwungen. Jeder Benutzer oder jedes System, das die Endpunkt-URL erreichen kann, erhält die Alarmdaten. Es sollte sichergestellt sein, dass der Zugriff auf die empfangende Anwendung durch die Zugriffskontrollen dieser Anwendung auf autorisierte Benutzer beschränkt ist.
+
+.Bevor Sie beginnen
+Es sollte bestätigt werden, dass die lokale Console-Bereitstellung die empfangende Anwendung über das Netzwerk erreichen kann, und die Endpunkt-URL, die HTTP-Methode sowie alle von dieser Anwendung benötigten Authentifizierungs- oder Zertifikatsdetails sollten erfasst werden.
+
+.Schritte
+. *Administration > Konsole* auswählen.
+. *Konfiguration* öffnet die Seite „Systemkonfigurationen“.
+. Im Abschnitt *Webhook-Integration* auf *Konfigurieren* auswählen.
+. Geben Sie die erforderlichen Details für den Webhook ein:
++
+** Ein beschreibender Name für den Webhook.
+** Die von der empfangenden Anwendung bereitgestellte Endpoint-URL.
+** HTTP-Methode
+** Optional: Ein selbstsigniertes Zertifikat im PEM-Format.
+** Alle erforderlichen Header oder Geheimnisse (Authentifizierungsdaten).
+** Das Format, das beim Senden des Webhooks verwendet werden soll. JSON und OTEL (OpenTelemetry) werden unterstützt.
++
+JSON wird für allgemeine Webhooks und benutzerdefinierte REST-Endpunkte verwendet. OTEL wird für Observability-Plattformen verwendet, die OpenTelemetry-Signale nativ verarbeiten, wie Grafana oder andere OpenTelemetry-kompatible Collector.
+
+
+
+. *Webhook testen* auswählen, um die Webhook-Verbindung zu testen und sicherzustellen, dass die Console lokale Bereitstellung erfolgreich Nachrichten an die empfangende Anwendung senden kann.
+. Nach erfolgreichem Test *Speichern* auswählen, um den Webhook zu erstellen.
++
+Nach dem Speichern des Webhooks steht er Benutzern zur Auswahl zur Verfügung, wo Webhooks unterstützt werden, wie beispielsweise bei den Optionen zur Benachrichtigungszustellung. link:task-alert-rules-manage.html["Informationen zum Erstellen von Alarmregeln und zum Zuweisen von Webhooks für die Alarmzustellung."]
+
+

@@ -1,0 +1,98 @@
+---
+sidebar: sidebar 
+permalink: concept-monitor-fleets-inventory.html 
+keywords: inventory, fleet inventory, systems, volumes, capacity, security, performance, monitoring, ONTAP, clusters, fleet visibility, capacity planning, storage governance, netapp console local 
+summary: Die Bestandsverwaltung dient zur Überwachung des Flottenzustands und zur Untersuchung der Speicherressourcen in der lokalen Bereitstellung der NetApp Console. 
+---
+= Flotten mithilfe des Inventars in der lokalen NetApp Console-Bereitstellung überwachen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung ermöglicht die Bestandsverwaltung die Überwachung des Zustands der Speicherflotte und die Untersuchung der Speicherressourcen in der Umgebung. Die Bestandsverwaltung bietet Ansichten zu Kapazität, Sicherheit und Leistung, die bei der Identifizierung von Problemen, dem Verständnis der Ressourcenauslastung und der Nachverfolgung verwalteter Speichersysteme unterstützen.
+
+Die Inventarverwaltung dient primär der Information und Diagnose. Im Inventar können Systeme, Volumes und andere Speicherobjekte Ihrer Flotten überprüft und gängige Aktionen wie die Bereitstellung von Speicherressourcen durchgeführt werden. Für erweiterte Speicherverwaltungsoperationen leitet die lokale Bereitstellung der NetApp Console zum System Manager weiter.
+
+
+
+[[access-inventory]]
+== Inventarzugriff
+
+Auf *Inventar* kann in mehreren Bereichen der lokalen NetApp Console-Bereitstellung zugegriffen werden, darunter:
+
+* Die Startseite
+* Flottenübersichtsseiten
+* Flottenzustandskarten und zugehörige Bestandsansichten
+
+
+Je nachdem, wo Sie *Inventar* aufrufen, kann der angezeigte Umfang auf Organisationsebene oder Flottenebene liegen.
+
+
+
+[[inventory-views]]
+== Inventaransichten
+
+*Inventory* bietet verschiedene Ansichten, die bei der Analyse unterschiedlicher Aspekte Ihrer Storage-Umgebung unterstützen.
+
+Kapazität:: Kapazitätsauslastung anzeigen und Systeme, Volumes sowie andere Speicherobjekte identifizieren, die Speicherressourcen verbrauchen.
+Sicherheit:: Sicherheitsrelevante Informationen und den Compliance-Status der verwalteten Speicherressourcen einsehen.
+Performance:: Leistungsbezogene Kennzahlen werden analysiert und Ressourcen identifiziert, die möglicherweise weiterer Untersuchungen bedürfen.
+
+
+Die angezeigten Informationen variieren je nach ausgewählter Ansicht und Objekttyp.
+
+
+
+[[investigate-storage-resources]]
+== Speicherressourcen untersuchen
+
+*Inventar* kann verwendet werden, um:
+
+* Flottenzustand überwachen
+* Speicherkapazitätsnutzung überprüfen
+* Verwaltete Speichersysteme nachverfolgen
+* Volumen und andere Objekte identifizieren, die Kapazität beanspruchen
+* Mögliche Sicherheits- oder Leistungsprobleme untersuchen
+* Ressourcen, die administrative Aufmerksamkeit erfordern, identifizieren
+
+
+*Inventory* unterstützt den Wechsel von einer Übersicht auf hoher Ebene über Ihre Umgebung zu einer detaillierteren Untersuchung spezifischer Speicherressourcen.
+
+
+
+[[provision-storage-resources]]
+== Speicherressourcen bereitstellen
+
+Die Inventarisierung umfasst Workflows, die das Bereitstellen von Speicherressourcen wie Volumes und LUNs ermöglichen.
+
+Bei der Bereitstellung von Ressourcen wird ein vorhandenes verwaltetes Speichersystem ausgewählt und die für die Arbeitslast erforderlichen Konfigurationseinstellungen werden bereitgestellt.
+
+
+
+[[inventory-and-alerts]]
+== Inventar und Benachrichtigungen
+
+Warnmeldungen werden für bestimmte Speicherobjekte und Zustände innerhalb Ihrer Umgebung generiert.
+
+Wenn Sie eine Warnung auswählen, kann die lokale Bereitstellung der NetApp Console Sie zum System Manager weiterleiten, um weitere Untersuchungen oder Verwaltungsmaßnahmen vorzunehmen. *Inventory* ergänzt Warnungen, indem es eine umfassendere Sicht auf den Gesamtzustand Ihrer Speicherumgebung und der verwalteten Ressourcen bietet.
+
+
+
+[[advanced-management-tasks]]
+== Erweiterte Managementaufgaben
+
+*Inventory* hilft dabei, Ressourcen zu identifizieren, die Maßnahmen erfordern, aber einige fortgeschrittene Speicherverwaltungsoperationen werden im System Manager durchgeführt.
+
+Beispiele hierfür sind:
+
+* Erweitertes Workload Management
+* Aufgaben zur Ressourcenverlagerung und Optimierung
+* Detaillierte Systemadministrationsaktivitäten
+
+
+*Inventory* dient zur Identifizierung und Untersuchung von Problemen, während bei Bedarf weitergehender Verwaltungsfunktionen System Manager verwendet wird.

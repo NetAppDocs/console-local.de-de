@@ -1,0 +1,37 @@
+---
+sidebar: sidebar 
+permalink: concept-deploy-netapp-console-local.html 
+keywords: deploy, install, vCenter, Linux, high availability, deployment options, netapp console local 
+summary: Informationen zu Bereitstellungsoptionen für die lokale NetApp Console-Bereitstellung, einschließlich vCenter und Linux-Installationen. 
+---
+= Bereitstellungsoptionen für die lokale NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Lokale Bereitstellung der NetApp Console in Ihrer vCenter Umgebung installieren.
+
+
+
+[[install-in-your-vcenter-environment]]
+=== In Ihrer vCenter Umgebung installieren
+
+Die lokale Bereitstellung der NetApp Console kann als virtuelle Appliance in Ihrer VMware vCenter Umgebung mithilfe eines vorkonfigurierten OVA-Images erfolgen.
+
+link:task-install-agent-on-prem-ova.html["Lokale Bereitstellung der NetApp Console in Ihrer vCenter Umgebung installieren"].
+
+
+
+[[next-steps]]
+== Nächste Schritte
+
+Nach der Bereitstellung sind die folgenden Aufgaben zu erledigen, um zu beginnen:
+
+* link:task-add-systems.html["Speichersysteme zur lokalen NetApp Console-Bereitstellung hinzufügen"]
+* link:task-iam-manage-members-permissions.html["Mitglieder hinzufügen und Rollen in der lokalen NetApp Console-Bereitstellung zuweisen"]
+

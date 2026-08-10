@@ -1,0 +1,13 @@
+= 
+:allow-uri-read: 
+
+
+Endpunkte, die von Computern bei Verwendung der webbasierten NetApp Console kontaktiert werden::
++
+--
+Computer, die über einen Webbrowser auf die Console zugreifen, müssen eine Verbindung zu mehreren Endpunkten herstellen können. Sie müssen die Console verwenden, um den Console Agent einzurichten und um die Console im täglichen Betrieb zu nutzen.
+
+link:reference-networking-saas-console.html["Netzwerkkonfiguration für die NetApp Console vorbereiten"].
+
+--
+

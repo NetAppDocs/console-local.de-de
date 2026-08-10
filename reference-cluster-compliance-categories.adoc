@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: reference-cluster-compliance-categories.html 
+keywords: cluster compliance, security compliance, cluster security, ontap cluster security, compliance categories, netapp console local 
+summary: Referenz für Cluster-Sicherheitskonformitätskategorien und empfohlene Einstellungen in der lokalen NetApp Console-Bereitstellung. 
+---
+= Cluster-Sicherheitskonformitätskategorien in der NetApp Console lokalen Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Anhand dieser Referenz lassen sich die in der lokalen NetApp Console-Bereitstellung angezeigten Cluster-Sicherheitskonformitätskategorien einschließlich des empfohlenen Werts und der Information, ob sich die einzelnen Kategorien auf den Gesamtkonformitätsstatus auswirken, überprüfen.
+
+Diese Kategorien basieren auf den Sicherheitsstatusprüfungen von ONTAP.
+
+[cols="20,50,15,15"]
+|===
+| Kategorie | Was die Kategorie prüft | Empfohlener Wert | Beeinträchtigt die allgemeine Compliance 
+
+
+| Globales FIPS | Gibt an, ob der FIPS-140-2-Modus aktiviert ist. Wenn aktiviert, sind TLSv1 und SSLv3 deaktiviert und nur TLSv1.1 und TLSv1.2 zulässig. | Aktiviert | Ja 
+
+
+| Telnet | Ob der Telnet-Zugriff aktiviert ist. SSH ist die empfohlene sichere Methode für den Fernzugriff. | Deaktiviert | Ja 
+
+
+| Unsichere SSH-Einstellungen | Ob SSH mit unsicheren Verschlüsselungsverfahren konfiguriert ist, wie etwa Verschlüsselungsverfahren, die mit  `cbc` beginnen. | Nein | Ja 
+
+
+| Anmeldebanner | Ob ein Anmeldebanner für den Systemzugriff konfiguriert ist. | Aktiviert | Ja 
+
+
+| Cluster-Peering | Ob die Kommunikation zwischen den verbundenen Clustern verschlüsselt ist. Die Verschlüsselung muss sowohl auf dem Quell- als auch auf dem Zielcluster aktiviert sein. | Verschlüsselt | Ja 
+
+
+| Netzwerkzeitprotokoll | Ob ein oder mehrere NTP-Server für den Cluster konfiguriert sind. NetApp empfiehlt mindestens drei NTP-Server für eine hohe Ausfallsicherheit. | Konfiguriert | Ja 
+
+
+| OCSP | Ob die Online Certificate Status Protocol Validierung für die SSL/TLS-Zertifikatvalidierung aktiviert ist. | Aktiviert | Nein 
+
+
+| Remote-Audit-Protokollierung | Ob die Protokollweiterleitung (syslog) verschlüsselt ist. | Verschlüsselt | Ja 
+
+
+| AutoSupport HTTPS-Transport | Ob HTTPS als Standardtransportprotokoll für AutoSupport-Nachrichten verwendet wird. | Aktiviert | Ja 
+
+
+| Standard-Admin-Benutzer | Ob das integrierte Standard-Administratorkonto deaktiviert ist. | Deaktiviert | Ja 
+
+
+| SAML-Benutzer | Ob SAML für Single Sign-On und MFA-fähige Authentifizierung konfiguriert ist. | Nein | Nein 
+
+
+| Active Directory Benutzer | Ob die Active Directory Authentifizierung für den Clusterzugriff konfiguriert ist. | Nein | Nein 
+
+
+| LDAP-Benutzer | Ob die LDAP-Authentifizierung für den Clusterzugriff konfiguriert ist. | Nein | Nein 
+
+
+| Zertifikatsnutzer | Ob zertifikatbasierte Benutzer für die Clusteranmeldung konfiguriert sind. | Nein | Nein 
+
+
+| Lokale Benutzer | Ob lokale Benutzer für die Clusteranmeldung konfiguriert sind. | Nein | Nein 
+
+
+| Remote Shell | Ob RSH aktiviert ist. SSH wird für sicheren Fernzugriff bevorzugt. | Deaktiviert | Ja 
+
+
+| MD5 wird verwendet | Ob ONTAP Benutzerkonten weiterhin MD5-Hashing anstelle von stärkeren Hashes wie SHA-512 verwenden. | Nein | Ja 
+
+
+| Zertifikatsausstellertyp | Der vom Cluster verwendete Zertifikatsausstellertyp. | CA-signiert | Nein 
+|===

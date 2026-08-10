@@ -1,0 +1,107 @@
+---
+sidebar: sidebar 
+permalink: task-dashboard-manage.html 
+keywords: manage dashboard, view dashboards, edit dashboard, clone dashboard, delete dashboard, netapp console local 
+summary: Dashboards in der lokalen NetApp Console-Bereitstellung anzeigen und verwalten, indem benutzerdefinierte Dashboards geöffnet, bearbeitet, geklont und gelöscht werden. 
+---
+= Dashboards in der lokalen NetApp Console-Bereitstellung verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Benutzerdefinierte Dashboards in der lokalen NetApp Console-Bereitstellung verwalten, um die Ansichten mit den Betriebsabläufen abzustimmen. Dashboards können bearbeitet, dupliziert und gelöscht werden, wenn sich Teams, Flotten und Prioritäten ändern.
+
+Diese Aufgabe gilt nur für benutzerdefinierte Dashboards unter *Speicher > Dashboards*. Vordefinierte Startseiten Dashboards können nicht auf dieselbe Weise bearbeitet werden.
+
+
+
+[[view-dashboards]]
+== Dashboards anzeigen
+
+Benutzerdefinierte und vordefinierte Dashboards anzeigen, um das gewünschte Dashboard zum Öffnen, Bearbeiten, Duplizieren oder Löschen zu finden.
+
+
+TIP: Sie können ein vordefiniertes Dashboard duplizieren, um eine benutzerdefinierte Version zu erstellen, die Sie bearbeiten können.
+
+.Schritte
+. *Speicher > Dashboards* auswählen.
+. In der Dashboard-Tabelle kann das gewünschte Dashboard gefunden werden.
+. Den Namen des Dashboards auswählen, um es zu öffnen und die zugehörigen Kennzahlen anzuzeigen.
+. Bei Bedarf stehen verfügbare Aktionen zur Bearbeitung, Duplizierung oder Löschung benutzerdefinierter Dashboards zur Verfügung.
+
+
+
+
+[[update-a-dashboard-as-priorities-change]]
+== Ein Dashboard wird aktualisiert, wenn sich Prioritäten ändern
+
+Ein Dashboard kann bearbeitet werden, wenn sich die betrieblichen Prioritäten ändern und eine Anpassung erforderlich ist, welche Karten und Kennzahlen sichtbar sind.
+
+.Schritte
+. *Speicher > Dashboards* auswählen.
+. Das zu bearbeitende Dashboard öffnen.
+. Eine vorhandene Karte auf dem Dashboard kann durch Auswahl von „Bearbeiten“ im Aktionsmenü der Karte geändert werden.
+. Eine neue Karte kann zum Dashboard hinzugefügt werden, indem *Karte hinzufügen* ausgewählt wird.
++
+link:task-customize-dashboard-cards.html["Karten in der lokalen NetApp Console-Bereitstellung anpassen"].
+
+. *Änderungen speichern* auswählen, um das Dashboard zu speichern.
++
+** Sie können Ihre Änderungen auch als neues Dashboard speichern, indem Sie im Aktionsmenü *Als neues Dashboard speichern* auswählen. Diese Option ist nützlich, wenn das ursprüngliche Dashboard für andere Teams oder Flotten beibehalten werden soll, während eine neue Version für die aktuellen Überwachungsanforderungen erstellt wird.
+** Sie können Ihre Änderungen auch verwerfen, indem Sie im Aktionsmenü die Option „Änderungen verwerfen“ auswählen. Diese Option ist hilfreich, wenn Sie zur zuletzt gespeicherten Version des Dashboards zurückkehren möchten.
+
+
+
+
+
+
+[[reuse-a-custom-dashboard-for-another-resource-or-fleet]]
+== Ein benutzerdefiniertes Dashboard für eine andere Ressource oder Flotte wiederverwenden
+
+Ein Dashboard kann dupliziert werden, wenn ein bewährtes Layout für ein anderes Team, eine andere Flotte oder ein anderes Überwachungsszenario wiederverwendet werden soll, ohne es von Grund auf neu zu erstellen.
+
+
+TIP: Sie können ein vordefiniertes Dashboard duplizieren, um eine benutzerdefinierte Version zu erstellen, die Sie bearbeiten können.
+
+.Schritte
+. *Speicher > Dashboards* auswählen.
+. Für das Dashboard, das Sie duplizieren möchten, im Aktionsmenü *Duplizieren* auswählen.
++
+Bei der lokalen Bereitstellung über die Console wird eine Kopie erstellt, die alle Karten des ursprünglichen Dashboards enthält.
+
+. Ein Name und eine Beschreibung für das duplizierte Dashboard werden bereitgestellt.
+. Wählen Sie das soeben erstellte duplizierte Dashboard aus. Die Metriken, Ressourcen und Kartentypen können an das neue Überwachungsszenario angepasst werden.
++
+link:task-customize-dashboard-cards.html["Karten in der lokalen NetApp Console-Bereitstellung anpassen"].
+
+
+
+
+
+[[remove-dashboards-you-no-longer-use]]
+== Dashboards, die nicht mehr verwendet werden, entfernen
+
+Ein Dashboard kann gelöscht werden, wenn es die aktuellen Vorgänge nicht mehr unterstützt und die Dashboard-Liste auf aktive Anwendungsfälle fokussiert bleiben soll.
+
+.Schritte
+. *Speicher > Dashboards* auswählen.
+. Für das Dashboard, das Sie entfernen möchten, *Löschen* auswählen.
+. Bestätigen Sie die Löschung.
+
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:task-storage-dashboard.html["Startseitenmetriken in der lokalen NetApp Console-Bereitstellung anzeigen"]
+* link:task-dashboard-get-started.html["Erste Schritte mit Dashboards in NetApp Console lokale Bereitstellung"]
+* link:concept-custom-dashboards.html["Informationen zu benutzerdefinierten Dashboards in der lokalen NetApp Console-Bereitstellung"]
+* link:task-dashboard-create.html["Ein benutzerdefiniertes Dashboard erstellen"]
+* link:task-customize-dashboard-cards.html["Anpassen von Dashboard-Karten in der lokalen NetApp Console-Bereitstellung"]
+

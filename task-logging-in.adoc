@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: task-logging-in.html 
+keywords: logging in, log in, sign in, signing in, user account, MFA, multi-factor authentication, AD, Active Directory, directory services, local user, Console local deployment access 
+summary: Nach der Registrierung für die lokale Bereitstellung der NetApp Console ist eine Anmeldung über die webbasierte Konsole möglich, um mit der Verwaltung der Daten- und Speicherinfrastruktur zu beginnen. 
+---
+= Anmeldung bei der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können sich bei der lokalen NetApp Console-Bereitstellung anmelden, nachdem Ihr Organisationsadministrator Sie zu Ihrem Benutzerkonto für die lokale Console-Bereitstellung eingeladen hat. Für die Anmeldung wird die mit Ihrem Login verknüpfte E-Mail-Adresse verwendet.
+
+Wenn Sie sich anmelden, aber keine Ressourcen sehen, wenden Sie sich an Ihren Organisationsadministrator. link:task-user-settings.html#contact-admin["Wenden Sie sich an Ihren Organisationsadministrator"].
+
+.Schritte
+. Einen Webbrowser öffnen und zur IP-Adresse wechseln, an der die lokale Console-Bereitstellung installiert ist.
+. Auf der *Anmeldeseite* die E-Mail-Adresse eingeben, die mit Ihrem Login verknüpft ist.
+. Je nach dem mit Ihrer Anmeldung verknüpften Authentifizierungsverfahren werden Sie zur Eingabe Ihrer Anmeldedaten aufgefordert.
++
+** Ein NetApp Console Konto mit Ihrer E-Mail-Adresse und einem Passwort
+
+
++
+[NOTE]
+====
+** Wenn die Multi-Faktor-Authentifizierung (MFA) aktiviert ist: Nach Eingabe Ihres Passworts werden Sie aufgefordert, einen TOTP-Code (aus Ihrer Authentifizierungs-App) einzugeben oder einen Wiederherstellungscode zu verwenden.
+** Wenn Sie sich mit Wiederherstellungscodes anmelden, verwenden Sie diese in der Reihenfolge, die in der Benutzeroberfläche während der Wiederherstellungscode-Aufforderung angezeigt wird.
+
+
+====
++
+** Ein Active Directory Konto mit Ihrer E-Mail-Adresse und Ihrem Passwort
+
+
+

@@ -1,0 +1,94 @@
+---
+sidebar: sidebar 
+permalink: reference-iam-storage-roles.html 
+keywords: storage roles, Storage admin, Storage viewer, System health specialist, ONTAP management, storage governance, identity and access management, access roles, rbac, netapp console local 
+summary: Sie können Benutzern die folgenden Rollen zuweisen, um ihnen Zugriff auf die Speicherverwaltungsfunktionen in der lokalen NetApp Console-Bereitstellung zu ermöglichen. Benutzern kann eine administrative Rolle zur Speicherverwaltung oder eine Betrachterrolle zur Überwachung zugewiesen werden. 
+---
+= Speicherzugriffsrollen für die lokale NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Sie können Benutzern die folgenden Rollen zuweisen, um ihnen Zugriff auf die Speicherverwaltungsfunktionen in der lokalen NetApp Console-Bereitstellung zu ermöglichen. Benutzern kann eine administrative Rolle zur Speicherverwaltung oder eine Betrachterrolle zur Überwachung zugewiesen werden.
+
+Administratoren können Benutzern Speicherrollen für die folgenden Speicherressourcen und Funktionen zuweisen:
+
+Speicherressourcen:
+
+* On-premises ONTAP Cluster
+
+
+Konsolendienste und Funktionen:
+
+* Speicherzustandsfunktionen
+
+
+.Beispiel für Speicherrollen in der lokalen NetApp Console-Bereitstellung
+Die multinationale XYZ Corporation verfügt über ein großes Team von Storage Engineers und Storage Administrators. Dieses Team kann Speicherressourcen für seine Regionen verwalten, während der Zugriff auf zentrale lokale Aufgaben der Console wie Benutzerverwaltung und Lizenzverwaltung eingeschränkt bleibt.
+
+Innerhalb eines 12-köpfigen Teams erhalten zwei Benutzer die Rolle *Storage viewer*, mit der sie die Speicherressourcen der ihnen zugewiesenen Console local deployment fleets überwachen können. Die übrigen neun erhalten die Rolle *Storage admin*, die die Verwaltung von Software-Updates, den Zugriff auf ONTAP System Manager über die Console local deployment sowie das Erkennen von Speicherressourcen (Hinzufügen von Systemen) umfasst. Ein Teammitglied erhält die Rolle *System health specialist*, sodass die Person den Zustand der Speicherressourcen in ihrer Region verwalten kann, jedoch keine Systeme ändern oder löschen darf. Diese Person kann außerdem Software-Updates für die Speicherressourcen der ihr zugewiesenen Flotten durchführen.
+
+Die Organisation verfügt über zwei weitere Benutzer mit der Rolle *Organization admin*, die alle Aspekte der Console lokalen Bereitstellung verwalten können, einschließlich Benutzerverwaltung und Lizenzverwaltung, sowie über mehrere Benutzer mit der Rolle *Folder or fleet admin*, die Verwaltungsaufgaben für die Console lokale Bereitstellung für die ihnen zugewiesenen Ordner und Flotten durchführen können.
+
+Die folgende Tabelle zeigt die Aktionen, die jede Speicherrolle ausführt.
+
+[cols="40,20a,20a,20a"]
+|===
+| Funktion und Aktion | Speicheradministrator | System-Health-Spezialist | Speicherbetrachter 
+
+
+4+| *Speicherverwaltung*: 
+
+
+| Neue Ressourcen entdecken (Systeme hinzufügen)  a| 
+Ja
+ a| 
+Ja
+ a| 
+Nein
+
+
+
+| Hinzugefügte Systeme anzeigen  a| 
+Ja
+ a| 
+Ja
+ a| 
+Nein
+
+
+
+| Systeme aus der Console löschen  a| 
+Ja
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+| Systeme ändern  a| 
+Ja
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+4+| *System Manager Zugriff* 
+
+
+| Kann Anmeldeinformationen eingeben  a| 
+Ja
+ a| 
+Ja
+ a| 
+Nein
+
+|===

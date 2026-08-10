@@ -1,0 +1,138 @@
+= 
+:allow-uri-read: 
+
+
+. Stellen Sie sicher, dass Sie in Azure über die Berechtigung verfügen, eine Active Directory Anwendung zu erstellen und die Anwendung einer Rolle zuzuweisen.
++
+Weitere Details finden Sie unter https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions/["Microsoft Azure Dokumentation: Erforderliche Berechtigungen"^]
+
+. Im Azure-Portal den Dienst *Microsoft Entra ID* öffnen.
++
+image:screenshot_azure_ad.png["Zeigt den Active Directory Dienst in Microsoft Azure an."]
+
+. Im Menü *App registrations* auswählen.
+. *Neue Registrierung* auswählen.
+. Geben Sie Einzelheiten zur Anwendung an:
++
+** *Name*: Ein Name für die Anwendung wird eingegeben.
+** *Kontotyp*: Ein Kontotyp kann ausgewählt werden (jeder funktioniert mit der NetApp Console).
+** *Umleitungs-URI*: Dieses Feld kann leer bleiben.
+
+
+. *Registrieren* auswählen.
++
+Sie haben die Active Directory-Anwendung und den Dienstprinzipal erstellt.
+
+
+
+. Eine benutzerdefinierte Rolle erstellen:
++
+Beachten Sie, dass Sie eine benutzerdefinierte Azure-Rolle über das Azure-Portal, Azure PowerShell, die Azure CLI oder die REST-API erstellen können. Die folgenden Schritte zeigen, wie die Rolle mithilfe der Azure CLI erstellt wird. Wenn eine andere Methode bevorzugt wird, siehe  https://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role["Azure Dokumentation"^]
+
++
+.. Den Inhalt von link:reference-permissions-azure.html["Benutzerdefinierte Rollenberechtigungen für den Console-Agenten"] kopieren und in einer JSON-Datei speichern.
+.. Die JSON-Datei wird geändert, indem Azure-Abonnement-IDs zum zuweisbaren Bereich hinzugefügt werden.
++
+Sie sollten die ID für jedes Azure-Abonnement hinzufügen, aus dem Benutzer Cloud Volumes ONTAP Systeme erstellen.
+
++
+*Beispiel*
+
++
+[source, json]
+----
+"AssignableScopes": [
+"/subscriptions/d333af45-0d07-4154-943d-c25fbzzzzzzz",
+"/subscriptions/54b91999-b3e6-4599-908e-416e0zzzzzzz",
+"/subscriptions/398e471c-3b42-4ae7-9b59-ce5bbzzzzzzz"
+----
+.. Die JSON-Datei dient dazu, eine benutzerdefinierte Rolle in Azure zu erstellen.
++
+Die folgenden Schritte beschreiben, wie die Rolle mithilfe von Bash in der Azure Cloud Shell erstellt wird.
+
++
+*** Starten Sie  https://docs.microsoft.com/en-us/azure/cloud-shell/overview["Azure Cloud Shell"^] und wählen Sie die Bash-Umgebung aus.
+*** Die JSON-Datei hochladen.
++
+image:screenshot_azure_shell_upload.png["Ein Screenshot der Azure Cloud Shell, in der die Option zum Hochladen einer Datei ausgewählt werden kann."]
+
+*** Mit der Azure CLI die benutzerdefinierte Rolle erstellen:
++
+[source, azurecli]
+----
+az role definition create --role-definition Connector_Policy.json
+----
++
+Nun steht eine benutzerdefinierte Rolle mit dem Namen Console Operator zur Verfügung, die der virtuellen Maschine des Console agent zugewiesen werden kann.
+
+
+
+
+
+. Die Anwendung der Rolle zuordnen:
++
+.. Im Azure-Portal den Dienst *Abonnements* öffnen.
+.. Das Abonnement auswählen.
+.. *Zugriffskontrolle (IAM) > Hinzufügen > Rollenzuweisung hinzufügen* auswählen.
+.. Im Tab *Rolle* die Rolle *Console Operator* auswählen und *Weiter* auswählen.
+.. Im Tab *Mitglieder* sind die folgenden Schritte auszuführen:
++
+*** *Benutzer, Gruppe oder Dienstprinzipal* bleibt ausgewählt.
+*** *Mitglieder auswählen* auswählen.
++
+image:screenshot-azure-service-principal-role.png["Ein Screenshot des Azure Portals, der die Seite „Mitglieder“ beim Hinzufügen einer Rolle zu einer Anwendung anzeigt."]
+
+*** Nach dem Namen der Anwendung suchen.
++
+Hier ist ein Beispiel:
+
++
+image:screenshot_azure_service_principal_role.png["Ein Screenshot des Azure-Portals, der das Formular „Rollenzuweisung hinzufügen“ im Azure-Portal zeigt."]
+
+*** Die Anwendung auswählen und *Auswählen* wählen.
+*** *Weiter* auswählen.
+
+
+.. *Überprüfen + zuweisen* auswählen.
++
+Der Dienstprinzipal verfügt nun über die erforderlichen Azure-Berechtigungen zum Bereitstellen des Console-Agenten.
+
++
+Wenn Sie Cloud Volumes ONTAP aus mehreren Azure-Abonnements bereitstellen möchten, muss der Dienstprinzipal an jedes dieser Abonnements gebunden werden. In der NetApp Console kann das Abonnement ausgewählt werden, das für die Bereitstellung von Cloud Volumes ONTAP verwendet werden soll.
+
+
+
+
+
+. Im *Microsoft Entra ID* Dienst *App-Registrierungen* auswählen und die Anwendung auswählen.
+. Wählen Sie *API permissions > Add a permission*.
+. Unter *Microsoft APIs* die Option *Azure Service Management* auswählen.
++
+image:screenshot_azure_service_mgmt_apis.gif["Ein Screenshot des Azure-Portals, der die Berechtigungen der Azure Service Management API zeigt."]
+
+. *Zugriff auf Azure Service Management als Organisationsbenutzer* auswählen und dann *Berechtigungen hinzufügen* auswählen.
++
+image:screenshot_azure_service_mgmt_apis_add.gif["Ein Screenshot des Azure-Portals, der das Hinzufügen der Azure Service Management APIs zeigt."]
+
+
+
+. Im *Microsoft Entra ID* Dienst *App-Registrierungen* auswählen und die Anwendung auswählen.
+. Die *Anwendungs-ID (Client-ID)* und die *Verzeichnis-ID (Mandanten-ID)* kopieren.
++
+image:screenshot_azure_app_ids.gif["Ein Screenshot, der die Anwendungs-ID (Client-ID) und die Verzeichnis-ID (Mandanten-ID) einer Anwendung in Microsoft Entra ID zeigt."]
+
++
+Beim Hinzufügen des Azure-Kontos zur Console müssen die Anwendungs-ID (Client-ID) und die Verzeichnis-ID (Mandanten-ID) der Anwendung angegeben werden. Die Console verwendet die IDs zur programmgesteuerten Anmeldung.
+
+
+
+. Den *Microsoft Entra ID* Dienst öffnen.
+. *App registrations* auswählen und die eigene Anwendung auswählen.
+. *Zertifikate & Geheimnisse > Neues Clientgeheimnis* auswählen.
+. Eine Beschreibung des Geheimnisses und eine Dauer angeben.
+. Wählen Sie *Add*.
+. Den Wert des Client-Secrets kopieren.
++
+image:screenshot_azure_client_secret.gif["Ein Screenshot des Azure-Portals, der ein Clientgeheimnis für den Microsoft Entra service principal anzeigt."]
+
+

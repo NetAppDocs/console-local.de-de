@@ -1,0 +1,117 @@
+---
+sidebar: sidebar 
+permalink: concept-storage-classes.html 
+keywords: storage classes, storage class policies, standardize, fleet management, provisioning, netapp console local 
+summary: Es wird erläutert, wie Speicherklassen und Speicherklassenrichtlinien in der lokalen NetApp Console-Bereitstellung Standards definieren, die Bereitstellung steuern und die Überwachung von Abweichungen unterstützen. 
+---
+= Informationen zu Speicherklassen und Richtlinien in der lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Eine Speicherklasse ist eine wiederverwendbare Vorlage, die das Verhalten des Speichers definiert. Bei der Bereitstellung von Speicher mithilfe einer Speicherklasse erzwingt die NetApp Console lokale Bereitstellung automatisch die in dieser Klasse kodierten Standards, ohne dass Administratoren für jede Arbeitslast individuelle Konfigurationsentscheidungen treffen müssen.
+
+Speicherklassen basieren auf Speicherklassenrichtlinien, die einzelne Dimensionen des Speicherverhaltens definieren. Zusammen lassen sich die Speicherstandards eines Unternehmens einmalig erfassen und konsistent auf alle Flotten anwenden.
+
+
+
+[[what-storage-class-policies-are]]
+== Was Speicherklassenrichtlinien sind
+
+Eine Speicherklassenrichtlinie definiert eine Dimension des Speicherverhaltens. Richtlinien sind wiederverwendbare Bausteine, die zur Erstellung von Speicherklassen kombiniert werden.
+
+Gängige Richtlinientypen sind:
+
+* *Leistungsrichtlinien* – Latenzziele, IOPS oder Anforderungen an den Durchsatz definieren.
+* *Kapazitätsrichtlinien* – Bereitstellungsmodus, Schwellenwertwarnungen oder Wachstumsgrenzen festlegen.
+* *Sicherheitsrichtlinien* – Anforderungen an Verschlüsselung, Compliance oder Zugriffskontrolle definieren.
+* *Datenschutzrichtlinien* – Snapshot-Zeitpläne, Replikationsziele oder Aufbewahrungsfristen festlegen.
+
+
+Richtlinien werden unabhängig voneinander definiert und anschließend beim Erstellen einer Speicherklasse kombiniert. So lässt sich dieselbe Leistungsrichtlinie für mehrere Klassen wiederverwenden oder eine Kapazitätsrichtlinie an einer zentralen Stelle aktualisieren und diese Änderung auf alle Klassen anwenden, die sie verwenden.
+
+
+
+[[what-storage-classes-are]]
+== Was Speicherklassen sind
+
+Eine Speicherklasse ist eine benannte Vorlage, die aus einer oder mehreren Richtlinien zusammengestellt wird. Sie erfasst die Speicherstandards Ihrer Organisation für einen bestimmten Workload-Typ.
+
+Beispielsweise kann eine *Production Database* Speicherklasse erstellt werden, die hohe Leistung, hohe Verfügbarkeit und strenge Datenschutzrichtlinien kombiniert, oder eine *Development File Share* Speicherklasse, die moderate Leistung, flexible Kapazität und grundlegende Datenschutzrichtlinien kombiniert.
+
+Speicheradministratoren definieren Speicherklassen, um Unternehmensanforderungen abzubilden. Alle Bereitstellungsaktivitäten, ob manuell, über geführte Workflows oder automatisiert, greifen auf die von diesen Administratoren genehmigte Bibliothek von Klassen zurück.
+
+
+
+[[how-storage-classes-enforce-standards]]
+== Wie Speicherklassen Standards durchsetzen
+
+Bei der Speicherbereitstellung wird eine Speicherklasse ausgewählt, anstatt einzelne Einstellungen zu konfigurieren. Die lokale Bereitstellung über die NetApp Console nutzt die Richtlinien dieser Klasse, um zu ermitteln, welche Cluster in Ihrer Flotte über ausreichende Kapazität und Leistungsreserven zur Unterstützung der Arbeitslast verfügen, die optimale Platzierungsoption zu empfehlen und klassenbasierte Einstellungen automatisch bei der Bereitstellung anzuwenden.
+
+Nach der Bereitstellung bewertet Console local deployment kontinuierlich jede Arbeitslast anhand der Standards ihrer Speicherklasse.
+
+
+
+[[storage-class-drift-and-compliance]]
+== Speicherklassenabweichung und Konformität
+
+Wenn eine Arbeitslast nicht mehr der vorgesehenen Speicherklasse entspricht, wird sie von der lokalen NetApp Console-Bereitstellung zur Untersuchung und Behebung markiert.
+
+Die Probleme lassen sich in zwei Kategorien einteilen:
+
+* *Konfigurationsabweichung*: Die durch die Speicherklassenrichtlinie festgelegten Speichereinstellungen entsprechen nicht mehr der beabsichtigten Konfiguration. Dies kann auftreten, wenn Änderungen direkt am ONTAP Cluster oder außerhalb standardmäßiger Bereitstellungsabläufe vorgenommen werden.
+* *Nichteinhaltung der Leistungsanforderungen*: Das Laufzeitverhalten der Arbeitslast entspricht nicht mehr der Performance-Absicht der Speicherklasse (zum Beispiel kontinuierlicher Druck nahe einer QoS-Grenze oder erhöhte Tail-Latenz).
+
+
+Eine Analyseansicht erläutert, was sich geändert hat und warum. Geführte Korrekturmaßnahmen (zum Beispiel *Fix it*) können zur Verfügung stehen, um die Compliance wiederherzustellen. Einige Korrekturen können direkt angewendet werden, während andere möglicherweise eine Zuordnung der Workload zu einer anderen Speicherklasse erfordern, um das beabsichtigte Verhalten wiederherzustellen.
+
+.Wo untersucht werden kann
+Abweichungen und Nichteinhaltungen lassen sich in der Regel von einem dieser Orte aus untersuchen (die Verfügbarkeit hängt von Ihrer Bereitstellung und Ihren Berechtigungen ab):
+
+* *Speicherklassen:* Drift / Compliance
+* *Warnungen:* Analysieren
+
+
+Schritt-für-Schritt-Anweisungen sind unter xref:task-storage-class-drift-remediate.adoc[Speicherklassenabweichung beheben] zu finden.
+
+
+
+[[end-to-end-workflow]]
+== End-to-End-Workflow
+
+Die folgenden Schritte beschreiben den Prozess zur Verwendung von Speicherklassen zur Standardisierung und Steuerung des Speichers in Ihrer Umgebung:
+
+. *Speicherklassenrichtlinien erstellen* – Richtlinien definieren die einzelnen Dimensionen des Speicherverhaltens (Leistungsziele, Kapazitätseinstellungen, Sicherheitsanforderungen, Datensicherungszeitpläne). Richtlinien werden erstellt, bevor eine Speicherklasse aufgebaut wird.
+. *Speicherklasse erstellen* – Eine Speicherklasse wird zusammengestellt, indem jeweils eine Richtlinie aus jeder zutreffenden Kategorie kombiniert wird. Es kann eine vordefinierte Speicherklasse verwendet oder eine benutzerdefinierte Speicherklasse für die Standards Ihrer Organisation erstellt werden.
+. *Die Speicherklasse mit einer Flotte verknüpfen* - Nach dem Erstellen einer Speicherklasse erfolgt die Verknüpfung mit der Flotte, in der sie für die Bereitstellung und die Compliance-Überwachung verwendet wird.
+. *Speicherbereitstellung mithilfe der Speicherklasse* – Beim Bereitstellen eines Volumes oder einer LUN wird eine Speicherklasse ausgewählt, anstatt einzelne Einstellungen zu konfigurieren. Die lokale Bereitstellung über die Konsole verwendet die Klasse, um die optimale Clusterplatzierung zu empfehlen, anschließend erfolgt die Bereitstellung mit den in der Klasse definierten Einstellungen.
+. *Überwachung von Workloads auf Abweichungen* – Die lokale NetApp Console-Bereitstellung bewertet kontinuierlich jeden Workload anhand der in seiner Speicherklasse kodierten Standards. Treten Konfigurationsabweichungen oder eine Nichteinhaltung der Leistungsanforderungen auf, wird das Problem gekennzeichnet und möglicherweise eine Warnung ausgelöst.
+. *Abweichungen beheben, um die Konformität wiederherzustellen* - Wenn Abweichungen oder Leistungsmängel festgestellt werden, besteht die Möglichkeit, geführte Schritte zur manuellen Behebung des Problems zu nutzen, die Console lokale Bereitstellung häufige Abweichungsbedingungen automatisch beheben zu lassen oder eine Arbeitslast von ihrer Speicherklasse zu trennen, falls eine Änderung der Einstellungen erforderlich ist.
+
+
+
+
+[[how-storage-classes-work-with-fleets]]
+== Wie Speicherklassen mit Flotten funktionieren
+
+Speicherklassen sind Flotten zugeordnet. Wenn eine Speicherklasse einer Flotte zugeordnet wird, steht diese Klasse für alle Bereitstellungen innerhalb der Flotte zur Verfügung. Dies stellt sicher, dass jede in der Flotte bereitgestellte Workload denselben Standards folgt, wodurch Flotten die primäre Methode sind, um ein konsistentes Speicherverhalten über verwandte Cluster hinweg durchzusetzen.
+
+Weitere Informationen zur Organisation von Flotten finden Sie unter link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
+
+
+
+[[where-to-go-next]]
+== Wie es weitergeht
+
+* Informationen zur Organisation der Flotte finden Sie unter link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
+* Informationen zum Erstellen von Richtlinien und Speicherklassen sind unter link:task-storage-class-manage.html["Speicherklassen und Richtlinien verwalten"] zu finden.
+* link:task-provisioning-manual.html["Speicher manuell bereitstellen"]
+* link:task-provisioning-automated.html["Speicher automatisch bereitstellen"]
+* link:task-provisioning-agentic.html["Speicher mit KI-Unterstützung bereitstellen"]
+* Zur Analyse und Behebung von Drift siehe link:task-storage-class-drift-remediate.html["Speicherklassenabweichung beheben"]
+

@@ -1,0 +1,87 @@
+---
+sidebar: sidebar 
+permalink: task-provisioning-manual.html 
+keywords: provisioning, provision storage, create volume, create LUN, ONTAP, storage class, fleet, NAS, SAN, manual provisioning, netapp console 
+summary: Speicherressourcen mithilfe der lokalen NetApp Console-Bereitstellung bereitstellen. 
+---
+= Speicher in der lokalen NetApp Console-Bereitstellung bereitstellen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Volumes und LUNs in der lokalen NetApp Console-Bereitstellung bereitstellen, damit Speicherressourcen für Ihre Workloads verfügbar sind. Während der Bereitstellung kann optional eine Speicherklasse ausgewählt werden, um vordefinierte Speicherrichtlinien und Organisationsstandards anzuwenden.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator, Ordner- oder Flottenadministrator oder Speicheradministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+
+
+[[provision-a-volume]]
+== Ein Volume bereitstellen
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Flotten* auswählen.
+. Wählen Sie die Flotte aus, in die Sie bereitstellen möchten.
+. Wählen Sie *Add*.
+. Im Menü *Volume* auswählen.
+. Unter *Volumendetails*:
++
+.. Geben Sie einen Volume-Namen ein.
+.. Kapazität eingeben (und bei Bedarf die Einheiten auswählen).
+.. (Optional) Wählen Sie eine Speicherklasse aus, auf die Speicherklassenrichtlinien angewendet werden. Wenn keine ausgewählt wird, wird das Volume ohne Speicherklassenrichtlinien bereitgestellt.
+
+
+. Unter *Systemdetails*:
++
+.. Ein System aus den für die ausgewählte Flotte berechtigten Systemen auswählen.
+.. Eine Storage-VM auswählen.
+
+
+. Unter *Host (NAS)-Details* kann ausgewählt werden, wie Hosts auf das Volume zugreifen:
++
+.. Export per NFS (Exportrichtlinien steuern, welche NFS-Hosts auf das Volume zugreifen können)
+.. Freigabe über SMB/CIFS
+
+
+. Wählen Sie *Add*.
+
+
+
+
+[[provision-a-lun]]
+== Eine LUN bereitstellen
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Flotten* auswählen.
+. Wählen Sie die Flotte aus, in die Sie bereitstellen möchten.
+. Wählen Sie *Add*.
+. Im Menü die Option *LUNs* auswählen.
+. Unter *LUN-Speicherdetails*:
++
+.. Geben Sie einen Präfixnamen ein.
+.. Geben Sie die Anzahl der LUNs ein, die mit diesem Präfix erstellt werden.
+.. Geben Sie die Kapazität pro LUN ein (und wählen Sie bei Bedarf die Einheiten aus).
+.. (Optional) Wählen Sie eine Speicherklasse aus, auf die Speicherklassenrichtlinien angewendet werden. Wenn keine ausgewählt wird, werden die LUNs ohne Speicherklassenrichtlinien bereitgestellt.
+
+
+. Unter *Systemdetails*:
++
+.. Wählen Sie ein System aus (falls dazu aufgefordert wird).
+.. Eine Storage-VM auswählen.
+
+
+. Unter *Host (SAN) Details* kann ausgewählt werden, wie Hosts auf das Volume zugreifen:
++
+.. Das Host-Betriebssystem (zum Beispiel Windows oder Linux) auswählen, um empfohlene Standardwerte für die LUN-Ausrichtung und die Blockgröße festzulegen.
+.. Die Host-Mapping-Gruppe steuert, welche Initiatoren auf die LUNs zugreifen können.
+
+
+. Wählen Sie *Add*.
+

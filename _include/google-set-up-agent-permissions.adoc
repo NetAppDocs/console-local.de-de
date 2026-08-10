@@ -1,0 +1,56 @@
+= 
+:allow-uri-read: 
+
+
+Ein Google Cloud-Dienstkonto ist erforderlich, um dem Console-Agenten die Berechtigungen bereitzustellen, die die Console für die Verwaltung von Ressourcen in Google Cloud benötigt. Beim Erstellen des Console-Agenten muss dieses Dienstkonto mit der Console-Agent-VM verknüpft werden.
+
+Sie sind dafür verantwortlich, die benutzerdefinierte Rolle zu aktualisieren, sobald in späteren Versionen neue Berechtigungen hinzugefügt werden. Wenn neue Berechtigungen erforderlich sind, werden diese in den Versionshinweisen aufgeführt.
+
+.Schritte
+. Erstellen einer benutzerdefinierten Rolle in Google Cloud:
++
+.. Eine YAML-Datei erstellen, die den Inhalt der link:reference-permissions-gcp.html["Dienstkontoberechtigungen für den Konsolenagenten"] enthält.
+.. In Google Cloud die Cloud Shell aktivieren.
+.. Laden Sie die YAML-Datei hoch, die die erforderlichen Berechtigungen enthält.
+.. Eine benutzerdefinierte Rolle kann mit dem  `gcloud iam roles create` Befehl erstellt werden.
++
+Das folgende Beispiel erstellt eine Rolle mit dem Namen „connector“ auf Projektebene:
+
++
+`gcloud iam roles create connector --project=myproject --file=connector.yaml`
+
++
+https://cloud.google.com/iam/docs/creating-custom-roles#iam-custom-roles-create-gcloud["Google Cloud-Dokumentation: Erstellen und Verwalten benutzerdefinierter Rollen"^]
+
+
+
+. Ein Dienstkonto in Google Cloud erstellen und diesem Dienstkonto die Rolle zuweisen:
++
+.. Im IAM & Admin-Dienst *Dienstkonten > Dienstkonto erstellen* auswählen.
+.. Servicekontodetails eingeben und *Erstellen und Fortfahren* auswählen.
+.. Wählen Sie die Rolle aus, die Sie gerade erstellt haben.
+.. Führen Sie die verbleibenden Schritte zur Erstellung der Rolle aus.
++
+https://cloud.google.com/iam/docs/creating-managing-service-accounts#creating_a_service_account["Google Cloud-Dokumentation: Erstellen eines Dienstkontos"^]
+
+
+
+. Wenn geplant ist, Cloud Volumes ONTAP Systeme in anderen Projekten als dem Projekt bereitzustellen, in dem sich der Console Agent befindet, muss dem Dienstkonto des Console Agent Zugriff auf diese Projekte gewährt werden.
++
+Nehmen wir beispielsweise an, der Console-Agent befindet sich in Projekt 1 und Sie möchten Cloud Volumes ONTAP Systeme in Projekt 2 erstellen. Dazu ist es erforderlich, dem Dienstkonto in Projekt 2 Zugriff zu gewähren.
+
++
+.. Im IAM & Admin-Dienst das Google Cloud-Projekt auswählen, in dem Cloud Volumes ONTAP Systeme erstellt werden sollen.
+.. Auf der *IAM*-Seite *Zugriff gewähren* auswählen und die erforderlichen Details angeben.
++
+*** Die E-Mail-Adresse des Servicekontos des Console-Agenten eingeben.
+*** Die benutzerdefinierte Rolle des Konsolenagenten auswählen.
+*** *Speichern* auswählen.
+
+
+
+
++
+Weitere Einzelheiten sind unter https://cloud.google.com/iam/docs/granting-changing-revoking-access#grant-single-role["Google Cloud-Dokumentation"^] zu finden
+
+

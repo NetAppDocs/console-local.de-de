@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: task-manage-member-security.html 
+keywords: member security, password reset, MFA, multi-factor authentication, service account, credentials, netapp console local, AD, Active Directory, directory services 
+summary: Sicherheitseinstellungen für Mitglieder in der lokalen NetApp Console-Bereitstellung verwalten, einschließlich Passwortzurücksetzungen, MFA-Verwaltung und Anmeldeinformationen für Dienstkonten. 
+---
+= Mitgliedersicherheit in der lokalen NetApp Console-Bereitstellung verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Benutzerzugriff auf die lokale NetApp Console-Bereitstellungsorganisation wird durch die Verwaltung der Sicherheitseinstellungen der Mitglieder geschützt. Lokale Benutzer können dazu angeleitet werden, ihre eigenen Passwörter zu ändern, die Multi-Faktor-Authentifizierung (MFA) lokaler Benutzer zu verwalten und die Anmeldeinformationen für Dienstkonten neu zu erstellen.
+
+.Erforderliche Zugriffsrollen
+Superadministrator, Organisationsadministrator oder Ordner- oder Flottenadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+
+
+[[reset-user-passwords-local-users-only]]
+== Benutzerpasswörter zurücksetzen (nur lokale Benutzer)
+
+Administratoren können lokale Benutzerpasswörter nicht direkt zurücksetzen.
+
+Lokale Benutzer werden darauf hingewiesen, ihre Passwörter auf der Anmeldeseite der lokalen NetApp Console-Bereitstellung zurückzusetzen, indem sie *Passwort vergessen?* auswählen.
+
+
+NOTE: Diese Option steht Verzeichnisbenutzern nicht zur Verfügung.
+
+
+
+[[manage-a-local-users-multi-factor-authentication-mfa]]
+== Multi-Faktor-Authentifizierung (MFA) eines lokalen Benutzers verwalten
+
+Wenn ein lokaler Benutzer den Zugriff auf sein MFA-Gerät verliert, kann entweder die MFA-Konfiguration entfernt oder deaktiviert werden.
+
+
+NOTE: Multi-Faktor-Authentifizierung ist nur für lokale Benutzer verfügbar. Verzeichnisbenutzer können MFA nicht über die lokale Bereitstellung in der NetApp Console aktivieren.
+
+Diese Richtlinien helfen bei der Auswahl der richtigen Maßnahme:
+
+* *Deaktivieren* auswählen, wenn der Benutzer vorübergehend keinen Zugriff auf sein MFA-Gerät hat. Durch Deaktivieren von MFA ist eine Anmeldung ohne MFA für acht Stunden möglich, anschließend wird MFA automatisch wieder aktiviert.
+* *Entfernen* auswählen, wenn der Benutzer die Multi-Faktor-Authentifizierung (MFA) vollständig zurücksetzen muss. Nach dem Entfernen der MFA meldet sich der Benutzer ohne MFA an, bis er die MFA erneut konfiguriert.
+
+
+Verfügt ein Benutzer über einen gespeicherten Wiederherstellungscode, kann er sich damit anmelden. Wenn ein Benutzer keinen Wiederherstellungscode hat, sollte die Multi-Faktor-Authentifizierung deaktiviert werden, damit sich der Benutzer anmelden und wieder Zugriff erhalten kann.
+
+
+NOTE: Um die Multi-Faktor-Authentifizierung eines lokalen Benutzers zu verwalten, muss eine E-Mail-Adresse in derselben Domäne wie der betroffene Benutzer vorhanden sein.
+
+.Schritte
+. *Administration* > *Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. Navigieren Sie auf der Mitgliederseite zu einem Mitglied in der Tabelle, wählen Sie image:icon-action.png["Ein Symbol mit drei Punkten"] und dann *Multi-Faktor-Authentifizierung verwalten* aus.
+. Wählen Sie, ob die MFA-Konfiguration des Benutzers entfernt oder deaktiviert werden soll.
+
+
+.Nachdem Sie fertig sind
+Im Revisionsprotokoll lässt sich nachvollziehen, wer den MFA-Zugriff geändert hat, wann die Änderung vorgenommen wurde und ob die Aktion erfolgreich war. link:task-audit-console-activity.html["Informationen zur Überprüfung der lokalen Bereitstellungsaktivität der NetApp Console"].
+
+
+
+[[recreate-the-credentials-for-a-service-account]]
+== Die Anmeldeinformationen für ein Dienstkonto neu erstellen
+
+Sie können neue Zugangsdaten für ein Dienstkonto erstellen, falls Sie diese verlieren oder aktualisieren müssen.
+
+Durch das Erstellen neuer Anmeldeinformationen werden die alten gelöscht. Die alten Anmeldeinformationen können nicht mehr verwendet werden.
+
+.Schritte
+. *Administration* > *Identität und Zugriff* auswählen.
+. *Mitglieder* auswählen.
+. In der Tabelle „Mitglieder“ zu einem Dienstkonto navigieren, image:icon-action.png["Ein Symbol mit drei Punkten"] auswählen und dann *Geheimnisse neu erstellen* wählen.
+. *Neu erstellen* auswählen.
+. Die Client-ID und das Client-Geheimnis können heruntergeladen oder kopiert werden.
++
+Die lokale Bereitstellung in der NetApp Console zeigt das Clientgeheimnis nur einmal an. Es empfiehlt sich, das Clientgeheimnis zu kopieren oder herunterzuladen und sicher aufzubewahren.
+
+

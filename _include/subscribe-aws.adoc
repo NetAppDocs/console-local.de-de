@@ -1,0 +1,43 @@
+= 
+:allow-uri-read: 
+
+
+Das folgende Video zeigt die Schritte zum Abonnieren von NetApp Intelligent Services über den AWS Marketplace:
+
+.Abonnement von NetApp Intelligent Services über den AWS Marketplace
+video::096e1740-d115-44cf-8c27-b051011611eb[panopto]
+.Schritte
+. *Administration > Anmeldeinformationen* auswählen.
+. *Organisationsanmeldeinformationen* auswählen.
+. Das Aktionsmenü für einen Satz von Anmeldeinformationen, die einem Console-Agent zugeordnet sind, auswählen und anschließend *Abonnement konfigurieren* wählen.
++
+Sie müssen Anmeldeinformationen auswählen, die einem Console-Agenten zugeordnet sind. Es kann kein Marketplace-Abonnement mit Anmeldeinformationen verknüpft werden, die der NetApp Console zugeordnet sind.
+
++
+image:screenshot_aws_configure_subscription.png["Ein Screenshot des Aktionsmenüs für einen Satz vorhandener Anmeldeinformationen."]
+
+. Um die Anmeldeinformationen mit einem bestehenden Abonnement zu verknüpfen, das Abonnement aus der Dropdown-Liste auswählen und *Konfigurieren* wählen.
+. Um die Anmeldeinformationen mit einem neuen Abonnement zu verknüpfen, *Abonnement hinzufügen > Weiter* auswählen und die Schritte im AWS Marketplace befolgen:
++
+.. *Kaufoptionen anzeigen* auswählen.
+.. *Abonnieren* auswählen.
+.. Wählen Sie *Konto einrichten*.
++
+Sie werden zur NetApp Console weitergeleitet.
+
+.. Auf der Seite *Subscription Assignment*:
++
+*** Wählen Sie die Console-Organisationen oder -Konten aus, mit denen dieses Abonnement verknüpft werden soll.
+*** Im Feld *Vorhandenes Abonnement ersetzen* kann ausgewählt werden, ob das bestehende Abonnement für eine Organisation oder ein Konto automatisch durch dieses neue Abonnement ersetzt werden soll.
++
+Die Konsole ersetzt das bestehende Abonnement für alle Anmeldeinformationen in der Organisation oder im Konto durch dieses neue Abonnement. Wenn ein Satz von Anmeldeinformationen noch nie einem Abonnement zugeordnet war, wird dieses neue Abonnement diesen Anmeldeinformationen nicht zugeordnet.
+
++
+Für alle anderen Organisationen oder Konten ist das Abonnement manuell zuzuordnen, indem diese Schritte wiederholt werden.
+
+*** *Speichern* auswählen.
+
+
+
+
+

@@ -1,0 +1,71 @@
+---
+sidebar: sidebar 
+permalink: concept-manage-storage-workflow.html 
+keywords: storage management workflow, storage classes, provisioning, storage class policies, ONTAP, fleet, drift detection, compliance monitoring, storage governance, operational efficiency, netapp console local 
+summary: Informationen zur Verwaltung von Storage in der lokalen Bereitstellung der NetApp Console, einschließlich Storage-Klassen, Richtlinien und Bereitstellungsmethoden. 
+---
+= Übersicht über den Workflow der Speicherverwaltung in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Bei der lokalen Bereitstellung von NetApp Console hilft Ihnen NetApp Console (lokal) dabei, ONTAP Speicher mithilfe konsistenter, wiederverwendbarer Standards in großem Umfang zu verwalten. Anstatt einmalige Entscheidungen für jedes Volume oder LUN zu treffen, definieren Sie das genehmigte Verhalten einmal und wenden es auf ganze Flotten an – unabhängig davon, ob Sie die Bereitstellung manuell durchführen, die automatische Platzierung nutzen oder KI-gestützte Planungs- und Genehmigungs-Workflows verwenden.
+
+Diese Seite ist der Ausgangspunkt für Speicheradministratoren, die ONTAP Speicher mithilfe von Flotten, Speicherklassenrichtlinien und Speicherklassen verwalten. Sie organisiert den End-to-End-Workflow und enthält Links zu detaillierten Verfahren.
+
+Falls Ihnen diese Konzepte noch nicht bekannt sind, bietet sich als Einstieg [Informationen zur Verwaltung von Storage mit NetApp Console lokale Bereitstellung](concept-manage-storage.html) an.
+
+
+
+[[prerequisites-and-dependencies]]
+== Voraussetzungen und Abhängigkeiten
+
+Organisationsadministratoren stellen sicher, dass Speichersysteme erkannt und den richtigen Flotten zugeordnet werden. Speicheradministratoren können keine Standards anwenden oder Ressourcen in einer Flotte bereitstellen, bis Systeme in dieser Flotte verfügbar sind und der Zugriff über rollenbasierte Zugriffskontrolle (RBAC) gewährt ist.
+
+RBAC-Zugriff erforderlich. Es sollte bestätigt sein, dass Zugriff auf die Flotten besteht, in denen Standards definiert und Speicher bereitgestellt werden.
+
+
+
+[[typical-workflow]]
+== Typischer Arbeitsablauf
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-1.png["Eins"]Flotten und Zugriff prüfen
+[role="quick-margin-list"]
+* Verfügbare Fleets können überprüft werden, und es lässt sich bestätigen, dass Zugriff auf die Fleets besteht, in denen eine Storage-Verwaltung erfolgen soll.
+* Berechtigungen und Geltungsbereich sollten vor dem Erstellen oder Zuweisen von Speicherstandards validiert werden.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-2.png["Zwei"]Speicherklassenrichtlinien definieren
+[role="quick-margin-list"]
+* Speicherklassenrichtlinien definieren, die den eigenen Standards entsprechen.
+* Anforderungen (Leistung, Schutz, Platzierung) in wiederverwendbare Richtlinien aufnehmen.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-3.png["Drei"]Speicherklassen erstellen
+[role="quick-margin-list"]
+* Speicherklassen werden erstellt, indem Richtlinien zu Workload-Vorlagen kombiniert werden.
+* Einheitliche Vorlagen gewährleisten, dass Arbeitslasten gemäß Ihren Standards bereitgestellt werden.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-4.png["Vier"]Speicherklassen mit Flotten verknüpfen
+[role="quick-margin-list"]
+* Speicherklassen den Flotten zuordnen, für die sie gelten.
+* Klassen werden den richtigen Flotten zugeordnet, sodass bei der Bereitstellung die korrekten Optionen erscheinen.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-5.png["Fünf"]Volumes oder LUNs bereitstellen
+[role="quick-margin-list"]
+* Volumes oder LUNs werden mit der Methode bereitgestellt, die dem jeweiligen Betriebsmodell entspricht.
+* Den Workflow auswählen, der den Vorgehensweisen Ihrer Teams bei der Anforderung, Genehmigung und Bereitstellung von Storage entspricht.
+
+
+.image:https://raw.githubusercontent.com/NetAppDocs/common/main/media/number-6.png["Sechs"]Arbeitslasten überwachen und Abweichungen beheben
+[role="quick-margin-list"]
+* Arbeitslasten werden überwacht, um Abweichungen von den definierten Richtlinien zu erkennen.
+* Nicht konforme Konfigurationen korrigieren, um die Richtlinieneinhaltung wiederherzustellen.
+

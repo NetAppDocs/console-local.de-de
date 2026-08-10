@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: concept-console-alerts.html 
+keywords: alerts, alerting, fleet monitoring, severity, impact area, netapp console local 
+summary: Informationen dazu, wie Speicherwarnungen in der lokalen Bereitstellung der NetApp Console dabei helfen, den Zustand Ihrer lokalen ONTAP Cluster in Ihrer gesamten Organisation und Flotte zu überwachen. 
+---
+= Informationen zu Warnmeldungen in der lokalen NetApp Console-Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung generiert Warnmeldungen, die Integritätsprobleme in Ihren lokalen ONTAP Clustern sowie bei NetApp Backup and Recovery Vorgängen identifizieren.
+
+Die lokale Bereitstellung der Console konsolidiert Warnmeldungen von ONTAP Clustern und Backup and Recovery Vorgängen in einer einzigen Ansicht. Die Seite „Warnmeldungen“ umfasst ein Dashboard, eine Warnmeldungs­liste und eine Systemansicht, sodass Warnmeldungen organisationsweit oder für eine bestimmte Flotte oder ein bestimmtes System überprüft werden können. Jede Warnmeldung identifiziert das betroffene System, den Schweregrad und den Auswirkungsbereich.
+
+Warnungen in der lokalen NetApp Console-Bereitstellung dienen dazu:
+
+* Kapazitäts-, Verbindungs-, Datenschutz-, Leistungs- und Sicherheitsprobleme werden erkannt.
+* Warnmeldungen nach Schweregrad und Auswirkungsbereich priorisieren.
+* Eine Warnung im System Manager oder Workload Analyzer öffnen und anschließend eine geführte oder automatisierte Fix-It Aktion ausführen, wenn die Seite eine solche anbietet.
+* Benachrichtigungen können per E-Mail an Benutzer mit festgelegten Zugriffsrollen weitergeleitet oder Alarmdaten über einen Webhook an ein externes System gesendet werden.
+* Die Warnmeldungsliste kann für eine Offline-Analyse in eine CSV-Datei exportiert werden.
+
+
+
+
+[[alert-severity-and-impact-areas]]
+== Schweregrad und Auswirkungsbereiche von Warnungen
+
+Jede Warnmeldung enthält einen Schweregrad und einen Betroffenenbereich:
+
+* *Schweregrad* gibt die Dringlichkeit an, von höchster zu niedrigster: Kritisch, Schwerwiegend, Geringfügig, Warnung und Info.
+* *Auswirkungsbereich* kennzeichnet die betroffene Domäne: Kapazität, Konnektivität, Datenschutz, Leistung und Sicherheit.
+
+
+
+
+[[alert-sources-and-scope]]
+== Alarmquellen und Umfang
+
+* *ONTAP Warnungen* stammen vom ONTAP Event Management System (EMS) auf den lokalen Clustern, die von der lokalen Bereitstellung der Console erkannt wurden. link:https://docs.netapp.com/us-en/ontap-ems/acp-auto-events.html["Weitere Informationen zu ONTAP EMS und den verfügbaren Warnmeldungen."^]
+* *NetApp Backup and Recovery-Warnungen* stammen aus Backup and Recovery-Aktionen.link:https://docs.netapp.com/us-en/data-services-backup-recovery/reference-audit-actions.html["Weitere Informationen zu NetApp Backup and Recovery-Warnungen."^]
+* Ihre Berechtigungen bestimmen, welche Flotten Sie anzeigen können. Die Ansicht kann auf die gesamte Organisation, eine bestimmte Flotte oder ein einzelnes System beschränkt werden. Die Registerkarte *Systemstatus* zeigt den Status der einzelnen Systeme an und die Registerkarte *Warnungen* zeigt die aktuelle Warnliste für den ausgewählten Bereich.
+* Der CSV-Export spiegelt den aktuellen Suchbereich, den Suchtext und die Filter wider.
+
+
+
+
+[[alert-notification-rules]]
+== Regeln für Alarmbenachrichtigungen
+
+Benachrichtigungsregeln legen fest, welche Warnmeldungen Benachrichtigungen auslösen und wer diese erhält. Eine Benachrichtigungsregel hat folgende Eigenschaften:
+
+* Es gleicht Warnmeldungen zum Dienst (z. B. ONTAP Management oder NetApp Backup and Recovery), Schweregrad, Auswirkungsbereich und Zielsystem ab.
+* Bei der E-Mail-Zustellung werden Benachrichtigungen an Benutzer mit den angegebenen Zugriffsrollen gesendet. Bei der Webhook-Zustellung werden Alarmdaten an den konfigurierten Endpunkt gesendet, der Zugriff auf diese Daten wird von der empfangenden Anwendung und nicht von der lokalen Console Bereitstellung gesteuert.
+* Es gilt für bestimmte Systeme, nicht für Flotten.
+* Es kann während eines geplanten Wartungsfensters stummgeschaltet werden, um erwartete Warnmeldungen zu unterdrücken.
+
+
+Die lokale Bereitstellung der Console beinhaltet eine Standardbenachrichtigungsregel, die direkt nach der Installation aktiv ist. Die Standardregel überwacht alle Dienste und Systeme auf Warnmeldungen mit Schweregrad "Critical" und sendet Benachrichtigungen ausschließlich an das Console Benachrichtigungscenter, E-Mail- oder Webhook-Benachrichtigungen werden erst nach entsprechender Einrichtung konfiguriert. Diese Regel kann angezeigt und angepasst werden, zudem lassen sich benutzerdefinierte Regeln erstellen, die auf Ihre Umgebung abgestimmt sind.
+
+Warnmeldungen der Stufe „Info“ sind auf der Warnmeldungsseite sichtbar, werden aber nicht per Benachrichtigung zugestellt, es sei denn, Sie erstellen explizit eine Regel, die den Schweregrad „Info“ enthält.
+
+.Verwandte Informationen
+* link:task-alerts-monitor.html["Warnmeldungen überwachen und untersuchen"]
+* link:task-alert-rules-manage.html["Alarmbenachrichtigungsregeln erstellen und verwalten"]
+* link:reference-ontap-alerts.html["Informationen zu ONTAP Warnungen in der lokalen NetApp Console-Bereitstellung"]
+

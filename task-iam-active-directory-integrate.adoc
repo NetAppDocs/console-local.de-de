@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task-iam-active-directory-integrate.html 
+keywords: AD, Active Directory, LDAP, directory services, directory users, authentication, user management, netapp console 
+summary: Die lokale Bereitstellung der NetApp Console kann mit Active Directory für verzeichnisgestützte Anmeldung und Benutzersuche integriert werden. 
+---
+= Lokale Bereitstellung der NetApp Console in Active Directory integrieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die lokale NetApp Console-Bereitstellung kann mit Active Directory für verzeichnisgestützte Anmeldung und Benutzersuche integriert werden. Der Verzeichnisdienst authentifiziert die Benutzer, anschließend wird diesen Benutzern in der lokalen NetApp Console-Bereitstellung Zugriff zugewiesen.
+
+.Erforderliche Zugriffsrollen
+Super Admin oder Organisationsadministrator. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Bei der Integration mit Active Directory authentifiziert die lokale Bereitstellung von Console die Benutzer über Ihr bestehendes Verzeichnis. Nachdem ein Verzeichnisbenutzer hinzugefügt wurde, können Console Zugriffsrollen zugewiesen werden, um zu steuern, worauf dieser Benutzer zugreifen kann.
+
+Die Active Directory Integration unterstützt zudem die Erfüllung von Compliance-Anforderungen, indem bestehende Kontrollen, Audit-Trails und Richtlinien auf den lokalen NetApp Console-Bereitstellungszugriff angewendet werden.
+
+[NOTE]
+====
+* Die Active Directory Integration erstellt keine föderierten Gruppen, synchronisiert keine Verzeichnisgruppen-Zuordnungen und gewährt keinen automatischen Zugriff. Administratoren fügen weiterhin Verzeichnisbenutzer zur Organisation hinzu und weisen Rollen in der lokalen Console-Bereitstellung zu.
+* Es wird jeweils nur eine Active Directory Integration unterstützt. Sobald eine Integration konfiguriert ist, ist die Schaltfläche *Integration hinzufügen* deaktiviert. Um zu einem anderen Verzeichnis zu wechseln, muss zunächst die bestehende Integration deaktiviert oder gelöscht werden.
+* Verzeichnisbenutzer konfigurieren oder verwenden keine Multi-Faktor Authentifizierung (MFA). Die lokale Konsolenbereitstellung unterstützt MFA nur für lokale Benutzer. link:task-manage-member-security.html["Informationen zur Verwaltung der Sicherheitseinstellungen für Mitglieder"].
+
+
+====
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+Bevor Sie die Integration mit Active Directory vornehmen, vergewissern Sie sich, dass Sie Folgendes haben:
+
+* Eine Active Directory Domain und Anmeldeinformationen, die das Verzeichnis abfragen können
+* Die LDAP-Serveradresse und der Basis individueller Name (DN) für den Verzeichnisbaum
+* Netzwerkzugriff von der lokalen NetApp Console-Bereitstellung auf Ihren LDAP-Server über Port 389 (LDAP) oder 636 (LDAPS)
+* SSL/TLS-Zertifikate, wenn die Verwendung von LDAPS vorgesehen ist
+
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Verzeichnisdienste* auswählen, um die Seite „Verbände“ zu öffnen.
+. *Integration hinzufügen* auswählen.
+. Geben Sie die Verbindungsdetails für Ihren Active Directory Server ein:
++
+** Ein beschreibender Name für die Integration.
+** Der *LDAP-Host*: Hostname oder IP-Adresse Ihres LDAP-Servers. Bei mehreren Servern den primären angeben.
+** Der Port: 389 für LDAP oder 636 für LDAPS.
+** Die *Verbindungs-Zeitüberschreitung* in Millisekunden. Der Standardwert beträgt 1000 ms.
+
+
+. *SSL/TLS verwenden* auswählen, um LDAPS zu nutzen. Es sollte bestätigt werden, dass der LDAP-Server LDAPS unterstützt und dass die Konsole auf die erforderlichen Zertifikate zugreifen kann.
+. Die Verbindung testen. Falls diese fehlschlägt, den LDAP-Host, den Port, die Netzwerkverbindung und die SSL/TLS-Zertifikate überprüfen.
+. Nach erfolgreichem Test sind das Verzeichnis und die Benutzerdaten einzugeben:
++
+** *Base DN-Bindung*: Geben Sie den Bind DN für das LDAP/AD-Konto ein, das diese Anwendung für die Verbindung zum Verzeichnis verwendet, und geben Sie die Bind-Anmeldeinformationen (Passwort) für dieses Konto ein. Die Console verwendet diese Angaben, um eine Verbindung zu LDAP herzustellen und die Verbindung zu validieren.
+** *Benutzer-DN*: Ein Benutzerkonto mit der Berechtigung, das Verzeichnis abzufragen. Zum Beispiel  `CN=ldap-reader,OU=Service Accounts,DC=example,DC=com`.
+
+
+. *Hinzufügen* auswählen, um die Integration zu speichern.
+
+
+.Nachdem Sie fertig sind
+Nachdem die Integration gespeichert wurde, können Verzeichnisbenutzer zur Organisation hinzugefügt und Rollen zugewiesen werden. Mindestens eine Active Directory Integration muss konfiguriert und aktiviert sein, bevor Verzeichnisbenutzer hinzugefügt werden können. link:task-iam-manage-members-permissions.html["Informationen zum Hinzufügen von Verzeichnisbenutzern und zum Zuweisen von Rollen"].
+
+
+
+[[disable-or-enable-an-active-directory-integration]]
+== Eine Active Directory Integration deaktivieren oder aktivieren
+
+Eine Integration kann deaktiviert werden, um die verzeichnisbasierte Authentifizierung vorübergehend auszusetzen, ohne die Konfiguration zu löschen. Wenn ein Verzeichnisdienst deaktiviert ist, können sich Verzeichnisbenutzer nicht über das Verzeichnis anmelden.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Verzeichnisdienste* auswählen, um die Seite „Verbände“ zu öffnen.
+. In der Integrationsliste die Integration suchen und das Aktionsmenü für diese Zeile auswählen.
+. *Deaktivieren* setzt die Integration aus, *Aktivieren* stellt sie wieder her.
+
+
+
+
+[[delete-an-active-directory-integration]]
+== Eine Active Directory Integration löschen
+
+Durch das Löschen einer Integration wird die Verzeichnisdienstkonfiguration dauerhaft entfernt. Vor dem Löschen sind alle Warnungen zu den mit der Integration verknüpften Verzeichnisbenutzern zu prüfen, da deren Zugriff beeinträchtigt wird.
+
+.Schritte
+. *Verwaltung > Identität und Zugriff* auswählen.
+. *Verzeichnisdienste* auswählen, um die Seite „Verbände“ zu öffnen.
+. In der Integrationsliste die Integration suchen und das Aktionsmenü für diese Zeile auswählen.
+. *Löschen* auswählen und die Löschung bestätigen.
+

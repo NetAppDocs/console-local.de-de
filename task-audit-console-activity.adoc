@@ -1,0 +1,73 @@
+---
+sidebar: sidebar 
+permalink: task-audit-console-activity.html 
+keywords: administer, monitor, timeline, notifications, alerts, events, notification center, email, audit page, audit action 
+summary: 'Benutzeraktivitäten (sowohl über die Benutzeroberfläche als auch über die API initiiert) können auf der Audit-Seite überprüft werden, und der Status der von der Console ausgeführten Vorgänge kann überwacht werden, um festzustellen, ob Probleme vorliegen, die behoben werden müssen. Der Status kann auf der Audit-Seite eingesehen oder das Revisionsprotokoll so konfiguriert werden, dass es an den eigenen Syslog-Server gesendet wird.' 
+---
+= Audit NetApp Console lokale Bereitstellungsaktivität
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Auf der Seite „Audit“ lassen sich Benutzeraktivitäten, die sowohl über die Benutzeroberfläche als auch über die API initiiert wurden, prüfen, und der Status von Vorgängen in der lokalen NetApp Console-Bereitstellung sowie der Benutzer, der sie initiiert hat, kann überwacht werden.
+
+.Erforderliche Rollen
+Super Admin, Organization Admin, Ordner- und Flotten-Admin, Operations Support Analyst, Super Viewer, Organization Viewer oder Ordner- und Flotten-Viewer. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Sie können die Revisionsaktivitäten in der lokalen NetApp Console-Bereitstellung anzeigen, eine CSV-Datei des Revisionsprotokolls herunterladen oder das Revisionsprotokoll so konfigurieren, dass es mithilfe eines Webhooks an Ihren eigenen Syslog-Server gesendet wird.
+
+
+
+[[audit-user-activity-from-the-audit-page]]
+== Benutzeraktivitäten auf der Seite „Audit“ prüfen
+
+Auf der Seite „Revisionsprotokoll“ lässt sich erkennen, wer eine Aktion durchgeführt hat oder welchen Status sie hat.
+
+Die Seite „Audit“ zeigt die Aktionen an, die Benutzer in Ihrer Organisation durchgeführt haben. Beispielsweise lässt sich nachvollziehen, wer ein Mitglied zu einer Organisation hinzugefügt hat oder ob eine Flotte erfolgreich gelöscht wurde, ebenso wie weitere Speicherverwaltungsaktionen, die Benutzer in Ihrer Organisation durchgeführt haben.
+
+Die Revisionsprotokolle zeigen Aktivitäten für die folgenden Dienste:
+
+* Mandantenfähigkeit: Aktionen im Zusammenhang mit der Verwaltung Ihrer Organisation, wie das Hinzufügen von Benutzern, das Erstellen von Flotten und das Zuordnen von Ressourcen.
+* Speicherverwaltung: Aktionen im Zusammenhang mit der Verwaltung Ihrer Speicherressourcen.
+* Föderation: Maßnahmen im Zusammenhang mit der Verwaltung von Föderationen, wie das Erstellen von Föderationen und das Hinzufügen oder Entfernen von föderierten Organisationen.
+
+
+.Schritte
+. *Verwaltung > Revisionsprotokoll* auswählen.
+. Mit den Filtern oberhalb der Tabelle lässt sich steuern, welche Aktionen in der Tabelle angezeigt werden.
++
+Beispielsweise kann der Filter *Service* verwendet werden, um Aktionen anzuzeigen, die sich auf einen bestimmten Dienst beziehen, oder der Filter *User* kann verwendet werden, um Aktionen anzuzeigen, die sich auf ein bestimmtes Benutzerkonto beziehen.
+
+
+
+
+
+[[filter-audit-logs-for-identity-and-access-management-actions]]
+=== Revisionsprotokolle nach Aktionen im Bereich Identitäts- und Zugriffsmanagement filtern
+
+Um nur Aktionen im Zusammenhang mit der Verwaltung Ihrer Organisation wie das Hinzufügen von Mitgliedern, das Erstellen von Flotten oder das Löschen von Ressourcen anzuzeigen, das Revisionsprotokoll nach dem Mandantendienst filtern.
+
+.Schritte
+. *Verwaltung > Revisionsprotokoll* auswählen.
+. Verwenden Sie die Filter, um die Ergebnisse einzugrenzen. *Service* auswählen und dann *Tenancy* auswählen.
+. Mit den anderen Filtern lassen sich die Ergebnisse weiter verfeinern.
++
+Beispielsweise kann der Filter *User* verwendet werden, um IAM-Aktionen anzuzeigen, die von einem bestimmten Benutzerkonto ausgeführt wurden.
+
+
+
+
+
+[[download-audit-logs-from-the-audit-page]]
+=== Audit-Protokolle von der Audit-Seite herunterladen
+
+Sie können die Revisionsprotokolle von der Seite „Revisionsprotokoll“ als CSV-Datei herunterladen. Dadurch wird eine Aufzeichnung der Aktionen ermöglicht, die Benutzer in Ihrer Organisation ausführen. Die heruntergeladene CSV-Datei enthält alle Revisionsprotokollspalten, unabhängig von den Filtern oder angezeigten Spalten auf der Seite „Revisionsprotokoll“.
+
+.Schritte
+. Auf der Seite *Audit* das Download-Symbol in der oberen rechten Ecke der Tabelle auswählen.
+

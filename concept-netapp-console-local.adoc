@@ -1,0 +1,125 @@
+---
+sidebar: sidebar 
+permalink: concept-netapp-console-local.html 
+keywords: netapp console local, overview, self-hosted, data sovereignty, storage management, ONTAP, fleet management, RBAC, policy enforcement, storage governance 
+summary: Informationen zur lokalen Bereitstellung der NetApp Console, einer selbstgehosteten Speichermanagementplattform, die in der eigenen Umgebung bereitgestellt werden kann. 
+---
+= Informationen zur lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung ermöglicht das Hosten und Ausführen der NetApp Console autonomen Steuerungsebene in Ihrer eigenen Infrastruktur.
+
+Sie erhalten einheitliches Speichermanagement, Richtliniendurchsetzung, Automatisierung im Flottenmaßstab und KI-gestützte Abläufe. Keine Daten, Metadaten oder Verwaltungsdatenverkehr verlassen Ihre Umgebung.
+
+
+
+[[deploy-and-operate-console-in-your-own-infrastructure]]
+== Console in der eigenen Infrastruktur bereitstellen und betreiben
+
+NetApp Console lokale Bereitstellung läuft in Ihrer eigenen Infrastruktur, sodass Ihr Team Bereitstellung, Konnektivität und täglichen Betrieb kontrolliert. Sie stellen den Console Agent bereit, verwalten die Console-VM und die für den Überwachungs- und Verwaltungsdatenverkehr erforderlichen Netzwerkpfade. Dies gibt Unternehmensadministratoren die volle Kontrolle über die Betriebsgrenzen, während die Managementdaten innerhalb der Umgebung verbleiben.
+
+* link:task-install-agent-on-prem-ova.html["Lokale Bereitstellung der NetApp Console mithilfe einer OVA in vCenter installieren"].
+* link:task-console-local-vm-config.html["Pflegen Sie Ihren vCenter oder ESXi-Host für die lokale Bereitstellung der NetApp Console"].
+* link:reference-ports-on-prem.html["Informationen zu den Ports für den lokalen Console Agent in der NetApp Console lokalen Bereitstellung"].
+
+
+
+
+[[automate-storage-operations-with-apis-and-service-accounts]]
+== Speichervorgänge mit APIs und Servicekonten automatisieren
+
+NetApp Console lokale Bereitstellung unterstützt API-basierte Integrationen, sodass Ihr Unternehmen wiederholbare Speichervorgänge automatisieren kann. Dienstkonten ermöglichen Anwendungen die Authentifizierung und den Betrieb mit zugewiesenen Rollen. Die gleiche rollenbasierte Zugriffssteuerung und Audit-Kontrollen, die für interaktive Benutzer gelten, steuern diese Aktionen. Dies unterstützt die Unternehmensautomatisierung, während der Zugriff weiterhin gezielt und nachvollziehbar bleibt.
+
+* link:task-iam-manage-members-permissions.html["Mitglieder zur lokalen NetApp Console-Bereitstellungsorganisation hinzufügen"].
+* https://docs.netapp.com/us-en/console-automation/tenancyv4/overview.html["Informationen zur API für NetApp Console IAM"^]
+
+
+
+
+[[control-access-with-rbac-and-active-directory-integration]]
+== Zugriff mit rollenbasierter Zugriffssteuerung (RBAC) und Active Directory Integration steuern
+
+NetApp Console lokale Bereitstellung bietet Zero-Trust rollenbasierte Zugriffssteuerung (RBAC), die einschränkt, was Benutzer innerhalb der von ihnen verwalteten Flotten und Ressourcen sehen und tun können. Eine Integration mit Active Directory ermöglicht es, dass sich Benutzer mit ihren bestehenden Unternehmensanmeldeinformationen anmelden, und lokale Benutzer können für eine weitere Verifizierungsebene die Multi-Faktor-Authentifizierung (MFA) hinzufügen. Die Zugriffsverwaltung bleibt mit den übergeordneten Identitäts- und Zugriffsmanagementpraktiken Ihrer Organisation abgestimmt.
+
+* link:concept-identity-and-access-management.html["Informationen zur Identitäts- und Zugriffsverwaltung in der lokalen NetApp Console-Bereitstellung"].
+* link:concept-secure-access.html["Informationen zum sicheren Zugriff auf die lokale NetApp Console-Bereitstellung"].
+
+
+
+
+[[organize-fleets-and-delegate-storage-administration]]
+== Flotten organisieren und Speicherverwaltung delegieren
+
+NetApp Console lokale Bereitstellung skaliert die Administration, indem Ressourcen in Ordnern und Flotten organisiert werden. Flotten können Umgebungen, Geschäftseinheiten oder Regionen zugeordnet werden, anschließend lässt sich die Administration auf Organisations-, Ordner- oder Flottenebene delegieren, sodass die Zuständigkeiten klar bleiben. Diese Struktur hilft großen Speicherteams, Aufgaben zu verteilen, ohne die Konsistenz von Richtlinien oder die Governance zu verlieren.
+
+* link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"].
+* link:concept-storage-fleets.html["Informationen zu Speicherflotten in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+
+[[track-and-export-administrative-activity-for-compliance]]
+== Administrative Aktivitäten für Compliance verfolgen und exportieren
+
+Jede administrative Aktion erzeugt einen Prüfprotokolleintrag. Sicherheits- und Compliance-Teams können diese Einträge nutzen, um Vorfälle zu untersuchen, die Wirksamkeit von Kontrollmaßnahmen nachzuweisen und Prüfanforderungen zu erfüllen. Prüfprotokolle können per Webhook an Ihren Syslog-Server für zentrale Überwachung, längere Aufbewahrung und Analyse exportiert werden. Da die lokale Bereitstellung der NetApp Console in Ihrer eigenen Umgebung erfolgt, verlassen die Protokolldaten Ihre Infrastruktur niemals.
+
+* link:task-audit-console-activity.html["Audit NetApp Console lokale Bereitstellungsaktivität"].
+
+
+
+
+[[provision-storage-consistently-with-storage-class-policies]]
+== Speicher konsistent mit Speicherklassenrichtlinien bereitstellen
+
+NetApp Console lokale Bereitstellung sorgt für einheitliches Speicherverhalten durch Speicherklassen, Vorlagen, die Leistungs-, Kapazitäts- und Tiering-Richtlinien in wiederverwendbaren Definitionen bündeln. Administratoren definieren Speicherstandards einmal. Administratoren und automatisierte Workflows verwenden diese genehmigten Klassen für alle Bereitstellungsaktivitäten in Ihrer Umgebung. Dadurch werden Konfigurationsabweichungen verhindert, der Zeitaufwand für Bereitstellungsentscheidungen durch weniger erfahrene Administratoren reduziert und sichergestellt, dass jede Arbeitslast sofort den Standards Ihres Unternehmens entspricht. Nach der Bereitstellung überwacht Console lokale Bereitstellung weiterhin jede Arbeitslast auf Konformität.
+
+* link:concept-manage-storage.html["Informationen zur Verwaltung von Speicher mit der lokalen NetApp Console-Bereitstellung"].
+
+
+
+
+[[monitor-storage-class-compliance-and-remediate-drift-automatically]]
+== Die Einhaltung der Speicherklassen wird überwacht und Abweichungen automatisch behoben.
+
+NetApp Console Local Deployment überwacht jede Arbeitslast anhand der für die Bereitstellung verwendeten Speicherklasse. Wenn eine Arbeitslast abweicht, sei es durch eine direkte Änderung der Clusterkonfiguration oder durch nachlassende Leistung, kennzeichnet NetApp Console Local Deployment den Verstoß umgehend. Administratoren können geführte Korrekturschritte nutzen oder eine automatisierte Korrektur konfigurieren, um häufige Abweichungen ohne manuelle Eingriffe zu beheben. Diese kontinuierliche Durchsetzung reduziert das Auditrisiko und hält Ihre Umgebung zwischen den geplanten Überprüfungen konform.
+
+
+
+[[monitor-storage-health-and-receive-alerts-across-fleets]]
+== Speicherzustand überwachen und Benachrichtigungen für gesamte Flotten erhalten
+
+NetApp Console lokale Bereitstellung bietet eine zentrale Stelle, um den Zustand und die Leistung aller von Ihnen verwalteten Cluster zu überwachen. Flottenweite Dashboards zeigen Cluster und Volumes an, die Aufmerksamkeit erfordern. Benutzerdefinierte Dashboards ermöglichen Administratoren die Erstellung von Überwachungsansichten, die ihren Verantwortlichkeiten entsprechen. Der Workload Analyzer korreliert Latenz, Durchsatz, Ressourcenauslastung und Konfigurationsänderungen im Zeitverlauf, um die Ursachen zu identifizieren, bevor Probleme die Workloads beeinträchtigen.
+
+E-Mail- und Webhook-Zustellungskanäle werden so konfiguriert, dass Benachrichtigungen bei Änderungen der Bedingungen die richtigen Teams erreichen. Organisation-Administratoren richten Ziele ein, und Speicheradministratoren wenden diese in Benachrichtigungsregeln an, sodass die Reaktionswege Ihrem Betriebsmodell entsprechen. Dadurch können Enterprise-Teams schneller auf Kapazitäts-, Leistungs- und Schutzereignisse reagieren.
+
+* link:concept-monitor-storage.html["Informationen zur Überwachung des Speicherzustands in der lokalen NetApp Console-Bereitstellung"].
+* link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellungskanäle in der lokalen NetApp Console-Bereitstellung einrichten"].
+* link:task-alert-rules-manage.html["Benachrichtigungsregeln für Warnungen in der lokalen NetApp Console-Bereitstellung konfigurieren"].
+
+
+
+
+[[provision-storage-and-investigate-alerts-with-natural-language]]
+== Speicher bereitstellen und Warnmeldungen mit natürlicher Sprache untersuchen
+
+NetApp Console lokale Bereitstellung kann mit Ihrem eigenen großen Sprachmodell (LLM) verbunden werden, um KI-gestütztes Speichermanagement bereitzustellen. Eine Arbeitslast kann in Klartext beschrieben werden, um einen Bereitstellungsplan zu erhalten, die Console kann gebeten werden, eine aktive Warnung zu untersuchen, oder es können kontextbezogene Antworten zu Ihrer Speicherumgebung abgerufen werden. Jede KI-Aktion bleibt innerhalb der Grenzen Ihrer Speicherklassen und der rollenbasierten Zugriffssteuerungen, die für Ihr Konto gelten, und sensible Vorgänge müssen vor ihrer Ausführung bestätigt werden. Console lokale Bereitstellung sendet Anfragen ausschließlich an den LLM-Endpunkt, den Ihre Administratoren konfigurieren.
+
+* link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"].
+
+
+
+
+[[back-up-and-restore-storage-with-netapp-backup-and-recovery]]
+== Speicher mit NetApp Backup and Recovery sichern und wiederherstellen
+
+Neben Bereitstellung und Überwachung gibt die lokale NetApp Console-Bereitstellung Zugriff auf NetApp Backup and Recovery, sodass Sie Ihre Daten über dieselbe Oberfläche schützen können. Es besteht die Möglichkeit, Daten zu sichern und wiederherzustellen, um die Anforderungen an Schutz und Wiederherstellung zu erfüllen. Die Verwaltung des Datenschutzes zusammen mit dem Speicher sorgt für eine konsistente Governance und verringert die Anzahl der von den Teams benötigten Tools.
+
+* link:concept-data-services.html["Informationen zu Datendiensten in der lokalen NetApp Console-Bereitstellung"].
+

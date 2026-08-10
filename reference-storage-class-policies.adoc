@@ -1,0 +1,59 @@
+---
+sidebar: sidebar 
+permalink: reference-storage-class-policies.html 
+keywords: storage class policies, performance policy, capacity policy, security policy, data protection policy, netapp console 
+summary: Es stehen systemdefinierte Speicherklassenrichtlinien im lokalen NetApp Console-Bereitstellungsmodus zur Verfügung. 
+---
+= Vordefinierte Speicherklassenrichtlinien in der lokalen NetApp Console-Bereitstellung prüfen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+NetApp Console lokale Bereitstellung umfasst systemdefinierte Richtlinien für alle vier Richtlinientypen. Diese Referenz dient dazu, diejenige Richtlinie zu identifizieren, die am besten zu den Anforderungen Ihres Workloads passt, wenn eine Speicherklasse erstellt oder angepasst wird.
+
+
+
+[[performance-policies]]
+== Leistungsrichtlinien
+
+Extreme Performance:: Verwendung für HPC-, KI/ML- und Analyse-Workloads, die hohe Burst-IOPS und vorhersehbar niedrige Latenz erfordern.
+Extrem für Datenbankdaten:: Verwendung für transaktionale Datenbank-Datenvolumen, die kontinuierlich hohe IOPS und Latenzzeiten im Submillisekundenbereich erfordern.
+Extrem für Datenbankprotokolle:: Für Datenbanktransaktionsprotokoll-Volumes, die den höchsten IOPS-Mindestwert erfordern, um Schreibengpässe zu verhindern.
+Extrem für gemeinsam genutzte Datenbankdaten:: Für gemeinsam genutzte Datenbank-Volumes, auf die mehrere Hosts zugreifen und die hohen Durchsatz sowie konstante Latenz erfordern.
+Performance:: Verwendung für virtualisierte und Unternehmensanwendungen, die eine zuverlässige Leistung ohne extreme IOPS-Anforderungen benötigen.
+Wert:: Geeignet für kostensensitive Workloads wie Home-Verzeichnisse, Dateifreigaben und Archive.
+
+
+
+
+[[capacity-policies]]
+== Kapazitätsrichtlinien
+
+Autogrow-Kapazität:: Für Produktionsworkloads geeignet, die sich automatisch erweitern müssen, um Ausfälle aufgrund von Speicherplatzmangel zu verhindern.
+
+
+
+
+[[security-policies]]
+== Sicherheitsrichtlinien
+
+Verschlüsselung ruhender Daten:: Zur Verwendung bei Produktionsworkloads, bei denen Verschlüsselung aus Compliance-Gründen erforderlich ist.
+Schutz vor Ransomware:: Zur Verwendung bei Arbeitslasten mit sensiblen oder geschäftskritischen Daten, die einen aktiven Ransomware-Schutz erfordern.
+Standardsicherheit:: Für Arbeitslasten geeignet, bei denen das standardmäßige Sicherheitsverhalten der Plattform akzeptabel ist.
+
+
+
+
+[[data-protection-policies]]
+== Datensicherungsstrategien
+
+Standard:: Geeignet für Standard-Workloads, die kurzfristige Wiederherstellungspunkte ohne langfristigen Aufbewahrungsaufwand erfordern.
+3-monatlich stündlich:: Zur Verwendung bei regulierten oder geschäftskritischen Workloads, die granulare Wiederherstellungspunkte innerhalb eines Tages und eine dreimonatige historische Aufbewahrung erfordern.
+30-tägige Wiederherstellung:: Geeignet für Standard-Workloads, die kurzfristige Wiederherstellungspunkte ohne langfristigen Aufbewahrungsaufwand erfordern.
+90-tägige Wiederherstellung:: Zur Verwendung bei regulierten oder geschäftskritischen Workloads, die granulare Wiederherstellungspunkte innerhalb eines Tages und eine dreimonatige historische Aufbewahrung erfordern.
+

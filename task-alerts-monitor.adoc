@@ -1,0 +1,198 @@
+---
+sidebar: sidebar 
+permalink: task-alerts-monitor.html 
+keywords: view alerts, alerts overview, alerts dashboard, org-wide alerts, fleet alerts, netapp console local 
+summary: Aktive Warnmeldungen für Ihre gesamte Organisation oder für eine bestimmte Flotte lassen sich auf der Seite „Warnungsübersicht“ in der lokalen Bereitstellung der NetApp Console anzeigen. 
+---
+= Warnmeldungen in der lokalen NetApp Console-Bereitstellung überwachen und untersuchen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Warnmeldungen in der lokalen NetApp Console-Bereitstellung werden überwacht und untersucht, um die Speicherintegrität zu gewährleisten und Störungen zu minimieren.
+
+Aktive Warnmeldungen im gesamten Unternehmen oder für eine bestimmte Flotte werden angezeigt, sie lassen sich nach Schweregrad und Auswirkungsbereich priorisieren und die Ursachen können untersucht werden, sodass Probleme behoben werden, bevor sie sich verschärfen. Wenn eine Warnmeldung eine empfohlene Maßnahme oder eine Fix It-Option enthält, ist ein direkter Übergang von der Untersuchung zur Behebung möglich.
+
+.Erforderliche Zugriffsrolle
+Alle Rollen außer Federation admin und Federation viewer. Benutzer mit der Rolle Federation admin oder Federation viewer können keine Warnmeldungen anzeigen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+
+Für ONTAP-Warnmeldungen stehen Tools wie System Manager und Workload Analyzer direkt auf der Warnmeldungsseite zur Verfügung, um Probleme zu untersuchen und zu beheben.
+
+Für externe Berichte kann die Warnmeldungsliste zur Offline-Analyse in eine CSV-Datei exportiert werden.
+
+
+NOTE: Sie können auch Benachrichtigungsregeln einrichten, um Benachrichtigungen per E-Mail oder Webhook zu erhalten. link:task-alert-rules-manage.html["Informationen zum Einrichten von Benachrichtigungen"].
+
+
+
+[[available-alerts]]
+== Verfügbare Benachrichtigungen
+
+NetApp Console lokale Bereitstellung unterstützt Warnmeldungen für ONTAP und NetApp Backup and Recovery.
+
+* link:reference-ontap-alerts.html["Informationen zu ONTAP Warnungen in der lokalen NetApp Console-Bereitstellung"]
+* link:https://docs.netapp.com/us-en/data-services-backup-recovery/reference-audit-actions.html["Weitere Informationen zu NetApp Backup and Recovery-Warnungen."^]
+
+
+
+
+[[view-the-alerts-dashboard]]
+== Benachrichtigungsdashboard anzeigen
+
+Über das Warnmeldungs-Dashboard erhalten Sie einen schnellen Überblick über die aktuelle Warnmeldungsaktivität im ausgewählten Bereich. Das Dashboard fasst aktive Warnmeldungen nach Schweregrad und Auswirkungsbereich zusammen und enthält ein Diagramm, das die Warnmeldungsverteilung der letzten 24 Stunden darstellt, sodass Trends schnell erkannt werden können.
+
+Das Dashboard kann gefiltert werden, um kritische Warnmeldungen oder Warnmeldungen für einen bestimmten Wirkungsbereich anzuzeigen.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. Das Dashboard kann nach den Benachrichtigungen gefiltert werden, die angezeigt werden sollen, einschließlich:
++
+** Schweregrad (Kritisch, Warnung oder Information)
+** Kritische Warnmeldungen, gruppiert nach Wirkungsbereich
+** Wirkungsbereich (Sicherheit, Schutz, Verfügbarkeit, Leistung, Kapazität oder Konfiguration)
+
+
+
+
+
+
+[[view-all-alerts]]
+== Alle Benachrichtigungen anzeigen
+
+Über die Registerkarte „Warnungen“ wird die vollständige Liste der aktiven Warnungen für den ausgewählten Bereich angezeigt. Die Liste wird entsprechend dem aktuellen Organisations- oder Flottenbereich aktualisiert, und die Liste kann nach bestimmten Warnungen anhand des Namens oder der Beschreibung durchsucht werden.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. Die Registerkarte *Warnungen* zeigt die vollständige Liste der aktiven Warnungen für den ausgewählten Bereich an.
+. Optional kann die Liste nach Name oder Beschreibung nach einer bestimmten Benachrichtigung durchsucht werden.
++
+image:screenshot-alerts-search.png["Warnmeldungen nach Name oder Beschreibung durchsuchen"]
+
+
+
+
+
+[[view-alerts-by-system]]
+== Benachrichtigungen nach System anzeigen
+
+Sie können Warnmeldungen für ein bestimmtes System innerhalb einer Flotte oder Ihrer Organisation anzeigen.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. Die Registerkarte *Systemzustand* zeigt eine Zusammenfassung der Warnungen an, die den Systemen innerhalb des ausgewählten Bereichs zugeordnet sind.
+. *Warnungen anzeigen* in der Zeile des jeweiligen Systems auswählen, um die vollständige Liste der aktiven Warnungen zu sehen, die diesem System zugeordnet sind.
+
+
+
+
+[[investigate-an-alert]]
+== Eine Warnmeldung untersuchen
+
+Sie können eine Warnmeldung untersuchen, um herauszufinden, was sie ausgelöst hat und wer die Benachrichtigung erhalten hat.
+
+Bei der Untersuchung einer ONTAP-Warnung ist es auch möglich, direkt zur System Manager Oberfläche des Systems zu wechseln, das die Warnung ausgelöst hat, um weitere Details anzuzeigen und Maßnahmen zu ergreifen.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. In einem der beiden Tabs kann der Name der Warnung ausgewählt werden, die untersucht werden soll, um die Details anzuzeigen.
++
+image:screenshot-alerts-investigate.png["Benachrichtigungsdetails"]
+
+. Gegebenenfalls kann der VM- oder Clustername ausgewählt werden, um die System Manager Oberfläche für das System zu öffnen, das die Warnung generiert hat.
++
+image:screenshot-alerts-details.png["Alarmdetails anzeigen und zum System Manager navigieren"]
+
+
+
+
+
+[[remediate-an-alert]]
+== Eine Warnung beheben
+
+Wenn eine Warnmeldung eine empfohlene Aktion oder eine Fix It-Option enthält, kann damit direkt von der Untersuchung zur Behebung übergegangen werden, ohne die Warnmeldungsdetails zu verlassen.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. Wählen Sie die Warnung aus, die behoben werden soll.
+. Die Details der Warnmeldung können geprüft und anschließend die empfohlene Aktion oder die Option *Problem beheben* ausgewählt werden, falls eine solche verfügbar ist.
+. Führen Sie die geführten Schritte aus, um die Korrekturmaßnahme anzuwenden, und kehren Sie dann zu den Alarmdetails zurück, um den Alarmstatus zu bestätigen.
+
+
+Wenn die Maßnahme das Problem behebt, erscheint die Warnung für diesen Bereich nicht mehr als aktiv. Wenn die Warnung weiterhin aktiv ist, sollten die Warnungsdetails erneut überprüft und die Untersuchung fortgesetzt werden.
+
+
+
+[[analyze-an-alert]]
+== Eine Warnmeldung analysieren
+
+Eine ONTAP Warnung kann im Workload Analyzer analysiert werden, um nachzuvollziehen, was sie ausgelöst hat.
+
+Bei der Untersuchung einer ONTAP-Warnung ist es auch möglich, direkt zur System Manager Oberfläche des Systems zu wechseln, das die Warnung ausgelöst hat, um weitere Details anzuzeigen und Maßnahmen zu ergreifen.
+
+.Schritte
+. *Health > Warnungen > Übersicht* auswählen.
+. Im Bereichsauswahlmenü kann eine der folgenden Optionen ausgewählt werden:
++
+** *Alle* (Standardeinstellung), um Benachrichtigungen für alle Flotten anzuzeigen, auf die Sie Zugriff haben
+** Eine bestimmte Flotte, für die nur Warnmeldungen für diese Flotte angezeigt werden
+
+
+. Die Registerkarte *Systemzustand* zeigt die vollständige Liste der aktiven Warnungen für den ausgewählten Bereich an.
+. In einem der beiden Tabs kann der Name der Warnung ausgewählt werden, die untersucht werden soll, um die Details anzuzeigen.
++
+image:screenshot-alerts-investigate.png["Benachrichtigungsdetails"]
+
+. Gegebenenfalls kann *Analysieren* ausgewählt werden, um die Workload Analyzer Oberfläche für das System zu öffnen, das die Warnung generiert hat.
++
+image:screenshot-alerts-analyze.png["Alarmdetails anzeigen und zum Workload Analyzer navigieren"]
+
+. Geben Sie den Zeitraum ein, in dem die Warnung ausgelöst wurde, und wählen Sie dann *Analysieren*, um die Analyseergebnisse anzuzeigen. link:concept-workload-analyzer.html["Informationen zu Workload Analyzer."]
+
+
+
+
+[[export-alerts-to-csv]]
+== Benachrichtigungen als CSV exportieren
+
+Die Warnmeldungenliste in der lokalen NetApp Console-Bereitstellung kann für eine Offline-Analyse oder Berichterstellung in eine CSV-Datei exportiert werden. Der Export spiegelt den aktuellen Geltungsbereich (Organisation oder Flotte), den Suchtext und die Filter wider.
+
+.Schritte
+. Wählen Sie *Health > Warnungen* und dann die Registerkarte *Warnungen* aus.
+. Den Umfang (Organisation oder Flotte) festlegen und alle gewünschten Filter oder Suchtexte anwenden, die in den Export einbezogen werden sollen.
+. Das Download-Symbol ermöglicht den Export der Warnmeldungsliste in eine CSV-Datei.
+

@@ -1,0 +1,183 @@
+---
+sidebar: sidebar 
+permalink: concept-folders-fleets-overview.html 
+keywords: folders, fleets, organization, resource hierarchy, access control, IAM, roles, members, netapp console local 
+summary: Informationen zur Verwendung von Ordnern und Speicherflotten zur Organisation von Ressourcen und zur Steuerung des Zugriffs in der lokalen NetApp Console-Bereitstellung. 
+---
+= Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+In der lokalen NetApp Console-Bereitstellung werden Ordner und Speicherflotten verwendet, um NetApp Ressourcen zu organisieren und den Zugriff entsprechend der Unternehmensstruktur zu steuern, etwa nach Standort, Abteilung oder Workload-Typ.
+
+Diese Seite dient Hierarchiestrategien und Flottendesignmustern. Ein vollständiges IAM-Modell mit Mitgliedern, Rollen und Ressourcenumfang befindet sich link:concept-identity-and-access-management.html["Informationen zur Identitäts- und Zugriffsverwaltung in der lokalen NetApp Console-Bereitstellung"].
+
+Ressourcen werden in einer Hierarchie organisiert: An der Spitze steht die Organisation, dann folgen Ordner (die andere Ordner oder Flotten enthalten können) und schließlich Flotten, die Speichersysteme enthalten. Zugriffsrollen werden auf Organisations-, Ordner- oder Flottenebene zugewiesen, sodass Benutzer die passenden Zugriffsrechte auf Ressourcen erhalten.
+
+
+NOTE: Sie benötigen die Rolle „Organisationsadministrator“, „Ordneradministrator“ oder „Flottenadministrator“, um Ordner und Flotten in der lokalen NetApp Console-Bereitstellung zu verwalten.
+
+
+
+[[organizational-components]]
+== Organisationskomponenten
+
+Die organisatorischen Komponenten (Organisation, Ordner und Flotten) bilden eine Hierarchie, die festlegt, wie Ressourcen gruppiert und wie der Zugriff delegiert wird.
+
+Organisation:: Eine Organisation bildet die oberste Ebene der NetApp Console lokalen Bereitstellungshierarchie und repräsentiert typischerweise Ihr Unternehmen. Ihre Organisation besteht aus Ordnern, Flotten, Mitgliedern, Rollen und Ressourcen. Ressourcen sind Flotten zugeordnet, und Mitgliedern werden Rollen auf Organisations-, Ordner- oder Flottenebene zugewiesen.
+Ordner:: Ordner gruppieren zusammengehörige Fahrzeugflotten, um sie nach Standort, Niederlassung oder Geschäftsbereich zu organisieren. Speichersysteme können nicht direkt mit Ordnern verknüpft werden, aber die Zuweisung einer Rolle auf Ordnerebene gibt einem Mitglied Zugriff auf alle Flotten in diesem Ordner.
++
+--
+
+NOTE: Organisationsadministratoren können eine Ressource zu einem Ordner hinzufügen, um die Aufgabe, die Ressource Flotten zuzuordnen, an einen Ordner- oder Flottenadministrator zu delegieren. link:task-iam-manage-resources.html["Ressourcen mit Ordnern und Flotten verknüpfen"].
+
+--
+Flotten:: Flotten gruppieren Speichersysteme. Ressourcen werden Flotten zugeordnet und Mitgliedern Zugriff auf Flottenebene gewährt. Ressourcen können mehreren Flotten angehören. Mitglieder mit Flottenzugriff können die Ressourcen dieser Flotte verwalten.
++
+--
+Beispielsweise kann ein On-Premises ONTAP System je nach Bedarf entweder mit einer einzelnen Flotte oder mit allen Flotten in Ihrer Organisation verknüpft werden.
+
+link:task-iam-manage-folders-fleets.html["Informationen zum Erstellen von Ordnern und Speicherflotten"].
+
+--
+
+
+
+
+[[resources]]
+== Ressourcen
+
+Eine Ressource ist ein Speichersystem, das der lokalen Konsolenbereitstellung bekannt ist und einer Flotte zugewiesen werden kann. Eine Ressource wird einer Flotte zugeordnet, sodass Benutzer mit Zugriff auf die Flotte die Ressource verwalten können.
+
+Sie können beispielsweise einen ONTAP Cluster einer einzelnen Flotte oder allen Flotten Ihres Unternehmens zuordnen. Wie eine Ressource zugeordnet wird, hängt von den Bedürfnissen Ihres Unternehmens ab.
+
+link:task-iam-manage-resources.html["Informationen dazu, wie Ressourcen Flotten zugeordnet werden können"].
+
+
+
+[[members-and-roles]]
+== Mitglieder und Rollen
+
+Mitglieder sind die Benutzer und Dienstkonten in Ihrer Organisation. Rollen definieren, welche Aktionen sie auf welcher Hierarchieebene (Organisation, Ordner oder Flotte) ausführen können.
+
+Mitglieder:: Die Mitglieder Ihrer Organisation sind Benutzerkonten oder Dienstkonten. Ein Dienstkonto wird typischerweise von einer Anwendung verwendet, um bestimmte Aufgaben ohne menschliches Eingreifen auszuführen.
++
+--
+Benutzer mit der Rolle „Organisation Admin“ können neue Mitglieder zu Ihrer Organisation hinzufügen. Alle Benutzer (einschließlich Dienstkonten und Active Directory Benutzer) müssen explizit hinzugefügt und mit mindestens einer Rolle versehen werden, um auf die lokale Console Bereitstellung zugreifen zu können.
+
+--
+
+
+link:task-iam-manage-members-permissions.html["Informationen zum Hinzufügen von Mitgliedern zu Ihrer Organisation"].
+
+Zugriffsrollen:: Die lokale Bereitstellung der Konsole bietet Zugriffsrollen, die den Mitgliedern Ihrer Organisation zugewiesen werden können.
++
+--
+Wenn Sie einem Mitglied eine Rolle zuweisen, kann diese Rolle für die gesamte Organisation, einen bestimmten Ordner oder eine bestimmte Flotte vergeben werden. Die ausgewählte Rolle gewährt einem Mitglied Berechtigungen für die Ressourcen im ausgewählten Teil der Hierarchie.
+
+Die lokale Bereitstellung der NetApp Console bietet granulare Rollen, die dem Prinzip der minimalen Berechtigungen folgen, was bedeutet, dass die Zugriffsrollen so gestaltet sind, dass Mitglieder nur Zugriff auf das erhalten, was sie benötigen.
+
+Benutzer können im Zuge der Erweiterung ihrer Aufgaben mehrere Rollen übernehmen.
+
+--
+
+
+
+
+[[role-inheritance]]
+=== Rollenvererbung
+
+Wenn Sie eine Rolle auf Organisations- oder Ordnerebene zuweisen, erben die darunter liegenden Ordner, Flotten und Ressourcen diese Rolle, sodass Ihre Ordner- und Flottenstruktur bestimmt, wie weitreichend die jeweilige Zuweisung gilt.
+
+link:concept-iam-rbac.html#role-inheritance["Informationen zur Rollenvererbung in der lokalen Bereitstellung der NetApp Console"].
+
+
+
+[[organization-design-examples]]
+== Beispiele für Organisationsgestaltung
+
+Die richtige Organisationsstruktur hängt von der Größe Ihres Unternehmens und davon ab, wie Ihre Teams organisiert sind. Die folgenden Beispiele zeigen, wie verschiedene Organisationen die Ordner- und Flottenhierarchie nutzen können, um den Zugriff effektiv zu verwalten.
+
+
+
+[[small-organization-strategy]]
+=== Strategie für kleine Organisationen
+
+Für Organisationen mit weniger als 50 Benutzern und zentralisierter Speicherverwaltung bietet sich ein vereinfachter Ansatz mit den Rollen Super admin und Super viewer an.
+
+*Beispiel: ABC Corporation (5-köpfiges Team)*
+
+* *Struktur*: Eine einzige Organisation mit 3 Flotten (Production, Development, Backup)
+* *Rollen*:
++
+** 2 leitende Mitglieder: Super Admin Rolle für vollen administrativen Zugriff
+** 3 Teammitglieder: Rolle „Super viewer“ zur Überwachung ohne Änderungsrechte
+
+
+* *Vorteile*: Vereinfachte Administration, reduzierte Rollenkomplexität, geeignet für Teams, die einen breiten Zugriff benötigen
+
+
+
+
+[[multi-regional-enterprise-strategy]]
+=== Multi-regionale Unternehmensstrategie
+
+Für große Organisationen mit regionalen Niederlassungen und spezialisierten Teams bietet sich ein hierarchischer Ansatz mit Ordnern an, die geografische oder Geschäftsbereichsgrenzen abbilden.
+
+*Beispiel: XYZ Corporation (multinationales Unternehmen)*
+
+* *Struktur*: Organisation > Regionale Ordner (Nordamerika, Europa, Asien-Pazifik) > Flotten pro Region
+* *Plattformrollen*:
++
+** 1 Organisation Admin: Globale Aufsicht und Richtlinienmanagement
+** 3 Ordner- oder Flottenadministratoren: Regionale Kontrolle (einer pro Region)
+** 1 Federation admin: Integration des Corporate Directory Service
+
+
+* *Speicherrollen nach Region*:
++
+** Speicheradministrator: Speichersysteme in zugewiesenen Regionen erkennen und verwalten
+** Speicheranzeige: Speicherressourcen regionsübergreifend überwachen
+** Systemgesundheitsspezialist: Speicherzustand ohne Systemänderungen verwalten
+
+
+* *Vorteile*: Erhöhte Sicherheit durch Rollentrennung, regionale Autonomie und Einhaltung lokaler Vorschriften
+
+
+
+
+[[departmental-specialization-strategy]]
+=== Strategie der Fachbereichsspezialisierung
+
+Für Organisationen mit spezialisierten Teams, die einen bestimmten Zugriff benötigen, bieten sich gezielte Rollenzuweisungen auf der Grundlage funktionaler Verantwortlichkeiten an.
+
+*Beispiel: TechCorp (mittelgroßes Technologieunternehmen)*
+
+* *Struktur*: Organisation > Abteilungsordner (IT, Sicherheit, Entwicklung) > flottenspezifische Ressourcen
+* *Spezialisierte Rollen*:
++
+** Sicherheitsteam: Administrator für Ransomware-Resilienz und Klassifizierungs-Viewer-Rollen
+** Backup-Team: Superadministrator für Backup und Wiederherstellung für umfassende Backup-Operationen
+** Entwicklungsteam: Speicheradministrator für die Verwaltung der Testumgebung
+** Compliance-Team: Analyst für operative Unterstützung bei der Überwachung und dem Support-Fallmanagement
+
+
+* *Vorteile*: Maßgeschneiderte Zugangskontrolle, verbesserte betriebliche Effizienz und klare Verantwortlichkeit für spezialisierte Aufgaben
+
+
+
+
+[[next-steps]]
+== Nächste Schritte
+
+* link:task-iam-manage-folders-fleets.html["Ordner und Speicherflotten erstellen"]
+* link:task-iam-manage-resources.html["Ressourcen mit Ordnern und Flotten verknüpfen"]
+* link:task-iam-users-fleets-assign.html["Flottenzugriffszuweisungen verwalten"]
+* link:task-audit-console-activity.html["Überwachung oder Protokollierung von lokalen Bereitstellungsaktionen der Konsole"]
+

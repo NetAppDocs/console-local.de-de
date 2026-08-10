@@ -1,0 +1,112 @@
+---
+sidebar: sidebar 
+permalink: task-storage-class-manage.html 
+keywords: create storage class, storage class, define, policy, netapp console 
+summary: Eine Speicherklasse in der lokalen NetApp Console-Bereitstellung erstellen, um die Speicherbereitstellung zu standardisieren. 
+---
+= Speicherklassen in der lokalen NetApp Console-Bereitstellung erstellen
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Erstellen Sie eine Speicherklasse in der lokalen NetApp Console-Bereitstellung, um die Bereitstellung und Verwaltung von Speicher in Ihren Flotten zu standardisieren. Eine Speicherklasse ist eine wiederverwendbare Vorlage, die Speicherklassenrichtlinien wie Leistungsziele, Kapazitätsverhalten, Sicherheitsanforderungen und Zeitpläne für den Datenschutz in einer einzigen benannten Definition bündelt.
+
+Wenn Benutzer (oder eine Automatisierung) ein Volume oder eine LUN mithilfe einer Speicherklasse bereitstellen, wendet NetApp Console Local Deployment automatisch die Richtlinien der Klasse an. Nach der Bereitstellung überwacht Console Local Deployment kontinuierlich die Workloads in Bezug auf die Speicherklasse, um Abweichungen zu erkennen und kann Korrekturmaßnahmen zur Wiederherstellung der Compliance einleiten oder automatisieren.
+
+
+
+[[before-you-begin]]
+== Bevor Sie beginnen
+
+* Mindestens ein ONTAP Cluster muss erkannt werden, damit die lokale Bereitstellung der Konsole Ziele für Platzierungsempfehlungen hat.
+* Stellen Sie sicher, dass Sie über die Rolle des Organisationsadministrators verfügen (oder über eine Rolle, die in Ihrer Umgebung Berechtigungen zur Speicherklassenverwaltung gewährt).
+* Erstellen (oder identifizieren) Sie die Speicherklassenrichtlinien, die Sie verwenden möchten, Leistung, Kapazität, Sicherheit und Datenschutz, da Speicherklassen aus Richtlinien zusammengesetzt werden.
+
+
+
+
+[[create-a-storage-class]]
+=== Erstellen Sie eine Speicherklasse
+
+Zum Hinzufügen einer Speicherklasse ist die Rolle „Organisationsadministrator“, „Ordneradministrator“ oder „Flottenadministrator“ erforderlich.
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Speicherklassen* auswählen.
+. Wählen Sie *Add*.
+. Unter *Grundlegende Informationen* Folgendes eingeben:
++
+** *Name der Storage-Klasse*: Einen eindeutigen Namen für die Storage-Klasse eingeben.
+** *Beschreibung*: (Optional) Eine Beschreibung der Speicherklasse kann eingegeben werden.
+** *Empfohlene Apps*: (Optional) Eine Liste empfohlener Apps für die Speicherklasse kann eingegeben werden.
+
+
+. Unter *Speicherrichtlinien* eine oder mehrere Richtlinien auswählen, die mit der Speicherklasse verknüpft werden.
+. Wählen Sie *Add*.
+
+
+
+
+[[customize-an-existing-storage-class]]
+=== Eine bestehende Speicherklasse anpassen
+
+Die Rolle „Organization admin“, „Folder admin“ oder „fleet admin“ ist erforderlich, um eine bestehende Speicherklasse anzupassen.
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Speicherklassen* auswählen.
+. Für die Speicherklasse, die angepasst werden soll, *…* auswählen und dann *Duplizieren* auswählen.
+. Unter *Grundlegende Informationen* können die folgenden Angaben nach Bedarf aktualisiert werden:
++
+** *Name der Storage-Klasse*: Einen eindeutigen Namen für die Storage-Klasse eingeben.
+** *Beschreibung*: (Optional) Eine Beschreibung der Speicherklasse kann eingegeben werden.
+** *Empfohlene Apps*: (Optional) Eine Liste empfohlener Apps für die Speicherklasse kann eingegeben werden.
+
+
+. Unter *Speicherrichtlinien* eine oder mehrere Richtlinien auswählen, die mit der Speicherklasse verknüpft werden.
+. Wählen Sie *Add*.
+
+
+
+
+[[edit-a-user-defined-storage-class]]
+=== Bearbeiten einer benutzerdefinierten Speicherklasse
+
+Zum Bearbeiten einer benutzerdefinierten Speicherklasse ist die Rolle „Organization admin“, „Folder admin“ oder „fleet admin“ erforderlich.
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Speicherklassen* auswählen.
+. Wählen Sie für die Speicherklasse, die Sie bearbeiten möchten, *…* und dann *Bearbeiten* aus.
+. Unter *Grundlegende Informationen* können die folgenden Angaben nach Bedarf bearbeitet werden:
++
+** *Name der Storage-Klasse*: Einen eindeutigen Namen für die Storage-Klasse eingeben.
+** *Beschreibung*: (Optional) Eine Beschreibung der Speicherklasse kann eingegeben werden.
+** *Empfohlene Apps*: (Optional) Eine Liste empfohlener Apps für die Speicherklasse kann eingegeben werden.
+
+
+. Unter *Speicherrichtlinien* eine oder mehrere Richtlinien auswählen, die mit der Speicherklasse verknüpft werden.
+. *Bearbeiten* auswählen.
+
+
+
+
+[[delete-a-user-defined-storage-class]]
+=== Löschen einer benutzerdefinierten Speicherklasse
+
+Zum Löschen einer benutzerdefinierten Speicherklasse ist die Rolle „Organization admin“, „Folder admin“ oder „fleet admin“ erforderlich.
+
+.Schritte
+. *Speicher > Verwaltung* auswählen.
+. *Speicherklassen* auswählen.
+. Für die Speicherklasse, die gelöscht werden soll, *…* auswählen und dann *Löschen* wählen.
+. Wählen Sie *Delete*.
++
+Beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann. Wenn eine Speicherklasse gelöscht wird, die aktuell verwendet wird, funktionieren alle mit dieser Klasse bereitgestellten Volumes oder LUNs weiterhin, sind aber nicht mehr der gelöschten Klasse zugeordnet.
+
+

@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: concept-workload-analyzer.html 
+keywords: workload analyzer, volume analysis, latency, throughput, capacity, performance, netapp console 
+summary: Es wird erläutert, wie der Workload Analyzer bei der Untersuchung von Problemen mit der Volumenleistung, Kapazität und dem Datenschutz unterstützt. 
+---
+= Informationen zum Workload Analyzer für die lokale Bereitstellung der NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Mit dem Workload Analyzer für lokale Bereitstellungen der NetApp Console lässt sich das Verhalten eines einzelnen Volumes im Zeitverlauf anzeigen. Leistungsbeeinträchtigungen, Kapazitätstrends und Ressourcenkonflikte können direkt vom Volume, aus einer Warnmeldung oder aus dem Inventar untersucht werden.
+
+
+
+[[how-workload-analyzer-identifies-root-causes]]
+== Wie der Workload Analyzer die Hauptursachen identifiziert
+
+Mit dem Workload Analyzer lassen sich Metriken eines einzelnen Volumes über sechs Abschnitte korrelieren, sodass die Ursachen schnell identifiziert werden können. Ein Volume und einen Zeitraum auswählen, um Ereignisse, Performance und Kapazität gemeinsam im selben Fenster anzuzeigen. Diese Ansicht kann dabei unterstützen zu bestimmen, ob der Storage die wahrscheinliche Quelle eines Applikationsproblems ist oder ob eine andere Ebene, wie etwa das Netzwerk, die Ursache darstellt.
+
+Der Analysator ist besonders nützlich, wenn bereits bekannt ist, welches Volume betroffen ist. Wird er über eine Warnung oder aus der Volume-Inventarisierung geöffnet, öffnet Console local deployment den Analysator mit dem ausgewählten Volume, sodass der Fokus auf dem Analysefenster und den Diagrammen liegt.
+
+Der Analysator verfolgt jeweils nur ein Volume, daher eignet er sich zur Untersuchung eines bestimmten Problems und nicht zum Vergleich mehrerer Volumes.
+
+Der Abschnitt zur Kapazität sollte im Rahmen dieser Bewertung betrachtet werden. Wenn ein ONTAP System zu mehr als 85 % voll ist, kann die hohe Auslastung selbst Leistungsprobleme verursachen, sodass eine geringe verfügbare Kapazität Latenzzeiten erklären kann, die allein durch die Leistungsdiagramme nicht erklärt werden.
+
+Nachdem die Ursache identifiziert wurde, ist direkt aus dem Analyzer eine Aktion möglich. Wenn automatisierte Optionen verfügbar sind, stellt die Console lokale Bereitstellung Fix-It-Empfehlungen mit geführten Schritten oder Ein-Klick-Problembehebung bereit.
+
+
+NOTE: Workload-Diagramme für LUNs bieten nicht den gleichen Detaillierungsgrad wie die Diagramme für Volumes, daher werden bei der Analyse einer LUN weniger Statistiken angezeigt.
+
+
+
+[[access-workload-analyzer]]
+== Workload Analyzer aufrufen
+
+Der Workload Analyzer kann auf verschiedene Arten geöffnet werden:
+
+* Im Menü *Health* die Option *Workload Analyzer* auswählen, dann im Feld *Volume* nach dem Volume suchen und das gewünschte Volume zur Untersuchung auswählen.
+* Auf der Seite *Speicher > Flotten > Inventar* zu einem Volume navigieren, das analysiert werden soll, und im Aktionsmenü *Analysieren* auswählen.
+* Auf der Seite *Warnungen > Übersicht* eine Warnung für das Volumen auswählen, das untersucht werden soll, und dann in den Warnungsdetails *Analysieren* auswählen.
+
+
+Sie können auch LUNs analysieren, aber diese zeigen weniger Statistiken als Volumes.
+
+
+
+[[analyze-latency-throughput-and-storage-capacity]]
+== Latenz, Durchsatz und Speicherkapazität analysieren
+
+Diese sechs Abschnitte dienen zur Untersuchung eines Volumes:
+
+Volume-Auswahl:: Das Volumen und den Zeitraum für die Untersuchung auswählen, sodass alle Diagramme und Ereignisse auf die gleiche Arbeitslast und das gleiche Analysefenster abgestimmt sind.
+Ereigniszeitachse:: Aktuelle und historische Konfigurationsänderungen, Warnmeldungen und kritische Meldungen für das ausgewählte Volume im Analysezeitraum werden angezeigt. In diesem Abschnitt lässt sich „was sich geändert hat“ mit Änderungen im Leistungs- oder Kapazitätsverhalten korrelieren.
+Latenzanalyse:: Die Latenz des Volumes im Zeitverlauf anzeigen, entweder als Gesamtwert oder aufgeschlüsselt nach Verzögerungszentrum (Netzwerk, Datenverarbeitung, Aggregatoperationen, Cluster-Interconnect und andere). Wenn das Volume eine QoS-Richtlinie verwendet, zeigt der Analysator die maximalen und minimalen Latenzgrenzen der Richtlinie als Referenzlinien an, sodass ersichtlich ist, wie nahe die Arbeitslast an einem Drosselungsschwellenwert liegt. Die Prognose kann umgeschaltet werden, um zu projizieren, ob die Latenz auf einen Warn- oder kritischen Schwellenwert zusteuert.
+Durchsatzanalyse:: IOPS und MB/s im Zeitverlauf anzeigen, optional mit einer Aufschlüsselung nach lesen/schreiben/sonstigen Zugriffen. Wenn das Volume eine QoS-Richtlinie verwendet, zeigt der Analysator IOPS- und Durchsatzbegrenzungslinien an. Die Prognose kann ein- oder ausgeblendet werden, um abzuschätzen, ob die Nachfrage sich in Richtung der QoS-Grenzwerte entwickelt.
+Ressourcennutzung:: Anzeigen, wie ausgelastet die Knoten und Aggregate sind, die das Volume während des Analysezeitraums bedienen. Der Analysator stellt jede Ressource als unabhängige Linie dar, anstatt Werte zu stapeln, sodass erkennbar ist, ob ein bestimmter Knoten oder ein bestimmtes Aggregat eine Quelle von Konkurrenz ist. Die Prognose kann umgeschaltet werden, um zu projizieren, ob eine Ressource auf einen Schwellenwert für hohe Auslastung zusteuert.
+Kapazitätsanalyse:: Anzeigen, wie sich der physische Speicherplatz und der verfügbare Speicherplatz im Volume im Laufe der Zeit verändert haben. Beim Überfahren mit dem Mauszeiger wird eine Aufschlüsselung der Speichereffizienz angezeigt, einschließlich Einsparungen durch Deduplizierung, Komprimierung und Verdichtung. Die Prognose kann umgeschaltet werden, um vorherzusagen, wann das Volume Warn- oder kritische Kapazitätsschwellenwerte erreicht. In der Snapshot-Ansicht wird angezeigt, wie sich der Snapshot-Speicherplatz im Vergleich zur konfigurierten Snapshot-Reserve entwickelt.
+
+
+
+
+[[forecast-capacity-and-performance-trends]]
+== Prognose der Kapazitäts- und Leistungstrends
+
+Die Prognosefunktion in jedem Analysebereich ermöglicht eine Erweiterung des Diagrammzeitraums über den aktuellen Zeitpunkt hinaus und eine Projektion zukünftiger Werte basierend auf dem beobachteten Trend. Eine gestrichelte Linie unterscheidet Prognosewerte von Ist-Daten. Der Analysator zeigt zudem eine Hinweisnachricht an, wenn die Prognose auf eine wahrscheinliche Überschreitung eines Schwellenwerts hinweist, einschließlich einer geschätzten Zeit bis zur Überschreitung.
+
+.Verwandte Informationen
+link:task-analyzer-volume-latency-investigate.html["Hohe Latenz auf einem Volumen untersuchen"]. link:task-analyzer-volume-throughput-investigate.html["Untersuchung hoher Anforderungen an den Durchsatz eines Volumes"]. link:task-analyzer-volume-capacity-investigate.html["Kapazitätswachstum eines Volumens untersuchen"]. link:reference-workload-analyzer-metrics.html["Informationen zu den Metriken des Workload Analyzers in der lokalen NetApp Console-Bereitstellung"].

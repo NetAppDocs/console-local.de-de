@@ -1,0 +1,32 @@
+= 
+:allow-uri-read: 
+
+
+. Melden Sie sich in der AWS-Konsole an und navigieren Sie zum IAM-Dienst.
+. Eine Richtlinie erstellen:
++
+.. *Richtlinien > Richtlinie erstellen* auswählen.
+.. *JSON* auswählen und den Inhalt des link:reference-permissions-aws.html["IAM-Richtlinie für den Console Agent"] kopieren und einfügen.
+.. Führen Sie die verbleibenden Schritte aus, um die Richtlinie zu erstellen.
+
+
+
+
+. Erstellen einer IAM-Rolle:
++
+.. *Rollen > Rolle erstellen* auswählen.
+.. *AWS Service > EC2* auswählen.
+.. Berechtigungen werden hinzugefügt, indem die soeben erstellte Richtlinie angehängt wird.
+.. Führen Sie die verbleibenden Schritte zur Erstellung der Rolle aus.
+
+
+
+
+. Die Richtlinien werden einem IAM-Benutzer zugeordnet.
++
+** https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create.html["AWS Documentation: Erstellen von IAM-Rollen"^]
+** https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html["AWS Documentation: Hinzufügen und Entfernen von IAM-Richtlinien"^]
+
+
+. Stellen Sie sicher, dass der Benutzer über einen Zugriffsschlüssel verfügt, den Sie der NetApp Console nach der Installation des Console-Agenten hinzufügen können.
+
