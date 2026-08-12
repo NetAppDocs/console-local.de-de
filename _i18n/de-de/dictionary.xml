@@ -897,7 +897,6 @@
   <block id="371acb072fb244306a15b7ff5193bce9" category="list-text"><block ref="371acb072fb244306a15b7ff5193bce9" category="inline-link-macro-rx"></block></block>
   <block id="d0be151a63fab72d6333774c4ad643bb" category="inline-link">Informationen zur API für NetApp Console IAM</block>
   <block id="d7726716920c51dac9e8d3b944fb1d9c" category="list-text"><block ref="d7726716920c51dac9e8d3b944fb1d9c" category="inline-link-rx"></block></block>
-  <block id="823d0c76da1241a2b4bacad6a700ad94" category="summary">Die Integration der lokalen NetApp Console Bereitstellung mit OpenAI und OpenAI-kompatiblen Modellen, einschließlich Anbieter-, Proxy- und Sicherheitsentscheidungen, wird erläutert.</block>
   <block id="aaa31fb12388ee6f380920310c04b753" category="doc">Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung</block>
   <block id="345b50b0707634d277d7a44851e59fe4" category="paragraph">NetApp Console lokale Bereitstellung verbindet sich mit einem Large Language Model (LLM) für KI-gestütztes Speichermanagement. Nach der Einrichtung ist es möglich, Speicher mit natürlicher Sprache bereitzustellen, Warnmeldungen zu untersuchen und Speicherempfehlungen zu erhalten.</block>
   <block id="4f9d5100edf765a8f2ae1c53a1a257cc" category="paragraph">Die KI-gestützte Verwaltung ermöglicht es Benutzern, Anfragen in einfacher Sprache zu beschreiben, während die lokale NetApp Console-Bereitstellung Ihre Speicherrichtlinien anwendet.</block>
@@ -920,7 +919,6 @@
   <block id="fcc55126fd45a515695466fda4602164" category="paragraph">NetApp Console lokale Bereitstellung unterstützt folgende LLM-Anbietertypen:</block>
   <block id="873109553cafbb3e957f0cc91186aa99" category="list-text">*OpenAI* für den direkten Zugriff auf OpenAI Modelle.</block>
   <block id="fee6af50bc6105fefb846f7e518fb7cf" category="list-text">*OpenAI-kompatibel* für einen kompatiblen Endpunkt, wie z. B. ein Enterprise Gateway oder einen Proxy-Service.</block>
-  <block id="9b5550554d175b4703c9783519160fad" category="list-text">Anthropic für die Claude-Modelle von Anthropic.</block>
   <block id="7de1d980a668ed0c9d00649c3750c5d1" category="paragraph">Die Modellverfügbarkeit hängt vom konfigurierten Endpunkt ab. Ein Modell aus der Liste in der NetApp Console lokalen Bereitstellung auswählen.</block>
   <block id="64c716e8b3c375cb10518555f2cc559d" category="inline-link-macro">Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung</block>
   <block id="42e3047ea36dd2b663d0f3f5d7b20152" category="paragraph">Details zu den unterstützten Modellen sind unter <block ref="1a3a7e8df14b08dab1953f3a058a454f" category="inline-link-macro-rx"></block> zu finden.</block>
@@ -3169,7 +3167,6 @@
   <block id="3730b696052b51ae22af2269ff6edfbd" category="paragraph">NetApp unterstützt die lokale NetApp Console-Bereitstellung in Ihrer vCenter-Umgebung. Die OVA-Datei enthält ein vorkonfiguriertes VM-Image, das in Ihrer VMware-Umgebung bereitgestellt werden kann.</block>
   <block id="15e605ee974fa55f027726848cc8afff" category="section-title">Die OVA-Datei kann heruntergeladen oder die URL kopiert werden.</block>
   <block id="0581616b53582ac26aae5d26a64dd995" category="paragraph">Laden Sie die OVA herunter.</block>
-  <block id="e1a2daca3267d204edcee05245d2283c" category="list-text">Die lokale Bereitstellungssoftware für die Konsole kann von der NetApp Support Site heruntergeladen werden.</block>
   <block id="fbf739c4dddaccc70b331772ffa91a55" category="section-title">Lokale Bereitstellung der NetApp Console in Ihrem VCenter</block>
   <block id="2dc9f6815a8338fe4cef7c144fd9501e" category="paragraph">Melden Sie sich in Ihrer vCenter-Umgebung an, um die lokale Console-Bereitstellung durchzuführen.</block>
   <block id="19070c8313a6999045690aa5c39cd703" category="list-text">Das selbstsignierte Zertifikat kann in die vertrauenswürdigen Zertifikate hochgeladen werden, falls dies in Ihrer Umgebung erforderlich ist. Dieses Zertifikat kann nach der Installation ersetzt werden.</block>
@@ -3218,7 +3215,6 @@
   <block id="336e4351e57a856f458961abc5062751" category="list-text">Ihre Entscheidung für einen Anbietertyp: OpenAI oder OpenAI-kompatibel. <block ref="78f935c14127e9543a594b2e8112c798" category="inline-link-macro-rx"></block></block>
   <block id="d8bd49d8fe4a0de7a2b03c1aec99e88b" category="list-text">Ein gültiger API-Schlüssel für den ausgewählten Anbieterpfad.</block>
   <block id="12415726cf97af159e3e05710842f040" category="list-text">Die Endpunkt-URL für Ihren Anbieterpfad.</block>
-  <block id="761c475526d6aca6a6c425ee949f082a" category="list-text">Ihre Proxy- oder Gateway-URL, falls Ihre Organisation eine benötigt.</block>
   <block id="0a3c869dbd390ca2cdefafd338d2cf3d" category="list-text">Ihr Benutzername oder Ihre Single Sign-On (SSO)-ID für das LLM-Anbieterkonto, falls erforderlich.</block>
   <block id="cfe024af8356a3decd0f09b47eff88fa" category="list-text">Netzwerkzugriff von der lokalen NetApp Console-Bereitstellung zum ausgewählten Endpunkt.</block>
   <block id="1f3d7608a574b42ba681dcef64704661" category="list-text">Speicherklassen und rollenbasierte Zugriffskontrollen für die Assistentenaktionen, die Sie zulassen möchten.</block>
@@ -3633,7 +3629,6 @@
   <block id="bfd15aa26ba0ced782240c4a8b7e517e" category="sidebar">Speicherverwaltung</block>
   <block id="813011e2103649bb71f124adedcc10ea" category="sidebar">Blogs &amp; Community</block>
   <block id="fae210aa9f9d8906ee39264d97001f11" category="sidebar">NetApp Console lokale Bereitstellung</block>
-  <block id="cc58d3a9b2264c4fd8cb1d3f61b90bdc" category="sidebar">NetApp Data Services</block>
   <block id="dd490b81914dd945601e442a41cb4222" category="sidebar">NetApp Community</block>
   <block id="7d0ee6fed10d3d4e5c9ee496729ab519" category="sidebar">Versionshinweise</block>
   <block id="33871b6190a8d5adbe8b15282054766c" category="sidebar">Was ist neu</block>
@@ -3756,4 +3751,8 @@
   <block id="5ceffe99385ecce35b5a538a16ca57cb" category="paragraph"><block ref="dc7c11e9da585b9fa1e35ca44da95ccc" category="inline-link-rx"></block>.</block>
   <block id="f64bf1d04df251b82d06554b478f9ae4" category="paragraph"><block ref="f64bf1d04df251b82d06554b478f9ae4" category="inline-link-macro-rx"></block></block>
   <block id="955bb7127a670884e7aac906d810238a" category="sidebar">API-Referenz für die lokale Console-Bereitstellung</block>
+  <block id="c88543bdef944177133ea29faedf50df" category="summary">Es wird erläutert, wie die lokale Bereitstellung der NetApp Console mit OpenAI und OpenAI-kompatiblen Modellen integriert ist, einschließlich Anbieter- und Sicherheitsentscheidungen.</block>
+  <block id="7886cf4f03a683503e8235a0eef59e73" category="list-text">*Anthropic* für die Claude-Modelle von Anthropic.</block>
+  <block id="dc666edc3ed6edcb6babcae67d26fcd2" category="list-text">Die lokale Bereitstellungssoftware für die Konsole kann von der <block ref="5574d9b8352359225831a51c7e6c17ee" category="inline-link-macro-rx"></block> heruntergeladen werden.</block>
+  <block id="ad8f5be1c708f8e891508a0a9c643e0a" category="sidebar">NetApp Trust Center</block>
 </blocks>

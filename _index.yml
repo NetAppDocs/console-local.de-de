@@ -94,7 +94,7 @@ indexpage:
     links:
     - title: NetApp Console lokale Bereitstellung
       url: https://www.netapp.com/console
-    - title: NetApp Data Services
-      url: https://www.netapp.com/data-services/
     - title: NetApp Community
       url: https://community.netapp.com/
+    - title: NetApp Trust Center
+      url: https://trust.netapp.com/

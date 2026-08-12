@@ -63,7 +63,7 @@ NetApp unterstützt die lokale NetApp Console-Bereitstellung in Ihrer vCenter-Um
 
 Laden Sie die OVA herunter.
 
-. Die lokale Bereitstellungssoftware für die Konsole kann von der NetApp Support Site heruntergeladen werden.
+. Die lokale Bereitstellungssoftware für die Konsole kann von der link:https://mysupport.netapp.com/site/products/all/details/ncl/downloads-tab["NetApp Support Site"^] heruntergeladen werden.
 
 
 
