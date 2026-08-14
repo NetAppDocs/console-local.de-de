@@ -1,8 +1,8 @@
 ---
 sidebar: sidebar 
 permalink: task-console-local-vm-config.html 
-keywords: Console local VM, vcenter, esxi, increase cpu, increase ram, vm maintenance, Console local maintenance, Console local operating system, Console local host 
-summary: Nach der Bereitstellung der Console local deployment können Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden. Beispielsweise ist es möglich, die CPU oder den RAM der VM-Instanz zu erhöhen, die Console local deployment hostet. 
+keywords: Console local VM, vcenter, esxi, vm maintenance, Console local maintenance, Console local operating system, Console local host 
+summary: Nach der Bereitstellung der Console local deployment können Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden. 
 ---
 = Pflegen Sie Ihren vCenter oder ESXi-Host für die lokale Bereitstellung der NetApp Console
 :hardbreaks:
@@ -14,11 +14,10 @@ summary: Nach der Bereitstellung der Console local deployment können Änderunge
 
 
 [role="lead"]
-In der lokalen NetApp Console-Bereitstellung können nach der Bereitstellung Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden. Beispielsweise ist es möglich, die CPU oder den Arbeitsspeicher der VM-Instanz zu erhöhen, die die Console lokale Bereitstellung hostet.
+In der lokalen NetApp Console-Bereitstellung können nach der Bereitstellung Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden.
 
 Diese Wartungsaufgaben lassen sich über die VM-Webkonsole ausführen:
 
-* Festplattengröße vergrößern
 * Die lokale NetApp Console-Bereitstellung neu starten
 * Statische Routen aktualisieren
 * Suchdomänen aktualisieren
@@ -55,37 +54,6 @@ Sie können das Passwort für den  `maint` Benutzer ändern.
 . Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
 . Geben Sie  `1` ein, um das  `System Configuration` Menü anzuzeigen.
 . Geben Sie  `1` ein, um das Wartungsbenutzerpasswort zu ändern, und folgen Sie den Anweisungen auf dem Bildschirm.
-
-
-
-
-[[increase-the-cpu-or-ram-of-the-vm-instance]]
-=== CPU oder RAM der VM-Instanz erhöhen
-
-Sie können die CPU oder den RAM der VM-Instanz erhöhen, die die lokale NetApp Console-Bereitstellung hostet.
-
-Die Einstellungen der VM-Instanz im vCenter oder ESXi-Host werden bearbeitet, anschließend werden die Änderungen über die Wartungskonsole angewendet.
-
-.Schritte im vSphere Client
-. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
-. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
-. Klicken Sie mit der rechten Maustaste auf die VM-Instanz und wählen Sie *Einstellungen bearbeiten*.
-. Erhöhen Sie den für /opt oder die /var-Partition verwendeten Festplattenspeicher.
-+
-.. *Festplatte 2* auswählen, um den für /opt verwendeten Festplattenspeicher zu erhöhen.
-.. *Festplatte 3* auswählen, um den für /var verwendeten Festplattenspeicher zu erhöhen.
-
-
-. Speichern Sie Ihre Änderungen.
-
-
-.Schritte in der Wartungskonsole
-. Öffnen Sie den vSphere Client und melden Sie sich bei Ihrem vCenter an.
-. Wählen Sie die VM-Instanz aus, die die lokale NetApp Console-Bereitstellung hostet.
-. *Webkonsole starten* auswählen.
-. Melden Sie sich bei der VM-Instanz mit dem Benutzernamen und dem Passwort an, die Sie bei der Erstellung der VM-Instanz angegeben haben. Der Benutzername ist  `maint` und das Passwort ist dasjenige, das Sie bei der Erstellung der VM-Instanz angegeben haben.
-. Menü `1 to view the `System Configuration` aufrufen.
-. Geben Sie  `2` ein und folgen Sie den Anweisungen auf dem Bildschirm. Die Konsole sucht nach neuen Einstellungen und vergrößert die Größe der Partitionen.
 
 
 

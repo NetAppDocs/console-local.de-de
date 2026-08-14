@@ -30,6 +30,15 @@ Der Console-Agent benötigt diesen Speicherplatz in `/var`, da Docker oder Podma
 * vSphere 7.0u3 oder höher, mit virtueller Hardwareversion 19 oder höher
 
 
+[NOTE]
+====
+* CPU und Arbeitsspeicher werden auf dem ESXi-Host beim Einschalten der VM reserviert, nicht nur zugewiesen. Der Zielhost muss mindestens 16 CPU-Kerne und 64 GB als nicht reservierte Kapazität verfügbar haben. Vorhandene VM-Reservierungen auf dem Host verringern die verfügbare Kapazität.
+* Der Datenspeicher muss eine Mindestleistung beim Schreiben auf die Festplatte erbringen: fsync p99 Schreiblatenz ≤ 20 ms und 4K Random Write IOPS ≥ 200. Eine Latenz über 50 ms oder IOPS unter 30 führt zu einem Bereitstellungsfehler.
+* IPv6 wird nicht unterstützt. Eine statische IPv4-Adresse ist erforderlich.
+* Die lokale Bereitstellung der NetApp Console sollte in einer vCenter Umgebung und nicht direkt auf einem ESXi-Host erfolgen.
+
+
+====
 
 NOTE: Der Konsolenagent reserviert den UID- und GID-Bereich von 19000 bis 19200. Dieser Bereich ist fest und kann nicht geändert werden. Wenn auf Ihrem Host Drittanbietersoftware UIDs oder GIDs innerhalb dieses Bereichs verwendet, schlägt die Installation des Agenten fehl. NetApp empfiehlt die Verwendung eines Hosts ohne Drittanbietersoftware, um Konflikte zu vermeiden.
 
