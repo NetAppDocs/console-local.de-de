@@ -19,7 +19,7 @@ Warnmeldungen in der lokalen NetApp Console-Bereitstellung werden überwacht und
 Aktive Warnmeldungen im gesamten Unternehmen oder für eine bestimmte Flotte werden angezeigt, sie lassen sich nach Schweregrad und Auswirkungsbereich priorisieren und die Ursachen können untersucht werden, sodass Probleme behoben werden, bevor sie sich verschärfen. Wenn eine Warnmeldung eine empfohlene Maßnahme oder eine Fix It-Option enthält, ist ein direkter Übergang von der Untersuchung zur Behebung möglich.
 
 .Erforderliche Zugriffsrolle
-Alle Rollen außer Federation admin und Federation viewer. Benutzer mit der Rolle Federation admin oder Federation viewer können keine Warnmeldungen anzeigen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
+Alle Rollen. Warnmeldungen werden nur für Ressourcen angezeigt, zu deren Anzeige Sie berechtigt sind. Wenn eine Ressource nicht in der Liste der verfügbaren Ressourcen erscheint, besteht keine Berechtigung, deren Warnmeldungen anzuzeigen. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
 
 Für ONTAP-Warnmeldungen stehen Tools wie System Manager und Workload Analyzer direkt auf der Warnmeldungsseite zur Verfügung, um Probleme zu untersuchen und zu beheben.
 
@@ -60,7 +60,8 @@ Das Dashboard kann gefiltert werden, um kritische Warnmeldungen oder Warnmeldung
 +
 ** Schweregrad (Kritisch, Warnung oder Information)
 ** Kritische Warnmeldungen, gruppiert nach Wirkungsbereich
-** Wirkungsbereich (Sicherheit, Schutz, Verfügbarkeit, Leistung, Kapazität oder Konfiguration)
+** Wirkungsbereich (Verfügbarkeit, Kapazität, Konfiguration, Performance, Schutz oder Sicherheit)
+** Driftwarnungen, um nur Warnungen anzuzeigen, die durch Konfigurationsabweichungen verursacht werden
 
 
 
@@ -111,7 +112,7 @@ Sie können Warnmeldungen für ein bestimmtes System innerhalb einer Flotte oder
 [[investigate-an-alert]]
 == Eine Warnmeldung untersuchen
 
-Sie können eine Warnmeldung untersuchen, um herauszufinden, was sie ausgelöst hat und wer die Benachrichtigung erhalten hat.
+Sie können eine Warnmeldung untersuchen, um herauszufinden, was sie ausgelöst hat.
 
 Bei der Untersuchung einer ONTAP-Warnung ist es auch möglich, direkt zur System Manager Oberfläche des Systems zu wechseln, das die Warnung ausgelöst hat, um weitere Details anzuzeigen und Maßnahmen zu ergreifen.
 

@@ -75,21 +75,6 @@ Falls der Test fehlschlägt, sollten die eingegebenen Einstellungen erneut über
 
 
 
-[[remove-an-email-server-configuration]]
-=== Eine E-Mail-Serverkonfiguration entfernen
-
-Sie können die E-Mail-Server-Konfiguration entfernen, wenn Sie nicht mehr möchten, dass die lokale Console Bereitstellung E-Mails versendet.
-
-.Schritte
-. *Administration > Konsole* auswählen.
-. *Konfiguration* auswählen, um die Seite Systemkonfiguration zu öffnen.
-. Im Abschnitt *E-Mail-Server* auf *Konfigurieren* auswählen.
-. *Felder löschen* auswählen, um die bestehende Konfiguration zu löschen.
-. *Speichern* auswählen, um die gelöschte Konfiguration zu speichern, wodurch die E-Mail-Server-Konfiguration aus der Console lokalen Bereitstellung entfernt wird.
-
-
-
-
 [[configure-a-webhook]]
 == Einen Webhook konfigurieren
 

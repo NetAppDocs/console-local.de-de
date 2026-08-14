@@ -40,7 +40,7 @@ Bevor Sie Ihr LLM verbinden, sollten Sie Folgendes bereithalten:
 * Ihre Entscheidung für einen Anbietertyp: OpenAI oder OpenAI-kompatibel. link:concept-llm-integration.html["Informationen zu den verfügbaren Anbieteroptionen."]
 * Ein gültiger API-Schlüssel für den ausgewählten Anbieterpfad.
 * Die Endpunkt-URL für Ihren Anbieterpfad.
-* Ihr Benutzername oder Ihre Single Sign-On (SSO)-ID für das LLM-Anbieterkonto, falls erforderlich.
+* Ihr Benutzername oder Ihre ID für das LLM-Anbieterkonto, falls erforderlich.
 * Netzwerkzugriff von der lokalen NetApp Console-Bereitstellung zum ausgewählten Endpunkt.
 * Speicherklassen und rollenbasierte Zugriffskontrollen für die Assistentenaktionen, die Sie zulassen möchten.
 
@@ -83,9 +83,8 @@ link:task-llm-troubleshoot-integration.html["Fehlerbehebung bei Ihrer LLM-Integr
 Nachdem die Konfiguration gespeichert wurde, lassen sich die Verfügbarkeit und das Verhalten des Assistenten überprüfen.
 
 .Schritte
-. Bestätigt wird, dass die Schaltfläche *Konsolenassistent* auf dem NetApp Console Dashboard für die lokale Bereitstellung angezeigt wird.
-. Den Assistenten im *Nur-Lese-Modus* öffnen und eine einfache Abfrage ausführen.
-. Den Assistenten im *Lese-/Schreibmodus* öffnen und bestätigen, dass speicherverändernde Aktionen vor der Ausführung eine Benutzerbestätigung erfordern.
+. Den *Konsolenassistenten* im *Read only*-Modus öffnen und eine einfache Abfrage ausführen.
+. Den *Konsolenassistenten* im *Lese-/Schreibmodus* öffnen und bestätigen, dass speicherverändernde Aktionen vor der Ausführung eine Benutzerbestätigung erfordern.
 . Es sollte überprüft werden, dass die Benutzer, die Aktionsworkflows benötigen, über die erforderlichen rollenbasierten Zugriffskontrollen verfügen.
 
 
