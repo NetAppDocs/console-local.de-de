@@ -48,7 +48,6 @@ Vor der Installation der lokalen Bereitstellung von NetApp Console sollte sicher
 
 
 [[set-up-network-access-for-the-netapp-console-local-deployment]]
-[[network-access-agent]]
 === Netzwerkzugriff für die lokale Bereitstellung der NetApp Console einrichten
 
 NetApp Console lokale Bereitstellung verwendet einen festen Adressraum für die Kommunikation zwischen den Diensten. Die IP-Bereiche 10.42.0.0/16 und 10.43.0.0/16 werden für das interne Netzwerk verwendet. Vor der Bereitstellung der Console lokalen Bereitstellung ist sicherzustellen, dass diese IP-Bereiche nicht anderen VM-Instanzen, DHCP-Bereichen, DNS-Einträgen oder Load Balancer VIP-Pools in den für die Console lokale Bereitstellung verfügbaren VLANs zugewiesen sind.
