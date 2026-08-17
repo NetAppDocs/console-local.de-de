@@ -23,7 +23,7 @@ Sie erhalten einheitliches Speichermanagement, Richtliniendurchsetzung, Automati
 [[deploy-and-operate-console-in-your-own-infrastructure]]
 == Console in der eigenen Infrastruktur bereitstellen und betreiben
 
-NetApp Console lokale Bereitstellung läuft in Ihrer eigenen Infrastruktur, sodass Ihr Team Bereitstellung, Konnektivität und täglichen Betrieb kontrolliert. Sie stellen den Console Agent bereit, verwalten die Console-VM und die für den Überwachungs- und Verwaltungsdatenverkehr erforderlichen Netzwerkpfade. Dies gibt Unternehmensadministratoren die volle Kontrolle über die Betriebsgrenzen, während die Managementdaten innerhalb der Umgebung verbleiben.
+NetApp Console lokale Bereitstellung läuft in Ihrer eigenen Infrastruktur, sodass Ihr Team Bereitstellung, Konnektivität und täglichen Betrieb kontrolliert. Dies gibt Unternehmensadministratoren die volle Kontrolle über die Betriebsgrenzen, während die Managementdaten innerhalb der Umgebung verbleiben.
 
 * link:task-install-agent-on-prem-ova.html["Lokale Bereitstellung der NetApp Console mithilfe einer OVA in vCenter installieren"].
 * link:task-console-local-vm-config.html["Pflegen Sie Ihren vCenter oder ESXi-Host für die lokale Bereitstellung der NetApp Console"].

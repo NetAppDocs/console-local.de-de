@@ -1082,7 +1082,6 @@
   <block id="dbe73508391080b9a6912d86cd12081b" category="paragraph">NetApp Console lokale Bereitstellung ermöglicht das Hosten und Ausführen der NetApp Console autonomen Steuerungsebene in Ihrer eigenen Infrastruktur.</block>
   <block id="beedafd761122a9080cda6f61cac7b4b" category="paragraph">Sie erhalten einheitliches Speichermanagement, Richtliniendurchsetzung, Automatisierung im Flottenmaßstab und KI-gestützte Abläufe. Keine Daten, Metadaten oder Verwaltungsdatenverkehr verlassen Ihre Umgebung.</block>
   <block id="67e0c8d8a0aad1277b006016dd82f25c" category="section-title">Console in der eigenen Infrastruktur bereitstellen und betreiben</block>
-  <block id="10aa80cd468ec0811813d44ef98bca90" category="paragraph">NetApp Console lokale Bereitstellung läuft in Ihrer eigenen Infrastruktur, sodass Ihr Team Bereitstellung, Konnektivität und täglichen Betrieb kontrolliert. Sie stellen den Console Agent bereit, verwalten die Console-VM und die für den Überwachungs- und Verwaltungsdatenverkehr erforderlichen Netzwerkpfade. Dies gibt Unternehmensadministratoren die volle Kontrolle über die Betriebsgrenzen, während die Managementdaten innerhalb der Umgebung verbleiben.</block>
   <block id="00a758ee2cda4e4890c0ee5cfce54b04" category="inline-link-macro">Lokale Bereitstellung der NetApp Console mithilfe einer OVA in vCenter installieren</block>
   <block id="3e3c94e96f9dd9a6b52f7e3bd29e96cd" category="list-text"><block ref="d8fb061273f01bc1c630b76c017340f0" category="inline-link-macro-rx"></block>.</block>
   <block id="dd67cc32b95952e9b3fce404242dfee2" category="inline-link-macro">Pflegen Sie Ihren vCenter oder ESXi-Host für die lokale Bereitstellung der NetApp Console</block>
@@ -1932,13 +1931,10 @@
   <block id="ad720d685bc721c408c448c0fe562369" category="summary">Referenz für bekannte Einschränkungen bei der lokalen Bereitstellung der NetApp Console.</block>
   <block id="7ffe052f293422713268a6bb9df1fc9f" category="doc">Bekannte Einschränkungen bei der lokalen Bereitstellung der NetApp Console</block>
   <block id="1eba71d64e6c5e410e558530711e835b" category="paragraph">Bekannte Einschränkungen kennzeichnen Plattformen, Geräte oder Funktionen, die von dieser Produktversion nicht unterstützt werden oder nicht korrekt mit ihr zusammenarbeiten. Überprüfen Sie diese Einschränkungen sorgfältig.</block>
-  <block id="dceccbe9e562b7202ac801a976ca4d73" category="paragraph">Diese Einschränkungen gelten speziell für die Einrichtung der NetApp Console und die Administration: den Agenten, die Software-as-a-Service (SaaS) Plattform und mehr.</block>
   <block id="360330c9adc975e1008000d1df74a468" category="section-title">Einschränkungen der Console-VM</block>
   <block id="682a2eb88d49c213f5029c53633e10c9" category="section-title">Möglicher Konflikt mit IP-Adressen in den Bereichen 10.42.0.0/16 und 10.43.0.0/16</block>
   <block id="3b9690f89f4029f3b099f8b7c371b951" category="section-title">Shared Linux Hosts werden nicht unterstützt</block>
-  <block id="55334f6c7481482659eaa1b0aef1601a" category="paragraph">Der Agent wird auf einer VM, die auch von anderen Anwendungen genutzt wird, nicht unterstützt. Die VM muss ausschließlich für die Agentensoftware reserviert sein.</block>
   <block id="5ef1446cf0ab868961d473d928c394d6" category="section-title">Drittanbieter-Agenten und Erweiterungen</block>
-  <block id="08ea771e22fb933fc1428178b36eb902" category="paragraph">Agenten von Drittanbietern oder VM-Erweiterungen werden auf der Agent-VM nicht unterstützt.</block>
   <block id="3d8cb3230f2a32ea6afadc9475030feb" category="summary">Referenz für ONTAP Warnmeldungen, die in der lokalen NetApp Console-Bereitstellung überwacht werden, geordnet nach Auswirkungskategorie.</block>
   <block id="a9a22f62e500b57a916841885d3320a2" category="doc">ONTAP Warnungsreferenz in der NetApp Console lokalen Bereitstellung</block>
   <block id="a3831fb324d31cc99ef99e375686386a" category="paragraph">Diese Referenz listet die ONTAP-Warnungen auf, die von der lokalen NetApp Console-Bereitstellung überwacht werden können, geordnet nach Auswirkungskategorie.</block>
@@ -3094,7 +3090,6 @@
   <block id="5783f062ee67d1e08bcb603d908bec19" category="list-text">*Mitgliedszugriff in diesem Bereich entfernen*: Für ein Mitglied, dessen Rolle direkt in diesem Ordner oder dieser Flotte definiert ist, wird durch das Entfernen der Rolle der Zugriff in diesem Bereich widerrufen. Dadurch wird das Mitglied nicht aus Ihrer Organisation entfernt und Rollen in anderen Bereichen bleiben unberührt.</block>
   <block id="1f68cc23ffd79d8b92a25e3163e1bcff" category="paragraph"><block ref="2b3106c38646014daf77549827b80860" category="inline-link-macro-rx"></block>.</block>
   <block id="24347b3ddf5a25cc9c27e54ae285ade1" category="list-text">*Anwenden* auswählen.</block>
-  <block id="54ead9f62e4ad67dbab07d7ac18a67c2" category="summary">Wenn Sie VMware-Nutzer sind, kann eine OVA verwendet werden, um einen Console-Agenten in Ihrem vCenter zu installieren. Der OVA-Download oder die URL ist über die lokale NetApp Console-Bereitstellung verfügbar.</block>
   <block id="732484ec48b3de6a355c4a8d10a6491f" category="paragraph">Sie verwenden eine OVA, um eine NetApp Console lokale Bereitstellung in Ihrem VCenter zu installieren. Der OVA-Download oder die URL ist über die NetApp Support-Website verfügbar.</block>
   <block id="bfa61bc8df2f0d4cb1dd6df73376608c" category="section-title">Vorbereitung der lokalen Bereitstellung der NetApp Console zur Installation</block>
   <block id="4e00644af1cd7d7ae6f52544a8dc1472" category="paragraph">Vor der Installation ist sicherzustellen, dass Ihr VM-Host die Anforderungen erfüllt und die NetApp Console lokale Bereitstellung auf das Internet und die Zielnetzwerke zugreifen kann. Für die Nutzung von NetApp Datenservices wie NetApp Backup und Recovery sind Cloud-Anbieter-Anmeldeinformationen für die NetApp Console lokale Bereitstellung zu erstellen, damit Aktionen in Ihrem Namen durchgeführt werden können.</block>
@@ -3750,4 +3745,7 @@
   <block id="924c6a9c613412a0e4058026aa89a86a" category="cell">Kubelet API für metrics-server und kube-apiserver zu kubelet</block>
   <block id="50a807a194603f6075b05395337e3064" category="summary">Nach der Bereitstellung der Console local deployment können Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden.</block>
   <block id="e137fee1052a69e09aea64b66a681285" category="paragraph">In der lokalen NetApp Console-Bereitstellung können nach der Bereitstellung Änderungen an Ihrem bestehenden VCenter- oder ESXi-Host vorgenommen werden.</block>
+  <block id="c3bdc6c19998b310e22df96fbe31d526" category="paragraph">NetApp Console lokale Bereitstellung läuft in Ihrer eigenen Infrastruktur, sodass Ihr Team Bereitstellung, Konnektivität und täglichen Betrieb kontrolliert. Dies gibt Unternehmensadministratoren die volle Kontrolle über die Betriebsgrenzen, während die Managementdaten innerhalb der Umgebung verbleiben.</block>
+  <block id="8797fdac4224deac7f57143811175742" category="paragraph">NetApp Console lokale Bereitstellung wird auf einer VM, die mit anderen Anwendungen geteilt wird, nicht unterstützt. Die VM muss ausschließlich für die NetApp Console lokale Bereitstellung vorgesehen sein.</block>
+  <block id="9d22f7f3fcf091469f2515885be2bfb9" category="paragraph">Drittanbieter-Agenten oder VM-Erweiterungen werden auf der lokalen NetApp Console-Bereitstellungs-VM nicht unterstützt.</block>
 </blocks>
