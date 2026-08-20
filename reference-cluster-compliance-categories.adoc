@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: reference-cluster-compliance-categories.html 
-keywords: cluster compliance, security compliance, cluster security, ontap cluster security, compliance categories, netapp console local 
+keywords: cluster compliance, security compliance, cluster security, ontap cluster security, compliance categories, netapp console local deployment, local 
 summary: Referenz für Cluster-Sicherheitskonformitätskategorien und empfohlene Einstellungen in der lokalen NetApp Console-Bereitstellung. 
 ---
 = Cluster-Sicherheitskonformitätskategorien in der NetApp Console lokalen Bereitstellung

@@ -3633,4 +3633,7 @@
   <block id="66ae36e07e30e4c89165201182d037be" category="cell">Ein SMTP-E-Mail-Server muss konfiguriert sein, bevor lokale Benutzer eingeladen werden können oder die Passwortzurücksetzung für lokale Benutzer genutzt werden kann.</block>
   <block id="d433d6de6ccf389e02982430306a440f" category="cell">Doppelte E-Mail-Adressen werden für lokale Benutzer und Active Directory Benutzer nicht unterstützt. Wenn sich beispielsweise der ursprüngliche lokale Organisationsadministrator später selbst als Active Directory Benutzer hinzufügt, muss eine andere E-Mail-Adresse verwendet werden.</block>
   <block id="3be37f60cf59fb4438b6120b07ffd2e9" category="admonition">Lokale Einladungslinks für Benutzer sind nur einmal verwendbar und verfallen nach 7 Tagen. Wenn ein Link abläuft, bevor der Benutzer die Einrichtung abgeschlossen hat, muss der Benutzer entfernt und erneut hinzugefügt werden, damit ein neuer Einladungslink gesendet werden kann.</block>
+  <block id="d2a0f46558d1ad15a1efcaa26aef1b39" category="inline-link">Die Unterschiede zwischen der lokalen Bereitstellung der NetApp Console und NetApp Console SaaS und dem privaten Modus</block>
+  <block id="fc43c258a671e0d243e8a95a48956300" category="paragraph"><block ref="a79ef635b40614d2cd5c555de517dd6f" category="inline-link-rx"></block>.</block>
+  <block id="4688d87a2acbed67ab6380ef3dbee717" category="paragraph"><block ref="dff1bfa50abe498b973310763c6748f5" category="inline-link-macro-rx"></block>.</block>
 </blocks>
