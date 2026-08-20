@@ -36,6 +36,9 @@ Eine Benachrichtigungsregel ordnet Warnmeldungen anhand von Bedingungen, die Sie
 
 
 
+NOTE: Benachrichtigungen der Console UI werden 24 Stunden lang gespeichert.
+
+
 
 [[view-notification-rules]]
 == Benachrichtigungsregeln anzeigen

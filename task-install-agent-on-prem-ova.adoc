@@ -108,11 +108,6 @@ Melden Sie sich in Ihrer vCenter-Umgebung an, um die lokale Console-Bereitstellu
 
 ** *Konfiguration der virtuellen Maschine*
 +
-*** *Konfigurationsprüfung überspringen*: Dieses Kästchen ist standardmäßig deaktiviert, was bedeutet, dass die lokale NetApp Console-Bereitstellung eine Konfigurationsprüfung durchführt, um den Netzwerkzugriff zu validieren.
-+
-**** NetApp empfiehlt, dieses Kästchen nicht zu aktivieren, sodass die Installation eine Konfigurationsprüfung der NetApp Console lokalen Bereitstellung umfasst. Die Konfigurationsprüfung bestätigt, dass die NetApp Console lokale Bereitstellung Netzwerkzugriff auf die erforderlichen Endpunkte hat. Falls die Bereitstellung aufgrund von Verbindungsproblemen fehlschlägt, stehen der Validierungsbericht und die Protokolle vom Host der NetApp Console lokalen Bereitstellung zur Verfügung. In einigen Fällen kann, sofern sichergestellt ist, dass die NetApp Console lokale Bereitstellung über Netzwerkzugriff verfügt, die Prüfung übersprungen werden.
-
-
 *** *Wartungskennwort*: Das Kennwort für den  `maint` Benutzer festlegen, das den Zugriff auf die NetApp Console lokale Bereitstellung Wartungskonsole ermöglicht.
 *** *NTP-Server*: Es können ein oder mehrere NTP-Server für die Zeitsynchronisierung angegeben werden.
 *** *Hostname*: Der Hostname für diese VM wird festgelegt. Er darf die Suchdomäne nicht enthalten. Zum Beispiel sollte ein FQDN wie console10.searchdomain.company.com als console10 eingegeben werden.

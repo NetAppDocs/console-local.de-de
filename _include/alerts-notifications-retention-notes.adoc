@@ -1,0 +1,9 @@
+= 
+:allow-uri-read: 
+
+
+
+NOTE: Warnmeldungen werden in der lokalen NetApp Console-Bereitstellung 7 Tage lang ab dem Zeitpunkt ihrer Erstellung gespeichert.
+
+
+NOTE: Benachrichtigungen der Console UI werden 24 Stunden lang gespeichert.

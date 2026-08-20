@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-get-help.html 
-keywords: help, ticket, open support case, support, netapp support, technical support, call support, phone number, open ticket, web ticket, open an issue 
+keywords: help, ticket, open support case, support, netapp support, technical support, call support, open ticket, web ticket, open an issue 
 summary: 'NetApp bietet Unterstützung für die lokale Bereitstellung der NetApp Console auf vielfältige Weise. Umfangreiche kostenlose Selbsthilfeoptionen stehen 24x7 zur Verfügung, wie zum Beispiel Knowledge Base (KB)-Artikel und ein Community-Forum. Die Support-Registrierung umfasst technischen Remote-Support über Web-Ticketing.' 
 ---
 = Hilfe zur lokalen Bereitstellung der NetApp Console

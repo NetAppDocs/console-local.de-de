@@ -43,3 +43,19 @@ NetApp Console lokale Bereitstellung wird auf einer VM, die mit anderen Anwendun
 === Drittanbieter-Agenten und Erweiterungen
 
 Drittanbieter-Agenten oder VM-Erweiterungen werden auf der lokalen NetApp Console-Bereitstellungs-VM nicht unterstützt.
+
+
+
+[[identity-and-access-limitations]]
+== Identitäts- und Zugriffsbeschränkungen
+
+[cols="1,3"]
+|===
+| Bereich | Einschränkung 
+
+
+| Lokale Benutzerregistrierung und Kontowiederherstellung | Ein SMTP-E-Mail-Server muss konfiguriert sein, bevor lokale Benutzer eingeladen werden können oder die Passwortzurücksetzung für lokale Benutzer genutzt werden kann. 
+
+
+| Active Directory Integration | Doppelte E-Mail-Adressen werden für lokale Benutzer und Active Directory Benutzer nicht unterstützt. Wenn sich beispielsweise der ursprüngliche lokale Organisationsadministrator später selbst als Active Directory Benutzer hinzufügt, muss eine andere E-Mail-Adresse verwendet werden. 
+|===

@@ -21,6 +21,9 @@ Super Admin oder Organisationsadministrator. link:reference-iam-predefined-roles
 
 Standardmäßig werden Benachrichtigungen bei der lokalen Bereitstellung der Console über das integrierte Benachrichtigungssystem angezeigt. Die Konfiguration zusätzlicher Zustellungskanäle ermöglicht den Empfang von Benachrichtigungen auf die Weise, die am besten zum eigenen Workflow passt.
 
+
+NOTE: Benachrichtigungen der Console UI werden 24 Stunden lang gespeichert.
+
 Sie können alle Benachrichtigungen über dieselben Kanäle versenden oder für verschiedene Benachrichtigungstypen unterschiedliche Kanäle verwenden. Beispielsweise können dringende Speicherwarnungen per E-Mail versendet werden, während anderer Alarmverkehr über einen Webhook an ein externes Überwachungstool weitergeleitet wird.
 
 Nachdem Benachrichtigungskanäle eingerichtet wurden, lassen sich Benachrichtigungsregeln konfigurieren und verschiedenen Kanälen zuweisen. link:task-alert-rules-manage.html["Informationen zur Konfiguration von Benachrichtigungsregeln"].

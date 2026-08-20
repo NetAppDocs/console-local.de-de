@@ -26,6 +26,9 @@ Für ONTAP-Warnmeldungen stehen Tools wie System Manager und Workload Analyzer d
 Für externe Berichte kann die Warnmeldungsliste zur Offline-Analyse in eine CSV-Datei exportiert werden.
 
 
+NOTE: Warnmeldungen werden in der lokalen NetApp Console-Bereitstellung 7 Tage lang ab dem Zeitpunkt ihrer Erstellung gespeichert.
+
+
 NOTE: Sie können auch Benachrichtigungsregeln einrichten, um Benachrichtigungen per E-Mail oder Webhook zu erhalten. link:task-alert-rules-manage.html["Informationen zum Einrichten von Benachrichtigungen"].
 
 

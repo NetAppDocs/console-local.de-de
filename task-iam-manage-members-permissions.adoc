@@ -94,6 +94,9 @@ Die Konsole sendet dem Benutzer eine E-Mail mit Anweisungen.
 
 
 
+NOTE: Lokale Einladungslinks für Benutzer sind nur einmal verwendbar und verfallen nach 7 Tagen. Wenn ein Link abläuft, bevor der Benutzer die Einrichtung abgeschlossen hat, muss der Benutzer entfernt und erneut hinzugefügt werden, damit ein neuer Einladungslink gesendet werden kann.
+
+
 
 [[add-a-service-account]]
 [[service-account]]
