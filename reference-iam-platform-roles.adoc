@@ -60,6 +60,12 @@ Die folgenden Tabellen zeigen die Aktionen, die jede Rolle der lokalen Console B
 
 
 | Die Seite „Audit“ und die Benachrichtigungen werden angezeigt | Ja | Ja 
+
+
+| LLM-Integration konfigurieren und den Console Assistent aktivieren | Ja | Nein 
+
+
+| Einstellungen für die Benachrichtigungszustellung und den E-Mail-Server konfigurieren | Ja | Nein 
 |===
 
 

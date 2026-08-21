@@ -101,17 +101,18 @@ Die folgenden Schritte beschreiben den Prozess zur Verwendung von Speicherklasse
 
 Speicherklassen sind Flotten zugeordnet. Wenn eine Speicherklasse einer Flotte zugeordnet wird, steht diese Klasse für alle Bereitstellungen innerhalb der Flotte zur Verfügung. Dies stellt sicher, dass jede in der Flotte bereitgestellte Workload denselben Standards folgt, wodurch Flotten die primäre Methode sind, um ein konsistentes Speicherverhalten über verwandte Cluster hinweg durchzusetzen.
 
-Weitere Informationen zur Organisation von Flotten finden Sie unter link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
+link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
 
 
 
 [[where-to-go-next]]
 == Wie es weitergeht
 
-* Informationen zur Organisation der Flotte finden Sie unter link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
-* Informationen zum Erstellen von Richtlinien und Speicherklassen sind unter link:task-storage-class-manage.html["Speicherklassen und Richtlinien verwalten"] zu finden.
+* link:concept-manage-storage.html["Informationen zum Flottenmanagement in der lokalen NetApp Console-Bereitstellung"].
+* link:task-storage-class-manage.html["Speicherklassen und Richtlinien verwalten"].
 * link:task-provisioning-manual.html["Speicher manuell bereitstellen"]
 * link:task-provisioning-automated.html["Speicher automatisch bereitstellen"]
 * link:task-provisioning-agentic.html["Speicher mit KI-Unterstützung bereitstellen"]
-* Zur Analyse und Behebung von Drift siehe link:task-storage-class-drift-remediate.html["Speicherklassenabweichung beheben"]
+* link:reference-console-assistant-operations.html["Unterstützte NetApp Console Assistant-Operationen"]
+* link:task-storage-class-drift-remediate.html["Informationen zur Behebung von Speicherklassenabweichungen"]
 

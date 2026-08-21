@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-console-asst-use.html 
 keywords: console assistant, ai assistant, ask questions, provision storage, natural language, agentic, netapp console local 
-summary: Mit dem Console-Assistenten können Speicher bereitgestellt, Warnmeldungen untersucht und Antworten in natürlicher Sprache in der lokalen NetApp Console-Bereitstellung erhalten werden. 
+summary: Der Console-Assistent bietet Speicherführung, Analysen, Bereitstellung und unterstützte Vorgänge in der lokalen NetApp Console-Bereitstellung. 
 ---
 = Den NetApp Console-Assistenten in der NetApp Console lokalen Bereitstellung verwenden
 :hardbreaks:
@@ -26,11 +26,13 @@ Die Aktionen des Assistenten sind durch Ihre zugewiesene rollenbasierte Zugriffs
 [[see-what-you-can-do-with-the-console-assistant]]
 == Erfahren Sie, was mit dem Console Assistent möglich ist
 
-Der Console-Assistent ist eine natürlichsprachliche Schnittstelle zur lokalen NetApp Console-Bereitstellung. Es kann eine Frage gestellt oder eine Aufgabe beschrieben werden, woraufhin eine Antwort oder ein Aktionsvorschlag zurückgegeben wird. Der Assistent bietet folgende Funktionen:
+Speicherbedingungen und unterstützte Aktionen lassen sich über eine einzige konversationelle Schnittstelle identifizieren, sodass Sie entscheiden können, wann Unterstützung oder ein Eingreifen erforderlich ist. Wenn Sie eine Frage stellen oder eine Aufgabe beschreiben, liefert der Assistent eine Antwort, Analyse oder eine vorgeschlagene Aktion. Der Assistent bietet folgende Funktionen:
 
 * *Speicher bereitstellen* Eine Arbeitslast wird in einfacher Sprache beschrieben. Der Assistent empfiehlt eine Speicherklasse und einen Speicherort und erstellt anschließend das Volume oder die LUN, nachdem die Details bestätigt wurden. Beispielsweise kann der Assistent aufgefordert werden, ein CIFS-Volume mit einer bestimmten Kapazität zu erstellen. Der Assistent identifiziert den Cluster und die Storage Virtual Machine (SVM), trägt die erforderlichen Parameter ein und stellt den Speicher bereit.
+* *Metriken analysieren* Informationen zu unterstützter Kapazität, Leistung und Speichermetriken für Ressourcen im zulässigen Bereich sind abrufbar. Der Assistent liefert eine schreibgeschützte Analyse basierend auf dem verfügbaren Flottenstatus.
 * *Suchen und Hilfe erhalten* Stellen Sie Fragen zu Ihrer Speicherumgebung, finden Sie lokale Bereitstellungsfunktionen der Console und erhalten Sie kontextbezogene Antworten aus der NetApp Dokumentation und dem aktuellen Flottenstatus.
 * *Warnungen untersuchen* Der Assistent kann gebeten werden, eine aktive Warnmeldung zu überprüfen. Er analysiert das Problem und schlägt eine Lösung vor oder führt nach Ihrer Bestätigung eine Behebungsmaßnahme durch.
+* *ONTAP-Systeme verwalten* Eine unterstützte ONTAP-Verwaltungsoperation kann in natürlicher Sprache angefordert werden. Der Assistent identifiziert fehlenden System- oder SVM-Kontext, präsentiert die vorgeschlagene Operation und verlangt eine Bestätigung vor einem Schreibvorgang.
 
 
 Der Assistent sendet Anfragen ausschließlich an den LLM-Endpunkt, der von Ihrem Administrator in der lokalen Console-Bereitstellung konfiguriert wurde. Vor der Durchführung speicherverändernder Aktionen wird eine Bestätigung angefordert, und alle Aktionen berücksichtigen die Ihrem Konto zugewiesenen rollenbasierten Zugriffskontrollen.
@@ -40,7 +42,7 @@ Der Assistent sendet Anfragen ausschließlich an den LLM-Endpunkt, der von Ihrem
 [[confirm-that-you-can-use-the-console-assistant]]
 == Bestätigen Sie, dass der Konsolenassistent verwendet werden kann.
 
-* Ein Organisationsadministrator oder Superadministrator muss den Konsolenassistenten aktivieren, indem ein großes Sprachmodell (LLM) mit der lokalen Console-Bereitstellung verbunden wird. Wenn die Schaltfläche *Console assistant* im Dashboard nicht angezeigt wird, sollte der Administrator gebeten werden, sie zu aktivieren. Weitere Informationen finden sich unter link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+* Ein Organisationsadministrator oder Superadministrator muss den Konsolenassistenten aktivieren, indem ein großes Sprachmodell (LLM) mit der lokalen Console-Bereitstellung verbunden wird. Wenn die Schaltfläche *Console assistant* im Dashboard nicht angezeigt wird, sollte der Administrator gebeten werden, sie zu aktivieren. link:task-llm-connect.html["Informationen dazu, wie Ihr LLM verbunden wird und der NetApp Console Assistent aktiviert werden kann"].
 * Stellen Sie sicher, dass Sie über die rollenbasierten Zugriffskontrollen verfügen, die für die Aktionen erforderlich sind, die der Assistent ausführen soll.
 
 
@@ -49,7 +51,7 @@ Der Assistent sendet Anfragen ausschließlich an den LLM-Endpunkt, der von Ihrem
 [[ask-the-console-assistant-a-question-or-request-an-action]]
 == Dem Konsolenassistenten kann eine Frage gestellt oder eine Aktion angefordert werden.
 
-Den Konsolenassistenten öffnen, einen Zugriffsmodus auswählen und eine Eingabeaufforderung eingeben, die die Anfrage beschreibt.
+Unterstützter Speicher kann konversationsbasiert angefordert werden, sodass vorgeschlagene Änderungen bewertet werden können, bevor sie sich auf Ihre Infrastruktur auswirken.
 
 .Schritte
 . Wählen Sie im Dashboard für die lokale Bereitstellung der NetApp Console die Schaltfläche *Console assistant* aus.
@@ -72,3 +74,19 @@ Beispiel: `Create a 10GiB volume for home directories named home, and share it w
 . Die Aktion wird bestätigt. Bei asynchronen Vorgängen, wie der Volume-Erstellung, erstellt der Assistent einen Auftrag, um die Anfrage abzuschließen.
 . Um den Status einer Anfrage zu überprüfen, kann der Assistent befragt werden. Beispielsweise kann  `Let me know when the job completes` eingegeben werden, woraufhin der Assistent den aktuellen Status zurückmeldet.
 
+
+
+
+[[use-the-assistant-for-metrics-and-analytics]]
+== Der Assistent für Kennzahlen und Analysen kann verwendet werden.
+
+Stellen Sie eine schreibgeschützte Frage, die Ressource, Umfang, Metrik und Zeitraum angibt, die Sie verstehen möchten. Der Assistent liefert eine Analyse der unterstützten Metriken und ändert Ihren Speicher nicht.
+
+
+
+[[use-the-assistant-for-ontap-management]]
+== Den Assistenten für ONTAP Verwaltung verwenden
+
+Unterstützte ONTAP Operationen lassen sich über geprüfte Assistenzvorschläge verwalten, sodass Infrastrukturänderungen gezielt und berechtigungskontrolliert erfolgen.
+
+link:reference-console-assistant-operations.html["Informationen zu den unterstützten NetApp Console Assistentenfunktionen"].

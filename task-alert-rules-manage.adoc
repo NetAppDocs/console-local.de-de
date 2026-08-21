@@ -31,7 +31,7 @@ Eine Benachrichtigungsregel ordnet Warnmeldungen anhand von Bedingungen, die Sie
 [[before-you-begin]]
 == Bevor Sie beginnen
 
-* Damit Benachrichtigungen per E-Mail zugestellt werden, muss Ihr Organisationsadministrator einen E-Mail-Server in der lokalen NetApp Console-Bereitstellung konfigurieren. Damit Benachrichtigungen an ein externes System zugestellt werden, muss Ihr Organisationsadministrator einen Webhook konfigurieren. Die Schritte sind unter link:task-console-configure-notifications-delivery.html["Benachrichtigungszustellung konfigurieren"] zu finden.
+* Damit Benachrichtigungen per E-Mail zugestellt werden, muss Ihr Organisationsadministrator einen E-Mail-Server in der lokalen NetApp Console-Bereitstellung konfigurieren. Damit Benachrichtigungen an ein externes System zugestellt werden, muss Ihr Organisationsadministrator einen Webhook konfigurieren. link:task-console-configure-notifications-delivery.html["Wie das Konfigurieren von Webhooks funktioniert"].
 * Das Benachrichtigungscenter der lokalen NetApp Console-Bereitstellung zeigt Benachrichtigungen standardmäßig an, sodass für Benachrichtigungen in der NetApp Console keine zusätzliche Einrichtung erforderlich ist.
 
 

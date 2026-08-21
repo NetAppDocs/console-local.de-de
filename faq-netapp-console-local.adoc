@@ -156,13 +156,19 @@ Lokale Benutzer können die Multi-Faktor-Authentifizierung (MFA) aktivieren, um 
 == KI-gestütztes Management
 
 .Welche LLM-Anbieter werden von der lokalen Bereitstellung der NetApp Console für KI-gestütztes Management unterstützt?
-Sie bringen Ihr eigenes Abonnement oder Ihren eigenen Servicezugang für einen unterstützten Anbietertyp mit: OpenAI oder OpenAI-kompatibel. Anschließend geben Sie während der Konfiguration einen gültigen API-Schlüssel an. Außerdem werden die bereitgestellte Console mit Clusterzugriff, ausgehende Netzwerkverbindung zum konfigurierten Endpunkt, die Organization Admin-Rolle sowie Speicherklassen benötigt, die die Bereitstellung steuern. link:concept-llm-integration.html["Informationen zur LLM-Integration"].
+Sie bringen Ihr eigenes Abonnement oder Ihren eigenen Servicezugang für einen unterstützten Anbietertyp mit: OpenAI, OpenAI-kompatibel oder Anthropic, wie von Ihrer Version und Ihrem Endpunkt unterstützt. Ein gültiger API-Schlüssel wird während der Konfiguration bereitgestellt. Erforderlich sind außerdem eine ausgehende Netzwerkverbindung zum konfigurierten Endpunkt sowie die Rolle Organization admin oder Super admin, um die Integration zu konfigurieren. link:concept-llm-integration.html["Informationen zur LLM-Integration"].
 
 .Werden durch die Aktivierung der LLM-Integration meine Speicherdaten oder Abfragen an einen Drittanbieterdienst gesendet?
 Die Konsole sendet Eingabeaufforderungen und zugehörigen Kontext ausschließlich an den von Ihnen konfigurierten LLM-Endpunkt. Wenn es sich bei diesem Endpunkt um einen Cloud-Dienst eines Drittanbieters handelt, werden die Daten über HTTPS an diesen Dienst gesendet. Wenn es sich bei diesem Endpunkt um einen internen, OpenAI-kompatiblen Dienst handelt, verbleiben die Daten für diese Integration auf Ihrem internen Pfad. Alle KI-Aktionen berücksichtigen Ihre rollenbasierte Zugriffssteuerung, und sensible Vorgänge erfordern Ihre Bestätigung. link:concept-llm-integration.html["Informationen zur LLM-Integration"].
 
 .Was kann der Konsolenassistent leisten und wie lässt sich steuern, ob er meinen Speicher verändert?
-Sobald ein LLM verbunden ist, ermöglicht der Konsolenassistent Benutzern die Bereitstellung von Speicher, die Untersuchung von Warnmeldungen und die Beantwortung von Fragen in natürlicher Sprache. Benutzer wählen einen Zugriffsmodus: Im Modus *Nur lesen* gibt der Assistent Antworten und Anleitungen, ohne Änderungen vorzunehmen, während er im Modus *Lesen/Schreiben* auf die Speicherinfrastruktur zugreifen kann, aber die Details zur Überprüfung und Bestätigung durch den Benutzer vor jeder Änderung anzeigt. link:task-llm-connect.html["Verbinden Sie Ihren LLM und aktivieren Sie den NetApp Console Assistenten"].
+Sobald ein LLM verbunden ist, ermöglicht der NetApp Console Assistent den Benutzern, mithilfe natürlicher Sprache Anleitungen zu erhalten, unterstützte Metriken zu analysieren, Speicher bereitzustellen, Warnmeldungen zu untersuchen und unterstützte ONTAP-Operationen anzufordern. Im *Nur-Lese*-Modus nimmt der Assistent keine Änderungen vor. Im *Lese/Schreib*-Modus werden vorgeschlagene speicherverändernde Aktionen zur Überprüfung und Bestätigung vor der Ausführung angezeigt. link:task-console-asst-use.html["Den NetApp Console Assistenten verwenden"].
+
+.Welche Operationen werden vom Konsolenassistenten unterstützt?
+Der Konsolenassistent unterstützt dialogbasierte Anleitungen, die Analyse von schreibgeschützten Metriken, die Speicherbereitstellung, die Untersuchung von Warnmeldungen und ausgewählte ONTAP Managementvorgänge. Die verfügbaren Vorgänge hängen von der Version, dem konfigurierten Endpunkt sowie Ihrer Rolle und dem Ressourcenbereich ab. link:reference-console-assistant-operations.html["Unterstützte NetApp Console Assistant-Operationen"].
+
+.Was geschieht, wenn der Konsolenassistent eine asynchrone Operation ausführt?
+Bei unterstützten Vorgängen, die nicht sofort abgeschlossen werden, erstellt der Assistent einen Auftrag und kann den aktuellen Status zurückgeben, wenn nach der Anfrage gefragt wird. link:task-console-asst-use.html["Den NetApp Console Assistenten verwenden"].
 
 
 

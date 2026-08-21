@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: task-llm-connect.html 
 keywords: LLM, AI, connect, large language model, console assistant, openai, openai-compatible, proxy, netapp console 
-summary: OpenAI oder einen OpenAI-kompatiblen Endpunkt verbinden, um den Console-Assistenten und die KI-gestützte Verwaltung in der lokalen NetApp Console-Bereitstellung zu ermöglichen. 
+summary: Ein unterstützter LLM-Endpunkt kann verbunden werden, um den Konsolenassistenten und die KI-gestützte Verwaltung in der lokalen NetApp Console Bereitstellung zu ermöglichen. 
 ---
 = LLM verbinden und den NetApp Console Assistenten in der NetApp Console lokalen Bereitstellung aktivieren
 :hardbreaks:
@@ -14,7 +14,7 @@ summary: OpenAI oder einen OpenAI-kompatiblen Endpunkt verbinden, um den Console
 
 
 [role="lead"]
-Verbinden Sie Ihr großes Sprachmodell (LLM) mit der lokalen NetApp Console-Bereitstellung, um den Console-Assistenten und die KI-gestützte Speicherverwaltung zu aktivieren.
+Ein unterstützter LLM-Endpunkt kann verbunden werden, damit Benutzern lokaler NetApp Console-Bereitstellungen verwaltete Anleitungen und Vorgänge zur Speicherung in natürlicher Sprache zur Verfügung stehen.
 
 
 NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
@@ -35,24 +35,23 @@ Um Ihr LLM zu verbinden, einen Anbieterpfad auswählen, Endpunktdetails und API-
 [[gather-what-you-need-before-you-connect-an-llm]]
 == Sammeln Sie alles Notwendige, bevor Sie eine Verbindung zu einem LLM herstellen.
 
-Bevor Sie Ihr LLM verbinden, sollten Sie Folgendes bereithalten:
+Provider-Zugangsdaten und Endpoint-Zugriff werden vorbereitet, sodass der NetApp Console Assistent innerhalb der konfigurierten Governance-Grenzen Ihrer Organisation agieren kann.
 
-* Ihre Entscheidung für einen Anbietertyp: OpenAI oder OpenAI-kompatibel. link:concept-llm-integration.html["Informationen zu den verfügbaren Anbieteroptionen."]
+* Ihre Entscheidung für den Anbietertyp: OpenAI, OpenAI-kompatibel oder Anthropic, wie durch Release und Endpoint unterstützt.
 * Ein gültiger API-Schlüssel für den ausgewählten Anbieterpfad.
 * Die Endpunkt-URL für Ihren Anbieterpfad.
 * Ihr Benutzername oder Ihre ID für das LLM-Anbieterkonto, falls erforderlich.
 * Netzwerkzugriff von der lokalen NetApp Console-Bereitstellung zum ausgewählten Endpunkt.
-* Speicherklassen und rollenbasierte Zugriffskontrollen für die Assistentenaktionen, die Sie zulassen möchten.
 
 
-Details zu den unterstützten Modellen sind unter link:reference-llm-supported-models.html["Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung"] zu finden.
+link:reference-llm-supported-models.html["Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung"].
 
 
 
 [[connect-an-llm-to-netapp-console-local-deployment]]
 == Eine LLM mit einer lokalen NetApp Console-Bereitstellung verbinden
 
-Anbietereinstellungen, API-Schlüssel und Modell eingeben, um Ihre LLM mit der lokalen NetApp Console-Bereitstellung zu verbinden.
+Assistentenfunktionen werden durch eine validierte Anbieterkonfiguration aktiviert, wobei die administrative Kontrolle über die Endpunkt-Anmeldeinformationen erhalten bleibt.
 
 .Schritte
 . Anmeldung bei der lokalen NetApp Console-Bereitstellung.
@@ -63,24 +62,21 @@ Anbietereinstellungen, API-Schlüssel und Modell eingeben, um Ihre LLM mit der l
 link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"].
 
 . Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben.
-. Geben Sie die Proxy- oder Gateway-URL und die Zugangsdaten ein.
 . Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert.
 . Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen.
 . Ein Modell aus der Liste auswählen.
 . Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
 +
-Falls das Speichern oder Testen fehlschlägt, sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft und anschließend ein erneuter Versuch unternommen werden.
+Vor dem Speichern der Konfiguration sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft werden.
 
 
-
-link:task-llm-troubleshoot-integration.html["Fehlerbehebung bei Ihrer LLM-Integration"].
 
 
 
 [[verify-that-llm-integration-works]]
 == Es wird überprüft, ob die LLM Integration funktioniert.
 
-Nachdem die Konfiguration gespeichert wurde, lassen sich die Verfügbarkeit und das Verhalten des Assistenten überprüfen.
+Die Verfügbarkeit des Assistenten und das Genehmigungsverhalten werden bestätigt, sodass sich die Benutzer bei kontrollierten Vorgängen auf die konfigurierte Integration verlassen können.
 
 .Schritte
 . Den *Konsolenassistenten* im *Read only*-Modus öffnen und eine einfache Abfrage ausführen.
@@ -88,15 +84,16 @@ Nachdem die Konfiguration gespeichert wurde, lassen sich die Verfügbarkeit und 
 . Es sollte überprüft werden, dass die Benutzer, die Aktionsworkflows benötigen, über die erforderlichen rollenbasierten Zugriffskontrollen verfügen.
 
 
-Nach Abschluss der Validierung können Benutzer den Konsolenassistenten über das Dashboard öffnen und Aufgaben in einfacher Sprache beschreiben. Beispiele für die Nutzung und Endbenutzer-Workflows finden sich unter link:task-console-asst-use.html["Den NetApp Console Assistenten verwenden"].
+Nach Abschluss der Validierung können Benutzer den Konsolenassistenten über das Dashboard öffnen und Aufgaben in einfacher Sprache beschreiben. link:task-console-asst-use.html["Informationen zur Verwendung des NetApp Console-Assistenten"].
 
 
 
 [[protect-credentials-and-monitor-llm-usage]]
 == Zugangsdaten schützen und LLM-Nutzung überwachen
 
+Die Zugangsdaten von LLM werden geschützt und die Aktivitäten der Anbieter überwacht, um die unerlaubte Nutzung der Integration zu reduzieren und die organisatorische Governance zu unterstützen.
+
 * Nach Möglichkeit sollte ein dedizierter API-Schlüssel für die lokale Bereitstellungsintegration der Konsole verwendet werden.
 * API-Schlüssel werden gemäß den Richtlinien Ihrer Organisation rotiert.
-* Der Zugriff auf die Einstellungen der KI-Tools ist ausschließlich auf die erforderlichen Administratorrollen beschränkt.
-* Die API-Nutzung und Warnmeldungen auf Anbieterseite werden überwacht, um ungewöhnliche Aktivitäten oder Kostenspitzen nachzuverfolgen.
+* Die API-Nutzung und Warnmeldungen auf Anbieterseite werden gemäß den Governance-Anforderungen Ihrer Organisation überwacht.
 

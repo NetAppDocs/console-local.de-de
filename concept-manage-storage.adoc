@@ -37,8 +37,6 @@ Das Flottenmanagement befasst sich mit drei zentralen Herausforderungen:
 
 Die Ressourcenhierarchie Ihrer Organisation besteht aus Ordnern und Flotten:
 
-Eine detaillierte Übersicht über die Hierarchie und das Zugriffsmodell befindet sich unter link:concept-folders-fleets-overview.html["Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"].
-
 * *Organisation* – Die oberste Ebene, die Ihr Unternehmen repräsentiert.
 * *Ordner* – helfen bei der Organisation zusammengehöriger Flotten. Zum Beispiel kann für jede Region oder Geschäftseinheit ein Ordner erstellt und darin Flotten angelegt werden. Ordner können weitere Ordner oder Flotten enthalten. Wird eine Rolle auf Ordnerebene zugewiesen, übernehmen die Mitglieder diese Rolle für alle Flotten innerhalb des Ordners.
 * *Flotten* – Die von Ihnen verwalteten Speichersysteme werden gruppiert. Speichersysteme werden Flotten zugeordnet und Mitglieder Flotten zugewiesen, um ihnen Zugriff zu ermöglichen.
@@ -46,6 +44,8 @@ Eine detaillierte Übersicht über die Hierarchie und das Zugriffsmodell befinde
 
 
 NOTE: Ordner dienen als Organisationswerkzeug und sind für Mitglieder, die keine IAM-Berechtigungen wie Organization admin, Folder admin oder Fleet admin Rollen besitzen, nicht sichtbar. Mitglieder haben Zugriff auf Flotten, nicht auf Ordner.
+
+link:concept-folders-fleets-overview.html["Weitere Informationen zu Ordnern und Flotten in der lokalen Bereitstellung der NetApp Console"].
 
 
 
@@ -108,9 +108,10 @@ Die lokale Bereitstellung über die Konsole unterstützt drei Bereitstellungsans
 [[where-to-go-next]]
 == Wie es weitergeht
 
-* Informationen zu Speicherstandards sind unter link:concept-storage-classes.html["Informationen zu Speicherklassen und Richtlinien in der lokalen Bereitstellung der NetApp Console"] verfügbar.
-* Informationen zum Erstellen und Verwalten von Flotten sind unter link:task-iam-manage-folders-fleets.html["Ordner und Flotten verwalten"] verfügbar.
+* link:concept-storage-classes.html["Informationen zu Speicherklassen und Richtlinien in der lokalen Bereitstellung der NetApp Console"].
+* link:task-iam-manage-folders-fleets.html["Informationen zum Erstellen und Verwalten von Flotten"].
 * link:task-provisioning-manual.html["Speicher manuell bereitstellen"]
 * link:task-provisioning-automated.html["Speicher automatisch bereitstellen"]
 * link:task-provisioning-agentic.html["Speicher mit KI-Unterstützung bereitstellen"]
+* link:reference-console-assistant-operations.html["Unterstützte NetApp Console Assistant-Operationen"]
 

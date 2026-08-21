@@ -63,7 +63,7 @@ Wenn Sie die Rolle „Ordner- oder Flottenadministrator“ besitzen, werden auf 
 
 Sie können die Zugriffsrechte eines Mitglieds anpassen, sobald sich dessen Verantwortlichkeiten ändern. Wenn beispielsweise ein Teammitglied die Backup und Recovery Administratorrolle für die Flotte einer zweiten Region übernimmt, kann diese Rolle für die betreffende Region hinzugefügt werden, ohne die bestehenden Speicherrollen zu verändern.
 
-Wenn ein neues Mitglied hinzugefügt und ihm seine erste Rolle zugewiesen werden soll, siehe link:task-iam-manage-members-permissions.html#add-members["Mitglieder hinzufügen und Rollen zuweisen"].
+link:task-iam-manage-members-permissions.html#add-members["Informationen zum Hinzufügen von Mitgliedern und Zuweisen von Rollen"].
 
 
 

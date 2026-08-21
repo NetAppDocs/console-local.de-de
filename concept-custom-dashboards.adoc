@@ -53,7 +53,7 @@ Systemzustand:: Gesundheitszustand, Anzahl degradierter oder kritischer Objekte,
 Warnmeldungen:: Anzahl kritischer Warnmeldungen, Warnmeldungen nach Schweregrad, Warnmeldungen nach Wirkungsbereich, aktuelle Warnmeldungen und Warntrends im Zeitverlauf.
 
 
-Einen vollständigen Katalog der vordefinierten Karten und Metriken enthält link:reference-dashboard-card-templates.html["Informationen zu benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung"].
+link:reference-dashboard-card-templates.html["Der Katalog der benutzerdefinierten Dashboard-Karten und Metriken in der lokalen NetApp Console-Bereitstellung kann eingesehen werden."].
 
 
 

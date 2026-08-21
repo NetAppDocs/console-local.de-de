@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: reference-llm-supported-models.html 
-keywords: LLM, supported models, OpenAI, OpenAI-compatible, model selection, netapp console 
+keywords: LLM, supported models, OpenAI, OpenAI-compatible, Anthropic, model selection, netapp console 
 summary: Die LLM-Anbietertypen und -modelle, die in der lokalen Bereitstellung der NetApp Console verwendet werden können, werden hier dargestellt. 
 ---
 = Unterstützte LLM-Anbieter und Modelle in der lokalen NetApp Console-Bereitstellung
@@ -33,7 +33,7 @@ Der gewählte Anbietertyp bestimmt, welche Modelle in der Liste der lokalen Bere
 * *Anthropic* – bietet Modelle für die direkte Anthropic Integration.
 
 
-Die angezeigten Modelle können je nach Endpunktkonfiguration, Proxy- oder Gateway-Verhalten und Unternehmensrichtlinie variieren. Anbietertypen unterscheiden sich durch den Endpunkt, mit dem Sie eine Verbindung herstellen, und die von diesem Endpunkt bereitgestellten Modelle, nicht durch das Transportprotokoll.
+Die angezeigten Modelle können je nach Endpunktkonfiguration, Proxy- oder Gateway-Verhalten, Release-Unterstützung und Unternehmensrichtlinie variieren. Anbietertypen unterscheiden sich durch den Endpunkt, mit dem Sie eine Verbindung herstellen, und die von diesem Endpunkt bereitgestellten Modelle, nicht durch das Transportprotokoll.
 
 
 

@@ -67,7 +67,7 @@ Im Revisionsprotokoll lässt sich nachvollziehen, wer den MFA-Zugriff geändert 
 [[recreate-the-credentials-for-a-service-account]]
 == Die Anmeldeinformationen für ein Dienstkonto neu erstellen
 
-Sie können neue Zugangsdaten für ein Dienstkonto erstellen, falls Sie diese verlieren oder aktualisieren müssen.
+Die Zugangsdaten des Servicekontos werden bei geänderten Sicherheitsanforderungen rotiert, wobei frühere Geheimnisse ungültig werden und der kontrollierte API-Zugriff erhalten bleibt.
 
 Durch das Erstellen neuer Anmeldeinformationen werden die alten gelöscht. Die alten Anmeldeinformationen können nicht mehr verwendet werden.
 

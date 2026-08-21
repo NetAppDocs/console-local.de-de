@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: reference-console-assistant-operations.html 
+keywords: Console assistant, AI-assisted management, agentic operations, metrics, storage provisioning, ONTAP management, netapp console local 
+summary: Die vom Console-Assistenten in der lokalen NetApp Console-Bereitstellung unterstützten kundenorientierten Betriebskategorien. 
+---
+= Unterstützte Console-Assistentenoperationen in NetApp Console lokale Bereitstellung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Der Konsolenassistent unterstützt Fragen in natürlicher Sprache und ausgewählte Speichervorgänge. Die verfügbaren Vorgänge hängen von der Version, dem konfigurierten LLM-Endpunkt und Ihren zugewiesenen Berechtigungen ab.
+
+
+NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
+
+Der NetApp Console Assistent kann im *Read only*-Modus für Fragen und Analysen ohne Infrastrukturänderungen verwendet werden. Der *Read/write*-Modus steht für unterstützte Vorgänge zur Verfügung, die Speicher oder ONTAP Systeme verändern können. Der Assistent zeigt die vorgeschlagene Änderung an und fordert eine Bestätigung, bevor ein Schreibvorgang ausgeführt wird.
+
+
+
+[[conversational-guidance-and-search]]
+== Gesprächsführung und Suche
+
+Fragen zur lokalen Bereitstellung der NetApp Console, zur eigenen Speicherumgebung oder zu unterstützten ONTAP Administrationsworkflows können gestellt werden. Der Assistent nutzt den konfigurierten LLM Endpoint zusammen mit verfügbarer Dokumentation und Flottenkontext, um eine Antwort zu geben oder zusätzlichen Kontext anzufordern.
+
+
+
+[[metrics-and-analytics]]
+== Kennzahlen und Analysen
+
+Stellen Sie schreibgeschützte Anfragen zur unterstützten Speicherkapazität, Leistung und anderen Kennzahlen für Ressourcen in Ihrem zulässigen Bereich. Ressource, Kennzahl und Zeitraum sollten angegeben werden, wenn diese Details für Ihre Frage relevant sind.
+
+Der Assistent liefert eine Analyse zurück und ändert im *Nur-Lese-Modus* den Speicher nicht.
+
+
+
+[[storage-provisioning]]
+== Speicherbereitstellung
+
+Die Arbeitslast und ihre Speicheranforderungen können in natürlicher Sprache beschrieben werden. Der Assistent kann eine Speicherklasse und einen Speicherort empfehlen, fehlende Details identifizieren und einen Bereitstellungsplan zur Überprüfung präsentieren.
+
+Nachdem Sie den Plan genehmigt haben, stellt der Assistent die unterstützte Volume- oder LUN-Operation innerhalb Ihrer Rollenberechtigungen und Speicherklassenrichtlinien bereit. link:task-provisioning-agentic.html["Informationen zur Bereitstellung von Speicher mit KI-gestützten Workflows"].
+
+
+
+[[alert-investigation-and-remediation]]
+== Untersuchung und Behebung von Warnmeldungen
+
+Den Assistenten bitten, eine unterstützte aktive Warnung zu untersuchen. Der Assistent analysiert die Warnung und kann eine Abhilfemaßnahme vorschlagen. Wenn eine unterstützte Abhilfemaßnahme den Speicher ändert, präsentiert der Assistent die Maßnahme zur Überprüfung und fordert eine Bestätigung vor der Ausführung an.
+
+
+
+[[ontap-management]]
+== ONTAP Management
+
+Fordern Sie eine unterstützte Verwaltungsoperation für ein registriertes ONTAP System in natürlicher Sprache an. Der Ziel-Cluster, die SVM oder die Ressource sollte, sofern bekannt, angegeben werden, damit der Assistent den korrekten Kontext verwenden kann.
+
+Der Assistent unterscheidet zwischen Leseanfragen und Schreibvorgängen. Das Ziel und die vorgeschlagenen Änderungen sollten vor der Bestätigung eines Schreibvorgangs überprüft werden. Der verfügbare Operationssatz hängt von der NetApp Console lokalen Bereitstellungsversion und den Ihrem Konto zugewiesenen Berechtigungen ab.
+
+
+
+[[permissions-and-scope]]
+== Berechtigungen und Geltungsbereich
+
+Der Assistent nutzt die Berechtigungen und den Ressourcenbereich des angemeldeten Benutzers:
+
+* Ihre Rolle bestimmt, welche Ressourcen und Vorgänge Sie einsehen oder ändern können.
+* Organisation, Ordner und Flottenumfang begrenzen die dem Assistenten zur Verfügung stehenden Systeme und Workloads.
+* Speicherklassenrichtlinien schränken die KI-gestützte Bereitstellung ein.
+* Der Assistent umgeht die lokalen Bereitstellungszugriffskontrollen der NetApp Console nicht.
+
+
+link:reference-iam-predefined-roles.html["Informationen zu NetApp Console Zugriffsrollen für die lokale Bereitstellung"].
+
+
+
+[[asynchronous-operations]]
+== Asynchrone Operationen
+
+Manche unterstützte Schreibvorgänge werden nicht sofort abgeschlossen. Für diese Vorgänge erstellt der Assistent einen Auftrag. Der Status der Anfrage kann beim Assistenten abgefragt werden, um den Abschluss zu überwachen.
+
+
+
+[[related-information]]
+== Verwandte Informationen
+
+* link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"]
+* link:task-console-asst-use.html["Den NetApp Console Assistenten verwenden"]
+* link:reference-llm-supported-models.html["Unterstützte LLM Anbieter und Modelle"]
+

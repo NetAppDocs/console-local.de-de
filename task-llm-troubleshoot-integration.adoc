@@ -14,7 +14,7 @@ summary: Fehlerbehebung bei der LLM-Integration in der lokalen NetApp Console-Be
 
 
 [role="lead"]
-Mit diesem Schnelltest lassen sich häufige LLM-Integrationsprobleme in der lokalen NetApp Console-Bereitstellung diagnostizieren und beheben.
+LLM-Integrationsfehler in der lokalen NetApp Console-Bereitstellung diagnostizieren, um den Zugriff auf den Console-Assistenten und zuverlässige Antworten für Speicheranleitungen und -vorgänge wiederherzustellen.
 
 
 NOTE: Diese Dokumentation zur Verbindung eines LLM mit dem Konsolenassistenten zur Aktivierung von KI-Funktionen wird als Technologievorschau bereitgestellt. Mit diesem Vorschauangebot behält sich NetApp das Recht vor, Angebotsdetails, Inhalte und Zeitplan vor der allgemeinen Verfügbarkeit zu ändern.
@@ -53,7 +53,7 @@ Eine einfache Leseanfrage ausführen und die Erreichbarkeit des Provider-Endpunk
 | Speichern oder Testen schlägt in AI Tools fehl | Konfigurations- oder Verbindungsinkonsistenz | Anbietertyp, Endpunkt-URL, API-Schlüsselformat, ausgewähltes Modell und ausgehender Zugriff | Der Wert, der die Validierung nicht besteht, muss korrigiert und erneut gespeichert werden. 
 
 
-| Die Schaltfläche „Console assistant“ fehlt. | Unzureichender Integrationsstatus, Organisationskonflikt oder RBAC-Konflikt | Erfolgreiche Speicherung von KI-Tools, Integrationsstatus, aktuelle Organisation und erwartete Zugriffsrolle | Die Sitzung wird aktualisiert und mit einem bekannten, funktionierenden Administratorkonto überprüft. 
+| Die Schaltfläche „Console assistant“ fehlt. | Nicht ordnungsgemäßer Integrationsstatus | Erfolgreiches Speichern der KI-Tools, Integrationsstatus und erwartete Zugriffsrolle | Die Sitzung wird aktualisiert und mit einem bekannten, funktionierenden Administratorkonto überprüft. 
 
 
 | Assistent öffnet sich, aber die Anfrage schlägt fehl | Problem mit dem Anbieter oder dem Laufzeitpfad | Erreichbarkeit des Endpunkts, Modellverfügbarkeit auf diesem Endpunkt, Anbieterlimits und temporärer Anbieterstatus | Nach Behebung von Endpunkt-/Modellkonflikten oder Anbieterseitigen Limitproblemen erneut versuchen 
