@@ -77,10 +77,26 @@ Beispiel: `Create a 10GiB volume for home directories named home, and share it w
 
 
 
+[[use-a-prompt-from-the-prompt-library]]
+== Eine Eingabeaufforderung aus der Bibliothek verwenden
+
+Die Bibliothek bietet geeignete Ausgangspunkte für Fragen zur Storage-Management und zum Zustand der Flotte.
+
+.Schritte
+. Den Konsolenassistenten öffnen.
+. Die Prompt Bibliothek kann über die Schaltfläche in der Kopfzeile des Assistenten geöffnet werden.
+. Eine Eingabeaufforderung aus der Bibliothek auswählen, überprüfen und die Anfrage absenden.
+. Folgen Sie der Antwort des Assistenten. Je nach Anfrage gibt der Assistent möglicherweise Informationen zurück, bittet um weitere Details oder fordert eine Bestätigung an, bevor eine Aktion ausgeführt wird.
+
+
+
+
 [[use-the-assistant-for-metrics-and-analytics]]
 == Der Assistent für Kennzahlen und Analysen kann verwendet werden.
 
-Stellen Sie eine schreibgeschützte Frage, die Ressource, Umfang, Metrik und Zeitraum angibt, die Sie verstehen möchten. Der Assistent liefert eine Analyse der unterstützten Metriken und ändert Ihren Speicher nicht.
+Kapazitäts- und Leistungsbedingungen können innerhalb des zulässigen Bereichs untersucht werden, ohne die Speicherumgebung zu verändern. Eine schreibgeschützte Abfrage, die Ressource, Bereich, Metrik und Zeitraum identifiziert, auf die sich das Verständnis bezieht, ist möglich. Der Assistent gibt eine Analyse der unterstützten Metriken zurück und verändert den Speicher nicht.
+
+Der Console-Assistent steht für Fragen in natürlicher Sprache und für Analysen auf hoher Ebene innerhalb der Ressourcen im zulässigen Bereich zur Verfügung. Der Workload Analyzer eignet sich für detaillierte, zeitbasierte Analysen eines einzelnen Volumes, einschließlich Latenz, Durchsatz, Ressourcenauslastung, Kapazität, Ereignissen und Prognosen.
 
 
 

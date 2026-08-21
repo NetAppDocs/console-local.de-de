@@ -16,6 +16,8 @@ summary: Es wird erläutert, wie der Workload Analyzer bei der Untersuchung von 
 [role="lead"]
 Mit dem Workload Analyzer für lokale Bereitstellungen der NetApp Console lässt sich das Verhalten eines einzelnen Volumes im Zeitverlauf anzeigen. Leistungsbeeinträchtigungen, Kapazitätstrends und Ressourcenkonflikte können direkt vom Volume, aus einer Warnmeldung oder aus dem Inventar untersucht werden.
 
+Für natürlichsprachliche Fragen und Analysen auf höherer Ebene über alle zulässigen Ressourcen hinweg steht der Console Assistent zur Verfügung.link:reference-console-assistant-operations.html["Informationen zu den unterstützten Console Assistant-Operationen."]
+
 
 
 [[how-workload-analyzer-identifies-root-causes]]

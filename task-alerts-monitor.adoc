@@ -166,6 +166,8 @@ Wenn die Maßnahme das Problem behebt, erscheint die Warnung für diesen Bereich
 
 Eine ONTAP Warnung kann im Workload Analyzer analysiert werden, um nachzuvollziehen, was sie ausgelöst hat.
 
+Der Workload Analyzer ermöglicht eine detaillierte, zeitbasierte Analyse des betroffenen Volumes. Für Fragen in natürlicher Sprache oder eine übergeordnete Analyse der zulässigen Ressourcen steht der Console Assistent zur Verfügung. link:reference-console-assistant-operations.html["Informationen zu den unterstützten Console Assistant-Operationen."]
+
 Bei der Untersuchung einer ONTAP-Warnung ist es auch möglich, direkt zur System Manager Oberfläche des Systems zu wechseln, das die Warnung ausgelöst hat, um weitere Details anzuzeigen und Maßnahmen zu ergreifen.
 
 .Schritte

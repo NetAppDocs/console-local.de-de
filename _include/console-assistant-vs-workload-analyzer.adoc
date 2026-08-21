@@ -1,0 +1,5 @@
+= 
+:allow-uri-read: 
+
+
+Der Console-Assistent steht für Fragen in natürlicher Sprache und für Analysen auf hoher Ebene innerhalb der Ressourcen im zulässigen Bereich zur Verfügung. Der Workload Analyzer eignet sich für detaillierte, zeitbasierte Analysen eines einzelnen Volumes, einschließlich Latenz, Durchsatz, Ressourcenauslastung, Kapazität, Ereignissen und Prognosen.

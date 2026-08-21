@@ -32,8 +32,8 @@ Um Ihr LLM zu verbinden, einen Anbieterpfad auswählen, Endpunktdetails und API-
 
 
 
-[[gather-what-you-need-before-you-connect-an-llm]]
-== Sammeln Sie alles Notwendige, bevor Sie eine Verbindung zu einem LLM herstellen.
+[[before-you-begin]]
+== Bevor Sie beginnen
 
 Provider-Zugangsdaten und Endpoint-Zugriff werden vorbereitet, sodass der NetApp Console Assistent innerhalb der konfigurierten Governance-Grenzen Ihrer Organisation agieren kann.
 

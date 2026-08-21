@@ -68,7 +68,7 @@ Die Probleme lassen sich in zwei Kategorien einteilen:
 * *Nichteinhaltung der Leistungsanforderungen*: Das Laufzeitverhalten der Arbeitslast entspricht nicht mehr der Performance-Absicht der Speicherklasse (zum Beispiel kontinuierlicher Druck nahe einer QoS-Grenze oder erhöhte Tail-Latenz).
 
 
-Eine Analyseansicht erläutert, was sich geändert hat und warum. Geführte Korrekturmaßnahmen (zum Beispiel *Fix it*) können zur Verfügung stehen, um die Compliance wiederherzustellen. Einige Korrekturen können direkt angewendet werden, während andere möglicherweise eine Zuordnung der Workload zu einer anderen Speicherklasse erfordern, um das beabsichtigte Verhalten wiederherzustellen.
+Eine Analyseansicht erläutert, was sich geändert hat und warum. Geführte Korrekturmaßnahmen (zum Beispiel *Fix It*) können zur Verfügung stehen, um die Compliance wiederherzustellen. Einige Korrekturen können direkt angewendet werden, während andere erfordern können, dass die Workload einer anderen Speicherklasse zugeordnet wird, um das beabsichtigte Verhalten wiederherzustellen.
 
 .Wo untersucht werden kann
 Abweichungen und Nichteinhaltungen lassen sich in der Regel von einem dieser Orte aus untersuchen (die Verfügbarkeit hängt von Ihrer Bereitstellung und Ihren Berechtigungen ab):

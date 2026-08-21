@@ -39,7 +39,7 @@ sidebar:
     entries:
     - title: Kurzanleitung zur Einrichtung der NetApp Console
       url: "/task-quick-start-console-setup.html"
-    - title: NetApp Console installieren
+    - title: Lokale Bereitstellung der NetApp Console Installation
       entries:
       - title: NetApp Console installieren
         url: "/task-install-agent-on-prem-ova.html"

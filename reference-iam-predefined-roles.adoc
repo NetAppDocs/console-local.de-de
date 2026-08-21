@@ -28,7 +28,7 @@ Plattformrollen gewähren Administrationsberechtigungen für die lokale Bereitst
 | Plattformrolle | Verantwortlichkeiten 
 
 
-| link:reference-iam-platform-roles.html#organization-admin-roles["Organisationsadministrator"] | Diese Rolle ermöglicht es einem Benutzer, uneingeschränkten Zugriff auf alle Flotten und Ordner innerhalb einer Organisation zu erhalten, Mitglieder zu beliebigen Flotten oder Ordnern hinzuzufügen sowie alle Aufgaben auszuführen und alle Datendienste zu nutzen, denen keine explizite Rolle zugeordnet ist. Benutzer mit dieser Rolle verwalten die Organisation, indem sie Ordner und Flotten erstellen, Rollen zuweisen, Benutzer hinzufügen und Systeme verwalten, sofern sie über die entsprechenden Anmeldeinformationen verfügen. 
+| link:reference-iam-platform-roles.html#organization-admin-roles["Organisationsadministrator"] | Ermöglicht einem Benutzer uneingeschränkten Zugriff auf alle Flotten und Ordner innerhalb einer Organisation, das Hinzufügen von Mitgliedern zu beliebigen Flotten oder Ordnern sowie das Ausführen beliebiger Aufgaben und die Nutzung beliebiger Datendienste, denen keine explizite Rolle zugeordnet ist. Benutzer mit der Org admin-Rolle können außerdem LLM-Integrationen, E-Mail-Servereinstellungen konfigurieren und Webhooks hinzufügen. Benutzer mit dieser Rolle verwalten die Organisation, indem sie Ordner und Flotten erstellen, Rollen zuweisen, Benutzer hinzufügen und Systeme verwalten, sofern sie über die entsprechenden Berechtigungen verfügen. 
 
 
 | link:reference-iam-platform-roles.html#organization-admin-roles["Ordner- oder Flottenadministrator"] | Gewährt einem Benutzer uneingeschränkten Zugriff auf zugewiesene Flotten und Ordner. Kann Mitglieder zu den von ihm verwalteten Ordnern oder Flotten hinzufügen sowie beliebige Aufgaben ausführen und jeden Datendienst oder jede Anwendung auf Ressourcen innerhalb des zugewiesenen Ordners oder der Flotte nutzen. 
@@ -68,6 +68,13 @@ Nachfolgend ist eine Liste der Rollen in der Anwendungskategorie aufgeführt. Je
 
 | link:reference-iam-storage-roles.html["System-Health-Spezialist"] | Verwaltung von Speicher-, Systemzustands- und Governance-Funktionen, alle Berechtigungen des Storage-Administrators, jedoch ohne die Möglichkeit, bestehende Systeme zu ändern oder zu löschen. 
 |===
+
+
+[[console-assistant-access]]
+== Konsolenassistent-Zugriff
+
+Ein Organisationsadministrator oder Superadministrator muss eine LLM-Integration konfigurieren, bevor Mitglieder den Konsolenassistenten nutzen können. Jedes Mitglied kann nur die Ressourcen anzeigen oder ändern, die durch die zugewiesenen Rollen sowie den Geltungsbereich von Organisation, Ordner oder Flotte zulässig sind. link:reference-console-assistant-operations.html["Informationen zu den unterstützten Console Assistant-Operationen."]
+
 
 
 [[data-service-roles]]

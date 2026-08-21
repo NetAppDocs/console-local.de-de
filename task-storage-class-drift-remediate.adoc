@@ -46,7 +46,7 @@ Die Seite *Benachrichtigungen > Übersicht* wird mit angewendeten Filtern geöff
 +
 Bei Feststellungen zur Konfigurationsabweichung werden die Soll- und Ist-Einstellungen verglichen, um zu bestimmen, was sich geändert hat.
 
-. Wählen Sie die empfohlene Abhilfemaßnahme, wie zum Beispiel *Beheben*.
+. Die empfohlene Abhilfemaßnahme, wie zum Beispiel *Beheben*, kann ausgewählt werden.
 . Die vorgeschlagenen Änderungen und die Abhilfemaßnahmen können überprüft und angewendet werden.
 . Zurück zu *Speicher > Speicherklassen* und prüfen, ob die Arbeitslast nicht mehr als verschoben angezeigt wird.
 +

@@ -14,7 +14,7 @@ summary: Referenz für Abhilfemaßnahmen, die in der lokalen NetApp Console-Bere
 
 
 [role="lead"]
-Diese Referenz dient dem Verständnis der in *Fix it* in der lokalen NetApp Console-Bereitstellung verfügbaren Korrekturmaßnahmen. Für jede Aktion beschreibt die Tabelle, was die Aktion bewirkt und die zugehörige Warnung. Die Aktionsdetails im Bestätigungsdialog sollten vor der Ausführung überprüft werden.
+Diese Referenz dient dem Verständnis der von *Fix It* in der lokalen NetApp Console-Bereitstellung verfügbaren Korrekturmaßnahmen. Für jede Aktion beschreibt die Tabelle, was die Aktion bewirkt und die zugehörige Warnung. Die Aktionsdetails im Bestätigungsdialog sollten vor der Ausführung überprüft werden. Diese Referenz beschreibt Aktionen im Alerts-Workflow; sie gibt nicht an, welche Aktionen der Console-Assistent vorschlagen kann.
 
 
 

@@ -88,6 +88,8 @@ Die Integration lässt sich mit diesen Steuerelementen schützen:
 * Die Nutzung und Warnmeldungen auf Anbieterseite bieten Hinweise auf unerwartete Aktivitäten.
 
 
+Die Kosten für den Control Console Assistant lassen sich durch die Wahl eines geeigneten LLM-Anbieters und -Modells, das Festlegen von Nutzungslimits und Warnmeldungen beim Anbieter sowie das Überwachen der Token-Nutzung steuern. Nur Aktivitäten, die Anfragen an den LLM senden, verbrauchen Token des Anbieters; Backend-Operationen tun dies nicht.
+
 
 
 [[connect-your-llm]]
