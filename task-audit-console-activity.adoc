@@ -14,21 +14,21 @@ summary: 'Benutzeraktivitäten (sowohl über die Benutzeroberfläche als auch ü
 
 
 [role="lead"]
-Auf der Seite „Audit“ lassen sich Benutzeraktivitäten, die sowohl über die Benutzeroberfläche als auch über die API initiiert wurden, prüfen, und der Status von Vorgängen in der lokalen NetApp Console-Bereitstellung sowie der Benutzer, der sie initiiert hat, kann überwacht werden.
+Administrative Aktivitäten werden während Compliance-Prüfungen dokumentiert, um Zugriffsänderungen zu verifizieren und einen Nachweis der Aktionen in der NetApp Console lokalen Bereitstellung zu erhalten.
 
 .Erforderliche Rollen
 Super Admin, Organization Admin, Ordner- und Flotten-Admin, Operations Support Analyst, Super Viewer, Organization Viewer oder Ordner- und Flotten-Viewer. link:reference-iam-predefined-roles.html["Informationen zu Zugriffsrollen"].
 
-Sie können die Revisionsaktivitäten in der lokalen NetApp Console-Bereitstellung anzeigen, eine CSV-Datei des Revisionsprotokolls herunterladen oder das Revisionsprotokoll so konfigurieren, dass es mithilfe eines Webhooks an Ihren eigenen Syslog-Server gesendet wird.
+Sie können die Revisionsaktivitäten in der lokalen NetApp Console-Bereitstellung anzeigen und eine CSV-Datei des Revisionsprotokolls herunterladen.
 
 
 
 [[audit-user-activity-from-the-audit-page]]
 == Benutzeraktivitäten auf der Seite „Audit“ prüfen
 
-Auf der Seite „Revisionsprotokoll“ lässt sich erkennen, wer eine Aktion durchgeführt hat oder welchen Status sie hat.
+Administrative Aktivitäten werden überwacht, um Änderungen in Ihrer lokalen NetApp Console-Bereitstellung nachzuverfolgen, wenn Vorfälle gelöst oder die operative Verantwortlichkeit überprüft wird.
 
-Die Seite „Audit“ zeigt die Aktionen an, die Benutzer in Ihrer Organisation durchgeführt haben. Beispielsweise lässt sich nachvollziehen, wer ein Mitglied zu einer Organisation hinzugefügt hat oder ob eine Flotte erfolgreich gelöscht wurde, ebenso wie weitere Speicherverwaltungsaktionen, die Benutzer in Ihrer Organisation durchgeführt haben.
+Die Seite „Revisionsprotokoll“ zeigt die Aktionen an, die Benutzer innerhalb Ihrer Organisation durchgeführt haben. Beispielsweise lässt sich nachvollziehen, wer ein Mitglied zu einer Organisation hinzugefügt hat, bestätigen, dass ein Benutzer eine Flotte gelöscht hat, oder andere Speicherverwaltungsaktionen einsehen, die Benutzer in Ihrer Organisation durchführen.
 
 Die Revisionsprotokolle zeigen Aktivitäten für die folgenden Dienste:
 
@@ -39,18 +39,19 @@ Die Revisionsprotokolle zeigen Aktivitäten für die folgenden Dienste:
 
 .Schritte
 . *Verwaltung > Revisionsprotokoll* auswählen.
-. Mit den Filtern oberhalb der Tabelle lässt sich steuern, welche Aktionen in der Tabelle angezeigt werden.
-+
-Beispielsweise kann der Filter *Service* verwendet werden, um Aktionen anzuzeigen, die sich auf einen bestimmten Dienst beziehen, oder der Filter *User* kann verwendet werden, um Aktionen anzuzeigen, die sich auf ein bestimmtes Benutzerkonto beziehen.
+. Mit den Filtern oberhalb der Tabelle lässt sich die Revisionsprotokoll-Aktivität nach Zeitbereich, Dienst, Aktion, Ressource, Benutzer oder Status eingrenzen.
 
 
+Die Prüfprotokolleinträge zeigen den Benutzer an, der die Aktion ausgeführt hat, sofern die Identität des Benutzers ermittelt werden kann. Kann die Identität des Benutzers nicht ermittelt werden, wird der Benutzername  `auth0Id`anstelle seines Namens angezeigt.
+
++ Beispielsweise kann der Filter *Service* verwendet werden, um Aktionen anzuzeigen, die sich auf einen bestimmten Dienst beziehen, oder der Filter *User* kann verwendet werden, um Aktionen anzuzeigen, die sich auf ein bestimmtes Benutzerkonto beziehen.
 
 
 
 [[filter-audit-logs-for-identity-and-access-management-actions]]
 === Revisionsprotokolle nach Aktionen im Bereich Identitäts- und Zugriffsmanagement filtern
 
-Um nur Aktionen im Zusammenhang mit der Verwaltung Ihrer Organisation wie das Hinzufügen von Mitgliedern, das Erstellen von Flotten oder das Löschen von Ressourcen anzuzeigen, das Revisionsprotokoll nach dem Mandantendienst filtern.
+Änderungen im Zugriffsmanagement können überprüft werden, um festzustellen, wer organisatorische Ressourcen geändert hat, und um genaue Sicherheitsuntersuchungen zu unterstützen.
 
 .Schritte
 . *Verwaltung > Revisionsprotokoll* auswählen.
@@ -66,7 +67,7 @@ Beispielsweise kann der Filter *User* verwendet werden, um IAM-Aktionen anzuzeig
 [[download-audit-logs-from-the-audit-page]]
 === Audit-Protokolle von der Audit-Seite herunterladen
 
-Sie können die Revisionsprotokolle von der Seite „Revisionsprotokoll“ als CSV-Datei herunterladen. Dadurch wird eine Aufzeichnung der Aktionen ermöglicht, die Benutzer in Ihrer Organisation ausführen. Die heruntergeladene CSV-Datei enthält alle Revisionsprotokollspalten, unabhängig von den Filtern oder angezeigten Spalten auf der Seite „Revisionsprotokoll“.
+Ein unabhängiger Nachweis der organisatorischen Maßnahmen bleibt erhalten, um Compliance-Prüfungen und zukünftige Vorfallsuntersuchungen zu unterstützen. Die heruntergeladene CSV-Datei enthält alle Spalten des Revisionsprotokolls, auch wenn Filter angewendet oder die angezeigten Spalten geändert werden.
 
 .Schritte
 . Auf der Seite *Audit* das Download-Symbol in der oberen rechten Ecke der Tabelle auswählen.
