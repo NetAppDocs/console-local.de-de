@@ -30,15 +30,15 @@ Vor der Installation ist sicherzustellen, dass Ihr VM-Host die Anforderungen erf
 
 Vor der Installation der lokalen Bereitstellung von NetApp Console sollte sichergestellt sein, dass Ihr Host-Rechner die Installationsvoraussetzungen erfüllt.
 
-* CPU: 16 Kerne oder 16 vCPUs
-* RAM: 64 GB
+* CPU: 16 Kerne oder 16 vCPUs (reserviert)
+* Arbeitsspeicher: 64 GB (reserviert)
 * Speicherplatz: 596 GB (Thick Provisioning empfohlen)
 * vSphere 7.0u3 oder höher, mit virtueller Hardwareversion 19 oder höher
 
 
 [NOTE]
 ====
-* CPU und Arbeitsspeicher werden auf dem ESXi-Host beim Einschalten der VM reserviert, nicht nur zugewiesen. Der Zielhost muss mindestens 16 CPU-Kerne und 64 GB als nicht reservierte Kapazität verfügbar haben. Vorhandene VM-Reservierungen auf dem Host verringern die verfügbare Kapazität.
+* CPU und Arbeitsspeicher werden auf dem ESXi-Host beim Einschalten der VM reserviert, nicht nur zugewiesen. Der Zielhost muss mindestens 16 CPU-Kerne und 64 GB als reservierte Kapazität verfügbar haben. Vorhandene VM-Reservierungen auf dem Host reduzieren die verfügbare Kapazität.
 * Der Datenspeicher muss eine Mindestleistung beim Schreiben auf die Festplatte erbringen: fsync p99 Schreiblatenz ≤ 20 ms und 4K Random Write IOPS ≥ 200. Eine Latenz über 50 ms oder IOPS unter 30 führt zu einem Bereitstellungsfehler.
 * IPv6 wird nicht unterstützt. Eine statische IPv4-Adresse ist erforderlich.
 * Die lokale Bereitstellung der NetApp Console sollte in einer vCenter Umgebung und nicht direkt auf einem ESXi-Host erfolgen.
