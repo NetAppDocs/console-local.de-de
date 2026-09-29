@@ -128,3 +128,6 @@ Die vSphere-Taskleiste zeigt den Fortschritt an, während die lokale NetApp Cons
 
 . Die VM wird eingeschaltet.
 
+
+
+NOTE: Zur Sicherung der Kommunikation mit Ihrem eigenen TLS-Zertifikat gelten die Anweisungen in diesem Dokument link:https://kb.netapp.com/Cloud/ncds/ncld/ncld_kbs/How_to_Install_a_Commercial_TLS_Certificate_in_NetApp_Console_local_deployment["NetApp Support Site Knowledge Base Artikel"^].
