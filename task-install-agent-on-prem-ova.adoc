@@ -98,14 +98,8 @@ Melden Sie sich in Ihrer vCenter-Umgebung an, um die lokale Console-Bereitstellu
 . Wählen Sie den gewünschten Typ der Proxykonfiguration: expliziter Proxy, transparenter Proxy oder kein Proxy.
 . Wählen Sie den Datenspeicher aus, auf dem die VM bereitgestellt werden soll, und wählen Sie anschließend *Weiter*. Es sollte sichergestellt sein, dass die Host-Anforderungen erfüllt werden.
 . Wählen Sie das Netzwerk aus, mit dem die VM verbunden werden soll, und wählen Sie anschließend *Weiter*. Es ist sicherzustellen, dass das Netzwerk IPv4 ist und über ausgehenden Internetzugang zu den erforderlichen Endpunkten verfügt.
-. Im Fenster *Vorlage anpassen* sind die folgenden Felder auszufüllen:
+. Füllen Sie im Fenster *Vorlage anpassen* die folgenden Felder aus:
 +
-** *Proxyinformationen*
-+
-*** Wenn expliziter Proxy ausgewählt wurde, sind der Hostname oder die IP-Adresse und die Portnummer des Proxyservers sowie der Benutzername und das Passwort einzugeben.
-*** Wenn der transparente Proxy ausgewählt wurde, ist das entsprechende Zertifikat hochzuladen.
-
-
 ** *Konfiguration der virtuellen Maschine*
 +
 *** *Wartungskennwort*: Das Kennwort für den  `maint` Benutzer festlegen, das den Zugriff auf die NetApp Console lokale Bereitstellung Wartungskonsole ermöglicht.
