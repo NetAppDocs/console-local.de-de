@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: task-manage-licenses.html 
+keywords: licenses, licensing, NetApp Backup and Recovery, NetApp Console local deployment, BYOL, bring-your-own-license, direct license 
+summary: Verwaltung direkter Lizenzen für NetApp Backup and Recovery in der lokalen Bereitstellung von NetApp Console. 
+---
+= Verwaltung von Lizenzen in der lokalen Bereitstellung von NetApp Console
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Die NetApp Backup and Recovery Lizenz kann in der lokalen Bereitstellung von NetApp Console verwaltet werden. Dabei handelt es sich um eine Floating-Lizenz, die für alle Systeme verwendet werden kann, die Ihrer NetApp Console Organisation zugeordnet sind. Wenn die Lizenz eine ausreichende Backup-Kapazität bietet, muss keine weitere Lizenz erworben werden. Die Lizenz kann hinzugefügt, aktualisiert und entfernt werden, und die verbrauchte Kapazität, die Lizenzkapazität sowie das Ablaufdatum der Lizenz können eingesehen werden.
+
+
+NOTE: NetApp Console lokale Bereitstellung erfordert keine Lizenz. NetApp Backup and Recovery ist derzeit der einzige Dienst, der die direkte Lizenzierung in der NetApp Console lokalen Bereitstellung unterstützt. Diese Lizenz wird auch als Bring-Your-Own-License-Lizenz (BYOL) bezeichnet. Weitere Informationen sind in der link:https://docs.netapp.com/us-en/data-services-backup-recovery/br-start-licensing.html["NetApp Backup and Recovery Lizenzierungsdokumentation"^] zu finden.
+
+.Erforderliche Zugriffsrollen
+Sie benötigen die Rolle „Super admin“ oder „Organization admin“, um Lizenzen in der lokalen Bereitstellung von Console zu verwalten.
+
+
+
+[[add-a-license]]
+== Lizenz hinzufügen
+
+Eine Lizenz wird Ihrer Console Organisation durch Hochladen einer Lizenzdatei hinzugefügt.
+
+.Bevor Sie beginnen
+Sie benötigen die Seriennummer Ihres Cloud-Dienstes und die Organisations-ID der NetApp Console, um die Lizenzdatei zu generieren.
+
+.Schritte
+. *Administration > Lizenzen* auswählen.
+. Wählen Sie die Registerkarte *Direktlizenzen* aus.
+. *Lizenz hinzufügen* wird ausgewählt.
+. Auf der NetApp Support Site ist die Lizenzdatei über die Registerkarte *System > Software Licenses* zu generieren.
+. Zum Dialogfeld *Lizenz hinzufügen* zurückkehren, *Hochladen* auswählen und die Lizenzdatei auswählen.
+. Zum Installieren der Lizenz ist *Add license* auszuwählen.
+
+
+Die Lizenz wird in der Tabelle *Direct licenses* angezeigt, und die Zusammenfassung *License and Capacity Distribution* wird aktualisiert.
+
+
+
+[[view-license-status]]
+== Lizenzstatus anzeigen
+
+Auf der Registerkarte *Direct licenses* werden die installierten Lizenzen und ihr Status überprüft. Die Tabelle zeigt den Dienst, die Seriennummer, den Typ, die belegte Kapazität, die Lizenzkapazität und den Lizenzablauf an. Die Zusammenfassung *License and Capacity Distribution* zeigt die Anzahl der installierten Lizenzen und die NetApp Backup and Recovery zugewiesene Kapazität an.
+
+Über das Aktionsmenü image:icon-action.png["Ein Symbol mit drei Punkten"] in jeder Zeile kann eine Lizenz aktualisiert oder entfernt werden.
+
+.Schritte
+. *Administration > Lizenzen* auswählen.
+. Wählen Sie die Registerkarte *Direktlizenzen* aus.
+. Die Tabelle und die Zusammenfassung zur *Lizenz- und Kapazitätsverteilung* sind zu prüfen.
+
+
+
+
+[[update-a-license]]
+== Eine Lizenz aktualisieren
+
+Das Ersetzen einer bestehenden Lizenz in Ihrer Console Organisation ist beispielsweise dann erforderlich, wenn eine Lizenz verlängert wird oder sich ihre Kapazität oder ihr Ablaufdatum ändert.
+
+.Schritte
+. *Administration > Lizenzen* auswählen.
+. Wählen Sie die Registerkarte *Direktlizenzen* aus.
+. Im Menü „Aktionen“ image:icon-action.png["Ein Symbol mit drei Punkten"] für die Lizenz, die aktualisiert wird, wird *Lizenz aktualisieren* ausgewählt.
+. Im Dialogfeld *Lizenz aktualisieren* werden *Hochladen* und anschließend die neue Lizenzdatei ausgewählt.
+. *Lizenz aktualisieren* dient zur Bestätigung der Aktualisierung.
+
+
+Nach der Aktualisierung der Lizenz zeigt die ausgewählte Zeile die neue Lizenzkapazität und den Ablauf der Lizenz an. Auch die Zusammenfassung *License and Capacity Distribution* wird aktualisiert.
+
+
+
+[[remove-a-license]]
+== Entfernen einer Lizenz
+
+Eine Lizenz wird aus Ihrer Console-Organisation entfernt. Das Entfernen einer Lizenz ist endgültig. Eine entfernte Lizenz trägt weder zur Kapazität noch zur Dauer von NetApp Backup and Recovery bei. Wenn die Lizenz abläuft, werden Backups aus bestehenden Richtlinien und Wiederherstellungen fortgesetzt, Sie können jedoch keine neuen Backup-Richtlinien erstellen oder den Schutz auf zusätzliche Workloads und Datenspeicher ausweiten.
+
+.Schritte
+. *Administration > Lizenzen* auswählen.
+. Wählen Sie die Registerkarte *Direktlizenzen* aus.
+. Im Aktionsmenü image:icon-action.png["Ein Symbol mit drei Punkten"] für die Lizenz, die entfernt werden soll, ist *Lizenz entfernen* auszuwählen.
+. Im Bestätigungsdialog *Lizenz entfernen* ist die Seriennummer in der Eingabeaufforderung zu überprüfen.
+. Zum endgültigen Entfernen der Lizenz ist *Entfernen* auszuwählen.
+
+
+Die Lizenz wird aus der Tabelle *Direct licenses* entfernt, und die Zusammenfassung *License and Capacity Distribution* wird aktualisiert.

@@ -169,7 +169,7 @@ Schlüsselpaar:: Beim Erstellen des Console-Agenten ist ein EC2-Schlüsselpaar a
 PUT-Antwort-Hop-Limit bei Verwendung von IMDSv2:: Wenn IMDSv2 auf der EC2-Instanz aktiviert ist (dies ist die Standardeinstellung für neue EC2-Instanzen), muss das PUT-Response-Hop-Limit auf der Instanz auf 3 gesetzt werden. Wenn das Limit auf der EC2-Instanz nicht geändert wird, tritt beim Einrichten des Agenten ein UI-Initialisierungsfehler auf.
 +
 --
-* link:task-require-imdsv2.html["Die Verwendung von IMDSv2 auf Amazon EC2 Instanzen ist erforderlich"]
+* https://docs.netapp.com/us-en/console-setup-admin/task-require-imdsv2.html["Die Verwendung von IMDSv2 auf Amazon EC2 Instanzen ist erforderlich"^]
 * https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-IMDS-existing-instances.html#modify-PUT-response-hop-limit["AWS-Dokumentation: Ändern des Hop-Limits für PUT-Antworten"^]
 
 

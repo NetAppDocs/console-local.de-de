@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: concept-administer-netapp-console-local.html 
 keywords: administer Console local deployment, audit, audit log, compliance, SIEM, webhook, VM maintenance, access management, demonstrate compliance, operational visibility, netapp console local 
-summary: Informationen zur Verwaltung und Überwachung der lokalen Bereitstellung von NetApp Console, einschließlich Audit-Aktivitäten, Abonnements, Wartung, Fehlerbehebung und Mitgliederzugriff. 
+summary: Informationen zur Verwaltung und Überwachung der lokalen Bereitstellung von NetApp Console, einschließlich Audit-Aktivitäten, Lizenzen, Wartung, Fehlerbehebung und Mitgliederzugriff. 
 ---
 = Informationen zur Administration und Überwachung in der lokalen NetApp Console-Bereitstellung
 :hardbreaks:
@@ -29,12 +29,12 @@ Benutzer- und API-Aktivitäten können überprüft, der Status von Console-Vorg�
 
 
 
-[[licenses-and-subscriptions]]
-== Licenses and subscriptions
+[[licenses]]
+== Lizenzen
 
-Die Informationen zu Licenses and subscriptions geben Aufschluss über Serviceberechtigungen und den Abonnementstatus für Ihre NetApp Console-Umgebung.
+Anhand der Lizenzinformationen können Sie die Serviceberechtigungen für Ihre lokale Console Bereitstellung nachvollziehen.
 
-link:https://docs.netapp.com/us-en/console-licenses-subscriptions/index.html["Informationen zu Licenses and subscriptions"^].
+link:task-manage-licenses.html["Verwaltung von Lizenzen in der lokalen Bereitstellung von NetApp Console"]
 
 
 
