@@ -29,7 +29,7 @@ Wählen Sie ein Modell, das Ihren Leistungs-, Kosten- und Governance-Anforderung
 Der gewählte Anbietertyp bestimmt, welche Modelle in der Liste der lokalen Bereitstellungsmodelle der Konsole angezeigt werden:
 
 * *OpenAI* bietet Modelle für die direkte OpenAI Integration.
-* *OpenAI-kompatibel* – stellt Modelle bereit, die der kompatible Endpunkt Ihrer Organisation bereitstellt.
+* *OpenAI-kompatibler Proxy*: für die Verwendung eines Enterprise Gateway oder Proxy-Dienstes zur Verbindung mit unterstützten Modellen.
 * *Anthropic* – bietet Modelle für die direkte Anthropic Integration.
 
 

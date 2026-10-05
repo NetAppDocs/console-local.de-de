@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: task-llm-connect.html 
-keywords: LLM, AI, connect, large language model, console assistant, openai, openai-compatible, proxy, netapp console 
+keywords: LLM, AI, connect, large language model, console assistant, openai, openai-compatible proxy, netapp console 
 summary: Ein unterstützter LLM-Endpunkt kann verbunden werden, um den Konsolenassistenten und die KI-gestützte Verwaltung in der lokalen NetApp Console Bereitstellung zu ermöglichen. 
 ---
 = LLM verbinden und den NetApp Console Assistenten in der NetApp Console lokalen Bereitstellung aktivieren
@@ -37,7 +37,7 @@ Um Ihr LLM zu verbinden, einen Anbieterpfad auswählen, Endpunktdetails und API-
 
 Provider-Zugangsdaten und Endpoint-Zugriff werden vorbereitet, sodass der NetApp Console Assistent innerhalb der konfigurierten Governance-Grenzen Ihrer Organisation agieren kann.
 
-* Ihre Entscheidung für den Anbietertyp: OpenAI, OpenAI-kompatibel oder Anthropic, wie durch Release und Endpoint unterstützt.
+* Ihre Entscheidung zum Anbietertyp: OpenAI, OpenAI-kompatibler Proxy oder Anthropic
 * Ein gültiger API-Schlüssel für den ausgewählten Anbieterpfad.
 * Die Endpunkt-URL für Ihren Anbieterpfad.
 * Ihr Benutzername oder Ihre ID für das LLM-Anbieterkonto, falls erforderlich.
@@ -59,17 +59,16 @@ Assistentenfunktionen werden durch eine validierte Anbieterkonfiguration aktivie
 . Das Menü auswählen und anschließend *Bearbeiten* wählen.
 . Unter *Anbietertyp* einen Anbietertyp auswählen.
 +
-link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"].
-
-. Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben.
-. Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert.
-. Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen.
-. Ein Modell aus der Liste auswählen.
-. Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
-+
-Vor dem Speichern der Konfiguration sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft werden.
+** *OpenAI* für den direkten Zugriff auf OpenAI Modelle.
+** *OpenAI-kompatibler Proxy* zur Nutzung eines Enterprise-Gateways oder Proxy-Dienstes.
+** *Anthropic* für die Claude-Modelle von Anthropic.
 
 
+
+
+link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"]. . Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben. . Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert. . Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen. . Ein Modell aus der Liste auswählen. . Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
+
++ Vor dem Speichern der Konfiguration empfiehlt sich eine Überprüfung von Anbietertyp, Endpunkt-URL, API-Schlüssel und dem ausgewählten Modell.
 
 
 

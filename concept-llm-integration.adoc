@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: concept-llm-integration.html 
-keywords: LLM, AI, artificial intelligence, AI-assisted management, large language model,  openai-compatible, netapp console 
+keywords: LLM, AI, artificial intelligence, AI-assisted management, large language model,  openai-compatible proxy, netapp console 
 summary: Es wird erläutert, wie die lokale Bereitstellung der NetApp Console mit LLM-Anbietern integriert ist, um KI-gestütztes Speichermanagement, Analysen und Betriebsabläufe zu unterstützen. 
 ---
 = Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung
@@ -69,7 +69,7 @@ Die lokale Bereitstellung der Console steuert die Aktionen des Console-Assistent
 NetApp Console lokale Bereitstellung unterstützt folgende LLM-Anbietertypen:
 
 * *OpenAI* für den direkten Zugriff auf OpenAI Modelle.
-* *OpenAI-kompatibel* für einen kompatiblen Endpunkt, wie z. B. ein Enterprise Gateway oder einen Proxy-Service.
+* *OpenAI-kompatibler Proxy* zur Nutzung eines Enterprise-Gateways oder Proxy-Dienstes.
 * *Anthropic* für die Claude-Modelle von Anthropic.
 
 

@@ -898,7 +898,6 @@
   <block id="752430c5b5b9939ef8d9fafde15e90dc" category="section-title">Einen LLM Anbieterpfad auswählen</block>
   <block id="fcc55126fd45a515695466fda4602164" category="paragraph">NetApp Console lokale Bereitstellung unterstützt folgende LLM-Anbietertypen:</block>
   <block id="873109553cafbb3e957f0cc91186aa99" category="list-text">*OpenAI* für den direkten Zugriff auf OpenAI Modelle.</block>
-  <block id="fee6af50bc6105fefb846f7e518fb7cf" category="list-text">*OpenAI-kompatibel* für einen kompatiblen Endpunkt, wie z. B. ein Enterprise Gateway oder einen Proxy-Service.</block>
   <block id="7de1d980a668ed0c9d00649c3750c5d1" category="paragraph">Die Modellverfügbarkeit hängt vom konfigurierten Endpunkt ab. Ein Modell aus der Liste in der NetApp Console lokalen Bereitstellung auswählen.</block>
   <block id="64c716e8b3c375cb10518555f2cc559d" category="inline-link-macro">Informationen zu unterstützten LLM-Anbietern und Modellen in der lokalen NetApp Console-Bereitstellung</block>
   <block id="26973ca0129cd9b839210e7a88910363" category="section-title">LLM-Zugangsdaten schützen und Administratorzugriff kontrollieren</block>
@@ -1886,7 +1885,6 @@
   <block id="75e4289188e6a7cd06138286c091fab0" category="section-title">Wie sich der Anbietertyp auf die Modellverfügbarkeit auswirkt</block>
   <block id="94fdc96c690956dfeb881e08a7738112" category="paragraph">Der gewählte Anbietertyp bestimmt, welche Modelle in der Liste der lokalen Bereitstellungsmodelle der Konsole angezeigt werden:</block>
   <block id="758cbeb7242c0d95a1ba25a826bf7466" category="list-text">*OpenAI* bietet Modelle für die direkte OpenAI Integration.</block>
-  <block id="f8882d796dcd55911551ffa65e9934af" category="list-text">*OpenAI-kompatibel* – stellt Modelle bereit, die der kompatible Endpunkt Ihrer Organisation bereitstellt.</block>
   <block id="8c705cedce8873cec4385d32a46d41f7" category="list-text">*Anthropic* – bietet Modelle für die direkte Anthropic Integration.</block>
   <block id="08a146c5c0cb45bfe3682f78567b0421" category="section-title">Unterstützte OpenAI Modelle</block>
   <block id="5b6c99e4c6c823fdc627954b67266130" category="list-text">GPT-5.4</block>
@@ -3031,11 +3029,6 @@
   <block id="e63bd278e9f3067278f0c1de02ea51d1" category="list-text">*Administration &gt; AI Tools* auswählen.</block>
   <block id="fce40004669eef7e64c789d1aba006e4" category="list-text">Das Menü auswählen und anschließend *Bearbeiten* wählen.</block>
   <block id="7f15a21cfa00dfd7d41b88b3e1451357" category="list-text">Unter *Anbietertyp* einen Anbietertyp auswählen.</block>
-  <block id="cf72c8170aef768cae71f4e2a449acaf" category="list-text">Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben.</block>
-  <block id="d78f26f4373007724d98776e20cd9322" category="list-text">Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert.</block>
-  <block id="b2914c614292093e506dbf4a10fd671c" category="list-text">Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen.</block>
-  <block id="73d0a6de3953116536b1666d0db7c78a" category="list-text">Ein Modell aus der Liste auswählen.</block>
-  <block id="f646c307a4396cd41f6593ce84be57d7" category="list-text">Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.</block>
   <block id="4e0ef856d01b17ebeacb44ab6e813a5b" category="section-title">Es wird überprüft, ob die LLM Integration funktioniert.</block>
   <block id="b9218edb7fcba77407a69cc8446ba839" category="list-text">Es sollte überprüft werden, dass die Benutzer, die Aktionsworkflows benötigen, über die erforderlichen rollenbasierten Zugriffskontrollen verfügen.</block>
   <block id="3bc0e23bd46bad08da1876b2cc4430a7" category="inline-link-macro">Den NetApp Console Assistenten verwenden</block>
@@ -3630,9 +3623,7 @@
   <block id="06f4b3c533aaacbe7f5b54e11890ed43" category="summary">Ein unterstützter LLM-Endpunkt kann verbunden werden, um den Konsolenassistenten und die KI-gestützte Verwaltung in der lokalen NetApp Console Bereitstellung zu ermöglichen.</block>
   <block id="c85a5bee169bf00565c85292d26490c9" category="paragraph">Ein unterstützter LLM-Endpunkt kann verbunden werden, damit Benutzern lokaler NetApp Console-Bereitstellungen verwaltete Anleitungen und Vorgänge zur Speicherung in natürlicher Sprache zur Verfügung stehen.</block>
   <block id="d8d4c492ef9ce07470fd7c71a7074375" category="paragraph">Provider-Zugangsdaten und Endpoint-Zugriff werden vorbereitet, sodass der NetApp Console Assistent innerhalb der konfigurierten Governance-Grenzen Ihrer Organisation agieren kann.</block>
-  <block id="755c1d5c75ebb1af53c8d9be3e7bd559" category="list-text">Ihre Entscheidung für den Anbietertyp: OpenAI, OpenAI-kompatibel oder Anthropic, wie durch Release und Endpoint unterstützt.</block>
   <block id="433b02ac268c7f9d577bf9be57b5c3eb" category="paragraph">Assistentenfunktionen werden durch eine validierte Anbieterkonfiguration aktiviert, wobei die administrative Kontrolle über die Endpunkt-Anmeldeinformationen erhalten bleibt.</block>
-  <block id="26033ba1ab8ce1319bdb0de963d1cdcc" category="paragraph">Vor dem Speichern der Konfiguration sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft werden.</block>
   <block id="eddb36c1b2e3f9e786d7cccf7782664c" category="paragraph">Die Verfügbarkeit des Assistenten und das Genehmigungsverhalten werden bestätigt, sodass sich die Benutzer bei kontrollierten Vorgängen auf die konfigurierte Integration verlassen können.</block>
   <block id="3f9a5821f38ce494dd45cf9edfdf74d3" category="inline-link-macro">Informationen zur Verwendung des NetApp Console-Assistenten</block>
   <block id="634f9e5260713299abe36310597702d1" category="paragraph">Nach Abschluss der Validierung können Benutzer den Konsolenassistenten über das Dashboard öffnen und Aufgaben in einfacher Sprache beschreiben. <block ref="8dfd03d5e9a3a9ef76c8379ee37ac6ff" category="inline-link-macro-rx"></block>.</block>
@@ -3744,4 +3735,9 @@
   <block id="37bea8c46b8d33fa477648eba0912d07" category="list-text">Zum endgültigen Entfernen der Lizenz ist *Entfernen* auszuwählen.</block>
   <block id="2c6ce7383b3cc986a190791da38b9a2a" category="paragraph">Die Lizenz wird aus der Tabelle *Direct licenses* entfernt, und die Zusammenfassung *License and Capacity Distribution* wird aktualisiert.</block>
   <block id="81c2b56f99167782a533db86470cac6e" category="list-text">Die NetApp Backup and Recovery-Lizenz zur lokalen NetApp Console-Bereitstellung hinzufügen. <block ref="b245df0c039209d78d5353ec232ea246" category="inline-link-macro-rx"></block>.</block>
+  <block id="06b44c661a84a26e0ce1a017b3a10bf5" category="list-text">*OpenAI-kompatibler Proxy* zur Nutzung eines Enterprise-Gateways oder Proxy-Dienstes.</block>
+  <block id="06cec8d93319a0a41f62ded52e6e388b" category="list-text">*OpenAI-kompatibler Proxy*: für die Verwendung eines Enterprise Gateway oder Proxy-Dienstes zur Verbindung mit unterstützten Modellen.</block>
+  <block id="b1cda2c8041bdb2e7c757f55bc07d4e0" category="list-text">Ihre Entscheidung zum Anbietertyp: OpenAI, OpenAI-kompatibler Proxy oder Anthropic</block>
+  <block id="a9e0ed29bcf0eb9114558aea8e38b3dd" category="paragraph"><block ref="ab74dc1a527eb39bc2a75230306dc5a0" category="inline-link-macro-rx"></block>. . Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben. . Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert. . Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen. . Ein Modell aus der Liste auswählen. . Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.</block>
+  <block id="3202e0a5b24589a1f3bedee597ddb7d9" category="paragraph">+ Vor dem Speichern der Konfiguration empfiehlt sich eine Überprüfung von Anbietertyp, Endpunkt-URL, API-Schlüssel und dem ausgewählten Modell.</block>
 </blocks>
