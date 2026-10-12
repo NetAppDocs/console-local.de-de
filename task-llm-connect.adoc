@@ -62,13 +62,20 @@ Assistentenfunktionen werden durch eine validierte Anbieterkonfiguration aktivie
 ** *OpenAI* für den direkten Zugriff auf OpenAI Modelle.
 ** *OpenAI-kompatibler Proxy* zur Nutzung eines Enterprise-Gateways oder Proxy-Dienstes.
 ** *Anthropic* für die Claude-Modelle von Anthropic.
++
+link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"].
 
 
 
+. Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben.
+. Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert.
+. Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen.
+. Ein Modell aus der Liste auswählen.
+. Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
++
+Vor dem Speichern der Konfiguration sollten der Anbietertyp, die Endpunkt-URL, der API-Schlüssel und das ausgewählte Modell überprüft werden.
 
-link:concept-llm-integration.html["Informationen zur LLM-Integration in der lokalen NetApp Console-Bereitstellung"]. . Wenn Sie nach einem Provider-Endpunkt gefragt werden, die Endpunkt-URL für den ausgewählten Provider-Pfad eingeben. . Im Feld *Benutzername* ist Ihr Benutzername oder Ihre SSO-ID einzugeben, wenn Ihr Providerpfad dies erfordert. . Im Feld *API-Schlüssel* den API-Schlüssel aus dem Pfad des ausgewählten Anbieters einfügen. . Ein Modell aus der Liste auswählen. . Die Konfiguration kann überprüft und anschließend *Speichern* ausgewählt werden.
 
-+ Vor dem Speichern der Konfiguration empfiehlt sich eine Überprüfung von Anbietertyp, Endpunkt-URL, API-Schlüssel und dem ausgewählten Modell.
 
 
 
